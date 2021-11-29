@@ -49,11 +49,11 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Reduce, Reuse and <span class="text-dark">Recycle</span></h1>
+                    <h1>Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-dark btn-lg">Scan now!</a>
+                    <a href="" type="button" class="btn btn-secondary btn-lg">Scan now!</a>
                 </div>
                 <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
             </div>
@@ -165,7 +165,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
                         sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
                     </p>
-                    <a href="" class="btn btn-primary mt-3 btn-lg">
+                    <a href="" class="btn btn-secondary mt-3 btn-lg">
                         Redeem Points now!
                     </a>
                 </div>
