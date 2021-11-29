@@ -1,0 +1,42 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(https://fonts.googleapis.com/css2?family=Birthstone+Bounce:wght@500&display=swap);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    height: 100vh;
+    padding-top: 40%;
+}
+
+.content1{
+    height: 100vh;
+    padding-top: 3.5%;
+}
+
+.sas{
+    background-image: url(../img/bg.PNG);
+}
+
+@media (min-width:768px){
+    .content{
+        padding-top: 20%;
+    }
+
+    .content1{
+        padding-top: 2.5%;
+    }
+}
+
+@media (min-width:992px){
+    .content{
+        padding-top: 17%;
+    }
+
+    .content1{
+        padding-top: 1.5%;
+    }
+}
