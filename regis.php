@@ -11,8 +11,8 @@
     <title>Login Form</title>
   </head>
   <body>
-      <div class="sas">
-        <section class="container">
+    <section class="bg-primary">
+        <div class="container">
             <div class="row content1 d-flex justify-content-center">
                 <div class="col-md-6">
                     <div class="box shadow bg-light p-4">
@@ -65,7 +65,7 @@
                             </div>
                             -->
                             <div class="d-grid gap-2 mb-3">
-                                <button type="submit" class="btn btn-secondary btn-lg btn-block border-0 rounded-0">
+                                <button type="submit" class="btn btn-secondary btn-lg btn-block">
                                     Sign up
                                 </button>
                             </div>
@@ -76,8 +76,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-      </div>
+        </div>
+    </section>
     
    
     

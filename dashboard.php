@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row text-center g-4">
                 <div class="col-md">
-                    <div class="card bg-light text-dark p-3">
+                    <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-md-4 mt-md-5">
                             <i class="bi bi-trash"></i>
                         </div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-dark p-3">
+                    <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-md-4 mt-md-5">
                             <i class="bi bi-cash"></i>
                         </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-dark p-3">
+                    <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-2 mt-md-5">
                             <i class="bi bi-card-text"></i>
                         </div>
@@ -118,7 +118,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-center">
-                    <div class="card bg-light text-dark p-3">
+                    <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-2 mt-md-5">
                             <i class="bi bi-bag-check"></i>
                         </div>

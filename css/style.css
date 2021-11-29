@@ -13,12 +13,8 @@
 }
 
 .content1{
-    height: 100vh;
+    height: 110vh;
     padding-top: 3.5%;
-}
-
-.sas{
-    background-image: url(../img/bg.PNG);
 }
 
 @media (min-width:768px){
