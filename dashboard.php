@@ -166,7 +166,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
                         sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
                     </p>
-                    <a href="" class="btn btn-primary mt-3">
+                    <a href="" class="btn btn-primary mt-3 btn-lg">
                         Redeem Points now!
                     </a>
                 </div>
