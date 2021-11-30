@@ -28,6 +28,7 @@
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
   --bs-fontdark: #000000;
+  --bs-lightpurple: #8d00ff;
   --bs-primary: #4c008a;
   --bs-secondary: #ab33a1;
   --bs-success: #198754;
@@ -3251,6 +3252,47 @@ fieldset:disabled .btn {
   border-color: #000000;
 }
 
+.btn-lightpurple {
+  color: #fff;
+  background-color: #8d00ff;
+  border-color: #8d00ff;
+}
+
+.btn-lightpurple:hover {
+  color: #fff;
+  background-color: #7800d9;
+  border-color: #7100cc;
+}
+
+.btn-check:focus + .btn-lightpurple, .btn-lightpurple:focus {
+  color: #fff;
+  background-color: #7800d9;
+  border-color: #7100cc;
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(158, 38, 255, 0.5);
+          box-shadow: 0 0 0 0.25rem rgba(158, 38, 255, 0.5);
+}
+
+.btn-check:checked + .btn-lightpurple,
+.btn-check:active + .btn-lightpurple, .btn-lightpurple:active, .btn-lightpurple.active,
+.show > .btn-lightpurple.dropdown-toggle {
+  color: #fff;
+  background-color: #7100cc;
+  border-color: #6a00bf;
+}
+
+.btn-check:checked + .btn-lightpurple:focus,
+.btn-check:active + .btn-lightpurple:focus, .btn-lightpurple:active:focus, .btn-lightpurple.active:focus,
+.show > .btn-lightpurple.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(158, 38, 255, 0.5);
+          box-shadow: 0 0 0 0.25rem rgba(158, 38, 255, 0.5);
+}
+
+.btn-lightpurple:disabled, .btn-lightpurple.disabled {
+  color: #fff;
+  background-color: #8d00ff;
+  border-color: #8d00ff;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #4c008a;
@@ -3610,6 +3652,40 @@ fieldset:disabled .btn {
 
 .btn-outline-fontdark:disabled, .btn-outline-fontdark.disabled {
   color: #000000;
+  background-color: transparent;
+}
+
+.btn-outline-lightpurple {
+  color: #8d00ff;
+  border-color: #8d00ff;
+}
+
+.btn-outline-lightpurple:hover {
+  color: #fff;
+  background-color: #8d00ff;
+  border-color: #8d00ff;
+}
+
+.btn-check:focus + .btn-outline-lightpurple, .btn-outline-lightpurple:focus {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(141, 0, 255, 0.5);
+          box-shadow: 0 0 0 0.25rem rgba(141, 0, 255, 0.5);
+}
+
+.btn-check:checked + .btn-outline-lightpurple,
+.btn-check:active + .btn-outline-lightpurple, .btn-outline-lightpurple:active, .btn-outline-lightpurple.active, .btn-outline-lightpurple.dropdown-toggle.show {
+  color: #fff;
+  background-color: #8d00ff;
+  border-color: #8d00ff;
+}
+
+.btn-check:checked + .btn-outline-lightpurple:focus,
+.btn-check:active + .btn-outline-lightpurple:focus, .btn-outline-lightpurple:active:focus, .btn-outline-lightpurple.active:focus, .btn-outline-lightpurple.dropdown-toggle.show:focus {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(141, 0, 255, 0.5);
+          box-shadow: 0 0 0 0.25rem rgba(141, 0, 255, 0.5);
+}
+
+.btn-outline-lightpurple:disabled, .btn-outline-lightpurple.disabled {
+  color: #8d00ff;
   background-color: transparent;
 }
 
@@ -5691,6 +5767,16 @@ fieldset:disabled .btn {
   color: black;
 }
 
+.alert-lightpurple {
+  color: #550099;
+  background-color: #e8ccff;
+  border-color: #ddb3ff;
+}
+
+.alert-lightpurple .alert-link {
+  color: #44007a;
+}
+
 .alert-primary {
   color: #2e0053;
   background-color: #dbcce8;
@@ -6118,6 +6204,22 @@ fieldset:disabled .btn {
   color: #fff;
   background-color: black;
   border-color: black;
+}
+
+.list-group-item-lightpurple {
+  color: #550099;
+  background-color: #e8ccff;
+}
+
+.list-group-item-lightpurple.list-group-item-action:hover, .list-group-item-lightpurple.list-group-item-action:focus {
+  color: #550099;
+  background-color: #d1b8e6;
+}
+
+.list-group-item-lightpurple.list-group-item-action.active {
+  color: #fff;
+  background-color: #550099;
+  border-color: #550099;
 }
 
 .list-group-item-primary {
@@ -7467,6 +7569,14 @@ fieldset:disabled .btn {
   color: black;
 }
 
+.link-lightpurple {
+  color: #8d00ff;
+}
+
+.link-lightpurple:hover, .link-lightpurple:focus {
+  color: #7100cc;
+}
+
 .link-primary {
   color: #4c008a;
 }
@@ -7967,6 +8077,10 @@ fieldset:disabled .btn {
 
 .border-fontdark {
   border-color: #000000 !important;
+}
+
+.border-lightpurple {
+  border-color: #8d00ff !important;
 }
 
 .border-primary {

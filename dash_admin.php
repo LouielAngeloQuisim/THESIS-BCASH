@@ -66,17 +66,44 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
-                        <div class="h1 mb-3 mt-md-3">
+                    <div class="card bg-light text-fontdark border border-2 border-primary p-3 pb-0">
+                        <div class="h1">
                             <i class="bi bi-card-text"></i>
                         </div>
-                        <h3 class="card-title mb-3">
+                        <h3 class="card-title">
                             Recent Transaction
                         </h3>
-                        <p class="card-text lead mb-md-3">
-                            Name: [name] <br>
-                            Earned Points: [points] <br>
-                            Time and Date: [time/date]
+                        <p class="card-text lead">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Earned points</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>[Name]</td>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Name]</td>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Name]</td>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </div>
                 </div>
@@ -87,13 +114,14 @@
     <!-- monthly report card  -->
     <section class="p-5">
         <div class="container">
-            <div class="card text-center border border-2 border-primary">
+            <div class="card bg-lightpurp text-center">
                 <div class="h1">
                     <i class="bi bi-file-bar-graph"></i>
                 </div>
                     <h3 class="card-title">
                         Monthly Reports
                     </h3>
+                <!-- nasa baba mismo yung chart  -->
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
                 </div>
@@ -203,7 +231,11 @@
                     data:[
                         10,22,44,88
                     ],
-                    backgroundColor: 'rgba(51, 0, 92, 0.6)'
+                    backgroundColor:'rgba(51, 0, 92, 0.6)',
+                    borderWidth:3,
+                    borderColor:'#33005c',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
                 }]
             },
             options:[
