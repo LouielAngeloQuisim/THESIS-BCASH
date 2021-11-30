@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="https:/cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
     <link href="sass/main.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -46,8 +48,61 @@
         </div>
     </nav>
 
+    <!-- cards  -->
+    <section class=" bg-dark p-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card bg-light text-fontdark p-3">
+                        <div class="h1 mb-md-4 mt-md-5">
+                            <i class="bi bi-trash"></i>
+                        </div>
+                        <h3 class="card-title mb-md-2">
+                            Bottles Recycled
+                        </h3>
+                        <p class="card-text lead mb-md-5">
+                            Total: 99999999999
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
+                        <div class="h1 mb-3 mt-md-3">
+                            <i class="bi bi-card-text"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Recent Transaction
+                        </h3>
+                        <p class="card-text lead mb-md-3">
+                            Name: [name] <br>
+                            Earned Points: [points] <br>
+                            Time and Date: [time/date]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- monthly report card  -->
+    <section class="p-5">
+        <div class="container">
+            <div class="card text-center border border-2 border-primary">
+                <div class="h1">
+                    <i class="bi bi-file-bar-graph"></i>
+                </div>
+                    <h3 class="card-title">
+                        Monthly Reports
+                    </h3>
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- show case with scan button -->
-    <section class="bg-dark p-5 p-lg-0 text-center text-sm-start">
+    <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="text-light">
@@ -57,7 +112,7 @@
                     </p>
                     <a href="" type="button" class="btn btn-secondary btn-lg">Recycle Scan</a>
                 </div>
-                <div class="container text-fontdark pt-lg-0 p-5">
+                <div class="container text-fontdark p-5">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
                             <div class="card bg-light">
@@ -135,57 +190,27 @@
     <section class="bg-primary d-none d-sm-block p-3">
     </section>
 
-    <!-- cards  -->
-    <section class="p-5">
-        <div class="container">
-            <div class="row text-center g-4">
-                <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
-                        <div class="h1 mb-md-4 mt-md-5">
-                            <i class="bi bi-trash"></i>
-                        </div>
-                        <h3 class="card-title mb-md-3">
-                            Bottles Recycled
-                        </h3>
-                        <p class="card-text lead mb-md-5">
-                            Total: 99999999999
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
-                        <div class="h1 mb-md-4 mt-md-5">
-                            <i class="bi bi-cash"></i>
-                        </div>
-                        <h3 class="card-title mb-md-3">
-                            Earned Points
-                        </h3>
-                        <p class="card-text lead mb-md-5">
-                            Total: 99999999999
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
-                        <div class="h1 mb-2 mt-md-5">
-                            <i class="bi bi-card-text"></i>
-                        </div>
-                        <h3 class="card-title mb-2">
-                            Recent Transaction
-                        </h3>
-                        <p class="card-text lead mb-md-5">
-                            Total Bottles Recycle: 99999999999 <br>
-                            Total Earned Points: 99999999999
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- monthly report java script  -->
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
-    </section>
+        let bottlesChart = new Chart(myChart, {
+            type:'bar',
+            data:{
+                labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets:[{
+                    label:'Recycled Bottles',
+                    data:[
+                        10,22,44,88
+                    ],
+                    backgroundColor: 'rgba(51, 0, 92, 0.6)'
+                }]
+            },
+            options:[
+
+            ]
+        })
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
