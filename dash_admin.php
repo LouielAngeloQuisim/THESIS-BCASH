@@ -38,9 +38,6 @@
                         <a href="" class="nav-link">Redeem Reports</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Scan</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="" class="nav-link">Logout</a>
                     </li>
                 </ul>
@@ -114,7 +111,7 @@
     <!-- monthly report card  -->
     <section class="p-5">
         <div class="container">
-            <div class="card bg-lightpurp text-center">
+            <div class="card bg-lightpurple text-center border border-2 border-dark">
                 <div class="h1">
                     <i class="bi bi-file-bar-graph"></i>
                 </div>
@@ -138,7 +135,6 @@
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Recycle Scan</a>
                 </div>
                 <div class="container text-fontdark p-5">
                     <div class="row align-items-center justify-content-between">
@@ -231,7 +227,7 @@
                     data:[
                         10,22,44,88
                     ],
-                    backgroundColor:'rgba(51, 0, 92, 0.6)',
+                    backgroundColor:'rgba(171, 51, 161, 0.6)',
                     borderWidth:3,
                     borderColor:'#33005c',
                     hoverBorderWidth:3,

@@ -127,8 +127,32 @@
                             Recent Transaction
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            Total Bottles Recycle: 99999999999 <br>
-                            Total Earned Points: 99999999999
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Earned points</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </div>
                 </div>
