@@ -41,8 +41,7 @@
                             </div>
                             -->
                             <div class="d-grid gap-2 mb-3">
-                                <button type="submit" class="btn btn-dark btn-lg btn-block" name="login">
-                                <button type="submit" class="btn btn-secondary btn-lg btn-block">
+                                <button type="submit" class="btn btn-secondary btn-lg btn-block"name="login">
                                     Login
                                 </button>
                             </div>
