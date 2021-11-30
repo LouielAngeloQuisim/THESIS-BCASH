@@ -57,7 +57,7 @@
                     </p>
                     <a href="" type="button" class="btn btn-secondary btn-lg">Recycle Scan</a>
                 </div>
-                <div class="container text-fontdark p-5">
+                <div class="container text-fontdark pt-lg-0 p-5">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
                             <div class="card bg-light">
@@ -186,7 +186,6 @@
     <!-- black line -->
     <section class="bg-primary d-none d-sm-block p-3">
     </section>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
