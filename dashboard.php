@@ -16,7 +16,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-fixed-top bg-primary navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand">BCASH</a>
+            <a href="#" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row text-center g-4">
                 <div class="col-md">
-                    <div class="card bg-light text-fontdark p-3">
+                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
                         <div class="h1 mb-md-4 mt-md-5">
                             <i class="bi bi-trash"></i>
                         </div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-fontdark p-3">
+                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
                         <div class="h1 mb-md-4 mt-md-5">
                             <i class="bi bi-cash"></i>
                         </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-fontdark p-3">
+                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
                         <div class="h1 mb-2 mt-md-5">
                             <i class="bi bi-card-text"></i>
                         </div>
