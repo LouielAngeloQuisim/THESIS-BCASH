@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
             <a href="#" class="navbar-brand fw-bold">BCASH</a>
 
@@ -24,17 +24,19 @@
 
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
+                    <!-- eto yung pwede pa siyang bumalik sa mismong dashboard 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Profile</a>
+                        <a href="" class="nav-link">Home</a>
+                    </li>
+                    -->
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Recycle Reports</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Transaction</a>
+                        <a href="" class="nav-link">Redeem Reports</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Redeem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">QR Code</a>
+                        <a href="" class="nav-link">Scan</a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">Logout</a>
@@ -45,7 +47,7 @@
     </nav>
 
     <!-- show case with scan button -->
-    <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
@@ -53,7 +55,7 @@
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Show Qr Code!</a>
+                    <a href="" type="button" class="btn btn-secondary btn-lg">Recycle Scan</a>
                 </div>
                 <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
             </div>
@@ -61,36 +63,12 @@
     </section>
 
     <!-- black line -->
-    <section class="bg-dark d-none d-sm-block p-3">
+    <section class="bg-primary d-none d-sm-block p-3">
     </section>
 
     <!-- cards  -->
     <section class="p-5">
         <div class="container">
-        <div class="mb-3">
-        <?php
-            /*session_start();
-            require "mydb.php";
-            $acc_id = $_SESSION['acc_id'];
-            $mydb = new myDb;
-            $record = $mydb->get_Qrcode($acc_id);
-            if(isset($record)){
-                print_r($record);
-                foreach($record as $rows){
-                    $hash_qrcode = $rows['qrcode'];
-                    echo $acc_id;
-                    echo "qrcode: ";
-                    echo $hash_qrcode;
-                    if(password_verify($acc_id, $hash_qrcode)){
-                        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
-                        $output["img"] = $url;
-                        echo $url;
-                    }
-                }
-                <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
-            }*/
-        ?>
-        </div>
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark border border-2 border-primary p-3">
@@ -136,9 +114,8 @@
         </div>
     </section>
 
-
-    <!-- available bottles area -->
-    <section class="bg-dark p-5">
+    <!-- bottles -->
+    <section class="bg-primary p-5">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-center">
@@ -160,15 +137,39 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="img/slide-0.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
                                         <img src="img/slide-1.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
                                         <img src="img/slide-2.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
                                         <img src="img/slide-3.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
@@ -190,13 +191,13 @@
                         sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
                     </p>
                     <a href="" class="btn btn-secondary mt-3 btn-lg">
-                        Redeem Points now!
+                        Payment Scan
                     </a>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

@@ -1,3 +1,14 @@
-$primary: #c29938;
+$primary: #4c008a;
+$secondary: #ab33a1;
+$dark: #33005c;
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+$custom-theme-colors: (
+    "fontdark" : #000000,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
