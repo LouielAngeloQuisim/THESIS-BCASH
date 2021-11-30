@@ -55,7 +55,7 @@
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Scan now!</a>
+                    <a href="" type="button" class="btn btn-secondary btn-lg">Recycle Scan</a>
                 </div>
                 <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
             </div>
@@ -114,8 +114,88 @@
         </div>
     </section>
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
+    <!-- bottles -->
+    <section class="bg-primary p-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md text-center">
+                    <div class="card bg-light text-fontdark p-3">
+                        <div class="h1 mb-2 mt-md-5">
+                            <i class="bi bi-bag-check"></i>
+                        </div>
+                        <h3 class="card-title mb-2">
+                            Acceptable Bottles
+                        </h3>
+                        <div class="card-text">
+                            <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="img/slide-0.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slide-1.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slide-2.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="img/slide-3.PNG" class="d-block w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md text-light text-center text-sm-start p-3">
+                    <h2>Here are the Bottles chuchu</h2>
+                    <p class="lead">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
+                        sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
+                    </p>
+                    <a href="" class="btn btn-secondary mt-3 btn-lg">
+                        Payment Scan
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
