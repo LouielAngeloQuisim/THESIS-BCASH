@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-fixed-top bg-primary navbar-dark py-3">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
         <div class="container">
             <a href="#" class="navbar-brand fw-bold">BCASH</a>
 
@@ -53,7 +53,7 @@
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Scan now!</a>
+                    <a href="" type="button" class="btn btn-secondary btn-lg">Show Qr Code!</a>
                 </div>
                 <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
             </div>
