@@ -1,6 +1,7 @@
 <?php
     if(isset($_POST['submit'])){
         $data = $_POST['data'];
+        $hash_data = password_hash($data, PASSWORD_DEFAULT);
         if($_POST['width'] != ""){
             $width = $_POST['width'];
         }
@@ -13,7 +14,7 @@
         else{
             $height = "250";
         }
-        $url = "https://chart.googleapis.com/chart?cht=qr&chs={$width}x{$height}&chl={$data}";
+        $url = "https://chart.googleapis.com/chart?cht=qr&chs={$width}x{$height}&chl={$hash_data}";
         $output["img"] = $url;
         echo $url;
     }

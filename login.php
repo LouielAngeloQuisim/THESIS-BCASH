@@ -20,9 +20,9 @@
                         <h3 class="mb-4 text-center fs-1">
                             Login Form
                         </h3>
-                        <form action="" class="mb-3">
+                        <form action="account_check.php" class="mb-3" method ="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-1" id="username" placeholder="Enter Username">
+                                <input type="text" class="form-control rounded-1" id="username" placeholder="Enter Username" name="username">
                                 <label for="username" required>Username</label>
                             </div>
                             <!-- kapag walang katulad yung username niya eto dapat lilitaw
@@ -32,7 +32,7 @@
                             </div>
                             -->
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password">
+                                <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password" name="password">
                                 <label for="password" required>Password</label>
                             </div>
                             <!-- eto naman lilitaw kung mali ang password niya
@@ -42,7 +42,7 @@
                             </div>
                             -->
                             <div class="d-grid gap-2 mb-3">
-                                <button type="submit" class="btn btn-dark btn-lg btn-block border-0 rounded-0">
+                                <button type="submit" class="btn btn-dark btn-lg btn-block border-0 rounded-0" name="login">
                                     Login
                                 </button>
                             </div>
@@ -55,11 +55,6 @@
             </div>
         </section>
       </div>
-    
-   
-    
-            
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

@@ -16,6 +16,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-fixed-top bg-primary navbar-dark py-3">
         <div class="container">
+            
             <a href="#" class="navbar-brand">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -67,6 +68,30 @@
     <!-- cards  -->
     <section class="p-5">
         <div class="container">
+        <div class="mb-3">
+        <?php
+            /*session_start();
+            require "mydb.php";
+            $acc_id = $_SESSION['acc_id'];
+            $mydb = new myDb;
+            $record = $mydb->get_Qrcode($acc_id);
+            if(isset($record)){
+                print_r($record);
+                foreach($record as $rows){
+                    $hash_qrcode = $rows['qrcode'];
+                    echo $acc_id;
+                    echo "qrcode: ";
+                    echo $hash_qrcode;
+                    if(password_verify($acc_id, $hash_qrcode)){
+                        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
+                        $output["img"] = $url;
+                        echo $url;
+                    }
+                }
+                <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
+            }*/
+        ?>
+        </div>
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-dark p-3">
@@ -172,7 +197,7 @@
             </div>
         </div>
     </section>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
