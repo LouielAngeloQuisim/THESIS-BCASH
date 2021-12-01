@@ -25,19 +25,22 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Profile</a>
+                        <a href="dashboard.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Transaction</a>
+                        <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Redeem</a>
+                        <a href="recycle.php" class="nav-link">Recycle</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">QR Code</a>
+                        <a href="redeem.php" class="nav-link">Redeem</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Logout</a>
+                        <a href="" class="nav-link">Catalouge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.php" class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -127,7 +130,7 @@
                             Recent Transaction
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            <table class="table">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">Earned points</th>
@@ -148,6 +151,34 @@
                                     </tr>
                                     <tr>
                                         <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                        <p class="card-text lead mb-md-5">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Redeemed points</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
                                         <td>[Time]</td>
                                         <td>[Date]</td>
                                     </tr>
