@@ -32,10 +32,10 @@
                         <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Recycle</a>
+                        <a href="recycle.php" class="nav-link">Recycle</a>
                     </li>
                     <li class="nav-item">
-                        <a href="recycle.php" class="nav-link">Recycle</a>
+                        <a href="catalouge.php" class="nav-link">Catalouge</a>
                     </li>
                     <li class="nav-item">
                         <a href="login.php" class="nav-link">Logout</a>
@@ -50,7 +50,7 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Here's your Redeem Qr Code</h1>
+                    <h1>Here's your Redeemable chuchu</h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
@@ -90,7 +90,12 @@
         </div>
     </section>
 
-    <section class="bg-secondary p-3"></section>
+    <section class="bg-primary p-3"></section>
+
+    <script src="./src/bootstrap-input-spinner.js"></script>
+    <script>
+        $('input[type=number]').inputSpinner();
+    </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

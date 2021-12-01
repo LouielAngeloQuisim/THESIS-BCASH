@@ -38,6 +38,9 @@
                         <a href="redeem.php" class="nav-link">Redeem</a>
                     </li>
                     <li class="nav-item">
+                        <a href="catalouge.php" class="nav-link">Catalouge</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="login.php" class="nav-link">Logout</a>
                     </li>
                 </ul>

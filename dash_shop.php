@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Recycle</title>
+    <title>Catalouge</title>
   </head>
   <body>
     <!-- navbar -->
@@ -32,10 +32,10 @@
                         <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="recycle.php" class="nav-link">Recycle</a>
+                        <a href="" class="nav-link">Recycle</a>
                     </li>
                     <li class="nav-item">
-                        <a href="redeem.php" class="nav-link">Redeem</a>
+                        <a href="recycle.php" class="nav-link">Recycle</a>
                     </li>
                     <li class="nav-item">
                         <a href="catalouge.php" class="nav-link">Catalouge</a>
@@ -53,7 +53,7 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Here's your Recycle Qr Code</h1>
+                    <h1>Here's your Redeem Qr Code</h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
@@ -67,19 +67,28 @@
     <section class="p-5">
         <div class="container">
             <div class="row text-center g-4">
-                <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3">
-                        <div class="h1">
-                            <i class="bi bi-columns-gap"></i>
-                        </div>
-                        <h3 class="card-title mb-3">
-                            Recycle Qr Code
-                        </h3>
-                        <p class="card-text lead">
-                            [QR CODE]
-                        </p>
-                    </div>
-                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Item]</td>
+                            <td>[Price]</td>
+                        </tr>
+                        <tr>
+                            <td>[Item]</td>
+                            <td>[Price]</td>
+                        </tr>
+                        <tr>
+                            <td>[Item]</td>
+                            <td>[Price]</td>
+                        </tr>
+                    </tbody>
+                </table>    
             </div>
         </div>
     </section>
