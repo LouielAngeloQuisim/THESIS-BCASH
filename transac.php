@@ -31,12 +31,6 @@
                         <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="recycle.php" class="nav-link">Recycle</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="redeem.php" class="nav-link">Redeem</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="catalouge.php" class="nav-link">Catalouge</a>
                     </li>
                     <li class="nav-item">

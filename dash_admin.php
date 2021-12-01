@@ -130,12 +130,6 @@
     <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <div class="text-light">
-                    <h1>Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
-                    <p class="lead my-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
-                    </p>
-                </div>
                 <div class="container text-fontdark p-5">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
@@ -156,7 +150,7 @@
                                         </div>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="img/slide-0.PNG" class="d-block w-100">
+                                                <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
                                                         <h5>[Type of Bottle]</h5>
@@ -165,7 +159,7 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-1.PNG" class="d-block w-100">
+                                                <img src="img/slide-1.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
                                                         <h5>[Type of Bottle]</h5>
@@ -174,7 +168,7 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-2.PNG" class="d-block w-100">
+                                                <img src="img/slide-2.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
                                                         <h5>[Type of Bottle]</h5>
@@ -183,7 +177,7 @@
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-3.PNG" class="d-block w-100">
+                                                <img src="img/slide-3.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
                                                         <h5>[Type of Bottle]</h5>

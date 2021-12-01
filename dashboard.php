@@ -31,12 +31,6 @@
                         <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="recycle.php" class="nav-link">Recycle</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="redeem.php" class="nav-link">Redeem</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="catalouge.php" class="nav-link">Catalouge</a>
                     </li>
                     <li class="nav-item">
@@ -48,17 +42,27 @@
     </nav>
 
     <!-- show case with scan button -->
-    <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section class="bg-primary p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
-                    <p class="lead my-4">
+                    <h1 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
+                    <p class="lead my-4 text-light">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Show Qr Code!</a>
+                    <div class="card bg-light text-fontdark p-3">
+                        <div class="h1">
+                            <i class="bi bi-columns-gap"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Heres your Qr Code
+                        </h3>
+                        <p class="card-text lead">
+                            [QR CODE]
+                        </p>
+                    </div>
                 </div>
-                <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
+                
             </div>
         </div>
     </section>
@@ -244,9 +248,6 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
                         sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
                     </p>
-                    <a href="" class="btn btn-secondary mt-3 btn-lg">
-                        Redeem Points now!
-                    </a>
                 </div>
             </div>
         </div>
