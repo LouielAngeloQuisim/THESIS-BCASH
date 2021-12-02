@@ -1,3 +1,22 @@
+<?php
+session_start();
+require "mydb.php";
+$acc_id = $_SESSION['acc_id'];
+$mydb = new myDb;
+$record = $mydb->get_Qrcode($acc_id);
+if(isset($record)){
+    foreach($record as $rows){
+        $hash_qrcode = $rows['qrcode'];
+        //echo $acc_id;
+        //echo "qrcode: ";
+        //echo $hash_qrcode;
+        if(password_verify($acc_id, $hash_qrcode)){
+            $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
+            $output["img"] = $url;
+        }
+    }   
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -58,7 +77,7 @@
                             Heres your Qr Code
                         </h3>
                         <p class="card-text lead">
-                            [QR CODE]
+                            <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
                         </p>
                     </div>
                 </div>
@@ -76,25 +95,6 @@
         <div class="container">
         <div class="mb-3">
         <?php
-            session_start();
-            require "mydb.php";
-            $acc_id = $_SESSION['acc_id'];
-            $mydb = new myDb;
-            $record = $mydb->get_Qrcode($acc_id);
-            if(isset($record)){
-                foreach($record as $rows){
-                    $hash_qrcode = $rows['qrcode'];
-                    //echo $acc_id;
-                    //echo "qrcode: ";
-                    //echo $hash_qrcode;
-                    /*if(password_verify($acc_id, $hash_qrcode)){
-                        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
-                        $output["img"] = $url;
-                        echo $url;
-                    }*/
-                }
-                
-            }
             /*$result = $mydb->verify_Qrcode($hash_qrcode);
             if(isset($result)){
                 if($result == "true"){
