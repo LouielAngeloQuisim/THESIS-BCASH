@@ -26,16 +26,17 @@
 
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
-                    <!-- eto yung pwede pa siyang bumalik sa mismong dashboard 
                     <li class="nav-item">
-                        <a href="" class="nav-link">Home</a>
-                    </li>
-                    -->
-                    <li class="nav-item">
-                        <a href="dash_admin.php" class="nav-link">Recycle Reports</a>
+                        <a href="dash_admin.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="redeem_report.php" class="nav-link">Redeem Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="bottlelist.php" class="nav-link">Bottles List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="itemlist.php" class="nav-link">Item List</a>
                     </li>
                     <li class="nav-item">
                         <a href="logout.php" class="nav-link">Logout</a>
@@ -48,6 +49,9 @@
     <!-- cards  -->
     <section class=" bg-dark p-5">
         <div class="container">
+            <h1 class="text-light text-center">
+                Redeem Reports
+            </h1>
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark p-3">
@@ -115,7 +119,7 @@
     <!-- monthly report card  -->
     <section class="p-5">
         <div class="container">
-            <div class="card bg-lightpurple text-center border border-2 border-dark">
+            <div class="card text-center border border-2 border-dark cardadmin">
                 <div class="h1 mt-2">
                     <i class="bi bi-file-bar-graph"></i>
                 </div>
@@ -137,7 +141,7 @@
                 <div class="container text-fontdark p-5">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
-                            <div class="card bg-light">
+                            <div class="card bg-light cardadmin1">
                                 <div class="h1 mt-2">
                                     <i class="bi bi-bag-check"></i>
                                 </div>
@@ -154,38 +158,38 @@
                                         </div>
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
-                                                <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
+                                                <img src="img/print.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
+                                                        <h5>[Type of Redeemable Item]</h5>
+                                                        <p>[Redeemable Item Description]</p>
                                                     </div>  
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-1.PNG" class="d-block pb-2 w-100">
+                                                <img src="img/xerox.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
+                                                        <h5>[Type of Redeemable Item]</h5>
+                                                        <p>[Redeemable Item Description]</p>
                                                     </div>  
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-2.PNG" class="d-block pb-2 w-100">
+                                                <img src="img/ballpen.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
+                                                        <h5>[Type of Redeemable Item]</h5>
+                                                        <p>[Redeemable Item Description]</p>
                                                     </div>  
                                                 </div>
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="img/slide-3.PNG" class="d-block pb-2 w-100">
+                                                <img src="img/pencil1.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
+                                                        <h5>[Type of Redeemable Item]</h5>
+                                                        <p>[Redeemable Item Description]</p>
                                                     </div>  
                                                 </div>
                                             </div>
@@ -197,7 +201,7 @@
                                         <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                             <span class="visually-hidden">Next</span>
-                                    </button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

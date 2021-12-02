@@ -17,6 +17,10 @@
     padding-top: 3.5%;
 }
 
+.editbtn{
+    width: 90%;
+}
+
 @media (min-width:768px){
     .content{
         padding-top: 20%;
@@ -34,5 +38,15 @@
 
     .content1{
         padding-top: 1.5%;
+    }
+
+    .cardadmin{
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .cardadmin1{
+        margin-left: 30%;
+        width: 40%;
     }
 }

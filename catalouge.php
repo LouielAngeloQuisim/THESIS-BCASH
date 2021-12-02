@@ -43,7 +43,7 @@
     </nav>
 
     <!-- show case -->
-    <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section class="bg-primary text-light p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
