@@ -69,28 +69,41 @@
         <div class="container">
         <div class="mb-3">
         <?php
-            /*session_start();
+            session_start();
             require "mydb.php";
             $acc_id = $_SESSION['acc_id'];
             $mydb = new myDb;
             $record = $mydb->get_Qrcode($acc_id);
             if(isset($record)){
-                print_r($record);
                 foreach($record as $rows){
                     $hash_qrcode = $rows['qrcode'];
-                    echo $acc_id;
-                    echo "qrcode: ";
-                    echo $hash_qrcode;
-                    if(password_verify($acc_id, $hash_qrcode)){
+                    //echo $acc_id;
+                    //echo "qrcode: ";
+                    //echo $hash_qrcode;
+                    /*if(password_verify($acc_id, $hash_qrcode)){
                         $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
                         $output["img"] = $url;
                         echo $url;
-                    }
+                    }*/
                 }
-                <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
+                
+            }
+            /*$result = $mydb->verify_Qrcode($hash_qrcode);
+            if(isset($result)){
+                if($result == "true"){
+                    echo "qr code is verified";
+                }
+                elseif($result == "false"){
+                    echo "qr code is not verfied or not found";
+                }
+            }
+            else{
+                echo "result returns empty";
             }*/
+
         ?>
         </div>
+        <!--<img src="<?php //echo $output["img"];?>" alt="QR Code" width="50%" height="50%">-->
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark border border-2 border-primary p-3">

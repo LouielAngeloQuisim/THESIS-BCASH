@@ -148,4 +148,25 @@ class myDb {
         $sql->free_result();
         return $records;
     }
+    public function verify_Qrcode($qrcode){
+        $records = array();
+        $sql = $this->link->prepare("SELECT acc_id FROM user_login");
+        $sql->execute();
+        $result = $sql->get_result();
+        $verified = "";
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'acc_id' => $row['acc_id']
+                ];
+                if(password_verify($row['acc_id'], $qrcode)){
+                    $verified = "true";
+                }
+            }
+        }
+        else{
+            $verified = "false";
+        }
+        return $verified;
+    }
 }
