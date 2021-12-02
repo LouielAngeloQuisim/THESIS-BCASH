@@ -17,6 +17,7 @@ if(isset($record)){
     }   
 }
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -61,7 +62,7 @@ if(isset($record)){
     </nav>
 
     <!-- show case with scan button -->
-    <section class="bg-primary p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
@@ -69,19 +70,18 @@ if(isset($record)){
                     <p class="lead my-4 text-light">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <div class="card bg-light text-fontdark p-3">
-                        <div class="h1">
-                            <i class="bi bi-columns-gap"></i>
-                        </div>
-                        <h3 class="card-title mb-3">
-                            Heres your Qr Code
-                        </h3>
-                        <p class="card-text lead">
-                            <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
-                        </p>
-                    </div>
                 </div>
-                
+                <div class="card bg-light text-center text-fontdark p-3">
+                    <div class="h1">
+                        <i class="bi bi-columns-gap"></i>
+                    </div>
+                    <h3 class="card-title mb-3">
+                        Heres your Qr Code
+                    </h3>
+                    <p class="card-text lead">
+                        <img src="<?php echo $output["img"];?>" class="img-fluid" width="1000px" height="1000px" alt="QR Code">
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -95,22 +95,28 @@ if(isset($record)){
         <div class="container">
         <div class="mb-3">
         <?php
-            /*$result = $mydb->verify_Qrcode($hash_qrcode);
-            if(isset($result)){
-                if($result == "true"){
-                    echo "qr code is verified";
+            /*session_start();
+            require "mydb.php";
+            $acc_id = $_SESSION['acc_id'];
+            $mydb = new myDb;
+            $record = $mydb->get_Qrcode($acc_id);
+            if(isset($record)){
+                print_r($record);
+                foreach($record as $rows){
+                    $hash_qrcode = $rows['qrcode'];
+                    echo $acc_id;
+                    echo "qrcode: ";
+                    echo $hash_qrcode;
+                    if(password_verify($acc_id, $hash_qrcode)){
+                        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
+                        $output["img"] = $url;
+                        echo $url;
+                    }
                 }
-                elseif($result == "false"){
-                    echo "qr code is not verfied or not found";
-                }
-            }
-            else{
-                echo "result returns empty";
+                <img src="<?php echo $output["img"];?>" alt="QR Code" width="50%" height="50%">
             }*/
-
         ?>
         </div>
-        <!--<img src="<?php //echo $output["img"];?>" alt="QR Code" width="50%" height="50%">-->
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark border border-2 border-primary p-3">
