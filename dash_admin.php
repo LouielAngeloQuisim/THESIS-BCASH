@@ -33,6 +33,9 @@
                         <a href="redeem_report.php" class="nav-link">Redeem Reports</a>
                     </li>
                     <li class="nav-item">
+                        <a href="transac_admin_recycle.php" class="nav-link">Transactions</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="bottlelist.php" class="nav-link">Bottles List</a>
                     </li>
                     <li class="nav-item">

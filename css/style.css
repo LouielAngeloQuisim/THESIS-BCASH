@@ -21,6 +21,20 @@
     width: 90%;
 }
 
+.infocontent{
+    height: 500px;
+}
+
+.scroll{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.scroll .table1{
+    font-size: 12px;
+}
+
 @media (min-width:768px){
     .content{
         padding-top: 20%;
@@ -28,6 +42,10 @@
 
     .content1{
         padding-top: 2.5%;
+    }
+
+    .scroll .table1{
+        font-size: 16px;
     }
 }
 
