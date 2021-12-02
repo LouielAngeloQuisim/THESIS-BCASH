@@ -25,19 +25,16 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Profile</a>
+                        <a href="dashboard.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Transaction</a>
+                        <a href="transac.php" class="nav-link">Transaction</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Redeem</a>
+                        <a href="catalouge.php" class="nav-link">Catalouge</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">QR Code</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Logout</a>
+                        <a href="login.php" class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -45,17 +42,27 @@
     </nav>
 
     <!-- show case with scan button -->
-    <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <section class="bg-primary p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
-                    <p class="lead my-4">
+                    <h1 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
+                    <p class="lead my-4 text-light">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
-                    <a href="" type="button" class="btn btn-secondary btn-lg">Show Qr Code!</a>
+                    <div class="card bg-light text-fontdark p-3">
+                        <div class="h1">
+                            <i class="bi bi-columns-gap"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Heres your Qr Code
+                        </h3>
+                        <p class="card-text lead">
+                            [QR CODE]
+                        </p>
+                    </div>
                 </div>
-                <img class="img-fluid w-50 d-none d-sm-block" src="img/picture1.PNG" alt="">
+                
             </div>
         </div>
     </section>
@@ -140,8 +147,60 @@
                             Recent Transaction
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            Total Bottles Recycle: 99999999999 <br>
-                            Total Earned Points: 99999999999
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Earned points</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Earned points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+                        <p class="card-text lead mb-md-5">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Redeemed points</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[Redeemed points]</td>
+                                        <td>[Time]</td>
+                                        <td>[Date]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </div>
                 </div>
@@ -202,9 +261,6 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
                         sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
                     </p>
-                    <a href="" class="btn btn-secondary mt-3 btn-lg">
-                        Redeem Points now!
-                    </a>
                 </div>
             </div>
         </div>

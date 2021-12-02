@@ -38,7 +38,7 @@
                         <a href="redeem_report.php" class="nav-link">Redeem Reports</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <a href="logout.php" class="nav-link">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -52,10 +52,10 @@
                 <div class="col-md">
                     <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-md-4 mt-md-5">
-                            <i class="bi bi-trash"></i>
+                            <i class="bi bi-person"></i>
                         </div>
                         <h3 class="card-title mb-md-2">
-                            Bottles Recycled
+                            Accounts Redeemed
                         </h3>
                         <p class="card-text lead mb-md-5">
                             Total: 99999999999
@@ -75,7 +75,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Earned points</th>
+                                        <th scope="col">Redeem</th>
+                                        <th scope="col">Price</th>
                                         <th scope="col">Time</th>
                                         <th scope="col">Date</th>
                                     </tr>
@@ -83,19 +84,22 @@
                                 <tbody>
                                     <tr>
                                         <td>[Name]</td>
-                                        <td>[Earned points]</td>
+                                        <td>[Redeem]</td>
+                                        <td>[Price]</td>
                                         <td>[Time]</td>
                                         <td>[Date]</td>
                                     </tr>
                                     <tr>
                                         <td>[Name]</td>
-                                        <td>[Earned points]</td>
+                                        <td>[Redeem]</td>
+                                        <td>[Price]</td>
                                         <td>[Time]</td>
                                         <td>[Date]</td>
                                     </tr>
                                     <tr>
                                         <td>[Name]</td>
-                                        <td>[Earned points]</td>
+                                        <td>[Redeem]</td>
+                                        <td>[Price]</td>
                                         <td>[Time]</td>
                                         <td>[Date]</td>
                                     </tr>
@@ -134,11 +138,11 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
                             <div class="card bg-light">
-                                <div class="h1 mb-2">
+                                <div class="h1 mt-2">
                                     <i class="bi bi-bag-check"></i>
                                 </div>
-                                <h3 class="card-title mt-2">
-                                    Acceptable Bottles
+                                <h3 class="card-title mb-2">
+                                    Redeemable Items
                                 </h3>
                                 <div class="card-text">
                                     <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -217,7 +221,7 @@
             data:{
                 labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                 datasets:[{
-                    label:'Recycled Bottles',
+                    label:'Redeemed Bottles',
                     data:[
                         10,22,44,88
                     ],

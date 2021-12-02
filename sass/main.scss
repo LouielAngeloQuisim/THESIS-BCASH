@@ -7,6 +7,7 @@ $dark: #33005c;
 
 $custom-theme-colors: (
     "fontdark" : #000000,
+    "lightpurple" : #8d00ff,
 );
 
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
