@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2021 at 07:35 AM
+-- Generation Time: Dec 03, 2021 at 11:37 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -85,6 +85,8 @@ CREATE TABLE `user_login` (
   `acc_id` int(50) NOT NULL,
   `password` varchar(25) NOT NULL,
   `qrcode` varchar(75) NOT NULL,
+  `total_points` int(50) NOT NULL,
+  `total_bottles` int(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `mname` varchar(50) NOT NULL,
@@ -97,9 +99,9 @@ CREATE TABLE `user_login` (
 -- Dumping data for table `user_login`
 --
 
-INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `lname`, `fname`, `mname`, `email`, `mobile_num`, `admin`) VALUES
-('louiel', 1, '123', '', '', '', '', '', 0, 0),
-('louielxx', 36, '123', '$2y$10$hIdrsrRxTLa8iEvvSzosXe3TkrDqlbiFkX8cXqZGD1cf2RRVtGBa2', '', '', '', '', 0, 0);
+INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `total_points`, `total_bottles`, `lname`, `fname`, `mname`, `email`, `mobile_num`, `admin`) VALUES
+('louiel', 1, '123', '', 0, 0, '', '', '', '', 0, 0),
+('louielxx', 36, '123', '$2y$10$hIdrsrRxTLa8iEvvSzosXe3TkrDqlbiFkX8cXqZGD1cf2RRVtGBa2', 0, 0, '', '', '', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -115,13 +117,15 @@ ALTER TABLE `bottle_types`
 -- Indexes for table `recycle_transaction`
 --
 ALTER TABLE `recycle_transaction`
-  ADD PRIMARY KEY (`trans_id`);
+  ADD PRIMARY KEY (`trans_id`),
+  ADD KEY `recycle_acc_id` (`acc_id`);
 
 --
 -- Indexes for table `redeem_transaction`
 --
 ALTER TABLE `redeem_transaction`
-  ADD PRIMARY KEY (`redeem_trans_id`);
+  ADD PRIMARY KEY (`redeem_trans_id`),
+  ADD KEY `redeem_acc_id` (`acc_id`);
 
 --
 -- Indexes for table `shop_items`
@@ -168,6 +172,22 @@ ALTER TABLE `shop_items`
 --
 ALTER TABLE `user_login`
   MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `recycle_transaction`
+--
+ALTER TABLE `recycle_transaction`
+  ADD CONSTRAINT `recycle_acc_id` FOREIGN KEY (`acc_id`) REFERENCES `user_login` (`acc_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `redeem_transaction`
+--
+ALTER TABLE `redeem_transaction`
+  ADD CONSTRAINT `redeem_acc_id` FOREIGN KEY (`acc_id`) REFERENCES `user_login` (`acc_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
