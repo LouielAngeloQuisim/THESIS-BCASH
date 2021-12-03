@@ -1,21 +1,33 @@
 <?php
 session_start();
 require "mydb.php";
-$acc_id = $_SESSION['acc_id'];
 $mydb = new myDb;
-$record = $mydb->get_Qrcode($acc_id);
-if(isset($record)){
+if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+isset($_SESSION['acc_id'])){
+    $acc_id = $_SESSION['acc_id'];
+    $qrcode = $_SESSION['qrcode'];
+    $total_points = $_SESSION['total_points'];
+    $total_bottles = $_SESSION['total_bottles'];
+    $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+    $output["img"] = $url;
+}
+else{
+    echo "error in collecting user data";
+}
+//$record = $mydb->get_Qrcode($acc_id);
+/*if(isset($record)){
     foreach($record as $rows){
         $hash_qrcode = $rows['qrcode'];
         //echo $acc_id;
         //echo "qrcode: ";
         //echo $hash_qrcode;
         if(password_verify($acc_id, $hash_qrcode)){
+            //generate qr code from google 
             $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$hash_qrcode}";
             $output["img"] = $url;
         }
     }   
-}
+}*/
 ?>
 
 <!doctype html>
@@ -126,9 +138,13 @@ if(isset($record)){
                         <h3 class="card-title mb-md-3">
                             Bottles Recycled
                         </h3>
-                        <p class="card-text lead mb-md-5">
-                            Total: 99999999999
-                        </p>
+                        <?php
+                            if(isset($total_bottles)){
+                                echo '<p class="card-text lead mb-md-5">';
+                                echo 'Total: '.$total_bottles.'';
+                                echo '</p>';
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="col-md">
@@ -140,7 +156,11 @@ if(isset($record)){
                             Earned Points
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            Total: 99999999999
+                            <?php
+                                if(isset($total_points)){
+                                    echo 'Total: '.$total_points.'';
+                                }
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -162,21 +182,20 @@ if(isset($record)){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
+                                    <?php
+                                        $recycle_records = $mydb->get_Recycle_trans($acc_id);
+                                        if(isset($recycle_records)){
+                                            foreach($recycle_records as $rows){
+                                                $points_earned = $rows['points_earned'];
+                                                $trans_time = $rows['trans_time'];
+                                                echo '<tr>';
+                                                echo '<td>'.$points_earned.'</td>';
+                                                echo '<td>'.$trans_time.'</td>';
+                                                echo '<td>[Date]</td>';
+                                                echo '</tr>';
+                                            }
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </p>
@@ -190,21 +209,20 @@ if(isset($record)){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>[Redeemed points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Redeemed points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Redeemed points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
+                                    <?php
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id);
+                                        if(isset($redeem_records)){
+                                            foreach($redeem_records as $rows){
+                                                $points_deducted = $rows['points_deducted'];
+                                                $redeemtrans_time = $rows['trans_time'];
+                                                echo '<tr>';
+                                                echo '<td>'.$points_deducted.'</td>';
+                                                echo '<td>'.$redeemtrans_time.'</td>';
+                                                echo '<td>[Date]</td>';
+                                                echo '</tr>';
+                                            }
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </p>

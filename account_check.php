@@ -18,6 +18,9 @@ if(isset($_POST['login'])){
                 }
                 else{
                     $_SESSION['acc_id'] = $rows['acc_id'];
+                    $_SESSION['total_points'] = $rows['total_points'];
+                    $_SESSION['total_bottles'] = $rows['total_bottles'];
+                    $_SESSION['qrcode'] = $rows['qrcode'];
                     header("Location:dashboard.php");
                     ob_end_flush();
                 } 

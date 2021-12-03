@@ -47,7 +47,8 @@ class myDb {
         return $records;
     }
     public function get_Userinfo($username){
-        $sql = "SELECT username, admin, acc_id FROM user_login WHERE username='$username'";
+        $sql = "SELECT username, admin, acc_id, total_points, total_bottles, qrcode 
+        FROM user_login WHERE username='$username'";
         $result = mysqli_query($this->link,$sql);
         $records = array();
         if(mysqli_num_rows($result)>0){
@@ -55,6 +56,9 @@ class myDb {
                 $records[] =[
                     'acc_id' => $row['acc_id'],
                     'username' => $row['username'],
+                    'total_points' => $row['total_points'],
+                    'total_bottles' => $row['total_bottles'],
+                    'qrcode' => $row['qrcode'],
                     'admin' => $row['admin']
                 ];
             } 
@@ -168,5 +172,49 @@ class myDb {
             $verified = "false";
         }
         return $verified;
+    }
+    public function get_Recycle_trans($acc_id){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM recycle_transaction WHERE acc_id = ?");
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $sql->bind_param("i", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'trans_id' => $row['trans_id'],
+                    'bottles' => $row['bottles'],
+                    'points_earned' => $row['points_earned'],
+                    'trans_time' => $row['trans_time']
+                ];
+            }
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+    }
+    public function get_Redeem_trans($acc_id){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM redeem_transaction WHERE acc_id = ?");
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $sql->bind_param("i", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'redeem_trans_id' => $row['redeem_trans_id'],
+                    'item' => $row['item'],
+                    'points_deducted' => $row['points_deducted'],
+                    'trans_time' => $row['trans_time']
+                ];
+            }
+        }
+        else{
+            $records = null;
+        }
+        return $records;
     }
 }
