@@ -300,10 +300,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" id="confirm">
+                    <a href="preview.php" class="btn btn-secondary btn-md addbtn" id="confirm">
                         Confirm
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -505,10 +504,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" id="confirm">
+                    <a href="preview.php" class="btn btn-secondary btn-md addbtn" id="confirm">
                         Confirm
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
