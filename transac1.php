@@ -61,10 +61,10 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="transac.php">Recycle Tab</a>
+                            <a class="nav-link" href="transac.php">Recycle Tab</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="transac1.php">Redeem Tab</a>
+                            <a class="nav-link active" href="transac1.php">Redeem Tab</a>
                         </li>
                     </ul>
                 </div>
