@@ -35,6 +35,48 @@
     font-size: 12px;
 }
 
+.switchbtn{
+    margin-top: 5%;
+}
+
+.tfield{
+    width: 400px;
+}
+
+.inputtg{
+    margin-left: 5px;
+    width: 400px;
+    height: 59px;
+}
+
+.inputdg{
+    margin-left: 5px;
+    width: 400px;
+    height: 59px;
+}
+
+.switchgbtn{
+    margin-top: 5%;
+}
+
+.tfield1{
+    width: 394px;
+}
+
+.inputg{
+    height: 59px;
+}
+
+.inputtg1{
+    width: 394px;
+    height: 59px;
+}
+
+.inputdg1{
+    width: 394px;
+    height: 59px;
+}
+
 @media (min-width:768px){
     .content{
         padding-top: 20%;
@@ -47,6 +89,37 @@
     .scroll .table1{
         font-size: 16px;
     }
+
+    .switchbtn{
+        margin-top: 10%;
+    }
+
+    .tfield{
+        width: 100%;
+    }
+
+    .inputtg{
+        margin-left: -1px;
+        width: 425px;
+    }
+    
+    .inputdg{
+        margin-left: -1px;
+        width: 425px;
+    }
+
+    .tfield1{
+        width: 425px;
+    }
+
+    .inputtg1{
+        width: 425px;
+    }
+    
+    .inputdg1{
+        width: 425px;
+    }
+
 }
 
 @media (min-width:992px){

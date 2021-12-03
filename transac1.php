@@ -69,31 +69,35 @@
                     </ul>
                 </div>
                 <div class="card-body px-0">
-                    <h5 class="card-title">Recycle Transactions</h5>
+                    <h5 class="card-title">Redeem Transactions</h5>
                     <p class="card-text">
                         <div class="infocontent">
                             <div class="scroll">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Earned points</th>
+                                            <th scope="col">Redeemed Item</th>
+                                            <th scope="col">Price</th>
                                             <th scope="col">Time</th>
                                             <th scope="col">Date</th>
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
                                         <tr>
+                                            <td>Xerox</td>
                                             <td>1.00</td>
                                             <td>9:00am</td>
                                             <td>12/02/2021</td>
                                         </tr>
                                         <tr>
-                                            <td>[Earned points]</td>
+                                            <td>[Redeemed Item]</td>
+                                            <td>[Price]</td>
                                             <td>[Time]</td>
                                             <td>[Date]</td>
                                         </tr>
                                         <tr>
-                                            <td>[Earned points]</td>
+                                            <td>[Redeemed Item]</td>
+                                            <td>[Price]</td>
                                             <td>[Time]</td>
                                             <td>[Date]</td>
                                         </tr>

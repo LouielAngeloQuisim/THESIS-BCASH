@@ -228,7 +228,7 @@
             data:{
                 labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                 datasets:[{
-                    label:'Redeemed Bottles',
+                    label:'Accounts Redeemed',
                     data:[
                         10,22,44,88
                     ],
