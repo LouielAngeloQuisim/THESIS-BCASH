@@ -17,6 +17,11 @@
     padding-top: 3.5%;
 }
 
+.content3{
+    height: 90vh;
+    width: 100%;
+}
+
 .editbtn{
     width: 90%;
 }
@@ -32,6 +37,10 @@
 }
 
 .scroll .table1{
+    font-size: 12px;
+}
+
+.scroll .table3{
     font-size: 12px;
 }
 
@@ -120,6 +129,9 @@
         width: 425px;
     }
 
+    .scroll .table3{
+        font-size: 16px;
+    }
 }
 
 @media (min-width:992px){

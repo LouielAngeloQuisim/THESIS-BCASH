@@ -61,82 +61,91 @@
     <!-- Records  -->
     <section class="p-5">
         <div class="container text-center">
-            <h1>
-                Recycle Records
-            </h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Earned points</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Earned points]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Earned points]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Earned points]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                </tbody>
-            </table>
-            <h1>
-                Redeem Records
-            </h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Redeem</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Redeem]</td>
-                        <td>[Price]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Redeem]</td>
-                        <td>[Price]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                    <tr>
-                        <td>[Name]</td>
-                        <td>[Redeem]</td>
-                        <td>[Price]</td>
-                        <td>[Time]</td>
-                        <td>[Date]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="content3">
+                <div class="scroll">
+                    <h1>
+                        Recycle Records
+                    </h1>
+                    <table class="table table-striped table3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Earned points</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            <tr>
+                                <td>Arvin Jay P. De Guzman</td>
+                                <td>1.00</td>
+                                <td>4:05pm</td>
+                                <td>12/03/2021</td>
+                            </tr>
+                            <tr>
+                                <td>[Name]</td>
+                                <td>[Earned points]</td>
+                                <td>[Time]</td>
+                                <td>[Date]</td>
+                            </tr>
+                            <tr>
+                                <td>[Name]</td>
+                                <td>[Earned points]</td>
+                                <td>[Time]</td>
+                                <td>[Date]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content3 my-3">
+                <div class="scroll">
+                    <h1>
+                        Redeem Records
+                    </h1>
+                    <table class="table table-striped table3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Redeem</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle">
+                            <tr>
+                                <td>Arvin Jay P. De Guzman</td>
+                                <td>Ballpen</td>
+                                <td>1.00</td>
+                                <td>4:20pm</td>
+                                <td>12/03/2021</td>
+                            </tr>
+                            <tr>
+                                <td>[Name]</td>
+                                <td>[Redeem]</td>
+                                <td>[Price]</td>
+                                <td>[Time]</td>
+                                <td>[Date]</td>
+                            </tr>
+                            <tr>
+                                <td>[Name]</td>
+                                <td>[Redeem]</td>
+                                <td>[Price]</td>
+                                <td>[Time]</td>
+                                <td>[Date]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <!-- Button Cancel trigger modal -->
                 <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#modalCancel">
                     Cancel
                 </button>
-                <a href="generate_pdf.php" class="btn btn-secondary">Continue</a>
+                <a href="generatepdf.php" class="btn btn-secondary">Continue</a>
             </div>
         </div>
     </section>
