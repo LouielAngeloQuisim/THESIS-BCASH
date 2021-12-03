@@ -137,7 +137,7 @@
     <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <div class="container text-fontdark p-5">
+                <div class="container text-fontdark">
                     <div class="row align-items-center justify-content-between">
                         <div class="col-md text-center">
                             <div class="card bg-light cardadmin1">
@@ -211,8 +211,8 @@
         </div>
     </section>
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
+    <!-- line -->
+    <section class="bg-secondary d-none d-sm-block p-3">
     </section>
 
     <!-- monthly report java script  -->
