@@ -37,7 +37,7 @@
         <div class="container">
             <div class="card bg-light text-center text-fontdark p-3">
                 <div class="h1">
-                    <i class="bi bi-bag-check"></i>
+                    <i class="bi bi-columns-gap"></i>
                 </div>
                 <h3 class="card-title mb-3">
                     [Redeemable Item]
@@ -59,9 +59,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalredeempopup">Redeem</h5>
-                    <!-- Cancel Confirm trigger modal -->
-                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
                     <div class="h1 text-success">
@@ -76,10 +74,31 @@
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                         Cancel
                     </button>
-                    <a href="redeem_scan.php" class="btn btn-secondary">Next Transacrion</a>
                     <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
                 </div>
             </div>
+            <!-- eto kapag kulang point ni user
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalredeempopup">Redeem Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Insufficient Points! Want to scan again?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
+                        Cancel
+                    </button>
+                    <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
+                </div>
+            </div>
+            -->
         </div>
     </div>
 

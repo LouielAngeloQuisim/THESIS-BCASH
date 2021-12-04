@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
             <a href="#" class="navbar-brand fw-bold">BCASH</a>
 
@@ -32,20 +32,20 @@
         </div>
     </nav>
 
-    <!-- recycle scanning area -->
-    <section class="bg-primary p-5 text-center text-sm-start">
+    <!-- recycle qr scanner area -->
+    <section class="bg-dark p-5 text-center text-sm-start">
         <div class="container">
             <div class="card bg-light text-center text-fontdark p-3">
                 <div class="h1">
-                    <i class="bi bi-trash"></i>
+                    <i class="bi bi-columns-gap"></i>
                 </div>
                 <h3 class="card-title mb-3">
-                    Recycle
+                    Recycle QR Scan
                 </h3>
                 <p class="card-text lead">
                     <!-- dito lilitaw yung scanner -->
-                    <!-- (kunwari nascan na at nadetect) Pop up trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalpopup">
+                    <!-- (kunwari nascan na at nadetect) Recycle Pop up trigger modal -->
+                    <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalrecyclepopup">
                         Kunwari eto yung nascan at nadetect na
                     </button>
                 </p>
@@ -53,12 +53,12 @@
         </div>
     </section>
 
-    <!-- Modal Pop up -->
-    <div class="modal fade" id="modalpopup" tabindex="-1">
+    <!-- Modal RRecycle Pop up -->
+    <div class="modal fade" id="modalrecyclepopup" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalpopup">Bottle Recycle</h5>
+                    <h5 class="modal-title" id="modalrecyclepopup">Redeem</h5>
                     <!-- Cancel Confirm trigger modal -->
                     <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                     </button>
@@ -68,7 +68,7 @@
                         <i class="bi bi-check-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Bottle Successfully Scanned!
+                        Recycle QR Successfully Scanned!
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -76,36 +76,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                         Cancel
                     </button>
-                    <a href="recycle_scan.php" class="btn btn-secondary">Next Bottle</a>
-                    <!-- Continue Transaction Confirmation trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcontransacConf">
-                        Continue Transaction
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Continue Transaction Confirmation -->
-    <div class="modal fade" id="modalcontransacConf" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalcontransacConf">Continue Transaction Confirmation</h5>
-                    <!-- Cancel Confirm trigger modal -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="h1 text-danger">
-                        <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <p class="text-fondark">
-                        Are you want to continue to Qr Code scanning?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <a href="recycling.php" class="btn btn-secondary">Confirm</a>
+                    <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
                 </div>
             </div>
         </div>
@@ -117,9 +88,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalcancelconfirm">Cancel Transaction</h5>
-                    <!-- Cancel Confirm trigger modal -->
-                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
                     <div class="h1 text-danger">
@@ -137,7 +106,7 @@
         </div>
     </div>
 
-    <section class="bg-dark p-3"></section>
+    <section class="bg-primary p-3"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
