@@ -49,8 +49,12 @@
         </div>
     </nav>
 
+    <!-- list of bottle header with add button-->
     <section class=" bg-dark p-5">
         <div class="container">
+            <div class="h1 text-white text-center">
+                <i class="bi bi-card-list"></i>
+            </div>
             <h1 class="text-light text-center">
                 List of Bottles
             </h1>
@@ -67,7 +71,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 text-center g-4">
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/slide-0.PNG" class="card-img-top" alt="Water Bottle">
                         <div class="card-body">
                             <h5 class="card-title">[Bottle Type]</h5>
@@ -80,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/slide-1.PNG" class="card-img-top" alt="Water Bottle">
                         <div class="card-body">
                             <h5 class="card-title">[Bottle Type]</h5>
@@ -93,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/slide-2.PNG" class="card-img-top" alt="Water Bottle">
                         <div class="card-body">
                             <h5 class="card-title">[Bottle Type]</h5>
@@ -106,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/slide-3.PNG" class="card-img-top" alt="Water Bottle">
                         <div class="card-body">
                             <h5 class="card-title">[Bottle Type]</h5>
@@ -234,8 +238,10 @@
         </div>
     </div>
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
+    <!-- lines -->
+    <section class="bg-dark p-5">
+    </section>
+    <section class="bg-primary p-3">
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

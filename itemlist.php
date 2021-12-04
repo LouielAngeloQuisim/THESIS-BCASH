@@ -49,13 +49,17 @@
         </div>
     </nav>
 
+    <!-- list of items header with add button-->
     <section class=" bg-dark p-5">
         <div class="container">
+            <div class="h1 text-white text-center">
+                <i class="bi bi-card-list"></i>
+            </div>
             <h1 class="text-light text-center">
                 List of Items
             </h1>
             <p class="lead text-center">
-                <!-- Button Add Bottle trigger modal -->
+                <!-- Button Add Item trigger modal -->
                 <button type="button" class="btn btn-secondary btn-lg addbtn" data-bs-toggle="modal" data-bs-target="#modaladdItem">
                     Add item
                 </button>
@@ -67,7 +71,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 text-center g-4">
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/print.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -80,7 +84,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/xerox.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -93,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/ballpen.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -106,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/pencil1.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -234,8 +238,10 @@
         </div>
     </div>
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
+    <!-- lines -->
+    <section class="bg-dark p-5">
+    </section>
+    <section class="bg-primary p-3">
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

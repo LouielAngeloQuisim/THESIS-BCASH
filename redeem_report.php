@@ -49,12 +49,13 @@
         </div>
     </nav>
 
-    <!-- cards  -->
+    <!-- redeem reports cards  -->
     <section class=" bg-dark p-5">
         <div class="container">
             <h1 class="text-light text-center">
                 Redeem Reports
             </h1>
+            <!-- accounts redeemed total  -->
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark p-3">
@@ -69,6 +70,7 @@
                         </p>
                     </div>
                 </div>
+                <!-- redeem recent transaction  -->
                 <div class="col-md">
                     <div class="card bg-light text-fontdark border border-2 border-primary p-3 pb-0">
                         <div class="h1">

@@ -49,12 +49,13 @@
         </div>
     </nav>
 
-    <!-- cards  -->
+    <!-- recycle reports cards -->
     <section class=" bg-dark p-5">
         <div class="container">
             <h1 class="text-light text-center">
                 Recycle Reports
             </h1>
+            <!-- Total Bottles Recycled -->
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark p-3">
@@ -77,6 +78,7 @@
                         <h3 class="card-title">
                             Recent Transaction
                         </h3>
+                        <!-- Recycle Recent Transaction -->
                         <p class="card-text lead">
                             <table class="table table-striped">
                                 <thead>
@@ -133,7 +135,7 @@
         </div>
     </section>
 
-    <!-- show case with scan button -->
+    <!-- acceptable bottles card -->
     <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">

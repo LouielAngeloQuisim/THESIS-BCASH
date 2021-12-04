@@ -49,9 +49,12 @@
         </div>
     </nav>
 
-    <!-- recycle transactions header  -->
+    <!-- redeem transactions header  -->
     <section class=" bg-dark p-5">
-        <div class="container">
+        <div class="container text-center">
+            <div class="h1 text-white">
+                <i class="bi bi-card-text"></i>
+            </div>
             <h1 class="text-light text-center">
                 Transactions
             </h1>
@@ -79,13 +82,17 @@
                     </ul>
                 </div>
                 <div class="card-body px-0">
+                    <div class="h2">
+                        <i class="bi bi-cart-check"></i>
+                    </div>
                     <h5 class="card-title">Redeem Transactions</h5>
                     <p class="lead text-center">
-                        <!-- Button Generate Recycle trigger modal -->
+                        <!-- Button Generate Redeem trigger modal -->
                         <button type="button" class="btn btn-secondary btn-sm addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRepRedeem">
                             Generate Redeem Reports
                         </button>
                     </p>
+                    <!-- users redeem all transaction records  -->
                     <p class="card-text">
                         <div class="infocontent">
                             <div class="scroll">
