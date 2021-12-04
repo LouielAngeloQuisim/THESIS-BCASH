@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Catalouge</title>
+    <title>BCash</title>
   </head>
   <body>
     <!-- navbar -->
@@ -49,6 +49,9 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
+                    <div class="h1">
+                        <i class="bi bi-bag-check"></i>
+                    </div>
                     <h1>Here's your Redeemable chuchu</h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
@@ -89,7 +92,7 @@
         </div>
     </section>
 
-    <section class="bg-primary p-3"></section>
+    <section class="bg-secondary p-3"></section>
 
     <script src="./src/bootstrap-input-spinner.js"></script>
     <script>

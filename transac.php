@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Transactions</title>
+    <title>BCash</title>
   </head>
   <body>
     <!-- navbar -->
@@ -44,11 +44,14 @@
         </div>
     </nav>
 
-    <!-- show case with scan button -->
+    <!-- show case area -->
     <section class="bg-primary text-light p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
+                    <div class="h1">
+                        <i class="bi bi-card-text"></i>
+                    </div>
                     <h1>Here's your Transactions</h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
@@ -58,9 +61,10 @@
         </div>
     </section>
 
+    <!-- recycle transaction tab -->
     <section class="p-5">
         <div class="container">
-            <div class="card text-center">
+            <div class="card text-center border border-2 border-primary">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
@@ -71,7 +75,11 @@
                         </li>
                     </ul>
                 </div>
+                <!-- recycle records area -->
                 <div class="card-body px-0">
+                    <div class="h2">
+                        <i class="bi bi-trash"></i>
+                    </div>
                     <h5 class="card-title">Recycle Transactions</h5>
                     <p class="card-text">
                         <div class="infocontent">
@@ -110,7 +118,8 @@
         </div>
     </section>
 
-    <section class="bg-dark p-5"></section>
+    <!-- lines -->
+    <section class="bg-dark p-3"></section>
     <section class="bg-secondary p-2"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

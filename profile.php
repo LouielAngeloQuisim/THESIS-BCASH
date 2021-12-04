@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Profile</title>
+    <title>BCash</title>
   </head>
   <body>
     <!-- navbar -->
@@ -44,7 +44,7 @@
         </div>
     </nav>
 
-    <!-- show case with scan button -->
+    <!-- profile img with its profile name -->
     <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -56,8 +56,10 @@
         </div>
     </section>
 
+    <!-- line -->
     <section class="bg-dark p-4"></section>
     
+    <!-- buttons -->
     <section class="text-fontdark p-5">
         <div class="container">
             <div class="d-grid gap-3">
@@ -67,6 +69,8 @@
         </div>
     </section>
 
+    <!-- lines -->
+    <section class="bg-dark p-4"></section>
     <section class="bg-primary p-5"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

@@ -76,7 +76,7 @@ else{
         </div>
     </nav>
 
-    <!-- show case with scan button -->
+    <!-- show case with qr code -->
     <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
@@ -101,11 +101,11 @@ else{
         </div>
     </section>
 
-    <!-- black line -->
+    <!-- line -->
     <section class="bg-dark d-none d-sm-block p-3">
     </section>
 
-    <!-- cards  -->
+    <!-- cards (records) -->
     <section class="p-5">
         <div class="container">
         <div class="mb-3">
@@ -236,7 +236,7 @@ else{
     </section>
 
 
-    <!-- available bottles area -->
+    <!-- acceptable bottles area -->
     <section class="bg-dark p-5">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -292,6 +292,9 @@ else{
             </div>
         </div>
     </section>
+    
+    <!-- line -->
+    <section class="bg-secondary p-4"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
