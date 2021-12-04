@@ -24,7 +24,6 @@
 
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
-                    <!-- babalik kay dashboard ng user -->
                     <li class="nav-item">
                         <a href="dashboard.php" class="nav-link">Home</a>
                     </li>
@@ -33,6 +32,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="catalouge.php" class="nav-link">Catalouge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.php" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item">
                         <a href="login.php" class="nav-link">Logout</a>

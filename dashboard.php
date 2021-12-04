@@ -66,6 +66,9 @@ else{
                         <a href="catalouge.php" class="nav-link">Catalouge</a>
                     </li>
                     <li class="nav-item">
+                        <a href="profile.php" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="login.php" class="nav-link">Logout</a>
                     </li>
                 </ul>
