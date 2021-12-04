@@ -77,7 +77,7 @@
                     <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
                 </div>
             </div>
-            <!-- eto kapag kulang point ni user
+            <!-- eto kapag kulang points ni user
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalredeempopup">Redeem Error</h5>
@@ -95,7 +95,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                         Cancel
                     </button>
-                    <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
+                    <a href="redeeming.php" class="btn btn-secondary">Yes</a>
                 </div>
             </div>
             -->
