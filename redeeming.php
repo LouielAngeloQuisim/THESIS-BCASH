@@ -32,7 +32,7 @@
         </div>
     </nav>
 
-    <!-- show case -->
+    <!-- redeem scanning are -->
     <section class="bg-dark p-5 text-center text-sm-start">
         <div class="container">
             <div class="card bg-light text-center text-fontdark p-3">
@@ -128,6 +128,7 @@
         </div>
     </div>
 
+    <!-- line -->
     <section class="bg-primary p-3"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

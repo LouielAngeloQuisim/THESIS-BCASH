@@ -41,13 +41,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-md-start">
                 <div class="text-light">
+                    <div class="h1 mb-2">
+                        <i class="bi bi-trash"></i>
+                    </div>
                     <h1>Scan <span class="text-warning">Recycle</span></h1></h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
+                    <!-- recycle scan button -->
                     <a href="recycle_scan.php" class="btn btn-secondary btn-lg mb-4">Bottle Scan</a>
                 </div>
             </div>
+            <!-- acceptable bottles carousel area -->
             <div class="col-md text-center">
                 <div class="card bg-light text-center cardadmin2 p-3">
                     <div class="h1 mb-2">
@@ -123,13 +128,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-md-start">
                 <div class="text-light">
+                    <div class="h1 mb-2">
+                        <i class="bi bi-cart"></i>
+                    </div>
                     <h1>Scan <span class="text-warning">Redeem</span></h1></h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
+                    <!-- redeem scan button -->
                     <a href="redeem_scan.php" class="btn btn-secondary btn-lg mb-4">Redeem Scan</a>
                 </div>
             </div>
+            <!-- redeemable items carousel area -->
             <div class="col-md text-center">
                 <div class="card bg-light cardadmin2 p-3">
                     <div class="h1 mt-2">
