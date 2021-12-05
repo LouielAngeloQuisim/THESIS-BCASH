@@ -10,6 +10,18 @@
         $acc_id = null;
         $usernname = null;
     }
+    //change password
+    if(isset($_POST['Changepass'])){
+        $newpassword = $_POST['password'];
+        $result = $mydb->update_Password($acc_id, $newpassword);
+        if($result == "inserted"){
+
+        }
+        else{
+            
+        }
+    }
+    
 ?>
 <!doctype html>
 <html lang="en">
@@ -156,11 +168,11 @@
                         <form action="" class="mb-3" method="post">
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password" name="password">
-                                <label for="password" required>Password</label>
+                                <label for="password" required>New Password</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control rounded-1" id="confirmpassword" placeholder="Enter Confirm Password">
-                                <label for="confirmpassword" required>Confirm Password</label>
+                                <label for="confirmpassword" required>Confirm New Password</label>
                             </div>
                             <!-- eto naman lilitaw kung mali ang password niya
                             <div class="form-floating mb-3">
@@ -203,9 +215,9 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <!-- Confirm Change Pass trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalConchangepass">
+                    <button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalConchangepass" name="Changepass">
                         Confirm
                     </button>
                 </div>
