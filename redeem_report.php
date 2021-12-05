@@ -18,7 +18,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="redeem_report.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -42,19 +42,50 @@
                         <a href="itemlist.php" class="nav-link">Item List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="logout.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- cards  -->
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- redeem reports cards  -->
     <section class=" bg-dark p-5">
         <div class="container">
             <h1 class="text-light text-center">
                 Redeem Reports
             </h1>
+            <!-- accounts redeemed total  -->
             <div class="row text-center g-4">
                 <div class="col-md">
                     <div class="card bg-light text-fontdark p-3">
@@ -69,6 +100,7 @@
                         </p>
                     </div>
                 </div>
+                <!-- redeem recent transaction  -->
                 <div class="col-md">
                     <div class="card bg-light text-fontdark border border-2 border-primary p-3 pb-0">
                         <div class="h1">

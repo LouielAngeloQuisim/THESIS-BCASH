@@ -16,7 +16,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="redeeming.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -25,14 +25,44 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- show case -->
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- redeem scanning are -->
     <section class="bg-dark p-5 text-center text-sm-start">
         <div class="container">
             <div class="card bg-light text-center text-fontdark p-3">
@@ -128,6 +158,7 @@
         </div>
     </div>
 
+    <!-- line -->
     <section class="bg-primary p-3"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 

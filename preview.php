@@ -18,7 +18,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="preview.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -27,31 +27,106 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="dash_admin.php" class="nav-link">Home</a>
+                        <!-- nav Cancel trigger modal -->
+                        <a href="dash_admin.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="redeem_report.php" class="nav-link">Redeem Reports</a>
+                        <!-- nav Cancel trigger modal -->
+                        <a href="redeem_report.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Redeem Reports
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="transac_admin_recycle.php" class="nav-link">Transactions</a>
+                        <!-- nav Cancel trigger modal -->
+                        <a href="transac_admin_recycle.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Transactions
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="bottlelist.php" class="nav-link">Bottles List</a>
+                        <!-- nav Cancel trigger modal -->
+                        <a href="bottlelist.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Bottles List
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="itemlist.php" class="nav-link">Item List</a>
+                        <!-- nav Cancel trigger modal -->
+                        <a href="itemlist.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Item List
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout 1 trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout1">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Modal logout 1 -->
+    <div class="modal fade" id="modallogout1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout1">Cancel Report then Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to cancel this Report then Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- recycle transactions header  -->
     <section class=" bg-dark p-5">
         <div class="container">
+            <div class="h1 text-white text-center">
+                <i class="bi bi-journal-text"></i>
+            </div>
             <h1 class="text-light text-center">
                 Here's your Report
             </h1>

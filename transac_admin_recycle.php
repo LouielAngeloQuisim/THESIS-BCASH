@@ -18,7 +18,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="transac_admin_recycle.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -42,16 +42,49 @@
                         <a href="itemlist.php" class="nav-link">Item List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- transactions header  -->
     <section class=" bg-dark p-5">
-        <div class="container">
+        <div class="container text-center">
+            <div class="h1 text-white">
+                <i class="bi bi-card-text"></i>
+            </div>
             <h1 class="text-light text-center">
                 Transactions
             </h1>
@@ -64,7 +97,7 @@
         </div>
     </section>
 
-    <!-- Recycle transactions  -->
+    <!-- Recycle transactions area -->
     <section class="p-5">
         <div class="container">
             <div class="card text-center">
@@ -79,6 +112,9 @@
                     </ul>
                 </div>
                 <div class="card-body px-0">
+                    <div class="h2">
+                        <i class="bi bi-trash"></i>
+                    </div>
                     <h5 class="card-title">Recycle Transactions</h5>
                     <p class="lead text-center">
                         <!-- Button Generate Recycle trigger modal -->
@@ -86,6 +122,7 @@
                             Generate Recycle Reports
                         </button>
                     </p>
+                    <!-- user all recycle records -->
                     <p class="card-text">
                         <div class="infocontent">
                             <div class="scroll">

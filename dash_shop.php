@@ -16,7 +16,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="dash_shop.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -28,12 +28,42 @@
                         <a href="dash_shop.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- recycle scan area -->
     <section class="bg-primary p-5 text-center text-sm-start">
@@ -41,13 +71,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-md-start">
                 <div class="text-light">
+                    <div class="h1 mb-2">
+                        <i class="bi bi-trash"></i>
+                    </div>
                     <h1>Scan <span class="text-warning">Recycle</span></h1></h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
+                    <!-- recycle scan button -->
                     <a href="recycle_scan.php" class="btn btn-secondary btn-lg mb-4">Bottle Scan</a>
                 </div>
             </div>
+            <!-- acceptable bottles carousel area -->
             <div class="col-md text-center">
                 <div class="card bg-light text-center cardadmin2 p-3">
                     <div class="h1 mb-2">
@@ -123,13 +158,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-md text-md-start">
                 <div class="text-light">
+                    <div class="h1 mb-2">
+                        <i class="bi bi-cart"></i>
+                    </div>
                     <h1>Scan <span class="text-warning">Redeem</span></h1></h1>
                     <p class="lead my-4">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
+                    <!-- redeem scan button -->
                     <a href="redeem_scan.php" class="btn btn-secondary btn-lg mb-4">Redeem Scan</a>
                 </div>
             </div>
+            <!-- redeemable items carousel area -->
             <div class="col-md text-center">
                 <div class="card bg-light cardadmin2 p-3">
                     <div class="h1 mt-2">

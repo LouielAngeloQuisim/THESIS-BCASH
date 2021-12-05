@@ -29,7 +29,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="profile.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -50,12 +50,42 @@
                         <a href="profile.php" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- profile img with its profile name -->
     <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
@@ -77,7 +107,10 @@
         <div class="container">
             <div class="d-grid gap-3">
                 <a href="changepass.php" type="button" class="btn btn-secondary btn-lg">Change Password</a>
-                <button class="btn btn-secondary btn-lg" type="button">Logout</button>
+                <!-- logout trigger modal -->
+                <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#modallogout">
+                    Logout
+                </button>
             </div>
         </div>
     </section>

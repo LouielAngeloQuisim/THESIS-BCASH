@@ -18,7 +18,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
         <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
+            <a href="itemlist.php" class="navbar-brand fw-bold">BCASH</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -42,20 +42,54 @@
                         <a href="itemlist.php" class="nav-link">Item List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
+                        <!-- logout trigger modal -->
+                        <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                            Logout
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Modal logout -->
+    <div class="modal fade" id="modallogout" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
+                    </div>
+                    <p class="text-fondark">
+                        Are you sure to Logout?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- list of items header with add button-->
     <section class=" bg-dark p-5">
         <div class="container">
+            <div class="h1 text-white text-center">
+                <i class="bi bi-card-list"></i>
+            </div>
             <h1 class="text-light text-center">
                 List of Items
             </h1>
             <p class="lead text-center">
-                <!-- Button Add Bottle trigger modal -->
+                <!-- Button Add Item trigger modal -->
                 <button type="button" class="btn btn-secondary btn-lg addbtn" data-bs-toggle="modal" data-bs-target="#modaladdItem">
                     Add item
                 </button>
@@ -67,7 +101,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 text-center g-4">
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/print.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -80,7 +114,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/xerox.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -93,7 +127,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/ballpen.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -106,7 +140,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card h-100">
+                    <div class="card h-100 border border-2 border-primary">
                         <img src="img/pencil1.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
@@ -234,8 +268,10 @@
         </div>
     </div>
 
-    <!-- black line -->
-    <section class="bg-primary d-none d-sm-block p-3">
+    <!-- lines -->
+    <section class="bg-dark p-5">
+    </section>
+    <section class="bg-primary p-3">
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
