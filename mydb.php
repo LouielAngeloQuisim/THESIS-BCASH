@@ -237,4 +237,21 @@ class myDb {
         }
         return $records;
     }
+    public function update_Password($acc_id, $newpassword){
+        //prepare statements
+        $sql = $this->link->prepare("UPDATE user_login SET password = ? WHERE acc_id = ?");
+        //set parameters
+        $newpassword = mysqli_real_escape_string($this->link, $newpassword);
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("si", $newpassword, $acc_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
+        }
+        return $result;
+    }
 }
