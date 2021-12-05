@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['acc_id']) && isset($_SESSION['username'])){
+        $acc_id = $_SESSION['acc_id'];
+        $username = $_SESSION['username'];
+    }
+    else{
+        $acc_id = null;
+        $usernname = null;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -50,7 +63,7 @@
             <div class="d-sm-flex align-items-center justify-content-between">
                 <img class="img-fluid w-50" src="img/icons8-male-user-100 (1).PNG" alt="">
                 <div>
-                    <h1>[Name]</h1>
+                    <?php echo '<h1>'.$username.'</h1>';?>  
                 </div>
             </div>
         </div>

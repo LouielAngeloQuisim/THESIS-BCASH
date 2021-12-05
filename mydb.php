@@ -217,4 +217,24 @@ class myDb {
         }
         return $records;
     }
+    public function get_Shop_items(){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM shop_items");
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'item_id' => $row['item_id'],
+                    'item_name' => $row['item_name'],
+                    'item_price' => $row['item_price'],
+                    'item_stock' => $row['item_stock']
+                ];
+            }
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+    }
 }

@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['acc_id'])){
+        $acc_id = $_SESSION['acc_id'];
+    }
+    else{
+        $acc_id = null;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -93,21 +104,23 @@
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                        <tr>
-                                            <td>1.00</td>
-                                            <td>9:00am</td>
-                                            <td>12/02/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Earned points]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Earned points]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
+                                    <?php
+                                        $recycle_records = $mydb->get_Recycle_trans($acc_id);
+                                        if(isset($recycle_records)){
+                                            foreach($recycle_records as $rows){
+                                                $points_earned = $rows['points_earned'];
+                                                $trans_time = $rows['trans_time'];
+                                                echo '<tr>';
+                                                echo '<td>'.$points_earned.'</td>';
+                                                echo '<td>'.$trans_time.'</td>';
+                                                echo '<td>[Date]</td>';
+                                                echo '</tr>';
+                                            }
+                                        }
+                                        else{
+                                            echo "There are no records of transactions yet";
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['acc_id'])){
+        $acc_id = $_SESSION['acc_id'];
+    }
+    else{
+        $acc_id = null;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -94,24 +105,23 @@
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                        <tr>
-                                            <td>Xerox</td>
-                                            <td>1.00</td>
-                                            <td>9:00am</td>
-                                            <td>12/02/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Redeemed Item]</td>
-                                            <td>[Price]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Redeemed Item]</td>
-                                            <td>[Price]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
+                                    <?php
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id);
+                                        if(isset($redeem_records)){
+                                            foreach($redeem_records as $rows){
+                                                $points_deducted = $rows['points_deducted'];
+                                                $redeemtrans_time = $rows['trans_time'];
+                                                echo '<tr>';
+                                                echo '<td>'.$points_deducted.'</td>';
+                                                echo '<td>'.$redeemtrans_time.'</td>';
+                                                echo '<td>[Date]</td>';
+                                                echo '</tr>';
+                                            }
+                                        }
+                                        else{
+                                            echo "There are no records of transactions yet";
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

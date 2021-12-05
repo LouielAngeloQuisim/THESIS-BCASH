@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['acc_id'])){
+        $acc_id = $_SESSION['acc_id'];
+    }
+    else{
+        $acc_id = null;
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -74,18 +85,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>[Item]</td>
-                            <td>[Price]</td>
-                        </tr>
-                        <tr>
-                            <td>[Item]</td>
-                            <td>[Price]</td>
-                        </tr>
-                        <tr>
-                            <td>[Item]</td>
-                            <td>[Price]</td>
-                        </tr>
+                        <?php
+                            $shop_records = $mydb->get_Shop_items();
+                            if(isset($shop_records)){
+                                foreach($shop_records as $rows){
+                                    $item_name = $rows['item_name'];
+                                    $item_price = $rows['item_price'];
+                                    echo '<tr>';
+                                    echo '<td>'.$item_name.'</td>';
+                                    echo '<td>'.$item_price.'</td>';
+                                    echo '</tr>';
+                                }
+                            }
+                            else{                               
+                                echo "There are no items available to the shop yet";
+                            }
+                        ?>
                     </tbody>
                 </table>    
             </div>

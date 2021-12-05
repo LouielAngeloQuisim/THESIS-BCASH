@@ -21,6 +21,7 @@ if(isset($_POST['login'])){
                     $_SESSION['total_points'] = $rows['total_points'];
                     $_SESSION['total_bottles'] = $rows['total_bottles'];
                     $_SESSION['qrcode'] = $rows['qrcode'];
+                    $_SESSION['username'] = $rows['username'];
                     header("Location:dashboard.php");
                     ob_end_flush();
                 } 
