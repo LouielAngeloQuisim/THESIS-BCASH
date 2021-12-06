@@ -173,47 +173,88 @@ class myDb {
         }
         return $verified;
     }
-    public function get_Recycle_trans($acc_id){
+    public function get_Recycle_trans($acc_id,$admin){
         $records = array();
-        $sql = $this->link->prepare("SELECT * FROM recycle_transaction WHERE acc_id = ?");
-        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
-        $sql->bind_param("i", $acc_id);
-        $sql->execute();
-        $result = $sql->get_result();
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                $records[] = [
-                    'trans_id' => $row['trans_id'],
-                    'bottles' => $row['bottles'],
-                    'points_earned' => $row['points_earned'],
-                    'trans_time' => $row['trans_time']
-                ];
+        if($admin == 1){
+            $sql = $this->link->prepare("SELECT * FROM recycle_transaction");
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'trans_id' => $row['trans_id'],
+                        'bottles' => $row['bottles'],
+                        'points_earned' => $row['points_earned'],
+                        'trans_time' => $row['trans_time']
+                    ];
+                }
+            }
+            else{
+                $records = null;
             }
         }
         else{
-            $records = null;
+            $sql = $this->link->prepare("SELECT * FROM recycle_transaction WHERE acc_id = ?");
+            $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+            $sql->bind_param("i", $acc_id);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'trans_id' => $row['trans_id'],
+                        'bottles' => $row['bottles'],
+                        'points_earned' => $row['points_earned'],
+                        'trans_time' => $row['trans_time']
+                    ];
+                }
+            }
+            else{
+                $records = null;
+            }
         }
+        
         return $records;
     }
-    public function get_Redeem_trans($acc_id){
+    public function get_Redeem_trans($acc_id,$admin){
         $records = array();
-        $sql = $this->link->prepare("SELECT * FROM redeem_transaction WHERE acc_id = ?");
-        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
-        $sql->bind_param("i", $acc_id);
-        $sql->execute();
-        $result = $sql->get_result();
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                $records[] = [
-                    'redeem_trans_id' => $row['redeem_trans_id'],
-                    'item' => $row['item'],
-                    'points_deducted' => $row['points_deducted'],
-                    'trans_time' => $row['trans_time']
-                ];
+        if($admin == 1){
+            $sql = $this->link->prepare("SELECT * FROM redeem_transaction");
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'redeem_trans_id' => $row['redeem_trans_id'],
+                        'item' => $row['item'],
+                        'points_deducted' => $row['points_deducted'],
+                        'trans_time' => $row['trans_time']
+                    ];
+                }
+            }
+            else{
+                $records = null;
             }
         }
         else{
-            $records = null;
+            $sql = $this->link->prepare("SELECT * FROM redeem_transaction WHERE acc_id = ?");
+            $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+            $sql->bind_param("i", $acc_id);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'redeem_trans_id' => $row['redeem_trans_id'],
+                        'item' => $row['item'],
+                        'points_deducted' => $row['points_deducted'],
+                        'trans_time' => $row['trans_time']
+                    ];
+                }
+            }
+            else{
+                $records = null;
+            }
         }
         return $records;
     }
@@ -254,4 +295,20 @@ class myDb {
         }
         return $result;
     }
+    public function get_sumBottles(){
+
+        $sql = $this->link->prepare("SELECT * FROM redeem_transaction");
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                'redeem_trans_id' => $row['redeem_trans_id'],
+                    'item' => $row['item'],
+                    'points_deducted' => $row['points_deducted'],
+                    'trans_time' => $row['trans_time']
+            }
+        }
+        else{
+            $records = null;
+        }
 }
