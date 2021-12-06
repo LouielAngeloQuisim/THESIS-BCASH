@@ -10,22 +10,13 @@
         $acc_id = null;
         $usernname = null;
     }
-    //change password
-    if(isset($_POST['Changepass'])){
-        $newpassword = $_POST['password'];
-        $result = $mydb->update_Password($acc_id, $newpassword);
-        if($result == "inserted"){
-
-        }
-        else{
-            
-        }
-    }
     
 ?>
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -165,14 +156,19 @@
                         <h3 class="mb-4 text-center fs-0">
                             Change Password
                         </h3>
-                        <form action="" class="mb-3" method="post">
+                        <form action="update_pass.php" class="mb-3" method="post">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password" name="password">
-                                <label for="password" required>New Password</label>
+                                <input type="password" class="form-control rounded-1" onkeyup='check();' id="password" placeholder="Enter Password" name="password" required>
+                                <label for="password" >New Password</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-1" id="confirmpassword" placeholder="Enter Confirm Password">
-                                <label for="confirmpassword" required>Confirm New Password</label>
+                                <input type="password" class="form-control rounded-1" onkeyup='check();' id="confirmpassword" placeholder="Enter Confirm Password" required>
+                                <label for="confirmpassword" >Confirm New Password 
+                                   
+                                <!-- message kung match yung password o hindi-->
+                                
+                                </label>
+                                <span id='message'></span>
                             </div>
                             <!-- eto naman lilitaw kung mali ang password niya
                             <div class="form-floating mb-3">
@@ -184,6 +180,8 @@
                                 <label for="confirmpassword" required>Confirm Password</label>
                             </div>
                             -->
+                            
+                             
                             <div class="d-grid gap-2">
                                 <!-- Change Pass Confirm trigger modal -->
                                 <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalchangepassConfirm">
@@ -208,15 +206,16 @@
                                             </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <!-- Confirm Change Pass trigger modal -->
-                                            <button type="submit" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalConchangepass" name="Changepass">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <!-- Confirm Change Pass trigger modal data-bs-toggle="modal" data-bs-target="#modalConchangepass"-->
+                                            <button type="button" id="confirm_modal" class="btn btn-secondary" data-bs-toggle="modal" name="Changepass">
                                                 Confirm
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                             <!-- Modal Confirm Change Pass -->
                             <div class="modal fade" id="modalConchangepass" tabindex="-1">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -234,22 +233,47 @@
                                             </p>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="login.php" class="btn btn-secondary">Ok</a>
+                                            <button type="submit" class="btn btn-secondary" name="Changepass">Ok</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <script type="text/javascript">
+                            //check if password is match or not
+                            var check = function() {
+                                if (document.getElementById('password').value ==
+                                    document.getElementById('confirmpassword').value) {
+                                    document.getElementById('message').style.color = 'green';
+                                    document.getElementById('message').innerHTML = 'matching';
+                                } else {
+                                    document.getElementById('message').style.color = 'red';
+                                    document.getElementById('message').innerHTML = 'not matching';
+                                }
+                            }
+                            $(function(){
+                                $('#confirm_modal').click(function(){
+                                    var password = $("#password").val();
+                                    var confirm_password = $("#confirmpassword").val();
+                                    if(password != '' && confirm_password != '' && password == confirm_password){
+                                        $('#modalConchangepass').modal('show');
+                                    }
+                                    else if(password != '' && confirm_password != '' && password != confirm_password){
+                                        alert('New password and Confirm password does not match');
+                                        $('#modalchangepassConfirm').modal('hide');
+                                    }
+                                    else{
+                                        alert('Fill up all the fields');
+                                        $('#modalchangepassConfirm').modal('hide');
+                                    }      
+                                })
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    
-
-    
-
     <!-- Modal Change Pass Cancel -->
     <div class="modal fade" id="modalchangepassCancel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
