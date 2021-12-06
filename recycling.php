@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,24 +16,10 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
-        <div class="container">
-            <a href="#" class="navbar-brand fw-bold">BCASH</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <?php
+        include 'nav_shop.php';
+    ?>
+    
     <!-- recycle qr scanner area -->
     <section class="bg-dark p-5 text-center text-sm-start">
         <div class="container">
