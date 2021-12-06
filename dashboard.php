@@ -3,13 +3,15 @@ session_start();
 require "mydb.php";
 $mydb = new myDb;
 if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
-isset($_SESSION['acc_id'])){
+isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     $acc_id = $_SESSION['acc_id'];
     $qrcode = $_SESSION['qrcode'];
+    $admin = $_SESSION['admin'];
     $total_points = $_SESSION['total_points'];
     $total_bottles = $_SESSION['total_bottles'];
     $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
     $output["img"] = $url;
+
 }
 else{
     echo "error in collecting user data";
@@ -216,7 +218,7 @@ else{
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $recycle_records = $mydb->get_Recycle_trans($acc_id);
+                                        $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($recycle_records)){
                                             foreach($recycle_records as $rows){
                                                 $points_earned = $rows['points_earned'];
@@ -243,7 +245,7 @@ else{
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $redeem_records = $mydb->get_Redeem_trans($acc_id);
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];

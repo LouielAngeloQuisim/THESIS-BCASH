@@ -2,8 +2,9 @@
     session_start();
     require "mydb.php";
     $mydb = new myDb;
-    if(isset($_SESSION['acc_id'])){
+    if(isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
         $acc_id = $_SESSION['acc_id'];
+        $admin = $_SESSION['admin'];
     }
     else{
         $acc_id = null;
@@ -136,7 +137,7 @@
                                     </thead>
                                     <tbody class="align-middle">
                                     <?php
-                                        $redeem_records = $mydb->get_Redeem_trans($acc_id);
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];

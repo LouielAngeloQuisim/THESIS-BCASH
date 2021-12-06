@@ -2,8 +2,9 @@
     session_start();
     require "mydb.php";
     $mydb = new myDb;
-    if(isset($_SESSION['acc_id'])){
+    if(isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
         $acc_id = $_SESSION['acc_id'];
+        $admin = $_SESSION['admin'];
     }
     else{
         $acc_id = null;
@@ -135,7 +136,7 @@
                                     </thead>
                                     <tbody class="align-middle">
                                     <?php
-                                        $recycle_records = $mydb->get_Recycle_trans($acc_id);
+                                        $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($recycle_records)){
                                             foreach($recycle_records as $rows){
                                                 $points_earned = $rows['points_earned'];

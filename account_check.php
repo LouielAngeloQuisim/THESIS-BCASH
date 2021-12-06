@@ -14,7 +14,14 @@ if(isset($_POST['login'])){
             foreach($records as $rows){
                 $admin = $rows['admin'];
                 if($admin == 1){//if the user is admin
-
+                    $_SESSION['acc_id'] = $rows['acc_id'];
+                    $_SESSION['total_points'] = $rows['total_points'];
+                    $_SESSION['total_bottles'] = $rows['total_bottles'];
+                    $_SESSION['qrcode'] = $rows['qrcode'];
+                    $_SESSION['username'] = $rows['username'];
+                    $_SESSION['admin'] = $rows['admin'];
+                    header("Location:dashboard.php");
+                    ob_end_flush();
                 }
                 else{
                     $_SESSION['acc_id'] = $rows['acc_id'];
@@ -22,6 +29,7 @@ if(isset($_POST['login'])){
                     $_SESSION['total_bottles'] = $rows['total_bottles'];
                     $_SESSION['qrcode'] = $rows['qrcode'];
                     $_SESSION['username'] = $rows['username'];
+                    $_SESSION['admin'] = $rows['admin'];
                     header("Location:dashboard.php");
                     ob_end_flush();
                 } 
