@@ -81,24 +81,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>[Name]</td>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Name]</td>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
-                                    <tr>
-                                        <td>[Name]</td>
-                                        <td>[Earned points]</td>
-                                        <td>[Time]</td>
-                                        <td>[Date]</td>
-                                    </tr>
+                                    <?php
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                        if(isset($redeem_records)){
+                                            foreach($redeem_records as $rows){
+                                                $points_deducted = $rows['points_deducted'];
+                                                $redeemtrans_time = $rows['trans_time'];
+                                                echo '<tr>';
+                                                echo '<td>'.$points_deducted.'</td>';
+                                                echo '<td>'.$redeemtrans_time.'</td>';
+                                                echo '<td>[Date]</td>';
+                                                echo '</tr>';
+                                            }
+                                        }
+                                        else{
+                                            echo "There are no records of transactions yet";
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </p>

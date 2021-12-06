@@ -296,19 +296,20 @@ class myDb {
         return $result;
     }
     public function get_sumBottles(){
-
         $sql = $this->link->prepare("SELECT * FROM redeem_transaction");
         $sql->execute();
         $result = $sql->get_result();
         if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                'redeem_trans_id' => $row['redeem_trans_id'],
+            /*while($row = $result->fetch_assoc()){
+                    'redeem_trans_id' => $row['redeem_trans_id'],
                     'item' => $row['item'],
                     'points_deducted' => $row['points_deducted'],
                     'trans_time' => $row['trans_time']
-            }
+            }*/
         }
         else{
             $records = null;
-        }
+       }
+       
+    }
 }

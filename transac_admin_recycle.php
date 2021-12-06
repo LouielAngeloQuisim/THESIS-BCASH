@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+    isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+        $acc_id = $_SESSION['acc_id'];
+        $qrcode = $_SESSION['qrcode'];
+        $admin = $_SESSION['admin'];
+        $total_points = $_SESSION['total_points'];
+        $total_bottles = $_SESSION['total_bottles'];
+        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+        $output["img"] = $url;
+    }
+    else{
+        echo "error in collecting user data";
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -79,24 +97,24 @@
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                        <tr>
-                                            <td>Arvin Jay P. De Guzman</td>
-                                            <td>1.00</td>
-                                            <td>9:00am</td>
-                                            <td>12/02/2021</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Name]</td>
-                                            <td>[Earned points]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
-                                        <tr>
-                                            <td>[Name]</td>
-                                            <td>[Earned points]</td>
-                                            <td>[Time]</td>
-                                            <td>[Date]</td>
-                                        </tr>
+                                        <?php
+                                            $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                            if(isset($recycle_records)){
+                                                foreach($recycle_records as $rows){
+                                                    $points_earned = $rows['points_earned'];
+                                                    $trans_time = $rows['trans_time'];
+                                                    echo '<tr>';
+                                                    echo '<td>name</td>';
+                                                    echo '<td>'.$points_earned.'</td>';
+                                                    echo '<td>'.$trans_time.'</td>';
+                                                    echo '<td>[Date]</td>';
+                                                    echo '</tr>';
+                                                }
+                                            }
+                                            else{
+                                                echo "There are no records of transactions yet";
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
