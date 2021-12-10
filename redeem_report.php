@@ -131,7 +131,7 @@
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="container text-fontdark">
-                    <div class="row align-items-center justify-content-between">
+                    <div class="row align-items-center justify-content-between g-4">
                         <div class="col-md">
                             <div class="card text-center border border-2 border-dark">
                                 <div class="h1 mt-2">
