@@ -126,46 +126,42 @@
         </div>
     </section>
 
-    <!-- monthly report card  -->
-    <section class="p-5">
-        <div class="container">
-            <div class="card text-center border border-2 border-dark cardadmin">
-                <div class="h1 mt-2">
-                    <i class="bi bi-file-bar-graph"></i>
-                </div>
-                    <h3 class="card-title">
-                        Monthly Reports
-                    </h3>
-                    <?php
-                        $month = $mydb->get_Maxdate();
-                        if(isset($month)){
-                            foreach($month as $rows){
-                                $maxdate = $rows['maxdate'];
-                            }
-                            $nummonth = date("m",strtotime($maxdate));
-                            $newmonth = date("F",strtotime($maxdate));
-                        }
-                        else{
-                            $newmonth = "Month undefined";
-                        }
-                        echo '<h2>'.$newmonth.'</h2>';
-                    ?>
-                <!-- nasa baba mismo yung chart  -->
-                <div class="card-body">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- redeemable items -->
-    <section class="bg-primary p-5 text-center text-sm-start">
+    <section class="p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="container text-fontdark">
                     <div class="row align-items-center justify-content-between">
+                        <div class="col-md">
+                            <div class="card text-center border border-2 border-dark">
+                                <div class="h1 mt-2">
+                                    <i class="bi bi-file-bar-graph"></i>
+                                </div>
+                                    <h3 class="card-title">
+                                        Monthly Reports
+                                    </h3>
+                                    <?php
+                                        $month = $mydb->get_Maxdate();
+                                        if(isset($month)){
+                                            foreach($month as $rows){
+                                                $maxdate = $rows['maxdate'];
+                                            }
+                                            $nummonth = date("m",strtotime($maxdate));
+                                            $newmonth = date("F",strtotime($maxdate));
+                                        }
+                                        else{
+                                            $newmonth = "Month undefined";
+                                        }
+                                        echo '<h2>'.$newmonth.'</h2>';
+                                    ?>
+                                <!-- nasa baba mismo yung chart  -->
+                                <div class="card-body">
+                                    <canvas id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md text-center">
-                            <div class="card bg-light cardadmin1">
+                            <div class="card bg-light cardadmin1 border border-2 border-dark">
                                 <div class="h1 mt-2">
                                     <i class="bi bi-bag-check"></i>
                                 </div>
@@ -237,7 +233,9 @@
     </section>
 
     <!-- line -->
-    <section class="bg-secondary d-none d-sm-block p-3">
+    <section class="bg-primary p-3">
+    </section>
+    <section class="bg-secondary p-3">
     </section>
     <?php
         $result = $mydb->get_Date($nummonth);
