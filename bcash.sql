@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 04:26 PM
+-- Generation Time: Dec 10, 2021 at 09:58 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -42,17 +42,18 @@ CREATE TABLE `bottle_types` (
 CREATE TABLE `daily_bottle_report` (
   `day_id` int(50) NOT NULL,
   `date` date NOT NULL,
-  `no_bottles` int(50) NOT NULL
+  `no_bottles` int(50) NOT NULL,
+  `no_redeem` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `daily_bottle_report`
 --
 
-INSERT INTO `daily_bottle_report` (`day_id`, `date`, `no_bottles`) VALUES
-(1, '2021-12-11', 20),
-(2, '2021-12-12', 30),
-(3, '2021-12-13', 60);
+INSERT INTO `daily_bottle_report` (`day_id`, `date`, `no_bottles`, `no_redeem`) VALUES
+(1, '2021-12-11', 20, 30),
+(2, '2021-12-12', 30, 10),
+(3, '2021-12-13', 60, 10);
 
 -- --------------------------------------------------------
 
