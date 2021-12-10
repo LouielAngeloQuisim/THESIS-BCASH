@@ -95,6 +95,10 @@
     width: 100%;
 }
 
+.profimg{
+    width: 80%;
+}
+
 @media (min-width:768px){
     .content{
         padding-top: 20%;
@@ -141,6 +145,10 @@
     .scroll .table3{
         font-size: 16px;
     }
+
+    .profimg{
+        width: 50%;
+    }
 }
 
 @media (min-width:992px){
@@ -165,5 +173,9 @@
     .cardadmin2{
         margin-left: 10%;
         width: 70%;
+    }
+
+    .profimg{
+        width: 20%;
     }
 }

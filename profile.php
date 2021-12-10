@@ -32,19 +32,16 @@
     ?>
 
     <!-- profile img with its profile name -->
-    <section class="bg-primary text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
-        <div class="container">
-            <div class="d-sm-flex align-items-center justify-content-between">
-                <img class="img-fluid w-50" src="img/icons8-male-user-100 (1).PNG" alt="">
-                <div>
-                    <?php echo '<h1>'.$username.'</h1>';?>
-                    <h3>
-                        [uname] <br>
-                        [email] <br>
-                        [connum]
-                    </h2>
-                    
-                </div>
+    <section class="bg-primary text-light p-5">
+        <div class="container text-center">
+            <img class="img-fluid profimg" src="img/icons8-male-user-100 (1).PNG" alt="">
+            <div>
+                <?php echo '<h1>'.$username.'</h1>';?>
+                <h3>
+                    [uname] <br>
+                    [email] <br>
+                    [connum]
+                </h2>     
             </div>
         </div>
     </section>
