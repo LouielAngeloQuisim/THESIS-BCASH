@@ -136,6 +136,20 @@
                     <h3 class="card-title">
                         Monthly Reports
                     </h3>
+                    <?php
+                        $month = $mydb->get_Maxdate();
+                        if(isset($month)){
+                            foreach($month as $rows){
+                                $maxdate = $rows['maxdate'];
+                            }
+                            $nummonth = date("m",strtotime($maxdate));
+                            $newmonth = date("F",strtotime($maxdate));
+                        }
+                        else{
+                            $newmonth = "Month undefined";
+                        }
+                        echo '<h2>'.$newmonth.'</h2>';
+                    ?>
                 <!-- nasa baba mismo yung chart  -->
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
@@ -225,7 +239,20 @@
     <!-- line -->
     <section class="bg-secondary d-none d-sm-block p-3">
     </section>
-
+    <?php
+        $result = $mydb->get_Date($nummonth);
+        if(isset($result)){
+            foreach($result as $rows){
+                $newdate[] = 'Day '.date('d',strtotime($rows['date'])).'';
+                $no_redeem[] = $rows['no_redeem'];
+                //print_r($no_bottles);
+            }   
+        }
+        else{
+            echo "There are no records available this month";
+        }
+        /* /<?php echo json_encode($date);?>*/
+    ?>
     <!-- monthly report java script  -->
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
@@ -233,12 +260,10 @@
         let bottlesChart = new Chart(myChart, {
             type:'line',
             data:{
-                labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                labels:<?php echo json_encode($newdate);?>,
                 datasets:[{
                     label:'Accounts Redeemed',
-                    data:[
-                        10,22,44,88
-                    ],
+                    data:<?php echo json_encode($no_redeem);?>,
                     backgroundColor:'rgba(171, 51, 161, 0.6)',
                     borderWidth:3,
                     borderColor:'#33005c',

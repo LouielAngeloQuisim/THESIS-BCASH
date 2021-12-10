@@ -256,8 +256,7 @@
         $result = $mydb->get_Date($nummonth);
         if(isset($result)){
             foreach($result as $rows){
-                $date[] = "Day ".date("d",strtotime($rows['date']))."";
-                //print_r($date);
+                $newdate[] = 'Day '.date('d',strtotime($rows['date'])).'';
                 $no_bottles[] = $rows['no_bottles'];
                 //print_r($no_bottles);
             }   
@@ -265,6 +264,7 @@
         else{
             echo "There are no records available this month";
         }
+        /* /<?php echo json_encode($date);?>*/
     ?>
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
@@ -272,7 +272,7 @@
             type:'line',
             data:{
                 //labels
-                labels:<?php echo json_encode($date);?>,
+                labels:<?php echo json_encode($newdate);?>,
                 //datesets
                 datasets:[{
                     label:'Recycled Bottles',

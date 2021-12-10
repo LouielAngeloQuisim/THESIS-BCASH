@@ -370,7 +370,8 @@ class myDb {
             while($row = $result->fetch_assoc()){
                 $record[] = [
                     'date' => $row['date'],
-                    'no_bottles' => $row['no_bottles']
+                    'no_bottles' => $row['no_bottles'],
+                    'no_redeem' => $row['no_redeem']
                 ];
                 //$newdate = $row['max(date)'];
                 //$month = date("F",strtotime($newdate));
