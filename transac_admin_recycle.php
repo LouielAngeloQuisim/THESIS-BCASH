@@ -103,24 +103,36 @@
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                        <?php
-                                            $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
-                                            if(isset($recycle_records)){
-                                                foreach($recycle_records as $rows){
-                                                    $points_earned = $rows['points_earned'];
-                                                    $trans_time = $rows['trans_time'];
-                                                    echo '<tr>';
-                                                    echo '<td>name</td>';
-                                                    echo '<td>'.$points_earned.'</td>';
-                                                    echo '<td>'.$trans_time.'</td>';
-                                                    echo '<td>[Date]</td>';
-                                                    echo '</tr>';
+                                    <?php
+                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                        if(isset($redeem_records)){
+                                            foreach($redeem_records as $rows){
+                                                $points_earned = $rows['points_earned'];
+                                                $redeemtrans_time = $rows['trans_time'];
+                                                $user_id = $rows['acc_id'];
+                                                $name = $mydb->get_Name($user_id);
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                if(isset($name)){
+                                                    foreach($name as $newrows){
+                                                        $fname = $newrows['fname'];
+                                                        $mname = $newrows['mname'];
+                                                        $lname = $newrows['lname'];
+                                                        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                    }
                                                 }
+                                                echo '<tr>';
+                                                echo '<td>'.$fullname.'</td>';
+                                                echo '<td>'.$points_earned .'</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
+                                                echo '</tr>';
                                             }
-                                            else{
-                                                echo "There are no records of transactions yet";
-                                            }
-                                        ?>
+                                        }
+                                        else{
+                                            echo "There are no records of transactions yet";
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
