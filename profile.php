@@ -37,7 +37,13 @@
             <div class="d-sm-flex align-items-center justify-content-between">
                 <img class="img-fluid w-50" src="img/icons8-male-user-100 (1).PNG" alt="">
                 <div>
-                    <?php echo '<h1>'.$username.'</h1>';?>  
+                    <?php echo '<h1>'.$username.'</h1>';?>
+                    <h3>
+                        [uname] <br>
+                        [email] <br>
+                        [connum]
+                    </h2>
+                    
                 </div>
             </div>
         </div>
@@ -61,7 +67,7 @@
 
     <!-- lines -->
     <section class="bg-dark p-4"></section>
-    <section class="bg-primary p-5"></section>
+    <section class="bg-primary p-4"></section>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">

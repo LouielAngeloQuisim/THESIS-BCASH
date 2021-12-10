@@ -52,7 +52,7 @@
             <p class="lead text-center">
                 <!-- Button Generate All trigger modal -->
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRepAll">
-                    Generate All Reports
+                    Print All
                 </button>
             </p>
         </div>
@@ -73,6 +73,12 @@
                     </ul>
                 </div>
                 <div class="card-body px-0">
+                    <form action="">
+                        <div class="input-group px-5 my-3">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <button class="btn btn-secondary" type="submit" id="searchbtn">Go!</button>
+                        </div>
+                    </form>
                     <div class="h2">
                         <i class="bi bi-trash"></i>
                     </div>
@@ -80,7 +86,7 @@
                     <p class="lead text-center">
                         <!-- Button Generate Recycle trigger modal -->
                         <button type="button" class="btn btn-secondary btn-sm addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRepRecycle">
-                            Generate Recycle Reports
+                            Print Recycle Reports
                         </button>
                     </p>
                     <!-- user all recycle records -->

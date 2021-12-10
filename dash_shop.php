@@ -44,7 +44,7 @@
                         <i class="bi bi-bag-check"></i>
                     </div>
                     <h3 class="card-title mt-2">
-                        Acceptable Bottles
+                        Accepted Bottles
                     </h3>
                     <div class="card-text">
                         <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">

@@ -58,7 +58,7 @@ else{
     <section class="bg-primary p-5 text-center text-sm-start">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
-                <div>
+                <div class="pe-md-2">
                     <h1 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
                     <p class="lead my-4 text-light">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
@@ -224,7 +224,7 @@ else{
                             <i class="bi bi-bag-check"></i>
                         </div>
                         <h3 class="card-title mb-2">
-                            Acceptable Bottles
+                            Accepted Bottles
                         </h3>
                         <div class="card-text">
                             <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
