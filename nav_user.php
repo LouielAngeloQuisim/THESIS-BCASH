@@ -23,7 +23,7 @@
                 </li>
                 <li class="nav-item">
                     <!-- logout trigger modal -->
-                    <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                    <a href="logout.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
                         Logout
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <a href="login.php" class="btn btn-secondary">Confirm</a>
+                        <a href="logout.php" class="btn btn-secondary">Confirm</a>
                     </div>
                 </div>
             </div>

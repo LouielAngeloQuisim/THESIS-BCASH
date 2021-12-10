@@ -20,10 +20,10 @@ if(isset($_POST['login'])){
                     $_SESSION['qrcode'] = $rows['qrcode'];
                     $_SESSION['username'] = $rows['username'];
                     $_SESSION['admin'] = $rows['admin'];
-                    header("Location:dashboard.php");
+                    header("Location:dash_admin.php");
                     ob_end_flush();
                 }
-                else{
+                else{// if just an ordinary user
                     $_SESSION['acc_id'] = $rows['acc_id'];
                     $_SESSION['total_points'] = $rows['total_points'];
                     $_SESSION['total_bottles'] = $rows['total_bottles'];

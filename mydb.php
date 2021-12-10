@@ -184,6 +184,7 @@ class myDb {
                     $records[] = [
                         'trans_id' => $row['trans_id'],
                         'bottles' => $row['bottles'],
+                        'acc_id' => $row['acc_id'],
                         'points_earned' => $row['points_earned'],
                         'trans_time' => $row['trans_time']
                     ];
@@ -213,7 +214,6 @@ class myDb {
                 $records = null;
             }
         }
-        
         return $records;
     }
     public function get_Redeem_trans($acc_id,$admin){
@@ -227,10 +227,12 @@ class myDb {
                     $records[] = [
                         'redeem_trans_id' => $row['redeem_trans_id'],
                         'item' => $row['item'],
+                        'acc_id' => $row['acc_id'],
                         'points_deducted' => $row['points_deducted'],
                         'trans_time' => $row['trans_time']
                     ];
                 }
+
             }
             else{
                 $records = null;
@@ -247,6 +249,7 @@ class myDb {
                     $records[] = [
                         'redeem_trans_id' => $row['redeem_trans_id'],
                         'item' => $row['item'],
+                        'acc_id' => $row['acc_id'],
                         'points_deducted' => $row['points_deducted'],
                         'trans_time' => $row['trans_time']
                     ];
@@ -295,21 +298,114 @@ class myDb {
         }
         return $result;
     }
-    public function get_sumBottles(){
-        $sql = $this->link->prepare("SELECT * FROM redeem_transaction");
+    public function get_sumBottles($admin, $acc_id){
+        if($admin == 1){
+            $sql = $this->link->prepare("SELECT bottle_count FROM recycle_transaction");
+            $sql->execute();
+            $result = $sql->get_result();
+            $sum;
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    if(empty($sum) || $sum = ""){
+                        $sum = $row['bottle_count'];
+                    }
+                    else{
+                        $sum += $row['bottle_count'];
+                    }
+                }
+            }
+            else{
+                $records = null;
+            }
+        }
+        else{
+            $sql = $this->link->prepare("SELECT bottle_count FROM recycle_transaction WHERE acc_id = ?");
+            $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+            $sql->bind_param("i", $acc_id);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    if(empty($sum) || $sum = ""){
+                        $sum = $row['bottle_count'];
+                    }
+                    else{
+                        $sum += $row['bottle_count'];
+                    }
+                }
+            }
+            else{
+                $sum = 0;
+            }
+        }
+        return $sum; 
+    }
+    public function get_Maxdate(){
+        $record = array();
+        $sql = $this->link->prepare("SELECT max(date) FROM daily_bottle_report");
         $sql->execute();
         $result = $sql->get_result();
         if($result->num_rows > 0){
-            /*while($row = $result->fetch_assoc()){
-                    'redeem_trans_id' => $row['redeem_trans_id'],
-                    'item' => $row['item'],
-                    'points_deducted' => $row['points_deducted'],
-                    'trans_time' => $row['trans_time']
-            }*/
+            while($row = $result->fetch_assoc()){
+                $record[] = [
+                    'maxdate' => $row['max(date)']
+                ];
+                //$newdate = $row['max(date)'];
+                //$month = date("F",strtotime($newdate));
+            }   
         }
         else{
             $records = null;
-       }
-       
+        }
+        return $record;
+    }
+    public function get_Date($month){
+        $record = array();
+        $sql = $this->link->prepare("SELECT * FROM daily_bottle_report WHERE MONTH(date) = ? ORDER BY date ASC");
+        $month = mysqli_real_escape_string($this->link, $month);
+        $sql->bind_param("i", $month);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $record[] = [
+                    'date' => $row['date'],
+                    'no_bottles' => $row['no_bottles']
+                ];
+                //$newdate = $row['max(date)'];
+                //$month = date("F",strtotime($newdate));
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $record;
+    }
+    public function get_Countredeem(){
+        $sql = $this->link->prepare("SELECT COUNT(*) FROM redeem_transaction");
+        $sql->execute();
+        $count = $sql->get_result()->fetch_row()[0];
+        return $count;
+    }
+    public function get_Name($acc_id){
+        $records = array();
+        $sql = $this->link->prepare("SELECT fname, lname,mname FROM user_login WHERE acc_id = ?");
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $sql->bind_param("i", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'lname' => $row['lname'],
+                    'mname' => $row['mname'],
+                    'fname' => $row['fname']
+                ];
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $records;
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 11:37 PM
+-- Generation Time: Dec 10, 2021 at 04:26 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -36,6 +36,27 @@ CREATE TABLE `bottle_types` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `daily_bottle_report`
+--
+
+CREATE TABLE `daily_bottle_report` (
+  `day_id` int(50) NOT NULL,
+  `date` date NOT NULL,
+  `no_bottles` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `daily_bottle_report`
+--
+
+INSERT INTO `daily_bottle_report` (`day_id`, `date`, `no_bottles`) VALUES
+(1, '2021-12-11', 20),
+(2, '2021-12-12', 30),
+(3, '2021-12-13', 60);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `recycle_transaction`
 --
 
@@ -44,8 +65,16 @@ CREATE TABLE `recycle_transaction` (
   `acc_id` int(50) NOT NULL,
   `bottles` varchar(50) NOT NULL,
   `points_earned` int(50) NOT NULL,
-  `trans_time` datetime NOT NULL
+  `trans_time` datetime NOT NULL,
+  `bottle_count` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `recycle_transaction`
+--
+
+INSERT INTO `recycle_transaction` (`trans_id`, `acc_id`, `bottles`, `points_earned`, `trans_time`, `bottle_count`) VALUES
+(1, 36, 'coke 290ml', 10, '2021-12-01 23:11:28', 5);
 
 -- --------------------------------------------------------
 
@@ -60,6 +89,14 @@ CREATE TABLE `redeem_transaction` (
   `points_deducted` int(50) NOT NULL,
   `trans_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `redeem_transaction`
+--
+
+INSERT INTO `redeem_transaction` (`redeem_trans_id`, `acc_id`, `item`, `points_deducted`, `trans_time`) VALUES
+(2, 36, 'pencil', 10, '2021-11-03 21:33:44'),
+(3, 36, 'pencil', 5, '2021-12-02 23:22:54');
 
 -- --------------------------------------------------------
 
@@ -101,7 +138,8 @@ CREATE TABLE `user_login` (
 
 INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `total_points`, `total_bottles`, `lname`, `fname`, `mname`, `email`, `mobile_num`, `admin`) VALUES
 ('louiel', 1, '123', '', 0, 0, '', '', '', '', 0, 0),
-('louielxx', 36, '123', '$2y$10$hIdrsrRxTLa8iEvvSzosXe3TkrDqlbiFkX8cXqZGD1cf2RRVtGBa2', 0, 0, '', '', '', '', 0, 0);
+('louielxx', 36, 'louiel', '$2y$10$hIdrsrRxTLa8iEvvSzosXe3TkrDqlbiFkX8cXqZGD1cf2RRVtGBa2', 0, 0, 'quisim', 'louiel ', 'coyoca', 'gg@gmail.com', 0, 0),
+('admin', 37, 'admin', '', 0, 0, '', '', '', '', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -112,6 +150,12 @@ INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `total_poi
 --
 ALTER TABLE `bottle_types`
   ADD PRIMARY KEY (`bottle_id`);
+
+--
+-- Indexes for table `daily_bottle_report`
+--
+ALTER TABLE `daily_bottle_report`
+  ADD PRIMARY KEY (`day_id`);
 
 --
 -- Indexes for table `recycle_transaction`
@@ -150,16 +194,22 @@ ALTER TABLE `bottle_types`
   MODIFY `bottle_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `daily_bottle_report`
+--
+ALTER TABLE `daily_bottle_report`
+  MODIFY `day_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `recycle_transaction`
 --
 ALTER TABLE `recycle_transaction`
-  MODIFY `trans_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `trans_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `redeem_transaction`
 --
 ALTER TABLE `redeem_transaction`
-  MODIFY `redeem_trans_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `redeem_trans_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shop_items`
@@ -171,7 +221,7 @@ ALTER TABLE `shop_items`
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables

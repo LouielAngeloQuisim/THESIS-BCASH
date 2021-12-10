@@ -9,8 +9,6 @@
         $admin = $_SESSION['admin'];
         $total_points = $_SESSION['total_points'];
         $total_bottles = $_SESSION['total_bottles'];
-        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
-        $output["img"] = $url;
     }
     else{
         echo "error in collecting user data";
@@ -57,7 +55,11 @@
                             Accounts Redeemed
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            Total: 99999999999
+                            <?php
+                                $total_count = $mydb->get_Countredeem();
+                                echo $total_count;
+                                //print_r($total_count);
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -88,12 +90,26 @@
                                         foreach($redeem_records as $rows){
                                             $points_deducted = $rows['points_deducted'];
                                             $redeemtrans_time = $rows['trans_time'];
+                                            $user_id = $rows['acc_id'];
+                                            $item = $rows['item'];
+                                            $name = $mydb->get_Name($user_id);
+                                            $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                            $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                            echo $acc_id;
+                                            if(isset($name)){
+                                                foreach($name as $newrows){
+                                                    $fname = $newrows['fname'];
+                                                    $mname = $newrows['mname'];
+                                                    $lname = $newrows['lname'];
+                                                    $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                }
+                                            }
                                             echo '<tr>';
-                                            echo '<td>name</td>';
-                                            echo '<td>item</td>';
+                                            echo '<td>'.$fullname.'</td>';
+                                            echo '<td>'.$item.'</td>';
                                             echo '<td>'.$points_deducted.'</td>';
-                                            echo '<td>'.$redeemtrans_time.'</td>';
-                                            echo '<td>[Date]</td>';
+                                            echo '<td>'.$time.'</td>';
+                                            echo '<td>'.$date.'</td>';
                                             echo '</tr>';
                                         }
                                     }
@@ -215,7 +231,7 @@
         let myChart = document.getElementById('myChart').getContext('2d');
 
         let bottlesChart = new Chart(myChart, {
-            type:'bar',
+            type:'line',
             data:{
                 labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                 datasets:[{

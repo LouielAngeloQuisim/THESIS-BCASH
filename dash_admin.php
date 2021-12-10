@@ -57,7 +57,10 @@
                             Bottles Recycled
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            Total: 99999999999
+                            <?php
+                                $total_sum = $mydb->get_sumBottles($admin, $acc_id);
+                                echo 'Total: '.$total_sum.''; 
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -82,15 +85,28 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
-                                                $points_deducted = $rows['points_deducted'];
+                                                $points_earned = $rows['points_earned'];
                                                 $redeemtrans_time = $rows['trans_time'];
+                                                $user_id = $rows['acc_id'];
+                                                $name = $mydb->get_Name($user_id);
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                if(isset($name)){
+                                                    foreach($name as $newrows){
+                                                        $fname = $newrows['fname'];
+                                                        $mname = $newrows['mname'];
+                                                        $lname = $newrows['lname'];
+                                                        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                    }
+                                                }
                                                 echo '<tr>';
-                                                echo '<td>'.$points_deducted.'</td>';
-                                                echo '<td>'.$redeemtrans_time.'</td>';
-                                                echo '<td>[Date]</td>';
+                                                echo '<td>'.$fullname.'</td>';
+                                                echo '<td>'.$points_earned .'</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
                                             }
                                         }
@@ -117,6 +133,21 @@
                     <h3 class="card-title">
                         Monthly Reports
                     </h3>
+                    <?php
+                        $month = $mydb->get_Maxdate();
+                        if(isset($month)){
+                            foreach($month as $rows){
+                                $maxdate = $rows['maxdate'];
+                            }
+                            $nummonth = date("m",strtotime($maxdate));
+                            $newmonth = date("F",strtotime($maxdate));
+                        }
+                        else{
+                            $newmonth = "Month undefined";
+                        }
+                        echo '<h2>'.$newmonth.'</h2>';
+                    ?>
+                    
                 <!-- nasa baba mismo yung chart  -->
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
@@ -202,24 +233,50 @@
             </div>
         </div>
     </section>
-
+    <?php
+        /*$result = $mydb->get_Date($nummonth);
+        if(isset($result)){
+            foreach($result as $rows){
+                $date = $rows['date'];
+                $newdate = date("d",strtotime($date));
+                echo $newdate;
+            }   
+        }
+        else{
+            echo "There are no records available this month";
+        }*/
+        
+    ?>
     <!-- line -->
     <section class="bg-secondary d-none d-sm-block p-3">
     </section>
 
     <!-- monthly report java script  -->
+    <?php
+        $result = $mydb->get_Date($nummonth);
+        if(isset($result)){
+            foreach($result as $rows){
+                $date[] = "Day ".date("d",strtotime($rows['date']))."";
+                //print_r($date);
+                $no_bottles[] = $rows['no_bottles'];
+                //print_r($no_bottles);
+            }   
+        }
+        else{
+            echo "There are no records available this month";
+        }
+    ?>
     <script>
         let myChart = document.getElementById('myChart').getContext('2d');
-
         let bottlesChart = new Chart(myChart, {
-            type:'bar',
+            type:'line',
             data:{
-                labels:['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                //labels
+                labels:<?php echo json_encode($date);?>,
+                //datesets
                 datasets:[{
                     label:'Recycled Bottles',
-                    data:[
-                        10,22,44,88
-                    ],
+                    data:<?php echo json_encode($no_bottles);?>,
                     backgroundColor:'rgba(171, 51, 161, 0.6)',
                     borderWidth:3,
                     borderColor:'#33005c',
@@ -228,9 +285,8 @@
                 }]
             },
             options:[
-
             ]
-        })
+        })    
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
