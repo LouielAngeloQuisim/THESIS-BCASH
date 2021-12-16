@@ -322,10 +322,10 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="confirmbtn" value="Generate" name = "Generate">';
+                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
                         }
                         elseif(isset($_POST['confirmPrintall'])){
-                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall">Continue</input>';
+                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall" vlaue="Continue">';
                         }
                         elseif(isset($_POST['generate_recycle'])){
                             foreach($_POST as $key => $value){
@@ -333,7 +333,7 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="confirmbtn" value="Generate" name = "generate_recycle">';
+                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "generate_recycle">';
                         }
                     ?>
                 </form>
