@@ -181,7 +181,7 @@
                                     current_pass) {
                                     document.getElementById('pass_message').style.color = 'green';
                                     document.getElementById('pass_message').innerHTML = 'Password match';
-                                    document.getElementById('submit').disabled = false;
+
                                 } else {
                                     document.getElementById('pass_message').style.color = 'red';
                                     document.getElementById('pass_message').innerHTML = 'Password do not match';
@@ -190,7 +190,8 @@
                             }
                             var check = function() {
                                 if (document.getElementById('password').value ==
-                                    document.getElementById('confirmpassword').value) {
+                                    document.getElementById('confirmpassword').value && document.getElementById('currentpassword').value ==
+                                    current_pass) {
                                     document.getElementById('message').style.color = 'green';
                                     document.getElementById('message').innerHTML = 'Password match';
                                     document.getElementById('submit').disabled = false;
