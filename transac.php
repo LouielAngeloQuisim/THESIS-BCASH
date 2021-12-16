@@ -82,15 +82,26 @@
                                     </thead>
                                     <tbody class="align-middle">
                                     <?php
-                                        $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
-                                        if(isset($recycle_records)){
-                                            foreach($recycle_records as $rows){
+                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                        if(isset($redeem_records)){
+                                            foreach($redeem_records as $rows){
                                                 $points_earned = $rows['points_earned'];
-                                                $trans_time = $rows['trans_time'];
+                                                $redeemtrans_time = $rows['trans_time'];
+                                                $name = $mydb->get_Name($acc_id);
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                if(isset($name)){
+                                                    foreach($name as $newrows){
+                                                        $fname = $newrows['fname'];
+                                                        $mname = $newrows['mname'];
+                                                        $lname = $newrows['lname'];
+                                                        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                    }
+                                                }
                                                 echo '<tr>';
-                                                echo '<td>'.$points_earned.'</td>';
-                                                echo '<td>'.$trans_time.'</td>';
-                                                echo '<td>[Date]</td>';
+                                                echo '<td>'.$points_earned .'</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
                                             }
                                         }

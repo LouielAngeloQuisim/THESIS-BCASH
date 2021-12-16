@@ -53,7 +53,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <a href="login.php" class="btn btn-secondary">Confirm</a>
+                        <a href="logout.php" class="btn btn-secondary">Confirm</a>
                     </div>
                 </div>
             </div>

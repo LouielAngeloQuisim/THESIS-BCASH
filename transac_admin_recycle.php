@@ -142,7 +142,7 @@
             </div>
         </div>
     </section>
-
+    <form action="preview.php" method = "post">
     <!-- Modal Generate All -->
     <div class="modal fade modalpopup" id="modalgenRepAll" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -176,7 +176,7 @@
                                 <input class="form-check-input switchbtn" type="checkbox" id="lnameswitch" checked>
                                 <label class="form-check-label" for="lnameswitch">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control tfield" id="lname" placeholder="Enter Last Name">
+                                        <input type="text" class="form-control tfield" id="lname" placeholder="Enter Last Name" name = "lname">
                                         <label for="lname">Last Name</label>
                                     </div>
                                 </label>
@@ -199,7 +199,7 @@
                                 <input class="form-check-input switchbtn" type="checkbox" id="fnameswitch" checked>
                                 <label class="form-check-label" for="fnamewitch">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control tfield" id="fname" placeholder="Enter First Name">
+                                        <input type="text" class="form-control tfield" id="fname" placeholder="Enter First Name" name = "fname">
                                         <label for="fname">First Name</label>
                                     </div>
                                 </label>
@@ -222,7 +222,7 @@
                                 <input class="form-check-input switchbtn" type="checkbox" id="mnameswitch" checked>
                                 <label class="form-check-label" for="mnameswitch">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control tfield" id="mname" placeholder="Enter Middle Name">
+                                        <input type="text" class="form-control tfield" id="mname" placeholder="Enter Middle Name" name = "mname">
                                         <label for="mname">Middle Name</label>
                                     </div>
                                 </label>
@@ -243,37 +243,12 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                            <label class="form-check-label" for="timeswitch">
-                                <div class="input-group inputtg">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
-                                </div>
-                            </label>
-                        </div>
-                        <!-- eto kapag na hindi nakaon yung switch at hindi mapindot yung input type tapos
-                        <div class="form-check form-switch">
-                            <input class="form-check-input switchbtn" type="checkbox" id="mnameswitch" disable>
-                            <label class="form-check-label" for="mnameswitch">
-                                <div class="input-group inputg">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
-                                </div>
-                            </label>
-                        </div>
-                        -->
-                    </div>
-                    <div class="col">
-                        <!-- eto kapag na oon yung switch tapos -->
-                        <div class="form-check form-switch">
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg">
-                                    <input type="date" class="form-control" id="mindate">
+                                    <input type="date" class="form-control" id="mindate" name = "mindate">
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate">
+                                    <input type="date" class="form-control" id="maxdate" name = "maxdate">
                                 </div>
                             </label>
                         </div>
@@ -316,14 +291,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="preview.php" class="btn btn-secondary btn-md addbtn" id="confirm">
-                        Confirm
-                    </a>
+                    <button type="submit" class="btn btn-secondary btn-md addbtn" name ="confirm_all">
+                        Generate
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 
+    <form action="preview.php" method = "post">
     <!-- Modal Generate Recycle -->
     <div class="modal fade modalpopup" id="modalgenRepRecycle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -356,7 +333,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch" checked>
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname" placeholder="Enter Last Name">
+                                    <input type="text" class="form-control tfield1" id="lname" placeholder="Enter Last Name" name = "lname">
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -379,7 +356,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch" checked>
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname" placeholder="Enter First Name">
+                                    <input type="text" class="form-control tfield1" id="fname" placeholder="Enter First Name" name = "fname">
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -402,7 +379,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch" checked>
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname" placeholder="Enter Middle Name">
+                                    <input type="text" class="form-control tfield1" id="mname" placeholder="Enter Middle Name" name = "mname">
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -425,9 +402,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="epswitch" checked>
                             <label class="form-check-label" for="epswitch">
                                 <div class="input-group inputtg1">
-                                    <input type="double" class="form-control" id="minep" placeholder="Min Points">
+                                    <input type="double" class="form-control" id="minep" placeholder="Min Points" name = "minpoints">
                                     <span class="input-group-text">to</span>
-                                    <input type="double" class="form-control" id="maxep" placeholder="Max Points">
+                                    <input type="double" class="form-control" id="maxep" placeholder="Max Points" name = "maxpoints">
                                 </div>
                             </label>
                         </div>
@@ -447,37 +424,12 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                            <label class="form-check-label" for="timeswitch">
-                                <div class="input-group inputtg1">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
-                                </div>
-                            </label>
-                        </div>
-                        <!-- eto kapag na hindi nakaon yung switch at hindi mapindot yung input type tapos
-                        <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                            <label class="form-check-label" for="timeswitch">
-                                <div class="input-group inputtg">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
-                                </div>
-                            </label>
-                        </div>
-                        -->
-                    </div>
-                    <div class="col">
-                        <!-- eto kapag na oon yung switch tapos -->
-                        <div class="form-check form-switch">
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate">
+                                    <input type="date" class="form-control" id="mindate" name = "mindate">
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate">
+                                    <input type="date" class="form-control" id="maxdate" name = "maxdate">
                                 </div>
                             </label>
                         </div>
@@ -520,14 +472,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="preview.php" class="btn btn-secondary btn-md addbtn" id="confirm">
+                    <input type = "submit" class="btn btn-secondary btn-md addbtn" id="confirm" name ="generate_recycle">
                         Confirm
-                    </a>
+                    </input>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>
     <!-- black line -->
     <section class="bg-primary p-3">
     </section>

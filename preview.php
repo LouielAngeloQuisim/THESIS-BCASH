@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+    isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+        $acc_id = $_SESSION['acc_id'];
+        $qrcode = $_SESSION['qrcode'];
+        $admin = $_SESSION['admin'];
+        $total_points = $_SESSION['total_points'];
+        $total_bottles = $_SESSION['total_bottles'];
+        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+        $output["img"] = $url;
+    }
+    else{
+        echo "error in collecting user data";
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -151,28 +169,85 @@
                             </tr>
                         </thead>
                         <tbody class="align-middle">
-                            <tr>
-                                <td>Arvin Jay P. De Guzman</td>
-                                <td>1.00</td>
-                                <td>4:05pm</td>
-                                <td>12/03/2021</td>
-                            </tr>
-                            <tr>
-                                <td>[Name]</td>
-                                <td>[Earned points]</td>
-                                <td>[Time]</td>
-                                <td>[Date]</td>
-                            </tr>
-                            <tr>
-                                <td>[Name]</td>
-                                <td>[Earned points]</td>
-                                <td>[Time]</td>
-                                <td>[Date]</td>
-                            </tr>
+                            <?php
+                                if(isset($_POST['confirm_all'])){
+                                    $lname = $_POST['lname'];
+                                    $fname = $_POST['fname'];
+                                    $mname = $_POST['mname'];
+                                    $mindate = $_POST['mindate'];
+                                    $maxdate = $_POST['maxdate'];
+                                    echo $lname;
+                                    $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+                                    if(isset($records)){
+                                        foreach($records as $rows){
+                                            $lname = $rows['lname'];
+                                            $fname = $rows['fname'];
+                                            $mname = $rows['mname'];
+                                            $points_earned = $rows['points_earned'];
+                                            $date = date("Y-m-d",strtotime($rows['recycle_trans_time']));
+                                            $time = date("H:i:s A",strtotime($rows['recycle_trans_time']));
+                                            $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                            echo '
+                                            <tr>
+                                            <td>'.$fullname.'</td>
+                                            <td>'.$points_earned.'</td>
+                                            <td>'.$time.'</td>
+                                            <td>'.$date.'</td>
+                                            </tr>
+                                            ';
+                                        }
+                                    }
+                                    else{
+                                        echo "Record not found";
+                                    }
+                                }
+                                elseif(isset($_POST['generate_recycle'])){
+                                    if(isset($_POST['generate_recycle'])){
+                                        $lname = $_POST['lname'];
+                                        $fname = $_POST['fname'];
+                                        $mname = $_POST['mname'];
+                                        $mindate = $_POST['mindate'];
+                                        $maxdate = $_POST['maxdate'];
+                                        $minpoints = $_POST['minpoints'];
+                                        $maxpoints = $_POST['maxpoints'];
+                                        echo $lname;
+                                        $records = $mydb->search_Recycle($lname, $fname, $mname, $mindate, $maxdate,$maxpoints,$minpoints);
+                                        if(isset($records)){
+                                            foreach($records as $rows){
+                                                $lname = $rows['lname'];
+                                                $fname = $rows['fname'];
+                                                $mname = $rows['mname'];
+                                                $points_earned = $rows['points_earned'];
+                                                $date = date("Y-m-d",strtotime($rows['recycle_trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['recycle_trans_time']));
+                                                $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                echo '
+                                                <tr>
+                                                <td>'.$fullname.'</td>
+                                                <td>'.$points_earned.'</td>
+                                                <td>'.$time.'</td>
+                                                <td>'.$date.'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                        }
+                                        else{
+                                            echo "Record not found";
+                                        }
+                                    }
+                                }
+                                elseif(isset($_POST['generate_redeem'])){
+
+                                }
+                                else{
+                                    echo "Filter not defined";
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <!--redeem records print-->
             <div class="content3 my-3">
                 <div class="scroll">
                     <h1>
@@ -182,34 +257,53 @@
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Redeem</th>
+                                <th scope="col">Item</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody class="align-middle">
-                            <tr>
-                                <td>Arvin Jay P. De Guzman</td>
-                                <td>Ballpen</td>
-                                <td>1.00</td>
-                                <td>4:20pm</td>
-                                <td>12/03/2021</td>
-                            </tr>
-                            <tr>
-                                <td>[Name]</td>
-                                <td>[Redeem]</td>
-                                <td>[Price]</td>
-                                <td>[Time]</td>
-                                <td>[Date]</td>
-                            </tr>
-                            <tr>
-                                <td>[Name]</td>
-                                <td>[Redeem]</td>
-                                <td>[Price]</td>
-                                <td>[Time]</td>
-                                <td>[Date]</td>
-                            </tr>
+                        <?php
+                            if(isset($_POST['confirm_all'])){
+                                $lname = $_POST['lname'];
+                                $fname = $_POST['fname'];
+                                $mname = $_POST['mname'];
+                                $mindate = $_POST['mindate'];
+                                $maxdate = $_POST['maxdate'];
+                                $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+                                if(isset($records)){
+                                    foreach($records as $rows){
+                                        $lname = $rows['lname'];
+                                        $fname = $rows['fname'];
+                                        $mname = $rows['mname'];
+                                        $item = $rows['item'];
+                                        $points_deducted = $rows['points_deducted'];
+                                        $date = date("Y-m-d",strtotime($rows['redeem_trans_time']));
+                                        $time = date("H:i:s A",strtotime($rows['redeem_trans_time']));
+                                        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                        echo '
+                                        <tr>
+                                        <td>'.$fullname.'</td>
+                                        <td>'.$item.'</td>
+                                        <td>'.$points_deducted.'</td>
+                                        <td>'.$time.'</td>
+                                        <td>'.$date.'</td>
+                                        </tr>
+                                        ';
+                                    }
+                                }
+                            }
+                            elseif(isset($_POST['generate_recycle'])){
+
+                            }
+                            elseif(isset($_POST['generate_redeem'])){
+
+                            }
+                            else{
+                                echo "Filter not defined";
+                            }
+                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -220,7 +314,30 @@
                 <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#modalCancel">
                     Cancel
                 </button>
-                <a href="generatepdf.php" class="btn btn-secondary">Continue</a>
+                <form action="generatepdf.php" method = "post">
+                    <?php
+                        if(isset($_POST['confirm_all'])){
+                            foreach($_POST as $key => $value){
+                                if(!empty($key) && $key != "confirm_all"){
+                                    echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+                                }
+                            }
+                            echo '<input type="submit" class="confirmbtn" value="Generate" name = "Generate">';
+                        }
+                        elseif(isset($_POST['confirmPrintall'])){
+                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall">Continue</input>';
+                        }
+                        elseif(isset($_POST['generate_recycle'])){
+                            foreach($_POST as $key => $value){
+                                if(!empty($key) && $key != "generate_recycle"){
+                                    echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+                                }
+                            }
+                            echo '<input type="submit" class="confirmbtn" value="Generate" name = "generate_recycle">';
+                        }
+                    ?>
+                </form>
+                
             </div>
         </div>
     </section>
@@ -252,7 +369,7 @@
     <!-- black line -->
     <section class="bg-primary p-3">
     </section>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

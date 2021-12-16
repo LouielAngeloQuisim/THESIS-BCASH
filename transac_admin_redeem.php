@@ -151,6 +151,7 @@
     <div class="modal fade modalpopup" id="modalgenRepAll" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+            <form action="preview.php" action="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalgenRepAll">Generate All</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -247,31 +248,6 @@
                     <div class="col">
                             <!-- eto kapag na oon yung switch tapos -->
                             <div class="form-check form-switch">
-                                <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                                <label class="form-check-label" for="timeswitch">
-                                    <div class="input-group inputtg">
-                                        <input type="time" class="form-control" id="mintime">
-                                        <span class="input-group-text">to</span>
-                                        <input type="time" class="form-control" id="maxtime">
-                                    </div>
-                                </label>
-                            </div>
-                            <!-- eto kapag na hindi nakaon yung switch at hindi mapindot yung input type tapos
-                             <div class="form-check form-switch">
-                                <input class="form-check-input switchbtn" type="checkbox" id="mnameswitch" disable>
-                                <label class="form-check-label" for="mnameswitch">
-                                    <div class="input-group inputg">
-                                        <input type="time" class="form-control" id="mintime">
-                                        <span class="input-group-text">to</span>
-                                        <input type="time" class="form-control" id="maxtime">
-                                    </div>
-                                </label>
-                            </div>
-                            -->
-                    </div>
-                    <div class="col">
-                            <!-- eto kapag na oon yung switch tapos -->
-                            <div class="form-check form-switch">
                                 <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
                                 <label class="form-check-label" for="dateswitch">
                                     <div class="input-group inputdg">
@@ -297,10 +273,13 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenAllConfirm">
+                    <button type="submit" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenAllConfirm">
                         Generate
                     </button>
                 </div>
+                
+
+            </form>
             </div>
         </div>
     </div>
@@ -468,31 +447,6 @@
                                 <div class="form-floating">
                                     <input type="double" class="form-control tfield1" id="price" placeholder="Enter Price">
                                     <label for="price">Price</label>
-                                </div>
-                            </label>
-                        </div>
-                        -->
-                    </div>
-                    <div class="col">
-                        <!-- eto kapag na oon yung switch tapos -->
-                        <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                            <label class="form-check-label" for="timeswitch">
-                                <div class="input-group inputtg1">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
-                                </div>
-                            </label>
-                        </div>
-                        <!-- eto kapag na hindi nakaon yung switch at hindi mapindot yung input type tapos
-                        <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="timeswitch" checked>
-                            <label class="form-check-label" for="timeswitch">
-                                <div class="input-group inputtg">
-                                    <input type="time" class="form-control" id="mintime">
-                                    <span class="input-group-text">to</span>
-                                    <input type="time" class="form-control" id="maxtime">
                                 </div>
                             </label>
                         </div>

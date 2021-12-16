@@ -5,6 +5,12 @@
     if(isset($_SESSION['acc_id']) && isset($_SESSION['username'])){
         $acc_id = $_SESSION['acc_id'];
         $username = $_SESSION['username'];
+        $lname = $_SESSION['lname'];
+        $fname = $_SESSION['fname'];
+        $mname = $_SESSION['mname'];
+        $email = $_SESSION['email'];
+        $mobile_num = $_SESSION['mobile_num'];
+        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
     }
     else{
         $acc_id = null;
@@ -40,8 +46,15 @@
             <div class="d-sm-flex align-items-center justify-content-between">
                 <img class="img-fluid w-50" src="img/icons8-male-user-100 (1).PNG" alt="">
                 <div>
-                <?php echo '<h1>'.$username.'</h1>';?>  
-                </div>
+                <h3>
+                <?php 
+                echo '<h1>'.$fullname.'</h1><br>';
+                echo '<h3>'.$username.'<br>';
+                echo '<h3>'.$email.'<br>';
+                echo '<h3>'.$mobile_num.'<br>';
+                ?> 
+                </h3>     
+            </div>
             </div>
         </div>
     </section>

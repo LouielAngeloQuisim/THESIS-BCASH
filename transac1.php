@@ -88,10 +88,23 @@
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];
                                                 $redeemtrans_time = $rows['trans_time'];
+                                                $item = $rows['item'];
+                                                $name = $mydb->get_Name($acc_id);
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                if(isset($name)){
+                                                    foreach($name as $newrows){
+                                                        $fname = $newrows['fname'];
+                                                        $mname = $newrows['mname'];
+                                                        $lname = $newrows['lname'];
+                                                        $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                    }
+                                                }
                                                 echo '<tr>';
+                                                echo '<td>'.$item.'</td>';
                                                 echo '<td>'.$points_deducted.'</td>';
-                                                echo '<td>'.$redeemtrans_time.'</td>';
-                                                echo '<td>[Date]</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
                                             }
                                         }

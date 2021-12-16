@@ -176,6 +176,9 @@ else{
                                                 echo '</tr>';
                                             }
                                         }
+                                        else{
+                                            echo "There no transactions yet";
+                                        }
                                     ?>
                                 </tbody>
                             </table>
@@ -202,6 +205,9 @@ else{
                                                 echo '<td>[Date]</td>';
                                                 echo '</tr>';
                                             }
+                                        }
+                                        else{
+                                            echo "There no transactions yet";
                                         }
                                     ?>
                                 </tbody>
