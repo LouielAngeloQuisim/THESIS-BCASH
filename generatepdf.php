@@ -33,22 +33,23 @@ class PDF extends FPDF {
 
 $pdf= new PDF('L','mm','Legal');
 
-//page for recycle
-$pdf->AddPage();
 
-//parang header(Recycle Report)
-$pdf->SetFont('Arial','B',20,'C');
-$pdf->Cell(350,6,'Recycle Report',0,1,'C');
-$pdf->Cell(0,7,'',0,1); //end of line
-
-//table header
-$pdf->SetFont('Arial','B',12);
-$pdf->Cell(100,10,'Name',1,0,'C');
-$pdf->Cell(75,10,'Earned Points',1,0,'C');
-$pdf->Cell(80,10,'Time',1,0,'C');
-$pdf->Cell(80,10,'Date',1,0,'C');
-$pdf->Cell(0,10,'',0,1); //end of line
 if(isset($_POST['Generate'])){
+    //page for recycle
+    $pdf->AddPage();
+
+    //parang header(Recycle Report)
+    $pdf->SetFont('Arial','B',20,'C');
+    $pdf->Cell(350,6,'Recycle Report',0,1,'C');
+    $pdf->Cell(0,7,'',0,1); //end of line
+
+    //table header
+    $pdf->SetFont('Arial','B',12);
+    $pdf->Cell(100,10,'Name',1,0,'C');
+    $pdf->Cell(75,10,'Earned Points',1,0,'C');
+    $pdf->Cell(80,10,'Time',1,0,'C');
+    $pdf->Cell(80,10,'Date',1,0,'C');
+    $pdf->Cell(0,10,'',0,1); //end of line
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
@@ -74,6 +75,21 @@ if(isset($_POST['Generate'])){
     }
 }
 elseif(isset($_POST['generate_recycle'])){
+    //page for recycle
+    $pdf->AddPage();
+
+    //parang header(Recycle Report)
+    $pdf->SetFont('Arial','B',20,'C');
+    $pdf->Cell(350,6,'Recycle Report',0,1,'C');
+    $pdf->Cell(0,7,'',0,1); //end of line
+
+    //table header
+    $pdf->SetFont('Arial','B',12);
+    $pdf->Cell(100,10,'Name',1,0,'C');
+    $pdf->Cell(75,10,'Earned Points',1,0,'C');
+    $pdf->Cell(80,10,'Time',1,0,'C');
+    $pdf->Cell(80,10,'Date',1,0,'C');
+    $pdf->Cell(0,10,'',0,1); //end of line
     if(isset($_POST['generate_recycle'])){
         $lname = $_POST['lname'];
         $fname = $_POST['fname'];
@@ -105,25 +121,26 @@ elseif(isset($_POST['generate_recycle'])){
 }
 
 
-//page for redeem
-$pdf->AddPage();
 
-//parang header(Redeem Report)
-$pdf->SetFont('Arial','B',20,'C');
-$pdf->Cell(350,6,'Redeem Report',0,1,'C');
-$pdf->Cell(0,7,'',0,1); //end of line
-
-//table header
-$pdf->SetFont('Arial','B',12);
-$pdf->Cell(100,10,'Name',1,0,'C');
-$pdf->Cell(60,10,'Redeem',1,0,'C');
-$pdf->Cell(55,10,'Price',1,0,'C');
-$pdf->Cell(60,10,'Time',1,0,'C');
-$pdf->Cell(60,10,'Date',1,0,'C');
-$pdf->Cell(0,10,'',0,1); //end of line
 
 //table body
 if(isset($_POST['Generate'])){
+    //page for redeem
+    $pdf->AddPage();
+
+    //parang header(Redeem Report)
+    $pdf->SetFont('Arial','B',20,'C');
+    $pdf->Cell(350,6,'Redeem Report',0,1,'C');
+    $pdf->Cell(0,7,'',0,1); //end of line
+
+    //table header
+    $pdf->SetFont('Arial','B',12);
+    $pdf->Cell(100,10,'Name',1,0,'C');
+    $pdf->Cell(60,10,'Redeem',1,0,'C');
+    $pdf->Cell(55,10,'Price',1,0,'C');
+    $pdf->Cell(60,10,'Time',1,0,'C');
+    $pdf->Cell(60,10,'Date',1,0,'C');
+    $pdf->Cell(0,10,'',0,1); //end of line
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
@@ -150,7 +167,51 @@ if(isset($_POST['Generate'])){
             $pdf->Cell(0,10,'',0,1); //end of line
         }
     }
+    $pdf->Output();
+}
+elseif(isset($_POST['redeem_generate'])){
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',20,'C');
+    $pdf->Cell(350,6,'Redeem Report',0,1,'C');
+    $pdf->Cell(0,7,'',0,1); //end of line
+    //table header
+    $pdf->SetFont('Arial','B',12);
+    $pdf->Cell(100,10,'Name',1,0,'C');
+    $pdf->Cell(60,10,'Redeem',1,0,'C');
+    $pdf->Cell(55,10,'Price',1,0,'C');
+    $pdf->Cell(60,10,'Time',1,0,'C');
+    $pdf->Cell(60,10,'Date',1,0,'C');
+    $pdf->Cell(0,10,'',0,1); //end of line
+    $lname = $_POST['lname'];
+    $fname = $_POST['fname'];
+    $mname = $_POST['mname'];
+    $mindate = $_POST['mindate'];
+    $maxdate = $_POST['maxdate'];
+    $records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
+    if(isset($records)){
+        foreach($records as $rows){
+            $lname = $rows['lname'];
+            $fname = $rows['fname'];
+            $mname = $rows['mname'];
+            $item = $rows['item'];
+            $points_deducted = $rows['points_deducted'];
+            $date = date("Y-m-d",strtotime($rows['redeem_trans_time']));
+            $time = date("H:i:s A",strtotime($rows['redeem_trans_time']));
+            $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+            $pdf->SetFont('Arial','',12);
+            $pdf->Cell(100,10,$fullname,1,0);
+            $pdf->Cell(60,10,$item,1,0);
+            $pdf->Cell(55,10,$points_deducted,1,0);
+            $pdf->Cell(60,10,$time,1,0);
+            $pdf->Cell(60,10,$date,1,0);
+            $pdf->Cell(0,10,'',0,1); //end of line
+        }
+    }
+    $pdf->Output();
+}
+else{
+    echo "Filter not defined";
 }
 
-$pdf->Output();
+
 ?>
