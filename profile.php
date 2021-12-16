@@ -44,10 +44,10 @@
             <div>
                 <h3>
                 <?php 
-                echo '<h1>'.$fullname.'</h1><br>';
-                echo '<h3>'.$username.'<br>';
-                echo '<h3>'.$email.'<br>';
-                echo '<h3>'.$mobile_num.'<br>';
+                echo '<h2>'.$fullname.'</h2><br>';
+                echo '<h4>'.$username.'</h4>';
+                echo '<h4>'.$email.'</h4>';
+                echo '<h4>'.$mobile_num.'</h4>';
                 ?> 
                 </h3>     
             </div>

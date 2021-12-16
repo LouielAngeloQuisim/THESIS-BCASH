@@ -59,8 +59,8 @@ else{
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="pe-md-2">
-                    <h1 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h1>
-                    <p class="lead my-4 text-light">
+                    <h2 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h2>
+                    <p class="lead text-light">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
                     </p>
                 </div>
@@ -289,7 +289,7 @@ else{
                         </div>
                     </div>
                 </div>
-                <div class="col-md text-light text-center text-sm-start p-3">
+                <div class="col-md text-light text-center text-md-start p-3">
                     <h2>RECYCLABLE BOTTLES</h2>
                     <p class="lead">
                         Here are the following bottles that can only be Recycled. Present and scan this bottles at the continue to earn points.
