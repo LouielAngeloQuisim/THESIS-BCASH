@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2021 at 09:58 PM
+-- Generation Time: Dec 16, 2021 at 05:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `bottle_types` (
   `bottle_id` int(11) NOT NULL,
   `bottle_name` varchar(50) NOT NULL,
-  `item_value` int(50) NOT NULL
+  `item_value` int(50) NOT NULL,
+  `bottle_size` int(11) NOT NULL,
+  `bottle_img` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +68,7 @@ CREATE TABLE `recycle_transaction` (
   `acc_id` int(50) NOT NULL,
   `bottles` varchar(50) NOT NULL,
   `points_earned` int(50) NOT NULL,
-  `trans_time` datetime NOT NULL,
+  `recycle_trans_time` datetime NOT NULL,
   `bottle_count` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,7 +76,7 @@ CREATE TABLE `recycle_transaction` (
 -- Dumping data for table `recycle_transaction`
 --
 
-INSERT INTO `recycle_transaction` (`trans_id`, `acc_id`, `bottles`, `points_earned`, `trans_time`, `bottle_count`) VALUES
+INSERT INTO `recycle_transaction` (`trans_id`, `acc_id`, `bottles`, `points_earned`, `recycle_trans_time`, `bottle_count`) VALUES
 (1, 36, 'coke 290ml', 10, '2021-12-01 23:11:28', 5);
 
 -- --------------------------------------------------------
@@ -88,14 +90,14 @@ CREATE TABLE `redeem_transaction` (
   `acc_id` int(50) NOT NULL,
   `item` varchar(50) NOT NULL,
   `points_deducted` int(50) NOT NULL,
-  `trans_time` datetime NOT NULL
+  `redeem_trans_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `redeem_transaction`
 --
 
-INSERT INTO `redeem_transaction` (`redeem_trans_id`, `acc_id`, `item`, `points_deducted`, `trans_time`) VALUES
+INSERT INTO `redeem_transaction` (`redeem_trans_id`, `acc_id`, `item`, `points_deducted`, `redeem_trans_time`) VALUES
 (2, 36, 'pencil', 10, '2021-11-03 21:33:44'),
 (3, 36, 'pencil', 5, '2021-12-02 23:22:54');
 
@@ -129,7 +131,7 @@ CREATE TABLE `user_login` (
   `fname` varchar(50) NOT NULL,
   `mname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `mobile_num` int(50) NOT NULL,
+  `mobile_num` bigint(50) NOT NULL,
   `admin` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -139,8 +141,17 @@ CREATE TABLE `user_login` (
 
 INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `total_points`, `total_bottles`, `lname`, `fname`, `mname`, `email`, `mobile_num`, `admin`) VALUES
 ('louiel', 1, '123', '', 0, 0, '', '', '', '', 0, 0),
-('louielxx', 36, 'louiel', '$2y$10$hIdrsrRxTLa8iEvvSzosXe3TkrDqlbiFkX8cXqZGD1cf2RRVtGBa2', 0, 0, 'quisim', 'louiel ', 'coyoca', 'gg@gmail.com', 0, 0),
-('admin', 37, 'admin', '', 0, 0, '', '', '', '', 0, 1);
+('louielxx', 36, 'louiel', '$2y$10$YSInPZMKBdYJ62ibc2Uit.EkqYm8a11lBpPGRl.MafUkY0x8sH06W', 0, 0, 'quisim', 'louiel ', 'coyoca', 'gg@gmail.com', 0, 0),
+('admin', 37, 'admin', '', 0, 0, '', '', '', '', 0, 1),
+('louielxxx', 38, '123', '$2y$10$f8i4tgz/NJtjMkN8j0CD6ekBp/7Ua64F.NqIcPGXxo5sOTF.0I4ui', 0, 0, '', '', '', '', 0, 0),
+('Laine', 39, '123', '$2y$10$5OKWDkTGTLyjjqbYYGyzC.MGeDOOzWRx0dkBMtLwFIlHUEWFdqQ6a', 0, 0, '', '', '', '', 0, 0),
+('Laine', 40, '123', '$2y$10$YQTJkNjBxVCQ4b5yoiXnG.4BU87wGulKPWw781lipNuzKlm7P2MVO', 0, 0, '', '', '', '', 0, 0),
+('louielangelo', 43, '12322', '$2y$10$2SXILkWXa4YP6JcQOyXezeCyKfSok4rCmaYmiBt/k4Ljf/Eihn6VG', 0, 0, '', '', '', '', 0, 0),
+('louielxx', 44, '1233', '$2y$10$vsv8tTU0gYNbm8CLHk88X.NS//6bEJjliZnbDdyDdCpsXXP7Q67CW', 0, 0, '', '', '', '', 0, 0),
+('ggez1234', 53, '123', '', 0, 0, 'Quisim', 'louiel 2', 'Ortiguerra2', 'tatalipot@gmail.com', 2147483647, 0),
+('louielangelo', 54, '123', '', 0, 0, 'Quisim', 'louiel 2', 'Coyoca', 'louiel_quisim@yajoo.com', 2147483647, 0),
+('admin123', 55, '123', '', 0, 0, 'Quisim', 'Angelo', 'Coyoca', 'louiel_quisim@yajoo.com', 9080808080, 0),
+('Laine', 56, '123', '', 0, 0, 'Quisim', 'Angelo', 'Coyoca', 'tatalipot@gmail.com', 12121, 0);
 
 --
 -- Indexes for dumped tables
@@ -222,7 +233,7 @@ ALTER TABLE `shop_items`
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Constraints for dumped tables
