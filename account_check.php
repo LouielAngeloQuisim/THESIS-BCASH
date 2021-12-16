@@ -42,6 +42,10 @@ if(isset($_POST['login'])){
             } 
         } 
     }
+    else{
+        header("Location:login.php?noaccount=1");
+        ob_end_flush();
+    }
 }
 else{//if for some reason post is not setted
     header("Location:login.php?notset=1");
