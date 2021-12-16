@@ -623,4 +623,129 @@ class myDb {
         }
         
     }
+    public function search_Redeem($lname, $fname, $mname,$from_date,$to_date,$maxpoints, $minpoints){
+        $records = array();
+        
+        if(!empty($maxpoints) && !empty($minpoints) && !empty($from_date) && !empty($to_date)){
+            $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
+            recycle_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? AND mname LIKE ? AND lname  
+            LIKE ? AND recycle_trans_time BETWEEN ? AND ? AND total_points BETWEEN ? AND ?");
+            $fname = mysqli_real_escape_string($this->link, $fname);
+            $lname = mysqli_real_escape_string($this->link, $lname);
+            $mname = mysqli_real_escape_string($this->link, $mname);
+            $from_date = mysqli_real_escape_string($this->link, $from_date);
+            $to_date = mysqli_real_escape_string($this->link, $to_date);
+            $maxpoints = mysqli_real_escape_string($this->link, $maxpoints);
+            $minpoints = mysqli_real_escape_string($this->link, $minpoints);
+            $lname = "%{$lname}%";
+            $fname = "%{$fname}%";
+            $mname = "%{$mname}%";
+            $sql->bind_param("sssssii", $fname, $mname, $lname,$from_date,$to_date,$minpoints,$maxpoints);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'points_deducted' => $row['points_deducted'],
+                        'item' => $row['item'],
+                        'redeem_trans_time' => $row['redeem_trans_time'],
+                    ];
+                }   
+            }
+            return $records;
+        }
+        elseif(!empty($from_date) && !empty($to_date)){
+            $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
+            recycle_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? AND mname LIKE ? AND lname  
+            LIKE ? AND recycle_trans_time BETWEEN ? AND ?");
+            $fname = mysqli_real_escape_string($this->link, $fname);
+            $lname = mysqli_real_escape_string($this->link, $lname);
+            $mname = mysqli_real_escape_string($this->link, $mname);
+            $from_date = mysqli_real_escape_string($this->link, $from_date);
+            $to_date = mysqli_real_escape_string($this->link, $to_date);
+            $maxpoints = mysqli_real_escape_string($this->link, $maxpoints);
+            $minpoints = mysqli_real_escape_string($this->link, $minpoints);
+            $lname = "%{$lname}%";
+            $fname = "%{$fname}%";
+            $mname = "%{$mname}%";
+            $sql->bind_param("sssss", $fname, $mname, $lname,$from_date,$to_date);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'points_deducted' => $row['points_deducted'],
+                        'item' => $row['item'],
+                        'redeem_trans_time' => $row['redeem_trans_time'],
+                    ];
+                }   
+            }
+            return $records;
+        }
+        elseif(!empty($maxpoints) && !empty($minpoints)){
+            $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
+            recycle_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? AND mname LIKE ? AND lname  
+            LIKE ? AND total_points BETWEEN ? AND ?");
+            $fname = mysqli_real_escape_string($this->link, $fname);
+            $lname = mysqli_real_escape_string($this->link, $lname);
+            $mname = mysqli_real_escape_string($this->link, $mname);
+            $from_date = mysqli_real_escape_string($this->link, $from_date);
+            $to_date = mysqli_real_escape_string($this->link, $to_date);
+            $maxpoints = mysqli_real_escape_string($this->link, $maxpoints);
+            $minpoints = mysqli_real_escape_string($this->link, $minpoints);
+            $lname = "%{$lname}%";
+            $fname = "%{$fname}%";
+            $mname = "%{$mname}%";
+            $sql->bind_param("sssii", $fname, $mname, $lname,$minpoints,$maxpoints);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'points_deducted' => $row['points_deducted'],
+                        'item' => $row['item'],
+                        'redeem_trans_time' => $row['redeem_trans_time'],
+                    ];
+                }   
+            }
+            return $records;
+        }
+        else{
+            $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
+            recycle_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? AND mname LIKE ? AND lname  
+            LIKE ? ");
+            $fname = mysqli_real_escape_string($this->link, $fname);
+            $lname = mysqli_real_escape_string($this->link, $lname);
+            $mname = mysqli_real_escape_string($this->link, $mname);
+            $lname = "%{$lname}%";
+            $fname = "%{$fname}%";
+            $mname = "%{$mname}%";
+            $sql->bind_param("sss", $fname, $mname, $lname);
+            $sql->execute();
+            $result = $sql->get_result();
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $records[] = [
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'points_deducted' => $row['points_deducted'],
+                        'item' => $row['item'],
+                        'redeem_trans_time' => $row['redeem_trans_time'],
+                    ];
+                }   
+            }
+            return $records;
+        }
+        
+    }
 }

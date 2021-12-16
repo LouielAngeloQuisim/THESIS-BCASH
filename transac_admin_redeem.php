@@ -115,7 +115,6 @@
                                                 $name = $mydb->get_Name($user_id);
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
                                                 $time = date("H:i:s A",strtotime($rows['trans_time']));
-                                                echo $acc_id;
                                                 if(isset($name)){
                                                     foreach($name as $newrows){
                                                         $fname = $newrows['fname'];
@@ -329,6 +328,7 @@
         </div>
     </div>
 
+    <form action="redeem_preview.php" method = "post">
     <!-- Modal Generate Redeem -->
     <div class="modal fade modalpopup" id="modalgenRepRedeem" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -525,14 +525,14 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" id="confirm">
+                    <button type="submit" class="btn btn-secondary btn-md addbtn" id="confirm" name = "redeem_generate">
                         Confirm
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>
     <!-- black line -->
     <section class="bg-primary p-3">
     </section>

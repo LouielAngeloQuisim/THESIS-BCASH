@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+    isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+        $acc_id = $_SESSION['acc_id'];
+        $qrcode = $_SESSION['qrcode'];
+        $admin = $_SESSION['admin'];
+        $total_points = $_SESSION['total_points'];
+        $total_bottles = $_SESSION['total_bottles'];
+        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+        $output["img"] = $url;
+    }
+    else{
+        echo "error in collecting user data";
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -154,13 +172,13 @@
                         </thead>
                         <tbody class="align-middle">
                         <?php
-                            if(isset($_POST['confirm_all'])){
+                            if(isset($_POST['redeem_generate'])){
                                 $lname = $_POST['lname'];
                                 $fname = $_POST['fname'];
                                 $mname = $_POST['mname'];
                                 $mindate = $_POST['mindate'];
                                 $maxdate = $_POST['maxdate'];
-                                $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+                                $records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
                                 if(isset($records)){
                                     foreach($records as $rows){
                                         $lname = $rows['lname'];
@@ -182,12 +200,6 @@
                                         ';
                                     }
                                 }
-                            }
-                            elseif(isset($_POST['generate_recycle'])){
-
-                            }
-                            elseif(isset($_POST['generate_redeem'])){
-
                             }
                             else{
                                 echo "Filter not defined";
