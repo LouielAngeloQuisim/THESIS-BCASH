@@ -361,7 +361,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch" checked>
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname" placeholder="Enter Last Name">
+                                    <input type="text" class="form-control tfield1" id="lname" name="lname" placeholder="Enter Last Name">
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -384,7 +384,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch" checked>
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname" placeholder="Enter First Name">
+                                    <input type="text" class="form-control tfield1" id="fname" name="fname" placeholder="Enter First Name">
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -407,7 +407,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch" checked>
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname" placeholder="Enter Middle Name">
+                                    <input type="text" class="form-control tfield1" id="mname" name="mname" placeholder="Enter Middle Name">
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -429,7 +429,7 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input switchgbtn" type="checkbox" id="itemswitch" checked>
                             <label class="form-check-label" for="itemswitch">
-                                <select class="form-select inputtg1" id="item">
+                                <select class="form-select inputtg1" id="item" name="item">
                                     <option selected>Select Redeemable Item</option>
                                     <option value="print">Print</option>
                                     <option value="xerox">Xerox</option>
@@ -456,7 +456,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="pswitch" checked>
                             <label class="form-check-label" for="pswitch">
                                 <div class="form-floating">
-                                    <input type="double" class="form-control tfield1" id="price" placeholder="Enter Price">
+                                    <input type="double" class="form-control tfield1" id="price" name="price" placeholder="Enter Price">
                                     <label for="price">Price</label>
                                 </div>
                             </label>
@@ -479,9 +479,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate">
+                                    <input type="date" class="form-control" id="mindate" name="mindate">
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate">
+                                    <input type="date" class="form-control" id="maxdate" name="maxdate">
                                 </div>
                             </label>
                         </div>
