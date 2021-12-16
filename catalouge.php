@@ -32,16 +32,16 @@
     ?>
 
     <!-- show case -->
-    <section class="bg-primary text-light p-5 text-center text-sm-start">
+    <section class="bg-primary text-light p-5 text-center">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
                     <div class="h1">
                         <i class="bi bi-bag-check"></i>
                     </div>
-                    <h1>Here's your Redeemable chuchu</h1>
-                    <p class="lead my-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
+                    <h2>REDEEMABLE ITEMS</h2>
+                    <p class="lead">
+                        Here are the following redeemable items that you can redeem using your earned points.
                     </p>
                 </div>
             </div>

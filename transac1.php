@@ -33,16 +33,16 @@
     ?>
 
     <!-- show case area -->
-    <section class="bg-primary text-light p-5 text-center text-sm-start">
+    <section class="bg-primary text-light p-5 text-center">
         <div class="container">
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div>
                     <div class="h1">
                         <i class="bi bi-card-text"></i>
                     </div>
-                    <h1>Here's your Transactions</h1>
-                    <p class="lead my-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
+                    <h2>HERE ARE YOUR TRANSACTIONS</h2>
+                    <p class="lead">
+                        This page contains all the recycle and redeem transactions you have made.
                     </p>
                 </div>
             </div>
@@ -56,10 +56,10 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link" href="transac.php">Recycle Tab</a>
+                            <a class="nav-link" href="transac.php">Recycle Records</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="transac1.php">Redeem Tab</a>
+                            <a class="nav-link active" href="transac1.php">Redeem Records</a>
                         </li>
                     </ul>
                 </div>

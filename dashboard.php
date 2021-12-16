@@ -219,7 +219,6 @@ else{
         </div>
     </section>
 
-
     <!-- acceptable bottles area -->
     <section class="bg-dark p-5">
         <div class="container">
@@ -242,16 +241,40 @@ else{
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="img/slide-0.PNG" class="d-block w-100">
+                                        <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="img/slide-1.PNG" class="d-block w-100">
+                                        <img src="img/slide-1.PNG" class="d-block pb-2 w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="img/slide-2.PNG" class="d-block w-100">
+                                        <img src="img/slide-2.PNG" class="d-block pb-2 w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="img/slide-3.PNG" class="d-block w-100">
+                                        <img src="img/slide-3.PNG" class="d-block pb-2 w-100">
+                                        <div class="bg-light p-5">
+                                            <div class="carousel-caption">
+                                                <h5>[Type of Bottle]</h5>
+                                                <p>[Bottle measurements and bottle currency]</p>
+                                            </div>  
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
@@ -267,10 +290,9 @@ else{
                     </div>
                 </div>
                 <div class="col-md text-light text-center text-sm-start p-3">
-                    <h2>Here are the Bottles chuchu</h2>
+                    <h2>RECYCLABLE BOTTLES</h2>
                     <p class="lead">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium sed ad doloremque quaerat 
-                        sapiente amet quae maxime modi assumenda minus. Rem voluptatibus excepturi voluptates perferendis!
+                        Here are the following bottles that can only be Recycled. Present and scan this bottles at the continue to earn points.
                     </p>
                 </div>
             </div>

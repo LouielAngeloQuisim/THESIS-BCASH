@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Login Form</title>
+    <title>Login</title>
   </head>
   <body>
       <section class="bg-primary">
