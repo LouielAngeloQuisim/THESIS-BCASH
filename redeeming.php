@@ -46,7 +46,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalredeempopup">Redeem</h5>
+                    <h5 class="modal-title" id="modalredeempopup">Redeem Item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
@@ -54,7 +54,7 @@
                         <i class="bi bi-check-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Redeem QR Successfully Scanned!
+                        Redeemed Succesfully
                     </p>
                 </div>
                 <div class="modal-footer">

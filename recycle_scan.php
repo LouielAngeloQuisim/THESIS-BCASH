@@ -56,7 +56,7 @@
                         <i class="bi bi-check-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Bottle Successfully Scanned!
+                        Bottle Successfully Scanned
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -88,12 +88,12 @@
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Are you want to continue to Qr Code scanning?
+                        Do you want to continue to scanning Qr Code?
                     </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <a href="recycling.php" class="btn btn-secondary">Confirm</a>
+                    <a href="recycling.php" class="btn btn-secondary">Yes</a>
                 </div>
             </div>
         </div>
@@ -114,7 +114,7 @@
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Are you sure to cancel your transaction?
+                        Are you sure you want to cancel your transaction?
                     </p>
                 </div>
                 <div class="modal-footer">

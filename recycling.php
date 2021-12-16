@@ -46,7 +46,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalrecyclepopup">Redeem</h5>
+                    <h5 class="modal-title" id="modalrecyclepopup">Claim Points</h5>
                     <!-- Cancel Confirm trigger modal -->
                     <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                     </button>
@@ -56,7 +56,7 @@
                         <i class="bi bi-check-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Recycle QR Successfully Scanned!
+                        Points transferred succesfully
                     </p>
                 </div>
                 <div class="modal-footer">
