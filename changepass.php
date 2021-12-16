@@ -168,11 +168,11 @@
                                 if (document.getElementById('currentpassword').value ==
                                     current_pass) {
                                     document.getElementById('pass_message').style.color = 'green';
-                                    document.getElementById('pass_message').innerHTML = 'matching';
+                                    document.getElementById('pass_message').innerHTML = 'Password match';
                                     document.getElementById('submit').disabled = false;
                                 } else {
                                     document.getElementById('pass_message').style.color = 'red';
-                                    document.getElementById('pass_message').innerHTML = 'not matching';
+                                    document.getElementById('pass_message').innerHTML = 'Password do not match';
                                     document.getElementById('submit').disabled = true;
                                 }
                             }
@@ -180,11 +180,11 @@
                                 if (document.getElementById('currentpassword').value ==
                                     current_pass) {
                                     document.getElementById('pass_message').style.color = 'green';
-                                    document.getElementById('pass_message').innerHTML = 'matching';
+                                    document.getElementById('pass_message').innerHTML = 'Password match';
                                     document.getElementById('submit').disabled = false;
                                 } else {
                                     document.getElementById('pass_message').style.color = 'red';
-                                    document.getElementById('pass_message').innerHTML = 'not matching';
+                                    document.getElementById('pass_message').innerHTML = 'Password do not match';
                                     document.getElementById('submit').disabled = true;
                                 }
                             }
@@ -192,11 +192,11 @@
                                 if (document.getElementById('password').value ==
                                     document.getElementById('confirmpassword').value) {
                                     document.getElementById('message').style.color = 'green';
-                                    document.getElementById('message').innerHTML = 'matching';
+                                    document.getElementById('message').innerHTML = 'Password match';
                                     document.getElementById('submit').disabled = false;
                                 } else {
                                     document.getElementById('message').style.color = 'red';
-                                    document.getElementById('message').innerHTML = 'not matching';
+                                    document.getElementById('message').innerHTML = 'Password do not match';
                                     document.getElementById('submit').disabled = true;
                                 }
                             }
@@ -208,7 +208,7 @@
                                         $('#modalConchangepass').modal('show');
                                     }
                                     else if(password != '' && confirm_password != '' && password != confirm_password){
-                                        alert('New password and Confirm password does not match');
+                                        alert('New password and Confirm new password does not match');
                                         $('#modalchangepassConfirm').modal('hide');
                                     }
                                     else{
