@@ -11,6 +11,7 @@
         $email = $_SESSION['email'];
         $mobile_num = $_SESSION['mobile_num'];
         $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+        $password = $_SESSION['password'];
     }
     else{
         $acc_id = null;
@@ -74,8 +75,9 @@
                         </h3>
                         <form action="update_pass.php" class="mb-3" method="post">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-1" onkeyup='check();' id="currentpassword" placeholder="Enter Current Password" name="password" required>
+                                <input type="password" class="form-control rounded-1" onkeyup='check_current();' id="currentpassword" placeholder="Enter Current Password" name="password" required>
                                 <label for="currentpassword" >Current Password</label>
+                                <span id='pass_message'></span>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control rounded-1" onkeyup='check();' id="password" placeholder="Enter Password" name="password" required>
@@ -104,7 +106,7 @@
                              
                             <div class="d-grid gap-2">
                                 <!-- Change Pass Confirm trigger modal -->
-                                <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalchangepassConfirm">
+                                <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalchangepassConfirm" id="submit">
                                     Confirm
                                 </button>
                                 <!-- Change Pass Cancel trigger modal -->
@@ -161,14 +163,41 @@
                         </form>
                         <script type="text/javascript">
                             //check if password is match or not
+                            var current_pass = '<?php echo $password;?>';
+                            var password = function(){
+                                if (document.getElementById('currentpassword').value ==
+                                    current_pass) {
+                                    document.getElementById('pass_message').style.color = 'green';
+                                    document.getElementById('pass_message').innerHTML = 'matching';
+                                    document.getElementById('submit').disabled = false;
+                                } else {
+                                    document.getElementById('pass_message').style.color = 'red';
+                                    document.getElementById('pass_message').innerHTML = 'not matching';
+                                    document.getElementById('submit').disabled = true;
+                                }
+                            }
+                            var check_current = function() {
+                                if (document.getElementById('currentpassword').value ==
+                                    current_pass) {
+                                    document.getElementById('pass_message').style.color = 'green';
+                                    document.getElementById('pass_message').innerHTML = 'matching';
+                                    document.getElementById('submit').disabled = false;
+                                } else {
+                                    document.getElementById('pass_message').style.color = 'red';
+                                    document.getElementById('pass_message').innerHTML = 'not matching';
+                                    document.getElementById('submit').disabled = true;
+                                }
+                            }
                             var check = function() {
                                 if (document.getElementById('password').value ==
                                     document.getElementById('confirmpassword').value) {
                                     document.getElementById('message').style.color = 'green';
                                     document.getElementById('message').innerHTML = 'matching';
+                                    document.getElementById('submit').disabled = false;
                                 } else {
                                     document.getElementById('message').style.color = 'red';
                                     document.getElementById('message').innerHTML = 'not matching';
+                                    document.getElementById('submit').disabled = true;
                                 }
                             }
                             $(function(){

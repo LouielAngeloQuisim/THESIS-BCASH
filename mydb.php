@@ -87,6 +87,7 @@ class myDb {
                     'fname' => $row['fname'],
                     'mname' => $row['mname'],
                     'email' => $row['email'],
+                    'password' => $row['password'],
                     'mobile_num' => $row['mobile_num'],
                     'username' => $row['username'],
                     'total_points' => $row['total_points'],

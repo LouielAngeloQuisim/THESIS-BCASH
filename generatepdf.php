@@ -101,6 +101,7 @@ elseif(isset($_POST['generate_recycle'])){
             }
         }
     }
+    $pdf->Output();
 }
 
 

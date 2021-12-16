@@ -142,7 +142,7 @@
             </div>
         </div>
     </section>
-    <form action="preview.php" method = "post">
+    <form action="all_preview.php" method = "post">
     <!-- Modal Generate All -->
     <div class="modal fade modalpopup" id="modalgenRepAll" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -300,7 +300,7 @@
     </div>
     </form>
 
-    <form action="preview.php" method = "post">
+    <form action="recycle_preview.php" method = "post">
     <!-- Modal Generate Recycle -->
     <div class="modal fade modalpopup" id="modalgenRepRecycle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">

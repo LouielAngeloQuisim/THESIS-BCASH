@@ -38,6 +38,7 @@ if(isset($_POST['register'])){
                     $_SESSION['mobile_num'] = $rows['mobile_num'];  
                     $_SESSION['username'] = $rows['username'];
                     $_SESSION['admin'] = $rows['admin'];
+                    $_SESSION['password'] = $rows['password']; 
                     //hash data for qrcode
                     $hash_qrcode = password_hash($_SESSION['acc_id'], PASSWORD_DEFAULT);
                     $results = $mydb->add_Qrcode($acc_id, $hash_qrcode);

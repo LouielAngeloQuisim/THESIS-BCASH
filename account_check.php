@@ -22,6 +22,7 @@ if(isset($_POST['login'])){
                 $_SESSION['mobile_num'] = $rows['mobile_num'];  
                 $_SESSION['username'] = $rows['username'];
                 $_SESSION['admin'] = $rows['admin'];
+                $_SESSION['password'] = $rows['password']; 
                 header("Location:dash_admin.php");
                 ob_end_flush();
             }
@@ -37,6 +38,7 @@ if(isset($_POST['login'])){
                 $_SESSION['mobile_num'] = $rows['mobile_num'];  
                 $_SESSION['username'] = $rows['username'];
                 $_SESSION['admin'] = $rows['admin'];
+                $_SESSION['password'] = $rows['password']; 
                 header("Location:dashboard.php");
                 ob_end_flush();
             } 
