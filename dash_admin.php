@@ -43,8 +43,8 @@
     <!-- recycle reports cards -->
     <section class=" bg-dark p-5">
         <div class="container">
-            <h1 class="text-light text-center">
-                Recycle Reports
+            <h1 class="text-light text-center mb-4">
+                RECYCLE REPORTS
             </h1>
             <!-- Total Bottles Recycled -->
             <div class="row text-center g-4">
@@ -56,7 +56,7 @@
                         <h3 class="card-title mb-md-2">
                             Bottles Recycled
                         </h3>
-                        <p class="card-text lead mb-md-5">
+                        <p class="card-text lead mb-md-5 fw-normal">
                             <?php
                                 $total_sum = $mydb->get_sumBottles($admin, $acc_id);
                                 echo 'Total: '.$total_sum.''; 
