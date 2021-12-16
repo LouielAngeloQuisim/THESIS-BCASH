@@ -41,9 +41,9 @@
     <!-- redeem reports cards  -->
     <section class=" bg-dark p-5">
         <div class="container">
-            <h1 class="text-light text-center">
-                Redeem Reports
-            </h1>
+            <h2 class="text-light text-center mb-4">
+                REDEEM REPORT
+            </h2>
             <!-- accounts redeemed total  -->
             <div class="row text-center g-4">
                 <div class="col-md">
@@ -54,7 +54,7 @@
                         <h3 class="card-title mb-md-2">
                             Accounts Redeemed
                         </h3>
-                        <p class="card-text lead mb-md-5">
+                        <p class="card-text lead mb-md-5 fw-normal">
                             <?php
                                 $total_count = $mydb->get_Countredeem();
                                 echo $total_count;
@@ -70,7 +70,7 @@
                             <i class="bi bi-card-text"></i>
                         </div>
                         <h3 class="card-title">
-                            Recent Transaction
+                            Recent Transactions
                         </h3>
                         <p class="card-text lead">
                             <table class="table table-striped">
@@ -138,7 +138,7 @@
                                     <i class="bi bi-file-bar-graph"></i>
                                 </div>
                                     <h3 class="card-title">
-                                        Monthly Reports
+                                        Monthly Report
                                     </h3>
                                     <?php
                                         $month = $mydb->get_Maxdate();
@@ -152,7 +152,7 @@
                                         else{
                                             $newmonth = "Month undefined";
                                         }
-                                        echo '<h2>'.$newmonth.'</h2>';
+                                        echo '<h3>'.$newmonth.'</h3>';
                                     ?>
                                 <!-- nasa baba mismo yung chart  -->
                                 <div class="card-body">
@@ -260,7 +260,7 @@
             data:{
                 labels:<?php echo json_encode($newdate);?>,
                 datasets:[{
-                    label:'Accounts Redeemed',
+                    label:'Redeemed Item',
                     data:<?php echo json_encode($no_redeem);?>,
                     backgroundColor:'rgba(171, 51, 161, 0.6)',
                     borderWidth:3,

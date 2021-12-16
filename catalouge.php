@@ -34,7 +34,7 @@
     <!-- show case -->
     <section class="bg-primary text-light p-5 text-center">
         <div class="container">
-            <div class="d-sm-flex align-items-center justify-content-between">
+            <div class="align-items-center">
                 <div>
                     <div class="h1">
                         <i class="bi bi-bag-check"></i>

@@ -46,13 +46,13 @@
             <div class="h1 text-white">
                 <i class="bi bi-card-text"></i>
             </div>
-            <h1 class="text-light text-center">
-                Transactions
-            </h1>
+            <h2 class="text-light text-center mb-3">
+                REDEEM AND RECYCLE RECORDS
+            </h2>
             <p class="lead text-center">
                 <!-- Button Generate All trigger modal -->
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRepAll">
-                    Print All
+                    Print All Redeem and Recycle Transactions
                 </button>
             </p>
         </div>
@@ -65,10 +65,10 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="transac_admin_recycle.php">Recycle Tab</a>
+                            <a class="nav-link active" href="transac_admin_recycle.php">Recycle Records</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="transac_admin_redeem.php">Redeem Tab</a>
+                            <a class="nav-link" href="transac_admin_redeem.php">Redeem Records</a>
                         </li>
                     </ul>
                 </div>
@@ -76,7 +76,9 @@
                     <form action="">
                         <div class="input-group px-5 my-3">
                             <input type="text" class="form-control" placeholder="Search">
-                            <button class="btn btn-secondary" type="submit" id="searchbtn">Go!</button>
+                            <button class="btn btn-secondary" type="submit" id="searchbtn">
+                                <i class="bi bi-search"></i>
+                            </button>
                         </div>
                     </form>
                     <div class="h2">
@@ -86,7 +88,7 @@
                     <p class="lead text-center">
                         <!-- Button Generate Recycle trigger modal -->
                         <button type="button" class="btn btn-secondary btn-sm addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRepRecycle">
-                            Print Recycle Reports
+                            Print Recycle Records
                         </button>
                     </p>
                     <!-- user all recycle records -->
@@ -97,6 +99,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
+                                            <th scope="col">Bottle type</th>
                                             <th scope="col">Earned points</th>
                                             <th scope="col">Time</th>
                                             <th scope="col">Date</th>
@@ -123,6 +126,7 @@
                                                 }
                                                 echo '<tr>';
                                                 echo '<td>'.$fullname.'</td>';
+                                                echo '<td> [bottle type] </td>';
                                                 echo '<td>'.$points_earned .'</td>';
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
@@ -152,6 +156,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    Filter by:
                     <div class="row row-cols-1 row-cols-md-2 text-center">
                         <div class="col text-start py-3">
                             <!-- eto kapag na oon yung switch tapos (kapaag eto nakaon madidisable na yung the rest kase priprint niya all ehh) -->
@@ -286,7 +291,7 @@
                 </div>
                 <div class="modal-body">
                     <p class="lead">
-                        Are you sure to Generate All Reports?
+                        Are you sure you want to generate all reports?
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -310,6 +315,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    Filter by:
                     <div class="col text-start py-3">
                         <!-- eto kapag na oon yung switch tapos (kapaag eto nakaon madidisable na yung the rest kase priprint niya all ehh) -->
                         <div class="form-check form-switch">
@@ -467,7 +473,7 @@
                 </div>
                 <div class="modal-body">
                     <p class="lead">
-                        Are you sure to Generate this Recycle Report?
+                        Are you sure you want to generate this recycle report?
                     </p>
                 </div>
                 <div class="modal-footer">

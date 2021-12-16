@@ -99,41 +99,14 @@
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Are you sure to cancel this Report then Logout?
+                        Are you sure you want to cancel this report and then logout?
                     </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancel
+                        No
                     </button>
-                    <a href="login.php" class="btn btn-secondary">Confirm</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal logout -->
-    <div class="modal fade" id="modallogout" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="h1 text-danger">
-                        <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <p class="text-fondark">
-                        Are you sure to Logout?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancel
-                    </button>
-                    <a href="login.php" class="btn btn-secondary">Confirm</a>
+                    <a href="login.php" class="btn btn-secondary">Yes</a>
                 </div>
             </div>
         </div>
@@ -145,9 +118,9 @@
             <div class="h1 text-white text-center">
                 <i class="bi bi-journal-text"></i>
             </div>
-            <h1 class="text-light text-center">
+            <h2 class="text-light text-center">
                 Here's your Report
-            </h1>
+            </h2>
         </div>
     </section>
 
@@ -156,13 +129,14 @@
         <div class="container text-center">
             <div class="content3">
                 <div class="scroll">
-                    <h1>
+                    <h2>
                         Recycle Records
-                    </h1>
+                    </h2>
                     <table class="table table-striped table3">
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
+                                <th scope="col">Bottle type</th>
                                 <th scope="col">Earned points</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Date</th>
@@ -222,6 +196,7 @@
                                                 echo '
                                                 <tr>
                                                 <td>'.$fullname.'</td>
+                                                <td> [bottle type] </td>
                                                 <td>'.$points_earned.'</td>
                                                 <td>'.$time.'</td>
                                                 <td>'.$date.'</td>
@@ -243,7 +218,7 @@
                 </div>
             </div>
             
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
                 <!-- Button Cancel trigger modal -->
                 <button type="button" class="btn btn-secondary me-md-2" data-bs-toggle="modal" data-bs-target="#modalCancel">
                     Cancel
@@ -286,14 +261,14 @@
                 </div>
                 <div class="modal-body">
                     <p class="lead">
-                        Are you sure to Cancel this Report?
+                        Are you sure you want to cancel this report?
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     </button>
                     <a href="transac_admin_recycle.php" class="btn btn-secondary btn-md addbtn" id="confirm">
-                        Confirm
+                        Yes
                     </a>
                 </div>
             </div>

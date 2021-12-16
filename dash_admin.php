@@ -70,7 +70,7 @@
                             <i class="bi bi-card-text"></i>
                         </div>
                         <h3 class="card-title">
-                            Recent Transaction
+                            Recent Transactions
                         </h3>
                         <!-- Recycle Recent Transaction -->
                         <p class="card-text lead">
@@ -135,7 +135,7 @@
                                     <i class="bi bi-file-bar-graph"></i>
                                 </div>
                                     <h3 class="card-title">
-                                        Monthly Reports
+                                        Monthly Report
                                     </h3>
                                     <?php
                                         $month = $mydb->get_Maxdate();
@@ -149,7 +149,7 @@
                                         else{
                                             $newmonth = "Month undefined";
                                         }
-                                        echo '<h2>'.$newmonth.'</h2>';
+                                        echo '<h3>'.$newmonth.'</h3>';
                                     ?>
                                     
                                 <!-- nasa baba mismo yung chart  -->

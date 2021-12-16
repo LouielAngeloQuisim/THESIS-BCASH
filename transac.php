@@ -35,7 +35,7 @@
     <!-- show case area -->
     <section class="bg-primary text-light p-5 text-center">
         <div class="container">
-            <div class="d-sm-flex align-items-center justify-content-between">
+            <div class="align-items-center">
                 <div>
                     <div class="h1">
                         <i class="bi bi-card-text"></i>
@@ -75,6 +75,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Bottle Type</th>
                                             <th scope="col">Earned points</th>
                                             <th scope="col">Time</th>
                                             <th scope="col">Date</th>
@@ -99,6 +100,7 @@
                                                     }
                                                 }
                                                 echo '<tr>';
+                                                echo '<td> [bottle type] </td>';
                                                 echo '<td>'.$points_earned .'</td>';
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';

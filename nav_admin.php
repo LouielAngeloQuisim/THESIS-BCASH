@@ -46,14 +46,14 @@
                             <i class="bi bi-exclamation-circle"></i>
                         </div>
                         <p class="text-fondark">
-                            Are you sure to Logout?
+                            Are you sure you want to logout?
                         </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Cancel
+                            No
                         </button>
-                        <a href="logout.php" class="btn btn-secondary">Confirm</a>
+                        <a href="logout.php" class="btn btn-secondary">Yes</a>
                     </div>
                 </div>
             </div>

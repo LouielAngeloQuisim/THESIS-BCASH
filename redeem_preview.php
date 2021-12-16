@@ -99,34 +99,7 @@
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
                     <p class="text-fondark">
-                        Are you sure to cancel this Report then Logout?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Cancel
-                    </button>
-                    <a href="login.php" class="btn btn-secondary">Confirm</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal logout -->
-    <div class="modal fade" id="modallogout" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="h1 text-danger">
-                        <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <p class="text-fondark">
-                        Are you sure to Logout?
+                        Are you sure you want to cancel this report and then logout?
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -145,9 +118,9 @@
             <div class="h1 text-white text-center">
                 <i class="bi bi-journal-text"></i>
             </div>
-            <h1 class="text-light text-center">
+            <h2 class="text-light text-center">
                 Here's your Report
-            </h1>
+            </h2>
         </div>
     </section>
 
@@ -157,9 +130,9 @@
             <!--redeem records print-->
             <div class="content3 my-3">
                 <div class="scroll">
-                    <h1>
+                    <h2>
                         Redeem Records
-                    </h1>
+                    </h2>
                     <table class="table table-striped table3">
                         <thead>
                             <tr>
@@ -253,7 +226,7 @@
                 </div>
                 <div class="modal-body">
                     <p class="lead">
-                        Are you sure to Cancel this Report?
+                        Are you sure you want to cancel this report?
                     </p>
                 </div>
                 <div class="modal-footer">
