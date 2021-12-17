@@ -55,7 +55,7 @@
                     <div class="h1 text-success">
                         <i class="bi bi-check-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Bottle Successfully Scanned
                     </p>
                 </div>
@@ -87,7 +87,7 @@
                     <div class="h1 text-danger">
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Do you want to continue to scanning Qr Code?
                     </p>
                 </div>
@@ -113,7 +113,7 @@
                     <div class="h1 text-danger">
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Are you sure you want to cancel your transaction?
                     </p>
                 </div>

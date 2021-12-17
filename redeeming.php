@@ -53,7 +53,7 @@
                     <div class="h1 text-success">
                         <i class="bi bi-check-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Redeemed Succesfully
                     </p>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="h1 text-danger">
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Are you sure to cancel your transaction?
                     </p>
                 </div>
