@@ -43,9 +43,9 @@
     <!-- recycle reports cards -->
     <section class=" bg-dark p-5">
         <div class="container">
-            <h1 class="text-light text-center mb-4">
+            <h2 class="text-light text-center mb-4">
                 RECYCLE REPORTS
-            </h1>
+            </h2>
             <!-- Total Bottles Recycled -->
             <div class="row text-center g-4">
                 <div class="col-md">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="card bg-light text-fontdark border border-2 border-primary p-3 pb-0">
+                    <div class="card bg-light text-fontdark p-3 pb-0">
                         <div class="h1">
                             <i class="bi bi-card-text"></i>
                         </div>

@@ -95,7 +95,6 @@
                                             $name = $mydb->get_Name($user_id);
                                             $date = date("Y-m-d",strtotime($rows['trans_time']));
                                             $time = date("H:i:s A",strtotime($rows['trans_time']));
-                                            echo $acc_id;
                                             if(isset($name)){
                                                 foreach($name as $newrows){
                                                     $fname = $newrows['fname'];

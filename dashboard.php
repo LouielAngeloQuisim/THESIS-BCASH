@@ -177,7 +177,7 @@ else{
                                             }
                                         }
                                         else{
-                                            echo "There no transactions yet";
+                                            echo "There are no recycle transactions yet";
                                         }
                                     ?>
                                 </tbody>
@@ -207,7 +207,7 @@ else{
                                             }
                                         }
                                         else{
-                                            echo "There no transactions yet";
+                                            echo "There are no redeem transactions yet";
                                         }
                                     ?>
                                 </tbody>
@@ -289,7 +289,7 @@ else{
                         </div>
                     </div>
                 </div>
-                <div class="col-md text-light text-center text-md-start p-3">
+                <div class="col-md text-light text-center text-md-start p-4">
                     <h2>RECYCLABLE BOTTLES</h2>
                     <p class="lead">
                         Here are the following bottles that can only be Recycled. Present and scan this bottles at the continue to earn points.

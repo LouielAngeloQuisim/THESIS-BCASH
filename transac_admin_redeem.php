@@ -135,7 +135,7 @@
                                             }
                                         }
                                         else{
-                                            echo "There are no records of transactions yet";
+                                            echo "There are no records of redeem transactions yet";
                                         }
                                     ?>
                                     </tbody>

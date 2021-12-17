@@ -232,7 +232,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </button>
-                    <a href="transac_admin_recycle.php" class="btn btn-secondary btn-md addbtn" id="confirm">
+                    <a href="transac_admin_redeem.php" class="btn btn-secondary btn-md addbtn" id="confirm">
                         Confirm
                     </a>
                 </div>

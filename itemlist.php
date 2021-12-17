@@ -28,9 +28,9 @@
             <div class="h1 text-white text-center">
                 <i class="bi bi-card-list"></i>
             </div>
-            <h1 class="text-light text-center">
-                List of Items
-            </h1>
+            <h2 class="text-light text-center">
+                LIST OF ITEMS
+            </h2>
             <p class="lead text-center">
                 <!-- Button Add Item trigger modal -->
                 <button type="button" class="btn btn-secondary btn-lg addbtn" data-bs-toggle="modal" data-bs-target="#modaladdItem">
@@ -113,15 +113,15 @@
                         <input class="form-control" type="file" id="addItemFile">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="btype" value="[Item Type]">
+                        <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="btype">
                         <label for="btype" required>Bottle Type</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="iprice" value="[999.999]">
+                        <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="iprice">
                         <label for="iprice" required>Item Price</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="idisc" value="[Item Description]">
+                        <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="idisc">
                         <label for="idisc" required>Item Description</label>
                     </div>
                 </div>

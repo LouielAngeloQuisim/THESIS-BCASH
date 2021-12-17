@@ -28,9 +28,9 @@
             <div class="h1 text-white text-center">
                 <i class="bi bi-card-list"></i>
             </div>
-            <h1 class="text-light text-center">
-                List of Bottles
-            </h1>
+            <h2 class="text-light text-center">
+                LIST OF BOTTLES
+            </h2>
             <p class="lead text-center">
                 <!-- Button Add Bottle trigger modal -->
                 <button type="button" class="btn btn-secondary btn-lg addbtn" data-bs-toggle="modal" data-bs-target="#modaladdBottle">
@@ -113,15 +113,15 @@
                         <input class="form-control" type="file" id="addBottleFile">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" value="[Bottle Type]">
+                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype">
                         <label for="btype" required>Bottle Type</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize" value="[Bottle Size]">
+                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize">
                         <label for="bsize" required>Bottle Size</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="bcurrency" value="[999.999]">
+                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="bcurrency">
                         <label for="bcurrency" required>Bottle Currency</label>
                     </div>
                 </div>

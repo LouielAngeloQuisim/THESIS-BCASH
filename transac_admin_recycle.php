@@ -134,7 +134,7 @@
                                             }
                                         }
                                         else{
-                                            echo "There are no records of transactions yet";
+                                            echo "There are no records of recycle transactions yet";
                                         }
                                     ?>
                                     </tbody>
