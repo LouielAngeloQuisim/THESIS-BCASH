@@ -60,21 +60,27 @@ else{
             <div class="d-sm-flex align-items-center justify-content-between">
                 <div class="pe-md-2">
                     <h2 class="text-light">Reduce, Reuse and <span class="text-warning">Recycle</span></h2>
-                    <p class="lead text-light">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
+                    <p class="lead text-light fst-italic">
+                        "There is no way, when we throw anything away it must go somewhere" <br> -Annie Leonard
                     </p>
                 </div>
-                <div class="card bg-light text-center text-fontdark p-3">
-                    <div class="h1">
-                        <i class="bi bi-columns-gap"></i>
+                <div>
+                    <div class="card bg-light text-center text-fontdark p-3">
+                        <div class="h1">
+                            <i class="bi bi-columns-gap"></i>
+                        </div>
+                        <h3 class="card-title mb-3">
+                            Here's your QR Code
+                        </h3>
+                        <p class="card-text lead">
+                            <img src="<?php echo $output["img"];?>" class="img-fluid" width="1000px" height="1000px" alt="QR Code">
+                        </p>
                     </div>
-                    <h3 class="card-title mb-3">
-                        Heres your Qr Code
-                    </h3>
-                    <p class="card-text lead">
-                        <img src="<?php echo $output["img"];?>" class="img-fluid" width="1000px" height="1000px" alt="QR Code">
+                    <p class="fs-6 lead text-light text-center pt-2">
+                        NOTE: Scan this QR to recycle and to redeem your points.
                     </p>
                 </div>
+                
             </div>
         </div>
     </section>

@@ -73,8 +73,10 @@
                                     echo '</tr>';
                                 }
                             }
-                            else{                               
-                                echo "There are no items available to the shop yet";
+                            else{
+                                echo '<tr>';
+                                echo '<td colspan="2">There are no items available to the shop yet.</td>';
+                                echo '</tr>';
                             }
                         ?>
                     </tbody>

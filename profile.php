@@ -45,9 +45,9 @@
                 <h3>
                 <?php 
                 echo '<h2>'.$fullname.'</h2><br>';
-                echo '<h4>'.$username.'</h4>';
-                echo '<h4>'.$email.'</h4>';
-                echo '<h4>'.$mobile_num.'</h4>';
+                echo '<h4 class="fw-light">'.$username.'</h4>';
+                echo '<h4 class="fw-light">'.$email.'</h4>';
+                echo '<h4 class="fw-light">'.$mobile_num.'</h4>';
                 ?> 
                 </h3>     
             </div>

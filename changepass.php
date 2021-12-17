@@ -49,9 +49,9 @@
                 <h3>
                 <?php 
                 echo '<h2>'.$fullname.'</h2><br>';
-                echo '<h4>'.$username.'</h4>';
-                echo '<h4>'.$email.'</h4>';
-                echo '<h4>'.$mobile_num.'</h4>';
+                echo '<h4 class="fw-light">'.$username.'</h4>';
+                echo '<h4 class="fw-light">'.$email.'</h4>';
+                echo '<h4 class="fw-light">'.$mobile_num.'</h4>';
                 ?> 
                 </h3>     
             </div>
@@ -123,7 +123,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <p class="text-fondark">
+                                            <p class="text-fondark fw-bolder">
                                                 Are you sure to change your current password?
                                             </p>
                                         </div>
@@ -149,7 +149,7 @@
                                             <div class="h1 text-success">
                                                 <i class="bi bi-check-circle"></i>
                                             </div>
-                                            <p class="text-fondark">
+                                            <p class="text-fondark fw-bolder">
                                                 Password Successfully Changed!<br>
                                                 Please login again using your new password.
                                             </p>
@@ -236,7 +236,7 @@
                     <div class="h1 text-danger">
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Discard changes?
                     </p>
                 </div>
