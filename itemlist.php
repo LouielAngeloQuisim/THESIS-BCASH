@@ -114,7 +114,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="btype">
-                        <label for="btype" required>Bottle Type</label>
+                        <label for="btype" required>Item Type</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="iprice">
@@ -170,7 +170,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="btype" value="[Item Type]">
-                        <label for="btype" required>Bottle Type</label>
+                        <label for="btype" required>Item Type</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="iprice" value="[999.999]">
