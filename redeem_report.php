@@ -52,7 +52,7 @@
                             <i class="bi bi-person"></i>
                         </div>
                         <h3 class="card-title mb-md-2">
-                            Accounts Redeemed
+                            Number of Redeems
                         </h3>
                         <p class="card-text lead mb-md-5 fw-normal">
                             <?php
@@ -113,7 +113,9 @@
                                         }
                                     }
                                     else{
-                                        echo "There are no records of transactions yet";
+                                        echo '<tr>';
+                                        echo '<td colspan="5">There are no records of transactions yet.</td>';
+                                        echo '</tr>';
                                     }
                                 ?>
                                 </tbody>

@@ -144,7 +144,7 @@
                     <h5 class="modal-title" id="modalAddIConfirm">Add Item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body fw-bolder">
                     Are you sure to add this Item?
                 </div>
                 <div class="modal-footer">
@@ -200,7 +200,7 @@
                     <h5 class="modal-title" id="modalEditISaveChanges">Bottle Edit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body fw-bolder">
                     Are you sure to Save Changes to this Item?
                 </div>
                 <div class="modal-footer">

@@ -45,7 +45,7 @@
                         <div class="h1 text-danger">
                             <i class="bi bi-exclamation-circle"></i>
                         </div>
-                        <p class="text-fondark">
+                        <p class="text-fondark fw-bolder">
                             Are you sure you want to logout?
                         </p>
                     </div>

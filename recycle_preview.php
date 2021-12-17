@@ -98,7 +98,7 @@
                     <div class="h1 text-danger">
                         <i class="bi bi-exclamation-circle"></i>
                     </div>
-                    <p class="text-fondark">
+                    <p class="text-fondark fw-bolder">
                         Are you sure you want to cancel this report and then logout?
                     </p>
                 </div>
@@ -119,7 +119,7 @@
                 <i class="bi bi-journal-text"></i>
             </div>
             <h2 class="text-light text-center">
-                Here's your Report
+                Transaction Records
             </h2>
         </div>
     </section>
@@ -260,7 +260,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="lead">
+                    <p class="lead fw-bolder">
                         Are you sure you want to cancel this report?
                     </p>
                 </div>

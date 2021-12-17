@@ -183,7 +183,9 @@ else{
                                             }
                                         }
                                         else{
-                                            echo "There are no recycle transactions yet";
+                                            echo '<tr>';
+                                            echo '<td colspan="3">There are no recycle transactions yet.</td>';
+                                            echo '</tr>';
                                         }
                                     ?>
                                 </tbody>
@@ -213,7 +215,9 @@ else{
                                             }
                                         }
                                         else{
-                                            echo "There are no redeem transactions yet";
+                                            echo '<tr>';
+                                            echo '<td colspan="3">There are no redeem transactions yet.</td>';
+                                            echo '</tr>';
                                         }
                                     ?>
                                 </tbody>

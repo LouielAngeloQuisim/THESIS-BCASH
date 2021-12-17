@@ -134,7 +134,9 @@
                                             }
                                         }
                                         else{
-                                            echo "There are no records of recycle transactions yet";
+                                            echo '<tr>';
+                                            echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
+                                            echo '</tr>';
                                         }
                                     ?>
                                     </tbody>
@@ -290,7 +292,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="lead">
+                    <p class="lead fw-bolder">
                         Are you sure you want to generate all reports?
                     </p>
                 </div>
@@ -472,7 +474,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="lead">
+                    <p class="lead fw-bolder">
                         Are you sure you want to generate this recycle report?
                     </p>
                 </div>
