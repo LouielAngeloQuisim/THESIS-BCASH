@@ -625,7 +625,6 @@ class myDb {
     }
     public function search_Redeem($lname, $fname, $mname,$from_date,$to_date){
         $records = array();
-        
         if(!empty($from_date) && !empty($to_date)){
             $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
             redeem_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? AND mname LIKE ? AND lname  
@@ -682,6 +681,46 @@ class myDb {
             }
             return $records;
         }
-        
+    }
+    public function add_BottleType($bname, $bvalue, $bsize, $bimg){
+        //prepare statements
+        $sql = $this->link->prepare("INSERT into bottle_types (bottle_name,bottle_value,bottle_size,bottle_img)
+        VALUES(?,?,?,?)");
+        //set parameters
+        $bname = mysqli_real_escape_string($this->link, $bname);
+        $bvalue = mysqli_real_escape_string($this->link, $bvalue);
+        $bsize = mysqli_real_escape_string($this->link, $bsize);
+        $bimg = mysqli_real_escape_string($this->link, $bimg);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("siss", $bname, $bvalue, $bsize, $bimg);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
+        }
+        return $result;
+    }
+    public function get_Bottle(){
+        $record = array();
+        $sql = $this->link->prepare("SELECT * FROM bottle_types");
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $record[] = [
+                    'bottle_id' => $row['bottle_id'],
+                    'bottle_name' => $row['bottle_name'],
+                    'bottle_value' => $row['bottle_value'],
+                    'bottle_size' => $row['bottle_size'],
+                    'bottle_img' => $row['bottle_img']
+                ];
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $record;
     }
 }

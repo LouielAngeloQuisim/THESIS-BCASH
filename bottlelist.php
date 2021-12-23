@@ -1,3 +1,21 @@
+<?php
+session_start();
+require "mydb.php";
+$mydb = new myDb;
+if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+    $acc_id = $_SESSION['acc_id'];
+    $qrcode = $_SESSION['qrcode'];
+    $admin = $_SESSION['admin'];
+    $total_points = $_SESSION['total_points'];
+    $total_bottles = $_SESSION['total_bottles'];
+    $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+    $output["img"] = $url;
+}
+else{
+    echo "error in collecting user data";
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -43,63 +61,53 @@
     <section class="p-5">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 text-center g-4">
-                <div class="col-md">
+                <?php
+                    $records = $mydb->get_Bottle();
+                    if(isset($records)){
+                        foreach($records as $rows){
+                            $bid = $rows['bottle_id'];
+                            $bname = $rows['bottle_name'];
+                            $bvalue = $rows['bottle_value'];
+                            $bsize = $rows['bottle_size'];
+                            $bimg = $rows['bottle_img'];
+                            // show bottle
+                            echo '
+                            <div class="col-md">
+                                <div class="card h-100 border border-2 border-primary">
+                                    <img src="upload_img/'.$bimg.'" class="card-img-top" alt="Water Bottle">
+                                    <div class="card-body">
+                                        <h5 class="card-title">'.$bname.'</h5>
+                                        <p class="card-text">Value: '.$bvalue.'</p>
+                                        <p class="card-text">Size: '.$bsize.'</p>
+                                        <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle"
+                                        data-bottleid="'$bid'">
+                                            Edit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            ';
+                        }
+                    }
+                ?>
+                <!--<div class="col-md">
                     <div class="card h-100 border border-2 border-primary">
                         <img src="img/slide-0.PNG" class="card-img-top" alt="Water Bottle">
                         <div class="card-body">
                             <h5 class="card-title">[Bottle Type]</h5>
                             <p class="card-text">[Bottle measurements and bottle currency]</p>
-                            <!-- Button Edit Bottle trigger modal -->
                             <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
                                 Edit
                             </button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md">
-                    <div class="card h-100 border border-2 border-primary">
-                        <img src="img/slide-1.PNG" class="card-img-top" alt="Water Bottle">
-                        <div class="card-body">
-                            <h5 class="card-title">[Bottle Type]</h5>
-                            <p class="card-text">[Bottle measurements and bottle currency]</p>
-                            <!-- Button Edit Bottle trigger modal -->
-                            <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card h-100 border border-2 border-primary">
-                        <img src="img/slide-2.PNG" class="card-img-top" alt="Water Bottle">
-                        <div class="card-body">
-                            <h5 class="card-title">[Bottle Type]</h5>
-                            <p class="card-text">[Bottle measurements and bottle currency]</p>
-                            <!-- Button Edit Bottle trigger modal -->
-                            <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card h-100 border border-2 border-primary">
-                        <img src="img/slide-3.PNG" class="card-img-top" alt="Water Bottle">
-                        <div class="card-body">
-                            <h5 class="card-title">[Bottle Type]</h5>
-                            <p class="card-text">[Bottle measurements and bottle currency]</p>
-                            <!-- Button Edit Bottle trigger modal -->
-                            <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
 
     <!-- Modal Add Bottle -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
     <div class="modal fade" id="modaladdBottle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -110,7 +118,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="addBottleFile" class="form-label">Add Image</label>
-                        <input class="form-control" type="file" id="addBottleFile">
+                        <input class="form-control" type="file" id="addBottleFile" name = "image">
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype">
@@ -135,7 +143,9 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
 
+    </script>
     <!-- Modal Add Bottle Confirmation -->
     <div class="modal fade" id="modalAddBConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -149,12 +159,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-secondary">Confirm</button>
+                    <button type="submit" class="btn btn-secondary" name="submit">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>
     <!-- Modal Bottle Edit-->
     <div class="modal fade" id="modaleditBottle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
