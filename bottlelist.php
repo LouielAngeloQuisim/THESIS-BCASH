@@ -79,8 +79,7 @@ else{
                                         <h5 class="card-title">'.$bname.'</h5>
                                         <p class="card-text">Value: '.$bvalue.'</p>
                                         <p class="card-text">Size: '.$bsize.'</p>
-                                        <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle"
-                                        data-bottleid="'$bid'">
+                                        <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
                                             Edit
                                         </button>
                                     </div>
