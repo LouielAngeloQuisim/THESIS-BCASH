@@ -178,6 +178,7 @@
                                             <?php
                                                 $records = $mydb->get_Bottle();
                                                 if(isset($records)){
+                                                    $count = 0;
                                                     foreach($records as $rows){
                                                         $bid = $rows['bottle_id'];
                                                         $bname = $rows['bottle_name'];
@@ -185,17 +186,33 @@
                                                         $bsize = $rows['bottle_size'];
                                                         $bimg = $rows['bottle_img'];
                                                         // show bottle
-                                                        echo '
-                                                        <div class="carousel-item active">
-                                                            <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
-                                                            <div class="bg-light p-5">
-                                                                <div class="carousel-caption">
-                                                                    <h5>'.$bname.'</h5>
-                                                                    <p>Price: '.$bvalue.'</p>
-                                                                </div>  
+                                                        if($count == 0){
+                                                            echo '
+                                                            <div class="carousel-item active">
+                                                                <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
+                                                                <div class="bg-light p-5">
+                                                                    <div class="carousel-caption">
+                                                                        <h5>'.$bname.'</h5>
+                                                                        <p>Price: '.$bvalue.'</p>
+                                                                    </div>  
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        ';
+                                                            ';
+                                                        }
+                                                        else{
+                                                            echo '
+                                                            <div class="carousel-item">
+                                                                <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
+                                                                <div class="bg-light p-5">
+                                                                    <div class="carousel-caption">
+                                                                        <h5>'.$bname.'</h5>
+                                                                        <p>Price: '.$bvalue.'</p>
+                                                                    </div>  
+                                                                </div>
+                                                            </div>
+                                                            ';
+                                                        }
+                                                        $count += 1;
                                                     }
                                                 }
                                             ?>

@@ -700,7 +700,7 @@ class myDb {
     }
     public function add_BottleType($bname, $bvalue, $bsize, $bimg){
         //prepare statements
-        $sql = $this->link->prepare("INSERT into bottle_types (bottle_name,bottle_value,bottle_size,bottle_img)
+        $sql = $this->link->prepare("INSERT into bottle_types (bottle,bottle_value,bottle_size,bottle_img)
         VALUES(?,?,?,?)");
         //set parameters
         $bname = mysqli_real_escape_string($this->link, $bname);
@@ -708,7 +708,7 @@ class myDb {
         $bsize = mysqli_real_escape_string($this->link, $bsize);
         $bimg = mysqli_real_escape_string($this->link, $bimg);
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("siss", $bname, $bvalue, $bsize, $bimg);
+        $sql->bind_param("siis", $bname, $bvalue, $bsize, $bimg);
         $success = $sql->execute();
         if(!$success){
             $result = "notinserted";
