@@ -293,7 +293,8 @@ class myDb {
                     'item_id' => $row['item_id'],
                     'item_name' => $row['item_name'],
                     'item_price' => $row['item_price'],
-                    'item_stock' => $row['item_stock']
+                    'item_stock' => $row['item_stock'],
+                    'item_img' => $row['item_img']
                 ];
             }
         }
@@ -301,6 +302,26 @@ class myDb {
             $records = null;
         }
         return $records;
+    }
+    public function add_Item($item_name, $item_price, $item_stock, $item_img){
+        //prepare statements
+        $sql = $this->link->prepare("INSERT into shop_items (item_name, item_price, item_stock, item_img)
+        VALUES(?,?,?,?)");
+        //set parameters
+        $item_name = mysqli_real_escape_string($this->link, $item_name);
+        $item_price = mysqli_real_escape_string($this->link, $item_price);
+        $item_stock = mysqli_real_escape_string($this->link, $item_stock);
+        $item_img = mysqli_real_escape_string($this->link, $item_img);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("siis", $item_name, $item_price, $item_stock, $item_img);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
+        }
+        return $result;
     }
     public function update_Password($acc_id, $newpassword){
         //prepare statements
@@ -324,15 +345,10 @@ class myDb {
             $sql = $this->link->prepare("SELECT bottle_count FROM recycle_transaction");
             $sql->execute();
             $result = $sql->get_result();
-            $sum;
+            $sum = 0;
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-                    if(empty($sum) || $sum = ""){
-                        $sum = $row['bottle_count'];
-                    }
-                    else{
-                        $sum += $row['bottle_count'];
-                    }
+                    $sum += $row['bottle_count'];
                 }
             }
             else{
@@ -711,7 +727,7 @@ class myDb {
             while($row = $result->fetch_assoc()){
                 $record[] = [
                     'bottle_id' => $row['bottle_id'],
-                    'bottle_name' => $row['bottle_name'],
+                    'bottle_name' => $row['bottle'],
                     'bottle_value' => $row['bottle_value'],
                     'bottle_size' => $row['bottle_size'],
                     'bottle_img' => $row['bottle_img']
@@ -723,4 +739,5 @@ class myDb {
         }
         return $record;
     }
+    
 }

@@ -175,7 +175,31 @@
                                             <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
                                         </div>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
+                                            <?php
+                                                $records = $mydb->get_Bottle();
+                                                if(isset($records)){
+                                                    foreach($records as $rows){
+                                                        $bid = $rows['bottle_id'];
+                                                        $bname = $rows['bottle_name'];
+                                                        $bvalue = $rows['bottle_value'];
+                                                        $bsize = $rows['bottle_size'];
+                                                        $bimg = $rows['bottle_img'];
+                                                        // show bottle
+                                                        echo '
+                                                        <div class="carousel-item active">
+                                                            <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
+                                                            <div class="bg-light p-5">
+                                                                <div class="carousel-caption">
+                                                                    <h5>'.$bname.'</h5>
+                                                                    <p>Price: '.$bvalue.'</p>
+                                                                </div>  
+                                                            </div>
+                                                        </div>
+                                                        ';
+                                                    }
+                                                }
+                                            ?>
+                                            <!-- <div class="carousel-item active">
                                                 <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
@@ -183,34 +207,8 @@
                                                         <p>[Bottle measurements and bottle currency]</p>
                                                     </div>  
                                                 </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/slide-1.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/slide-2.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/slide-3.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Bottle]</h5>
-                                                        <p>[Bottle measurements and bottle currency]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
+                                            </div> -->
+
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

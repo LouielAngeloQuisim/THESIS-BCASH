@@ -178,7 +178,31 @@
                                             <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
                                         </div>
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
+                                            <?php
+                                                $records = $mydb->get_Shop_items();
+                                                if(isset($records)){
+                                                    foreach($records as $rows){
+                                                        $item_id = $rows['item_id'];
+                                                        $item_name = $rows['item_name'];
+                                                        $item_price = $rows['item_price'];
+                                                        $item_stock = $rows['item_stock'];
+                                                        $item_img = $rows['item_img'];
+                                                        // show bottle
+                                                        echo '
+                                                        <div class="carousel-item active">
+                                                            <img src="upload_img/'.$item_img.'" class="d-block pb-2 w-100">
+                                                            <div class="bg-light p-5">
+                                                                <div class="carousel-caption">
+                                                                    <h5>'.$item_name.'</h5>
+                                                                    <p>Price: '.$item_price.'</p>
+                                                                </div>  
+                                                            </div>
+                                                        </div>
+                                                        ';
+                                                    }
+                                                }
+                                            ?>
+                                            <!-- <div class="carousel-item active">
                                                 <img src="img/print.PNG" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
@@ -186,34 +210,8 @@
                                                         <p>[Redeemable Item Description]</p>
                                                     </div>  
                                                 </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/xerox.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Redeemable Item]</h5>
-                                                        <p>[Redeemable Item Description]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/ballpen.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Redeemable Item]</h5>
-                                                        <p>[Redeemable Item Description]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="img/pencil1.PNG" class="d-block pb-2 w-100">
-                                                <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h5>[Type of Redeemable Item]</h5>
-                                                        <p>[Redeemable Item Description]</p>
-                                                    </div>  
-                                                </div>
-                                            </div>
+                                            </div> -->
+                                            
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
