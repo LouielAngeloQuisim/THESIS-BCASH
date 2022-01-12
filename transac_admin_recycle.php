@@ -73,10 +73,10 @@
                     </ul>
                 </div>
                 <div class="card-body px-0">
-                    <form action="">
+                    <form action="" method="post">
                         <div class="input-group px-5 my-3">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <button class="btn btn-secondary" type="submit" id="searchbtn">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <button class="btn btn-secondary" type="submit" id="searchbtn" name="search_submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -107,12 +107,38 @@
                                     </thead>
                                     <tbody class="align-middle">
                                     <?php
+                                        // display search 
+                                        // display all records
                                         $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
-                                        if(isset($redeem_records)){
+                                        if(isset($_POST['search_submit'])){
+                                            $search = $_POST['search'];
+                                            $records = $mydb->search_Recycletable($search);
+                                            if(isset($records)){
+                                                foreach($records as $rows){
+                                                    $bottle_name = $rows['bottles'];
+                                                    $points_earned = $rows['points_earned'];
+                                                    $fname = $rows['fname'];
+                                                    $mname = $rows['mname'];
+                                                    $lname = $rows['lname'];
+                                                    $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
+                                                    $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                    $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                    echo '<tr>';
+                                                    echo '<td>'.$fullname.'</td>';
+                                                    echo '<td>'.$bottle_name.'</td>';
+                                                    echo '<td>'.$points_earned .'</td>';
+                                                    echo '<td>'.$time.'</td>';
+                                                    echo '<td>'.$date.'</td>';
+                                                    echo '</tr>';
+                                                }
+                                            }
+                                        }
+                                        elseif(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_earned = $rows['points_earned'];
                                                 $redeemtrans_time = $rows['trans_time'];
                                                 $user_id = $rows['acc_id'];
+                                                $bottle_name = $rows['bottles'];
                                                 $name = $mydb->get_Name($user_id);
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
                                                 $time = date("H:i:s A",strtotime($rows['trans_time']));
@@ -126,7 +152,7 @@
                                                 }
                                                 echo '<tr>';
                                                 echo '<td>'.$fullname.'</td>';
-                                                echo '<td> [bottle type] </td>';
+                                                echo '<td>'.$bottle_name.'</td>';
                                                 echo '<td>'.$points_earned .'</td>';
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
