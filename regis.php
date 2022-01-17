@@ -37,7 +37,7 @@
                                 <label for="email" required>Email</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="num" class="form-control rounded-1" id="num" placeholder="Enter Mobile Number" name="mobilenum" required>
+                                <input type="number" class="form-control rounded-1" id="num" placeholder="Enter Mobile Number" name="mobilenum" required>
                                 <label for="num" required>Mobile Number</label>
                             </div>
                             <div class="form-floating mb-3">
