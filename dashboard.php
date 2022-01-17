@@ -11,7 +11,13 @@ isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     $total_bottles = $_SESSION['total_bottles'];
     $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
     $output["img"] = $url;
-
+    $result = $mydb->get_sumBottles($admin, $acc_id);
+    if(isset($result)){
+        foreach($result as $row){
+            $total_points = $row['total_points'];
+            $total_bottles =  $row['total_bottles'];
+        }
+    }
 }
 else{
     echo "error in collecting user data";
@@ -174,11 +180,12 @@ else{
                                         if(isset($recycle_records)){
                                             foreach($recycle_records as $rows){
                                                 $points_earned = $rows['points_earned'];
-                                                $trans_time = $rows['trans_time'];
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
                                                 echo '<tr>';
                                                 echo '<td>'.$points_earned.'</td>';
-                                                echo '<td>'.$trans_time.'</td>';
-                                                echo '<td>[Date]</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
                                             }
                                         }
@@ -206,11 +213,12 @@ else{
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];
-                                                $redeemtrans_time = $rows['trans_time'];
+                                                $date = date("Y-m-d",strtotime($rows['trans_time']));
+                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
                                                 echo '<tr>';
                                                 echo '<td>'.$points_deducted.'</td>';
-                                                echo '<td>'.$redeemtrans_time.'</td>';
-                                                echo '<td>[Date]</td>';
+                                                echo '<td>'.$time.'</td>';
+                                                echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
                                             }
                                         }

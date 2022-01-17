@@ -341,6 +341,8 @@ class myDb {
         return $result;
     }
     public function get_sumBottles($admin, $acc_id){
+        $sum = 0;
+        $records = array(); 
         if($admin == 1){
             $sql = $this->link->prepare("SELECT bottle_count FROM recycle_transaction");
             $sql->execute();
@@ -350,33 +352,37 @@ class myDb {
                 while($row = $result->fetch_assoc()){
                     $sum += $row['bottle_count'];
                 }
+                return $sum; 
             }
             else{
                 $records = null;
             }
         }
         else{
-            $sql = $this->link->prepare("SELECT bottle_count FROM recycle_transaction WHERE acc_id = ?");
+            $sql = $this->link->prepare("SELECT total_bottles, total_points FROM user_login WHERE acc_id = ?");
             $acc_id = mysqli_real_escape_string($this->link, $acc_id);
             $sql->bind_param("i", $acc_id);
             $sql->execute();
             $result = $sql->get_result();
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
-                    if(empty($sum) || $sum = ""){
-                        $sum = $row['bottle_count'];
-                    }
-                    else{
-                        $sum += $row['bottle_count'];
-                    }
+                    $records[] = [
+                        'total_bottles' => $row['total_bottles'],
+                        'total_points' => $row['total_points']
+                    ];
+                    // add bottles to total bottles in user_login table
+                    return $records; 
                 }
+                
             }
             else{
-                $sum = 0;
+                $records = null;
             }
+
         }
-        return $sum; 
     }
+    
+    
     public function get_Maxdate(){
         $record = array();
         $sql = $this->link->prepare("SELECT max(date) FROM daily_bottle_report");

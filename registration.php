@@ -29,6 +29,7 @@ if(isset($_POST['register'])){
                 }
                 else{
                     $_SESSION['acc_id'] = $rows['acc_id'];
+                    $acc_id = $rows['acc_id'];
                     $_SESSION['total_points'] = $rows['total_points'];
                     $_SESSION['total_bottles'] = $rows['total_bottles'];
                     $_SESSION['lname'] = $rows['lname'];
@@ -40,18 +41,17 @@ if(isset($_POST['register'])){
                     $_SESSION['admin'] = $rows['admin'];
                     $_SESSION['password'] = $rows['password']; 
                     //hash data for qrcode
-                    $hash_qrcode = password_hash($_SESSION['acc_id'], PASSWORD_DEFAULT);
+                    $hash_qrcode = password_hash($rows['acc_id'], PASSWORD_DEFAULT);
                     $results = $mydb->add_Qrcode($acc_id, $hash_qrcode);
                     if($results == "inserted"){
-                        $_SESSION['qrcode'] = $rows['qrcode'];
+                        $_SESSION['qrcode'] = $hash_qrcode;
                         header("Location:dashboard.php");
                         ob_end_flush();
                     }
                     elseif($results == "notinserted"){
-                        header("Location:dashboard.php");
+                        header("Location:regis.php");
                         ob_end_flush();
                     }
-                    
                 }
             }
         }

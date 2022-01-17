@@ -28,6 +28,7 @@ if(isset($_POST['login'])){
             }
             else{// if just an ordinary user
                 $_SESSION['acc_id'] = $rows['acc_id'];
+                $acc_id = $rows['acc_id'];
                 $_SESSION['total_points'] = $rows['total_points'];
                 $_SESSION['total_bottles'] = $rows['total_bottles'];
                 $_SESSION['qrcode'] = $rows['qrcode'];
@@ -39,6 +40,7 @@ if(isset($_POST['login'])){
                 $_SESSION['username'] = $rows['username'];
                 $_SESSION['admin'] = $rows['admin'];
                 $_SESSION['password'] = $rows['password']; 
+                $mydb->get_sumBottles($admin, $acc_id);
                 header("Location:dashboard.php");
                 ob_end_flush();
             } 
