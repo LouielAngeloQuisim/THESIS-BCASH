@@ -159,6 +159,7 @@ else{
             foreach($records as $rows){
                 $bid = $rows['bottle_id'];
                 $modalname = "modaleditBottle".$bid;
+                $modalsavename = "modalEditBSaveChanges".$bid;
                 $bname = $rows['bottle_name'];
                 $bvalue = $rows['bottle_value'];
                 $bsize = $rows['bottle_size'];
@@ -176,61 +177,58 @@ else{
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="editBottleFile" class="form-label">Change Image</label>
-                                    <input class="form-control" type="file" id="editBottleFile" name = "image">
+                                    <input class="form-control" type="file" id="editBottleFile" name = "image" required>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" 
-                                    value="'.$bname.'">
-                                    <label for="btype" required>Bottle Type</label>
+                                    value="'.$bname.'" required>
+                                    <label for="btype" >Bottle Type</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize"
-                                    value="'.$bsize.'">
-                                    <label for="bsize" required>Bottle Size</label>
+                                    value="'.$bsize.'" required>
+                                    <label for="bsize" >Bottle Size</label>
                                     <input type="hidden" name="bid" value="'.$bid.'">
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="bcurrency"
-
-                                    value="'.$bvalue.'">
-                                    <label for="bcurrency" required>Bottle Currency</label>
+                                    value="'.$bvalue.'" required>
+                                    <label for="bcurrency" >Bottle Currency</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Bottle Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditBSaveChanges">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#'.$modalsavename.'">
                                     Save Changes
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Modal Edit Bottle Save Changes -->
+                <div class="modal fade" id="'.$modalsavename.'" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalEditBSaveChanges">Bottle Edit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body fw-bolder">
+                                Are you sure to Save Changes to this Bottle?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-secondary" name="editsubmit">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>  
                 ';
             }
         }
     ?>
-    
-
-    <!-- Modal Edit Bottle Save Changes -->
-    <div class="modal fade" id="modalEditBSaveChanges" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditBSaveChanges">Bottle Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body fw-bolder">
-                    Are you sure to Save Changes to this Bottle?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-secondary" name="editsubmit">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </form>  
     <!-- lines -->
     <section class="bg-dark p-5">
     </section>

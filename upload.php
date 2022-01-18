@@ -163,6 +163,7 @@ elseif(isset($_POST['itemedit'])){
 }
 elseif(isset($_POST['editsubmit'])){
     $bottle_id = $_POST['bid'];
+    echo $bottle_id;
     $img = $_FILES['image'];// image file
     $bname = $_POST['btype']; // i will use it as bname(bottle name)
     $bsize = $_POST['bsize'];

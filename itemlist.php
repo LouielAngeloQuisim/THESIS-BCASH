@@ -66,8 +66,8 @@ else{
                 if(isset($records)){
                     foreach($records as $rows){
                         $item_id = $rows['item_id'];
-                        $item_name = $rows['item_name'];
                         $modalname = "modaleditBottle".$item_id;
+                        $item_name = $rows['item_name'];
                         $item_price = $rows['item_price'];
                         $item_stock = $rows['item_stock'];
                         $item_img = $rows['item_img'];
@@ -158,6 +158,8 @@ else{
         if(isset($records)){
             foreach($records as $rows){
                 $item_id = $rows['item_id'];
+                $modalname = "modaleditBottle".$item_id;
+                $modalsavename = "modalEditISaveChanges".$item_id;
                 $item_name = $rows['item_name'];
                 $item_price = $rows['item_price'];
                 $item_stock = $rows['item_stock'];
@@ -175,57 +177,56 @@ else{
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="editItemFile" class="form-label">Change Image</label>
-                                    <input class="form-control" type="file" id="editItemFile" name = "image">
+                                    <input class="form-control" type="file" id="editItemFile" name = "image" required>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'">
+                                    <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'" required>
                                     <label for="btype" required>Item Type</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'">
-                                    <label for="iprice" required>Item Price</label>
+                                    <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'" required>
+                                    <label for="iprice">Item Price</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'">
-                                    <label for="idisc" required>Item Description</label>
+                                    <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'" required>
+                                    <label for="idisc">Stock</label>
                                     <input type="hidden" name="item_id" value="'.$item_id.'">
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Item Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditISaveChanges">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#'.$modalsavename.'">
                                     Save Changes
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Modal Edit Item Save Changes -->
+                <div class="modal fade" id="'.$modalsavename.'" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalEditISaveChanges">Bottle Edit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body fw-bolder">
+                                Are you sure to Save Changes to this Item?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-secondary" name = "itemedit">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
                 ';
             }
         }
     ?>
     
-    
-    <!-- Modal Edit Item Save Changes -->
-    <div class="modal fade" id="modalEditISaveChanges" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditISaveChanges">Bottle Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body fw-bolder">
-                    Are you sure to Save Changes to this Item?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-secondary" name = "itemedit">Confirm</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </form>
     <!-- lines -->
     <section class="bg-dark p-5">
     </section>
