@@ -323,7 +323,7 @@ else{
                 <div class="col-md text-light text-center text-md-start p-4">
                     <h2>RECYCLABLE BOTTLES</h2>
                     <p class="lead">
-                        Here are the following bottles that can only be Recycled. Present and scan this bottles at the continue to earn points.
+                        Here are the following bottles that can only be Recycled. Present and scan this bottles to earn points.
                     </p>
                 </div>
             </div>
