@@ -120,7 +120,7 @@
                                                     $lname = $rows['lname'];
                                                     $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
                                                     $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                                    $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                    $time = date("h:i:s A",strtotime($rows['trans_time']));
                                                     echo '<tr>';
                                                     echo '<td>'.$fullname.'</td>';
                                                     echo '<td>'.$item_name.'</td>';
@@ -139,7 +139,7 @@
                                                 $item = $rows['item'];
                                                 $name = $mydb->get_Name($user_id);
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                $time = date("h:i:s A",strtotime($rows['trans_time']));
                                                 if(isset($name)){
                                                     foreach($name as $newrows){
                                                         $fname = $newrows['fname'];

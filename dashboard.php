@@ -184,7 +184,7 @@ else{
                                                 $bottle_name = $rows['bottles'];
                                                 $points_earned = $rows['points_earned'];
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                $time = date("h:i:s A",strtotime($rows['trans_time']));
                                                 echo '<tr>';
                                                 echo '<td>'.$bottle_name.'</td>';
                                                 echo '<td>'.$points_earned.'</td>';
@@ -223,7 +223,7 @@ else{
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                $time = date("h:i:s A",strtotime($rows['trans_time']));
                                                 echo '<tr>';
                                                 echo '<td>'.$points_deducted.'</td>';
                                                 echo '<td>'.$time.'</td>';
