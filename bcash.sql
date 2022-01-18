@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2021 at 05:07 AM
+-- Generation Time: Jan 18, 2022 at 09:04 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -29,11 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bottle_types` (
   `bottle_id` int(11) NOT NULL,
-  `bottle_name` varchar(50) NOT NULL,
-  `item_value` int(50) NOT NULL,
+  `bottle` varchar(50) NOT NULL,
+  `bottle_value` int(50) NOT NULL,
   `bottle_size` int(11) NOT NULL,
-  `bottle_img` blob NOT NULL
+  `bottle_img` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bottle_types`
+--
+
+INSERT INTO `bottle_types` (`bottle_id`, `bottle`, `bottle_value`, `bottle_size`, `bottle_img`) VALUES
+(2, 'COKE_290ML', 10, 290, '61dd4914420f44.08146775.png'),
+(3, 'Sprite 290ml', 10, 290, '61dddd17c32d80.72718761.png');
 
 -- --------------------------------------------------------
 
@@ -55,7 +63,9 @@ CREATE TABLE `daily_bottle_report` (
 INSERT INTO `daily_bottle_report` (`day_id`, `date`, `no_bottles`, `no_redeem`) VALUES
 (1, '2021-12-11', 20, 30),
 (2, '2021-12-12', 30, 10),
-(3, '2021-12-13', 60, 10);
+(3, '2021-12-13', 60, 10),
+(4, '2021-12-11', 30, 10),
+(5, '2022-01-18', 30, 10);
 
 -- --------------------------------------------------------
 
@@ -67,6 +77,7 @@ CREATE TABLE `recycle_transaction` (
   `trans_id` int(50) NOT NULL,
   `acc_id` int(50) NOT NULL,
   `bottles` varchar(50) NOT NULL,
+  `bottle_id` int(50) NOT NULL,
   `points_earned` int(50) NOT NULL,
   `recycle_trans_time` datetime NOT NULL,
   `bottle_count` int(100) NOT NULL
@@ -76,8 +87,19 @@ CREATE TABLE `recycle_transaction` (
 -- Dumping data for table `recycle_transaction`
 --
 
-INSERT INTO `recycle_transaction` (`trans_id`, `acc_id`, `bottles`, `points_earned`, `recycle_trans_time`, `bottle_count`) VALUES
-(1, 36, 'coke 290ml', 10, '2021-12-01 23:11:28', 5);
+INSERT INTO `recycle_transaction` (`trans_id`, `acc_id`, `bottles`, `bottle_id`, `points_earned`, `recycle_trans_time`, `bottle_count`) VALUES
+(37, 36, 'COKE_290ML', 2, 10, '2022-01-15 23:48:04', 1),
+(38, 36, 'COKE_290ML', 2, 10, '2022-01-15 23:50:28', 1),
+(39, 36, 'COKE_290ML', 2, 10, '2022-01-16 13:56:13', 1),
+(40, 36, 'COKE_290ML', 2, 10, '2022-01-16 13:56:15', 1),
+(41, 36, 'COKE_290ML', 2, 10, '2022-01-16 13:59:59', 1),
+(42, 36, 'COKE_290ML', 2, 10, '2022-01-16 14:01:19', 1),
+(43, 36, 'COKE_290ML', 2, 10, '2022-01-16 14:01:20', 1),
+(44, 36, 'COKE_290ML', 2, 10, '2022-01-16 14:02:49', 1),
+(45, 36, 'COKE_290ML', 2, 10, '2022-01-16 14:03:37', 1),
+(46, 36, 'COKE_290ML', 2, 10, '2022-01-16 14:03:38', 1),
+(47, 62, 'COKE_290ML', 2, 10, '2022-01-17 14:47:58', 1),
+(48, 62, 'COKE_290ML', 2, 10, '2022-01-17 14:47:58', 1);
 
 -- --------------------------------------------------------
 
@@ -109,10 +131,18 @@ INSERT INTO `redeem_transaction` (`redeem_trans_id`, `acc_id`, `item`, `points_d
 
 CREATE TABLE `shop_items` (
   `item_id` int(11) NOT NULL,
-  `item_name` int(11) NOT NULL,
+  `item_name` varchar(50) NOT NULL,
   `item_price` int(11) NOT NULL,
-  `item_stock` int(11) NOT NULL
+  `item_stock` int(11) NOT NULL,
+  `item_img` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shop_items`
+--
+
+INSERT INTO `shop_items` (`item_id`, `item_name`, `item_price`, `item_stock`, `item_img`) VALUES
+(1, 'Printing', 10, 10, '61dd908a151fa5.65798100.png');
 
 -- --------------------------------------------------------
 
@@ -141,17 +171,16 @@ CREATE TABLE `user_login` (
 
 INSERT INTO `user_login` (`username`, `acc_id`, `password`, `qrcode`, `total_points`, `total_bottles`, `lname`, `fname`, `mname`, `email`, `mobile_num`, `admin`) VALUES
 ('louiel', 1, '123', '', 0, 0, '', '', '', '', 0, 0),
-('louielxx', 36, 'louiel', '$2y$10$YSInPZMKBdYJ62ibc2Uit.EkqYm8a11lBpPGRl.MafUkY0x8sH06W', 0, 0, 'quisim', 'louiel ', 'coyoca', 'gg@gmail.com', 0, 0),
+('louielxx', 36, 'louiel', '$2y$10$YSInPZMKBdYJ62ibc2Uit.EkqYm8a11lBpPGRl.MafUkY0x8sH06W', 60, 3, 'quisim', 'louiel ', 'coyoca', 'gg@gmail.com', 0, 0),
 ('admin', 37, 'admin', '', 0, 0, '', '', '', '', 0, 1),
 ('louielxxx', 38, '123', '$2y$10$f8i4tgz/NJtjMkN8j0CD6ekBp/7Ua64F.NqIcPGXxo5sOTF.0I4ui', 0, 0, '', '', '', '', 0, 0),
 ('Laine', 39, '123', '$2y$10$5OKWDkTGTLyjjqbYYGyzC.MGeDOOzWRx0dkBMtLwFIlHUEWFdqQ6a', 0, 0, '', '', '', '', 0, 0),
 ('Laine', 40, '123', '$2y$10$YQTJkNjBxVCQ4b5yoiXnG.4BU87wGulKPWw781lipNuzKlm7P2MVO', 0, 0, '', '', '', '', 0, 0),
 ('louielangelo', 43, '12322', '$2y$10$2SXILkWXa4YP6JcQOyXezeCyKfSok4rCmaYmiBt/k4Ljf/Eihn6VG', 0, 0, '', '', '', '', 0, 0),
 ('louielxx', 44, '1233', '$2y$10$vsv8tTU0gYNbm8CLHk88X.NS//6bEJjliZnbDdyDdCpsXXP7Q67CW', 0, 0, '', '', '', '', 0, 0),
-('ggez1234', 53, '123', '', 0, 0, 'Quisim', 'louiel 2', 'Ortiguerra2', 'tatalipot@gmail.com', 2147483647, 0),
-('louielangelo', 54, '123', '', 0, 0, 'Quisim', 'louiel 2', 'Coyoca', 'louiel_quisim@yajoo.com', 2147483647, 0),
-('admin123', 55, '123', '', 0, 0, 'Quisim', 'Angelo', 'Coyoca', 'louiel_quisim@yajoo.com', 9080808080, 0),
-('Laine', 56, '123', '', 0, 0, 'Quisim', 'Angelo', 'Coyoca', 'tatalipot@gmail.com', 12121, 0);
+('jmxx', 62, '123', '$2y$10$Ut8ogN7KtEmCb3U1LWZ/meBv8Utcr8ycr4287hcET6zfyM9mtZel2', 20, 2, 'quisim', 'jm', 'coyoca', 'tatalipot@gmail.com', 9080808080, 0),
+('maan', 63, '123', '$2y$10$LF0IlgNDzxboocYIS6oGJOVwaeJej/WI9bXrEH3GQyBr7u7U0HPNS', 0, 0, 'maan', 'meen', 'jm', 'tatalipot@gmail.com', 9080808080, 0),
+('dwada', 64, '123', '$2y$10$EN8HSlDIVoDMa1X1wLZ8J.IqgrZw63munzrCLWcrjEOyyumyXDWJm', 0, 0, 'quisim', 'louiel ', 'coyoca', 'tatalipot@gmail.com', 9080808080, 0);
 
 --
 -- Indexes for dumped tables
@@ -174,7 +203,8 @@ ALTER TABLE `daily_bottle_report`
 --
 ALTER TABLE `recycle_transaction`
   ADD PRIMARY KEY (`trans_id`),
-  ADD KEY `recycle_acc_id` (`acc_id`);
+  ADD KEY `recycle_acc_id` (`acc_id`),
+  ADD KEY `bottle_type` (`bottle_id`);
 
 --
 -- Indexes for table `redeem_transaction`
@@ -203,19 +233,19 @@ ALTER TABLE `user_login`
 -- AUTO_INCREMENT for table `bottle_types`
 --
 ALTER TABLE `bottle_types`
-  MODIFY `bottle_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bottle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `daily_bottle_report`
 --
 ALTER TABLE `daily_bottle_report`
-  MODIFY `day_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `day_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `recycle_transaction`
 --
 ALTER TABLE `recycle_transaction`
-  MODIFY `trans_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `trans_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `redeem_transaction`
@@ -227,13 +257,13 @@ ALTER TABLE `redeem_transaction`
 -- AUTO_INCREMENT for table `shop_items`
 --
 ALTER TABLE `shop_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_login`
 --
 ALTER TABLE `user_login`
-  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `acc_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Constraints for dumped tables
@@ -243,6 +273,7 @@ ALTER TABLE `user_login`
 -- Constraints for table `recycle_transaction`
 --
 ALTER TABLE `recycle_transaction`
+  ADD CONSTRAINT `bottle_type` FOREIGN KEY (`bottle_id`) REFERENCES `bottle_types` (`bottle_id`),
   ADD CONSTRAINT `recycle_acc_id` FOREIGN KEY (`acc_id`) REFERENCES `user_login` (`acc_id`) ON UPDATE CASCADE;
 
 --
