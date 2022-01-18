@@ -78,10 +78,10 @@ else{
                                     <img src="upload_img/'.$bimg.'" class="card-img-top" alt="Water Bottle">
                                     <div class="card-body">
                                     <h5 class="card-title" id="bname">'.$bname.'</h5>
-                                    <p class="card-text" id="bvalue">Value: '.$bvalue.'</p>
-                                    <p class="card-text" id="bsize">Size: '.$bsize.'</p>
+                                    <p class="card-text" id="bvalue">Value: '.$bvalue.'
+                                    <br> Size: '.$bsize.'</p>
                                     <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" 
-                                    data-bs-target="#'.$modalname.'" data-id="'.$bid.'">
+                                    data-bs-target="#'.$modalname.'" data-id="'.$bid.'">Edit
                                     </div>
                                 </div>
                             </div>
