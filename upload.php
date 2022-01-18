@@ -82,7 +82,7 @@ elseif(isset($_POST['submititem'])){
                 if($result == "inserted"){
                     //success go to bottlelist
                     echo "success";
-                    header("Location: bottlelist.php?success");
+                    header("Location: itemlist.php?success");
                 }
                 else{
                     //error inserting

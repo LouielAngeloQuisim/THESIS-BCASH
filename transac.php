@@ -86,11 +86,12 @@
                                         $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
+                                                $bottle_name = $rows['bottles'];
                                                 $points_earned = $rows['points_earned'];
                                                 $redeemtrans_time = $rows['trans_time'];
                                                 $name = $mydb->get_Name($acc_id);
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                                $time = date("H:i:s A",strtotime($rows['trans_time']));
+                                                $time = date("h:i:s A",strtotime($rows['trans_time']));
                                                 if(isset($name)){
                                                     foreach($name as $newrows){
                                                         $fname = $newrows['fname'];
@@ -100,7 +101,7 @@
                                                     }
                                                 }
                                                 echo '<tr>';
-                                                echo '<td> [bottle type] </td>';
+                                                echo '<td>'.$bottle_name.'</td>';
                                                 echo '<td>'.$points_earned .'</td>';
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
