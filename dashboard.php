@@ -169,6 +169,7 @@ else{
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th scope="col">Bottle Types</th>
                                         <th scope="col">Earned points</th>
                                         <th scope="col">Time</th>
                                         <th scope="col">Date</th>
@@ -178,20 +179,27 @@ else{
                                     <?php
                                         $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($recycle_records)){
+                                            $count = 0;
                                             foreach($recycle_records as $rows){
+                                                $bottle_name = $rows['bottles'];
                                                 $points_earned = $rows['points_earned'];
                                                 $date = date("Y-m-d",strtotime($rows['trans_time']));
                                                 $time = date("H:i:s A",strtotime($rows['trans_time']));
                                                 echo '<tr>';
+                                                echo '<td>'.$bottle_name.'</td>';
                                                 echo '<td>'.$points_earned.'</td>';
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
+                                                $count += 1;
+                                                if($count == 5){
+                                                    break;
+                                                }
                                             }
                                         }
                                         else{
                                             echo '<tr>';
-                                            echo '<td colspan="3">There are no recycle transactions yet.</td>';
+                                            echo '<td colspan="4">There are no recycle transactions yet.</td>';
                                             echo '</tr>';
                                         }
                                     ?>
@@ -210,6 +218,7 @@ else{
                                 <tbody>
                                     <?php
                                         $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                        $count = 0;
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];
@@ -220,6 +229,10 @@ else{
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
+                                                $count += 1;
+                                                if($count == 5){
+                                                    break;
+                                                }
                                             }
                                         }
                                         else{

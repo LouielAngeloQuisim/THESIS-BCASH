@@ -87,6 +87,7 @@
                                     <?php
                                         $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
                                         if(isset($redeem_records)){
+                                            $count = 0;
                                             foreach($redeem_records as $rows){
                                                 $points_earned = $rows['points_earned'];
                                                 $redeemtrans_time = $rows['trans_time'];
@@ -108,6 +109,10 @@
                                                 echo '<td>'.$time.'</td>';
                                                 echo '<td>'.$date.'</td>';
                                                 echo '</tr>';
+                                                $count += 1;
+                                                if($count == 6){
+                                                    break;
+                                                }
                                             }
                                         }
                                         else{

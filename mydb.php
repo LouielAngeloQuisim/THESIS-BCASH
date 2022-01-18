@@ -197,7 +197,7 @@ class myDb {
     public function get_Recycle_trans($acc_id,$admin){
         $records = array();
         if($admin == 1){
-            $sql = $this->link->prepare("SELECT * FROM recycle_transaction");
+            $sql = $this->link->prepare("SELECT * FROM recycle_transaction ORDER BY recycle_trans_time DESC");
             $sql->execute();
             $result = $sql->get_result();
             if($result->num_rows > 0){
@@ -216,7 +216,7 @@ class myDb {
             }
         }
         else{
-            $sql = $this->link->prepare("SELECT * FROM recycle_transaction WHERE acc_id = ?");
+            $sql = $this->link->prepare("SELECT * FROM recycle_transaction WHERE acc_id = ? ORDER BY recycle_trans_time DESC");
             $acc_id = mysqli_real_escape_string($this->link, $acc_id);
             $sql->bind_param("i", $acc_id);
             $sql->execute();
@@ -240,7 +240,7 @@ class myDb {
     public function get_Redeem_trans($acc_id,$admin){
         $records = array();
         if($admin == 1){
-            $sql = $this->link->prepare("SELECT * FROM redeem_transaction");
+            $sql = $this->link->prepare("SELECT * FROM redeem_transaction ORDER BY redeem_trans_time DESC");
             $sql->execute();
             $result = $sql->get_result();
             if($result->num_rows > 0){
@@ -260,7 +260,7 @@ class myDb {
             }
         }
         else{
-            $sql = $this->link->prepare("SELECT * FROM redeem_transaction WHERE acc_id = ?");
+            $sql = $this->link->prepare("SELECT * FROM redeem_transaction WHERE acc_id = ? ORDER BY redeem_trans_time DESC");
             $acc_id = mysqli_real_escape_string($this->link, $acc_id);
             $sql->bind_param("i", $acc_id);
             $sql->execute();

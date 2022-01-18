@@ -33,8 +33,13 @@
                                 <label for="middletname" required>Middle Name</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control rounded-1" id="email" placeholder="Enter Email" name="email" required>
+                                <input type="email" id = "email" onkeyup='email_check();' class="form-control rounded-1" id="email" placeholder="Enter Email" name="email" required>
                                 <label for="email" required>Email</label>
+                                <?php
+                                    if(isset($_GET['emailnotvalid'])){
+                                        echo '<span>Email is not valid</span>';
+                                    }
+                                ?>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="number" class="form-control rounded-1" id="num" placeholder="Enter Mobile Number" name="mobilenum" required>
@@ -80,6 +85,7 @@
                             var check = function() {
                                 if (document.getElementById('password').value ==
                                     document.getElementById('confirmpassword').value) {
+
                                     document.getElementById('message').style.color = 'green';
                                     document.getElementById('message').innerHTML = 'Password match';
                                     document.getElementById('submit').disabled = false;
@@ -89,6 +95,7 @@
                                     document.getElementById('submit').disabled = true;
                                 }
                             }
+                            
                         </script>
                     </div>
                 </div>

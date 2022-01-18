@@ -21,7 +21,7 @@
                         </h3>
                         <form action="account_check.php" class="mb-3" method ="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control rounded-1" id="username" placeholder="Enter Username" name="username">
+                                <input type="text" class="form-control rounded-1" id="username" placeholder="Enter Username" name="username" required>
                                 <label for="username" required>Username</label>
                             </div>
                             <!-- kapag walang katulad yung username niya eto dapat lilitaw
@@ -31,7 +31,7 @@
                             </div>
                             -->
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password" name="password">
+                                <input type="password" class="form-control rounded-1" id="password" placeholder="Enter Password" name="password" required>
                                 <label for="password" required>Password</label>
                             </div>
                             <!-- eto naman lilitaw kung mali ang password niya
@@ -45,6 +45,15 @@
                                     Login
                                 </button>
                             </div>
+                            <!-- <span id='message'></span> -->
+                            <?php
+                                if(isset($_GET["noaccount"])){
+                                    echo '<span>Wrong Username or Password</span>';
+                                }
+                                elseif(isset($_GET["notset"])){
+                                    echo '<span>Username and Password is empty. Please try again</span>';
+                                }
+                            ?>
                             <div class="gap-2 mb-3">
                                 Don't have an account? <a href="regis.php">Sign up here!</a>
                             </div>
