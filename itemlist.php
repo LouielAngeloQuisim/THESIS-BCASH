@@ -67,6 +67,7 @@ else{
                     foreach($records as $rows){
                         $item_id = $rows['item_id'];
                         $item_name = $rows['item_name'];
+                        $modalname = "modaleditBottle".$item_id;
                         $item_price = $rows['item_price'];
                         $item_stock = $rows['item_stock'];
                         $item_img = $rows['item_img'];
@@ -78,7 +79,7 @@ else{
                                 <div class="card-body">
                                     <h5 class="card-title">'.$item_name.'</h5>
                                     <p class="card-text">'.$item_price.'</p> 
-                                    <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditItem">
+                                    <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#'.$modalname.'">
                                         Edit
                                     </button>
                                 </div>
@@ -88,20 +89,6 @@ else{
                     }
                 }
             ?>
-                <!-- <div class="col-md">
-                    <div class="card h-100 border border-2 border-primary">
-                        <img src="img/print.PNG" class="card-img-top" alt="Print">
-                        <div class="card-body">
-                            <h5 class="card-title">[Item Type]</h5>
-                            <p class="card-text">[Item price and description]</p>
-                             Button Edit Bottle trigger modal 
-                            <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditItem">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
-                
             </div>
         </div>
     </section>
@@ -166,42 +153,60 @@ else{
     </div>
     </form>
     <!-- Modal Item Edit-->
-    <div class="modal fade" id="modaleditItem" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modaleditItem">Item Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <?php
+        $records = $mydb->get_Shop_items();
+        if(isset($records)){
+            foreach($records as $rows){
+                $item_id = $rows['item_id'];
+                $item_name = $rows['item_name'];
+                $item_price = $rows['item_price'];
+                $item_stock = $rows['item_stock'];
+                $item_img = $rows['item_img'];
+                // show bottle
+                echo '
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="'.$modalname.'" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modaleditItem">Item Edit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="editItemFile" class="form-label">Change Image</label>
+                                    <input class="form-control" type="file" id="editItemFile" name = "image">
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'">
+                                    <label for="btype" required>Item Type</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'">
+                                    <label for="iprice" required>Item Price</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'">
+                                    <label for="idisc" required>Item Description</label>
+                                    <input type="hidden" name="item_id" value="'.$item_id.'">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Button Edit Item Save Changes trigger modal -->
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditISaveChanges">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="editItemFile" class="form-label">Change Image</label>
-                        <input class="form-control" type="file" id="editItemFile">
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="btype" value="[Item Type]">
-                        <label for="btype" required>Item Type</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="iprice" value="[999.999]">
-                        <label for="iprice" required>Item Price</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="idisc" value="[Item Description]">
-                        <label for="idisc" required>Item Description</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- Button Edit Item Save Changes trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditISaveChanges">
-                        Save Changes
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+                ';
+            }
+        }
+    ?>
+    
+    
     <!-- Modal Edit Item Save Changes -->
     <div class="modal fade" id="modalEditISaveChanges" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -215,12 +220,12 @@ else{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-secondary">Confirm</button>
+                    <button type="submit" class="btn btn-secondary" name = "itemedit">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>
     <!-- lines -->
     <section class="bg-dark p-5">
     </section>

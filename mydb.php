@@ -323,6 +323,28 @@ class myDb {
         }
         return $result;
     }
+    public function update_Item($item_name, $item_price, $item_stock, $item_img, $item_id){
+        //prepare statements
+        $sql = $this->link->prepare(
+            "UPDATE shop_items SET item_name = ?, item_price = ?, item_stock = ?, item_img = ? WHERE item_id = ?"
+        );
+        //set parameters
+        $item_id = mysqli_real_escape_string($this->link, $item_id); 
+        $item_name = mysqli_real_escape_string($this->link, $item_name);
+        $item_price = mysqli_real_escape_string($this->link, $item_price);
+        $item_stock = mysqli_real_escape_string($this->link, $item_stock);
+        $item_img = mysqli_real_escape_string($this->link, $item_img);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("siisi", $item_name, $item_price, $item_stock, $item_img, $item_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notupdated";
+        }
+        else{
+            $result = "updated";
+        }
+        return $result;
+    }
     public function update_Password($acc_id, $newpassword){
         //prepare statements
         $sql = $this->link->prepare("UPDATE user_login SET password = ? WHERE acc_id = ?");
@@ -721,6 +743,28 @@ class myDb {
         }
         else{
             $result = "inserted";
+        }
+        return $result;
+    }
+    public function update_BottleType($bname, $bvalue, $bsize, $bimg, $bottle_id){
+        //prepare statements
+        $sql = $this->link->prepare(
+            "UPDATE bottle_types SET bottle = ?, bottle_value = ?, bottle_size = ?, bottle_img = ? WHERE bottle_id = ?"
+        );
+        //set parameters
+        $bottle_id = mysqli_real_escape_string($this->link, $bottle_id); 
+        $bname = mysqli_real_escape_string($this->link, $bname);
+        $bvalue = mysqli_real_escape_string($this->link, $bvalue);
+        $bsize = mysqli_real_escape_string($this->link, $bsize);
+        $bimg = mysqli_real_escape_string($this->link, $bimg);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("siisi", $bname, $bvalue, $bsize, $bimg, $bottle_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notupdated";
+        }
+        else{
+            $result = "updated";
         }
         return $result;
     }

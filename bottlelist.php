@@ -66,6 +66,7 @@ else{
                     if(isset($records)){
                         foreach($records as $rows){
                             $bid = $rows['bottle_id'];
+                            $modalname = "modaleditBottle".$bid;
                             $bname = $rows['bottle_name'];
                             $bvalue = $rows['bottle_value'];
                             $bsize = $rows['bottle_size'];
@@ -76,10 +77,11 @@ else{
                                 <div class="card h-100 border border-2 border-primary">
                                     <img src="upload_img/'.$bimg.'" class="card-img-top" alt="Water Bottle">
                                     <div class="card-body">
-                                        <h5 class="card-title">'.$bname.'</h5>
-                                        <p class="card-text">Value: '.$bvalue.'</p>
-                                        <p class="card-text">Size: '.$bsize.'</p>
-                                        <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
+                                        <h5 class="card-title" id="bname">'.$bname.'</h5>
+                                        <p class="card-text" id="bvalue">Value: '.$bvalue.'</p>
+                                        <p class="card-text" id="bsize">Size: '.$bsize.'</p>
+                                        <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" 
+                                        data-bs-target="#'.$modalname.'" data-id="'.$bid.'">
                                             Edit
                                         </button>
                                     </div>
@@ -89,18 +91,6 @@ else{
                         }
                     }
                 ?>
-                <!--<div class="col-md">
-                    <div class="card h-100 border border-2 border-primary">
-                        <img src="img/slide-0.PNG" class="card-img-top" alt="Water Bottle">
-                        <div class="card-body">
-                            <h5 class="card-title">[Bottle Type]</h5>
-                            <p class="card-text">[Bottle measurements and bottle currency]</p>
-                            <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#modaleditBottle">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
     </section>
@@ -143,7 +133,7 @@ else{
         </div>
     </div>
     <script type="text/javascript">
-
+       
     </script>
     <!-- Modal Add Bottle Confirmation -->
     <div class="modal fade" id="modalAddBConfirm" tabindex="-1">
@@ -165,41 +155,64 @@ else{
     </div>
     </form>
     <!-- Modal Bottle Edit-->
-    <div class="modal fade" id="modaleditBottle" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modaleditBottle">Bottle Edit</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <?php
+        $records = $mydb->get_Bottle();
+        if(isset($records)){
+            foreach($records as $rows){
+                $bid = $rows['bottle_id'];
+                $modalname = "modaleditBottle".$bid;
+                $bname = $rows['bottle_name'];
+                $bvalue = $rows['bottle_value'];
+                $bsize = $rows['bottle_size'];
+                $bimg = $rows['bottle_img'];
+                // show bottle
+                echo '
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="'.$modalname.'" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modaleditBottle">Bottle Edit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="editBottleFile" class="form-label">Change Image</label>
+                                    <input class="form-control" type="file" id="editBottleFile" name = "image">
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" 
+                                    value="'.$bname.'">
+                                    <label for="btype" required>Bottle Type</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize"
+                                    value="'.$bsize.'">
+                                    <label for="bsize" required>Bottle Size</label>
+                                    <input type="hidden" name="bid" value="'.$bid.'">
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="bcurrency"
+
+                                    value="'.$bvalue.'">
+                                    <label for="bcurrency" required>Bottle Currency</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <!-- Button Edit Bottle Save Changes trigger modal -->
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditBSaveChanges">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="editBottleFile" class="form-label">Change Image</label>
-                        <input class="form-control" type="file" id="editBottleFile">
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" value="[Bottle Type]">
-                        <label for="btype" required>Bottle Type</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize" value="[Bottle Size]">
-                        <label for="bsize" required>Bottle Size</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="bcurrency" value="[999.999]">
-                        <label for="bcurrency" required>Bottle Currency</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- Button Edit Bottle Save Changes trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalEditBSaveChanges">
-                        Save Changes
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+                ';
+            }
+        }
+    ?>
+    
 
     <!-- Modal Edit Bottle Save Changes -->
     <div class="modal fade" id="modalEditBSaveChanges" tabindex="-1">
@@ -214,12 +227,12 @@ else{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-secondary">Confirm</button>
+                    <button type="submit" class="btn btn-secondary" name="editsubmit">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>  
     <!-- lines -->
     <section class="bg-dark p-5">
     </section>
