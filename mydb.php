@@ -578,6 +578,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'total_points' => $row['total_points'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned']
@@ -609,6 +610,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'total_points' => $row['total_points'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned'],
@@ -640,6 +642,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'total_points' => $row['total_points'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned'],
@@ -667,6 +670,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'total_points' => $row['total_points'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned']
