@@ -40,7 +40,7 @@
                                 <label for="invalidpassword">Invalid password</label>
                             </div>
                             -->
-                            <div class="d-grid gap-2 mb-3">
+                            <div class="d-grid gap-2 mb-2">
                                 <button type="submit" class="btn btn-secondary btn-lg btn-block"name="login">
                                     Login
                                 </button>
@@ -48,7 +48,7 @@
                             <!-- <span id='message'></span> -->
                             <?php
                                 if(isset($_GET["noaccount"])){
-                                    echo '<span>Wrong Username or Password</span>';
+                                    echo '<span class="text-danger">Wrong Username or Password</span> ';
                                 }
                                 elseif(isset($_GET["notset"])){
                                     echo '<span>Username and Password is empty. Please try again</span>';
