@@ -99,7 +99,7 @@ else{
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modaladdItem">Add Bottle</h5>
+                    <h5 class="modal-title" id="modaladdItem">Add Item</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -124,7 +124,7 @@ else{
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Add Confirmation trigger modal -->
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm">
-                        Add Bottle
+                        Add Item
                     </button>
                 </div>
             </div>
