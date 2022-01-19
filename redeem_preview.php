@@ -146,12 +146,31 @@
                         <tbody class="align-middle">
                         <?php
                             if(isset($_POST['redeem_generate'])){
+                                $conditions = array();
+                                $date_conditions = array();
                                 $lname = $_POST['lname'];
                                 $fname = $_POST['fname'];
                                 $mname = $_POST['mname'];
                                 $mindate = $_POST['mindate'];
                                 $maxdate = $_POST['maxdate'];
-                                $records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
+                                $price = $_POST['price'];
+                                if(!empty($lname)){
+                                    $conditions[] = "lname='$lname'"; 
+                                }
+                                if(!empty($fname)){
+                                    $conditions[] = "fname='$fname'"; 
+                                }
+                                if(!empty($mname)){
+                                    $conditions[] = "mname='$mname'"; 
+                                }
+                                if(!empty($mindate) && !empty($maxdate)){
+                                    $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+                                }
+                                if(!empty($price)){
+                                    $conditions[] = "points_deducted='$price'"; 
+                                }
+                                //$records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
+                                $records = $mydb->filterd_Redeem($conditions, $date_conditions);
                                 if(isset($records)){
                                     foreach($records as $rows){
                                         $lname = $rows['lname'];

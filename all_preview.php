@@ -157,6 +157,7 @@
                                             $lname = $rows['lname'];
                                             $fname = $rows['fname'];
                                             $mname = $rows['mname'];
+                                            $bottle_name = $rows['bottles'];
                                             $points_earned = $rows['points_earned'];
                                             $date = date("Y-m-d",strtotime($rows['recycle_trans_time']));
                                             $time = date("H:i:s A",strtotime($rows['recycle_trans_time']));
@@ -164,7 +165,7 @@
                                             echo '
                                             <tr>
                                             <td>'.$fullname.'</td>
-                                            <td> [bottle type] </td>
+                                            <td> '.$bottle_name.' </td>
                                             <td>'.$points_earned.'</td>
                                             <td>'.$time.'</td>
                                             <td>'.$date.'</td>

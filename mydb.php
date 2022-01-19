@@ -484,6 +484,225 @@ class myDb {
         }
         return $records;
     }
+    //filter data for generate reports for Recycle Records only
+    public function filterd_Recycle($conditions, $date_cond, $points_cond){
+        $records = array();
+        if(isset($conditions) && !empty($conditions)){
+            $sql = "SELECT * FROM recycle_transaction LEFT JOIN user_login ON 
+                    recycle_transaction.acc_id = user_login.acc_id";
+            if(empty($date_cond) && empty($points_cond)){ 
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+                else{
+                    $records = null;
+                }
+            }
+            elseif(!empty($date_cond) && empty($points_cond)){
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $sql .= "".implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            elseif(!empty($points_cond) && empty($date_cond)){
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $sql .= "".implode('', $points_cond);
+                $result = mysqli_query($this->link,$sql);
+                
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            elseif(!empty($points_cond) && !empty($date_cond)){
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $sql .= "".implode('', $points_cond);
+                $sql .= " AND ".implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            mysqli_free_result($result);
+        }
+        else{
+            $sql = "SELECT * FROM recycle_transaction LEFT JOIN user_login ON 
+                    recycle_transaction.acc_id = user_login.acc_id";
+            if(!empty($date_cond) && empty($points_cond)){
+                $sql .= " WHERE ". implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            elseif(!empty($points_cond) && empty($date_cond)){
+                $sql .= " WHERE ".implode('', $points_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            elseif(!empty($points_cond) && !empty($date_cond)){
+                $sql .= " WHERE " .implode('', $points_cond);
+                $sql .= " AND ".implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'bottles' => $row['bottles'],
+                            'total_points' => $row['total_points'],
+                            'recycle_trans_time' => $row['recycle_trans_time'],
+                            'points_earned' => $row['points_earned']
+                        ];
+                    } 
+                }
+            }
+            else{
+                $records = null;
+            }
+            mysqli_free_result($result);
+        }
+        return $records;
+    }
+    //filter data for generate reports for Redeem Records only
+    public function filterd_Redeem($conditions, $date_cond){
+        $records = array();
+        if(isset($conditions) && !empty($conditions)){
+            $sql = "SELECT * FROM redeem_transaction LEFT JOIN user_login ON 
+                    redeem_transaction.acc_id = user_login.acc_id";
+            if(empty($date_cond)){ 
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'points_deducted' => $row['points_deducted'],
+                            'item' => $row['item'],
+                            'redeem_trans_time' => $row['redeem_trans_time']
+                        ];
+                    } 
+                }
+                else{
+                    $records = null;
+                }
+            }
+            elseif(!empty($date_cond)){
+                $sql .= " WHERE " .implode(' AND ', $conditions);
+                $sql .= "".implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'points_deducted' => $row['points_deducted'],
+                            'item' => $row['item'],
+                            'redeem_trans_time' => $row['redeem_trans_time']
+                        ];
+                    } 
+                }
+            }
+            else{
+                $records = null;
+            }
+            mysqli_free_result($result);
+        }
+        else{
+            $sql = "SELECT * FROM redeem_transaction LEFT JOIN user_login ON 
+                    redeem_transaction.acc_id = user_login.acc_id";
+            if(!empty($date_cond)){
+                $sql .= " WHERE ". implode('', $date_cond);
+                $result = mysqli_query($this->link,$sql);
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $records[] =[
+                            'lname' => $row['lname'],
+                            'mname' => $row['mname'],
+                            'fname' => $row['fname'],
+                            'points_deducted' => $row['points_deducted'],
+                            'item' => $row['item'],
+                            'redeem_trans_time' => $row['redeem_trans_time']
+                        ];
+                    } 
+                }
+            }
+            else{
+                $records = null;
+            }
+            mysqli_free_result($result);
+        }
+        return $records;
+    }
     public function filter_Report($lname, $fname, $mname,$from_date,$to_date){
         $records = array();
         if(!empty($from_date) && !empty($to_date)){
@@ -509,6 +728,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned'],
                         'points_deducted' => $row['points_deducted'],
@@ -541,6 +761,7 @@ class myDb {
                         'lname' => $row['lname'],
                         'mname' => $row['mname'],
                         'fname' => $row['fname'],
+                        'bottles' => $row['bottles'],
                         'recycle_trans_time' => $row['recycle_trans_time'],
                         'points_earned' => $row['points_earned'],
                         'points_deducted' => $row['points_deducted'],

@@ -176,6 +176,9 @@
                                 }
                                 elseif(isset($_POST['generate_recycle'])){
                                     if(isset($_POST['generate_recycle'])){
+                                        $conditions = array();
+                                        $date_conditions = array();
+                                        $points_conditions = array();
                                         $lname = $_POST['lname'];
                                         $fname = $_POST['fname'];
                                         $mname = $_POST['mname'];
@@ -183,7 +186,24 @@
                                         $maxdate = $_POST['maxdate'];
                                         $minpoints = $_POST['minpoints'];
                                         $maxpoints = $_POST['maxpoints'];
-                                        $records = $mydb->search_Recycle($lname, $fname, $mname, $mindate, $maxdate,$maxpoints,$minpoints);
+                                        // get fields which is not empty
+                                        if(!empty($lname)){
+                                            $conditions[] = "lname='$lname'"; 
+                                        }
+                                        if(!empty($fname)){
+                                            $conditions[] = "fname='$fname'"; 
+                                        }
+                                        if(!empty($mname)){
+                                            $conditions[] = "mname='$mname'"; 
+                                        }
+                                        if(!empty($mindate) && !empty($maxdate)){
+                                            $date_conditions[] = "DATE(recycle_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+                                        }
+                                        if(!empty($minpoints) && !empty($maxpoints)){
+                                            $points_conditions[] = "points_earned BETWEEN '$minpoints' AND '$maxpoints'"; 
+                                        }
+                                        //$records = $mydb->search_Recycle($lname, $fname, $mname, $mindate, $maxdate,$maxpoints,$minpoints);
+                                        $records = $mydb->filterd_Recycle($conditions, $date_conditions, $points_conditions);
                                         if(isset($records)){
                                             foreach($records as $rows){
                                                 $lname = $rows['lname'];
