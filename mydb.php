@@ -114,11 +114,11 @@ class myDb {
         $email = mysqli_real_escape_string($this->link, $email);
         $mobile_num = mysqli_real_escape_string($this->link, $mobile_num);
         //check if username is already used email
-        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= BINARY ?  AND email = BINARY ?");
+        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?");
         $sql->bind_param("ss", $username, $email);
         $sql->execute();
         $count = $sql->get_result();
-        if($count->num_rows < 0){
+        if(empty($count->num_rows)){
             //prepare statements
             $sql = $this->link->prepare("INSERT into user_login (username,password,lname,fname,mname,email,mobile_num)
             VALUES(?,?,?,?,?,?,?)");
