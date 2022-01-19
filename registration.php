@@ -26,7 +26,6 @@ if(isset($_POST['register'])){
                 foreach($records as $rows){
                     $admin = $rows['admin'];
                     if($admin == 1){//if the user is admin
-
                     }
                     else{
                         $_SESSION['acc_id'] = $rows['acc_id'];
@@ -60,6 +59,14 @@ if(isset($_POST['register'])){
                 header("Location:login.php");
                 ob_end_flush();
             }
+        }
+        elseif($result == "notavailable"){
+            header("Location:regis.php?notavailable=1");
+            ob_end_flush();
+        }
+        else{
+            header("Location:regis.php?unknown=1");
+            ob_end_flush();
         }
     }
     else{

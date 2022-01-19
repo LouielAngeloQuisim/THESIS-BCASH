@@ -4,6 +4,7 @@
     $mydb = new myDb;
     if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
     isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+        require 'cron_job_date.php';
         $acc_id = $_SESSION['acc_id'];
         $qrcode = $_SESSION['qrcode'];
         $admin = $_SESSION['admin'];

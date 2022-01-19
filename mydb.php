@@ -105,11 +105,6 @@ class myDb {
         return $records;
     }
     public function add_User($username,$password,$email,$lname,$fname,$mname,$mobile_num){
-        //prepare statements
-        $sql = $this->link->prepare("INSERT into user_login (username,password,lname,fname,mname,email,mobile_num)
-        VALUES(?,?,?,?,?,?,?)");
-        // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("ssssssi", $username, $password,$lname,$fname,$mname,$email,$mobile_num);
         //set parameters
         $username = mysqli_real_escape_string($this->link, $username);
         $password = mysqli_real_escape_string($this->link, $password);
@@ -118,13 +113,28 @@ class myDb {
         $mname = mysqli_real_escape_string($this->link, $mname);
         $email = mysqli_real_escape_string($this->link, $email);
         $mobile_num = mysqli_real_escape_string($this->link, $mobile_num);
-        //$qrcode = mysqli_real_escape_string($this->link, $qrcode);
-        $success = $sql->execute();
-        if(!$success){
-            $result = "notinserted";
+        //check if username is already used email
+        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= BINARY ?  AND email = BINARY ?");
+        $sql->bind_param("ss", $username, $email);
+        $sql->execute();
+        $count = $sql->get_result();
+        if($count->num_rows < 0){
+            //prepare statements
+            $sql = $this->link->prepare("INSERT into user_login (username,password,lname,fname,mname,email,mobile_num)
+            VALUES(?,?,?,?,?,?,?)");
+            // sss = string,string,string. i = int, d = double, s = string, b = blob.
+            $sql->bind_param("ssssssi", $username, $password,$lname,$fname,$mname,$email,$mobile_num);
+            //$qrcode = mysqli_real_escape_string($this->link, $qrcode);
+            $success = $sql->execute();
+            if(!$success){
+                $result = "notinserted";
+            }
+            else{
+                $result = "inserted";
+            }
         }
         else{
-            $result = "inserted";
+            $result = "notavailable";
         }
         return $result;
     }
@@ -845,4 +855,99 @@ class myDb {
         }
         return $record;
     }
+    public function get_dailyRecycle($date){
+        $record = array();
+        $sql = $this->link->prepare(
+            "SELECT bottle_count FROM `recycle_transaction` WHERE DATE(recycle_trans_time) = ?"
+        );
+        $date = mysqli_real_escape_string($this->link, $date);
+        $sql->bind_param("s", $date);
+        $sql->execute();
+        $result = $sql->get_result();
+        $total_points = 0;
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $total_points += $row['bottle_count'];
+            }   
+        }
+        else{
+            $total_points = 0;
+        }
+        return $total_points;
+    }
+    public function get_dailyRedeem($date){
+        $record = array();
+        $sql = $this->link->prepare(
+            "SELECT redeem_trans_id FROM `redeem_transaction` WHERE DATE(redeem_trans_time) = ?"
+        );
+        $date = mysqli_real_escape_string($this->link, $date);
+        $sql->bind_param("s", $date);
+        $sql->execute();
+        $result = $sql->get_result();
+        $total_redeem = 0;
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $total_redeem += 1;
+            }   
+        }
+        else{
+            $total_points = 0;
+        }
+        return $total_points;
+    }
+    public function get_dailyReport($date){
+        $record = array();
+        $sql = $this->link->prepare(
+            "SELECT date FROM daily_bottle_report WHERE DATE(date) = ?"
+        );
+        $date = mysqli_real_escape_string($this->link, $date);
+        $sql->bind_param("s", $date);
+        $sql->execute();
+        $result = $sql->get_result();
+        $total_redeem = 0;
+        if($result->num_rows > 0){
+            $existing = "true";
+        }
+        else{
+            $existing = "false";
+        }
+        return $existing;
+    }
+    public function update_dailyReport($date, $total_bottles, $total_redeem){
+        $sql = $this->link->prepare(
+            "UPDATE daily_bottle_report SET no_bottles = ?, no_redeem = ? WHERE DATE(date) = ?"
+        );
+        $date = mysqli_real_escape_string($this->link, $date);
+        $total_bottles = mysqli_real_escape_string($this->link, $total_bottles);
+        $total_redeem = mysqli_real_escape_string($this->link, $total_redeem);
+        $sql->bind_param("iis", $total_bottles, $total_redeem, $date);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notupdated";
+        }
+        else{
+            $result = "updated";
+        }
+        return $result;
+    }
+    public function add_Dailyreport($date, $total_bottles, $total_redeem){
+        //prepare statements
+        $sql = $this->link->prepare("INSERT into daily_bottle_report (date, no_bottles, no_redeem)
+        VALUES(?,?,?)");
+        //set parameters
+        $date = mysqli_real_escape_string($this->link, $date);
+        $total_bottles = mysqli_real_escape_string($this->link, $total_bottles);
+        $total_redeem = mysqli_real_escape_string($this->link, $total_redeem);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("sii", $date, $total_bottles, $total_redeem);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
+        }
+        return $result;
+    }
+
 }
