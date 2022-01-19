@@ -116,8 +116,8 @@ else{
                         <label for="bsize" required>Bottle Size</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Prize" name="bcurrency">
-                        <label for="bcurrency" required>Bottle Prize</label>
+                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency">
+                        <label for="bcurrency" required>Bottle Price</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -191,9 +191,9 @@ else{
                                     <input type="hidden" name="bid" value="'.$bid.'">
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Prize" name="bcurrency"
+                                    <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency"
                                     value="'.$bvalue.'" required>
-                                    <label for="bcurrency" >Bottle Prize</label>
+                                    <label for="bcurrency" >Bottle Price</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
