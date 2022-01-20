@@ -113,11 +113,11 @@ else{
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="item_price">
-                        <label for="bsize" required>Item price</label>
+                        <label for="bsize" required>Item Price</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="item_stock">
-                        <label for="bcurrency" required>Item stock</label>
+                        <label for="bcurrency" required>Item Stock</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -181,7 +181,7 @@ else{
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'" required>
-                                    <label for="btype" required>Item Type</label>
+                                    <label for="btype" required>Item Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'" required>
@@ -189,7 +189,7 @@ else{
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'" required>
-                                    <label for="idisc">Stock</label>
+                                    <label for="idisc">Item Stock</label>
                                     <input type="hidden" name="item_id" value="'.$item_id.'">
                                 </div>
                             </div>
