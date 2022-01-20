@@ -506,7 +506,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type = "submit" class="btn btn-secondary btn-md addbtn" id="confirm" name ="generate_recycle" >
+                    <input type = "submit" class="btn btn-secondary btn-md addbtn" id="confirm" value="Confirm" name ="generate_recycle" >
                 </div>
             </div>
         </div>
