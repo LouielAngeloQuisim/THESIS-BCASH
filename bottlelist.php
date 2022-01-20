@@ -109,7 +109,7 @@ else{
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype">
-                        <label for="btype" required>Bottle Type</label>
+                        <label for="btype" required>Bottle Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize">
@@ -117,7 +117,7 @@ else{
                     </div>
                     <div class="form-floating mb-3">
                         <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency">
-                        <label for="bcurrency" required>Bottle Price</label>
+                        <label for="bcurrency" required>Bottle Value</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -182,7 +182,7 @@ else{
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" 
                                     value="'.$bname.'" required>
-                                    <label for="btype" >Bottle Type</label>
+                                    <label for="btype" >Bottle Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize"
@@ -193,7 +193,7 @@ else{
                                 <div class="form-floating mb-3">
                                     <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency"
                                     value="'.$bvalue.'" required>
-                                    <label for="bcurrency" >Bottle Price</label>
+                                    <label for="bcurrency" >Bottle Value</label>
                                 </div>
                             </div>
                             <div class="modal-footer">
