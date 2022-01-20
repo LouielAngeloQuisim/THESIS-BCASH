@@ -199,7 +199,7 @@
                                                                 <div class="bg-light p-5">
                                                                     <div class="carousel-caption">
                                                                         <h5>'.$bname.'</h5>
-                                                                        <p>Price: '.$bvalue.'</p>
+                                                                        <p>Value: '.$bvalue.'</p>
                                                                     </div>  
                                                                 </div>
                                                             </div>
@@ -212,7 +212,7 @@
                                                                 <div class="bg-light p-5">
                                                                     <div class="carousel-caption">
                                                                         <h5>'.$bname.'</h5>
-                                                                        <p>Price: '.$bvalue.'</p>
+                                                                        <p>Value: '.$bvalue.'</p>
                                                                     </div>  
                                                                 </div>
                                                             </div>
