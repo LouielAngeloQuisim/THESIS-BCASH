@@ -256,6 +256,9 @@
                         <tbody class="align-middle">
                         <?php
                             if(isset($_POST['confirm_all'])){
+                                $conditions = array();
+                                $date_conditions = array();
+                                $points_conditions = array();
                                 $lname = $_POST['lname'];
                                 $fname = $_POST['fname'];
                                 $mname = $_POST['mname'];
