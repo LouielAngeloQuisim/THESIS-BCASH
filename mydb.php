@@ -1268,9 +1268,9 @@ class myDb {
             }   
         }
         else{
-            $total_points = 0;
+            $total_redeem = 0;
         }
-        return $total_points;
+        return $total_redeem;
     }
     public function get_dailyReport($date){
         $record = array();
