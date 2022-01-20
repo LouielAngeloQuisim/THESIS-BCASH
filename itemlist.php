@@ -78,7 +78,7 @@ else{
                                 <img src="upload_img/'.$item_img.'" class="card-img-top" alt="Print">
                                 <div class="card-body">
                                     <h5 class="card-title">'.$item_name.'</h5>
-                                    <p class="card-text">'.$item_price.'</p> 
+                                    <p class="card-text">Price: '.$item_price.'</p> 
                                     <button type="button" class="btn btn-secondary btn-lg editbtn" data-bs-toggle="modal" data-bs-target="#'.$modalname.'">
                                         Edit
                                     </button>
