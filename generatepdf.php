@@ -50,12 +50,28 @@ if(isset($_POST['Generate'])){
     $pdf->Cell(80,10,'Time',1,0,'C');
     $pdf->Cell(80,10,'Date',1,0,'C');
     $pdf->Cell(0,10,'',0,1); //end of line
+
+    $conditions = array();
+    $date_conditions = array();
+    $points_conditions = array();
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
     $mindate = $_POST['mindate'];
     $maxdate = $_POST['maxdate'];
-    $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+    if(!empty($lname)){
+        $conditions[] = "lname='$lname'"; 
+    }
+    if(!empty($fname)){
+        $conditions[] = "fname='$fname'"; 
+    }
+    if(!empty($mname)){
+        $conditions[] = "mname='$mname'"; 
+    }
+    if(!empty($mindate) && !empty($maxdate)){
+        $date_conditions[] = "DATE(recycle_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+    }
+    $records = $mydb->filterd_Recycle($conditions, $date_conditions, $points_conditions);
     if(isset($records)){
         foreach($records as $rows){
             $lname = $rows['lname'];
@@ -91,6 +107,9 @@ elseif(isset($_POST['generate_recycle'])){
     $pdf->Cell(80,10,'Date',1,0,'C');
     $pdf->Cell(0,10,'',0,1); //end of line
     if(isset($_POST['generate_recycle'])){
+        $conditions = array();
+        $date_conditions = array();
+        $points_conditions = array();
         $lname = $_POST['lname'];
         $fname = $_POST['fname'];
         $mname = $_POST['mname'];
@@ -98,7 +117,24 @@ elseif(isset($_POST['generate_recycle'])){
         $maxdate = $_POST['maxdate'];
         $minpoints = $_POST['minpoints'];
         $maxpoints = $_POST['maxpoints'];
-        $records = $mydb->search_Recycle($lname, $fname, $mname, $mindate, $maxdate,$maxpoints,$minpoints);
+        // get fields which is not empty
+        if(!empty($lname)){
+            $conditions[] = "lname='$lname'"; 
+        }
+        if(!empty($fname)){
+            $conditions[] = "fname='$fname'"; 
+        }
+        if(!empty($mname)){
+            $conditions[] = "mname='$mname'"; 
+        }
+        if(!empty($mindate) && !empty($maxdate)){
+            $date_conditions[] = "DATE(recycle_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+        }
+        if(!empty($minpoints) && !empty($maxpoints)){
+            $points_conditions[] = "points_earned BETWEEN '$minpoints' AND '$maxpoints'"; 
+        }
+        //$records = $mydb->search_Recycle($lname, $fname, $mname, $mindate, $maxdate,$maxpoints,$minpoints);
+        $records = $mydb->filterd_Recycle($conditions, $date_conditions, $points_conditions);
         if(isset($records)){
             foreach($records as $rows){
                 $lname = $rows['lname'];
@@ -141,12 +177,28 @@ if(isset($_POST['Generate'])){
     $pdf->Cell(60,10,'Time',1,0,'C');
     $pdf->Cell(60,10,'Date',1,0,'C');
     $pdf->Cell(0,10,'',0,1); //end of line
+
+    $conditions = array();
+    $date_conditions = array();
+    $points_conditions = array();
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
     $mindate = $_POST['mindate'];
     $maxdate = $_POST['maxdate'];
-    $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+    if(!empty($lname)){
+        $conditions[] = "lname='$lname'"; 
+    }
+    if(!empty($fname)){
+        $conditions[] = "fname='$fname'"; 
+    }
+    if(!empty($mname)){
+        $conditions[] = "mname='$mname'"; 
+    }
+    if(!empty($mindate) && !empty($maxdate)){
+        $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+    }
+    $records = $mydb->filterd_Redeem($conditions, $date_conditions);
     if(isset($records)){
         foreach($records as $rows){
             $lname = $rows['lname'];
@@ -182,12 +234,32 @@ elseif(isset($_POST['redeem_generate'])){
     $pdf->Cell(60,10,'Time',1,0,'C');
     $pdf->Cell(60,10,'Date',1,0,'C');
     $pdf->Cell(0,10,'',0,1); //end of line
+
+    $conditions = array();
+    $date_conditions = array();
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
     $mindate = $_POST['mindate'];
     $maxdate = $_POST['maxdate'];
-    $records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
+    $price = $_POST['price'];
+    if(!empty($lname)){
+        $conditions[] = "lname='$lname'"; 
+    }
+    if(!empty($fname)){
+        $conditions[] = "fname='$fname'"; 
+    }
+    if(!empty($mname)){
+        $conditions[] = "mname='$mname'"; 
+    }
+    if(!empty($mindate) && !empty($maxdate)){
+        $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+    }
+    if(!empty($price)){
+        $conditions[] = "points_deducted='$price'"; 
+    }
+    //$records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
+    $records = $mydb->filterd_Redeem($conditions, $date_conditions);
     if(isset($records)){
         foreach($records as $rows){
             $lname = $rows['lname'];
