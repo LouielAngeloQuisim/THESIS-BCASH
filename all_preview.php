@@ -145,13 +145,27 @@
                         <tbody class="align-middle">
                             <?php
                                 if(isset($_POST['confirm_all'])){
+                                    $conditions = array();
+                                    $date_conditions = array();
+                                    $points_conditions = array();
                                     $lname = $_POST['lname'];
                                     $fname = $_POST['fname'];
                                     $mname = $_POST['mname'];
                                     $mindate = $_POST['mindate'];
                                     $maxdate = $_POST['maxdate'];
-                                    echo $lname;
-                                    $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+                                    if(!empty($lname)){
+                                        $conditions[] = "lname='$lname'"; 
+                                    }
+                                    if(!empty($fname)){
+                                        $conditions[] = "fname='$fname'"; 
+                                    }
+                                    if(!empty($mname)){
+                                        $conditions[] = "mname='$mname'"; 
+                                    }
+                                    if(!empty($mindate) && !empty($maxdate)){
+                                        $date_conditions[] = "DATE(recycle_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+                                    }
+                                    $records = $mydb->filterd_Recycle($conditions, $date_conditions, $points_conditions);
                                     if(isset($records)){
                                         foreach($records as $rows){
                                             $lname = $rows['lname'];
@@ -247,7 +261,19 @@
                                 $mname = $_POST['mname'];
                                 $mindate = $_POST['mindate'];
                                 $maxdate = $_POST['maxdate'];
-                                $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
+                                if(!empty($lname)){
+                                    $conditions[] = "lname='$lname'"; 
+                                }
+                                if(!empty($fname)){
+                                    $conditions[] = "fname='$fname'"; 
+                                }
+                                if(!empty($mname)){
+                                    $conditions[] = "mname='$mname'"; 
+                                }
+                                if(!empty($mindate) && !empty($maxdate)){
+                                    $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
+                                }
+                                $records = $mydb->filterd_Redeem($conditions, $date_conditions);
                                 if(isset($records)){
                                     foreach($records as $rows){
                                         $lname = $rows['lname'];
