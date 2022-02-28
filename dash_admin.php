@@ -60,7 +60,13 @@
                         <p class="card-text lead mb-md-5 fw-normal">
                             <?php
                                 $total_sum = $mydb->get_sumBottles($admin, $acc_id);
-                                echo 'Total: '.$total_sum.''; 
+                                if(isset($total_sum)){
+                                    echo 'Total: '.$total_sum.''; 
+                                }
+                                else{
+                                    echo 'Total: 0';  
+                                }
+                                
                             ?>
                         </p>
                     </div>

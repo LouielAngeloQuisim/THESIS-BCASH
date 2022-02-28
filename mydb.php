@@ -1133,19 +1133,16 @@ class myDb {
         }
         return $result;
     }
-    public function update_BottleType($bname, $bvalue, $bsize, $bimg, $bottle_id){
+    public function update_BottleType($bvalue, $bottle_id){
         //prepare statements
         $sql = $this->link->prepare(
-            "UPDATE bottle_types SET bottle = ?, bottle_value = ?, bottle_size = ?, bottle_img = ? WHERE bottle_id = ?"
+            "UPDATE bottle_types SET bottle_value = ? WHERE bottle_id = ?"
         );
         //set parameters
         $bottle_id = mysqli_real_escape_string($this->link, $bottle_id); 
-        $bname = mysqli_real_escape_string($this->link, $bname);
         $bvalue = mysqli_real_escape_string($this->link, $bvalue);
-        $bsize = mysqli_real_escape_string($this->link, $bsize);
-        $bimg = mysqli_real_escape_string($this->link, $bimg);
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("siisi", $bname, $bvalue, $bsize, $bimg, $bottle_id);
+        $sql->bind_param("di", $bvalue, $bottle_id);
         $success = $sql->execute();
         if(!$success){
             $result = "notupdated";

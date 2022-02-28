@@ -175,20 +175,16 @@ else{
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="editBottleFile" class="form-label">Change Image</label>
-                                    <input class="form-control" type="file" id="editBottleFile" name = "image" required>
-                                </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" 
-                                    value="'.$bname.'" required>
+                                    value="'.$bname.'" readonly="readonly">
                                     <label for="btype" >Bottle Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize"
-                                    value="'.$bsize.'" required>
+                                    value="'.$bsize.'" readonly="readonly">
                                     <label for="bsize" >Bottle Size</label>
-                                    <input type="hidden" name="bid" value="'.$bid.'">
+                                    <input type="hidden" name="bid" value="'.$bid.' ">
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency"

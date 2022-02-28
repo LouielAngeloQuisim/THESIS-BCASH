@@ -55,7 +55,7 @@
                                 }
                             ?>
                             <div class="gap-2 mb-3">
-                                Don't have an account? <a href="regis.php">Sign up here!</a>
+                                <!-- Don't have an account? <a href="regis.php">Sign up here!</a> -->
                             </div>
                         </form>
                     </div>
