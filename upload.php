@@ -6,6 +6,7 @@ if(isset($_POST['submit'])){
     $bname = $_POST['btype']; // i will use it as bname(bottle name)
     $bsize = $_POST['bsize'];
     $bvalue = $_POST['bcurrency'];
+    echo $bvalue;
     $filename = $_FILES['image']['name'];
     $fileType = $_FILES['image']['type'];
     $fileSize = $_FILES['image']['size'];

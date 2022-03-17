@@ -1123,7 +1123,7 @@ class myDb {
         $bsize = mysqli_real_escape_string($this->link, $bsize);
         $bimg = mysqli_real_escape_string($this->link, $bimg);
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("siis", $bname, $bvalue, $bsize, $bimg);
+        $sql->bind_param("sdis", $bname, $bvalue, $bsize, $bimg);
         $success = $sql->execute();
         if(!$success){
             $result = "notinserted";
