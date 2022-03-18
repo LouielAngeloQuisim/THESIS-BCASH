@@ -25,6 +25,9 @@
                     <a href="itemlist.php" class="nav-link">Item List</a>
                 </li>
                 <li class="nav-item">
+                    <a href="admin_list.php" class="nav-link">Admin List</a>
+                </li>
+                <li class="nav-item">
                     <a href="user_list.php" class="nav-link">User List</a>
                 </li>
                 <li class="nav-item">

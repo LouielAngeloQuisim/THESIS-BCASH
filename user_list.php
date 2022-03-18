@@ -26,7 +26,7 @@
     <section class=" bg-dark p-5">
         <div class="container text-center">
             <div class="h1 text-white">
-              <i class="bi bi-person-lines-fill"></i>
+              <i class="bi bi-people-fill"></i>
             </div>
             <h2 class="text-light text-center mb-3">
                 LIST OF USERS
@@ -95,6 +95,12 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- lines -->
+    <section class="bg-dark p-5">
+    </section>
+    <section class="bg-primary p-3">
     </section>
 
     <form action="" method = "post">

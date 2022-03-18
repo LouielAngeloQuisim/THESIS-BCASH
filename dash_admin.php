@@ -275,9 +275,6 @@
         }*/
         
     ?>
-    <!-- line -->
-    <section class="bg-secondary d-none d-sm-block p-3">
-    </section>
 
     <!-- monthly report java script  -->
     <?php
