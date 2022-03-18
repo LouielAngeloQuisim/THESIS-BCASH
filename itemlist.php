@@ -175,10 +175,6 @@ else{
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="editItemFile" class="form-label">Change Image</label>
-                                    <input class="form-control" type="file" id="editItemFile" name = "image" required>
-                                </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'" required>
                                     <label for="btype" required>Item Name</label>

@@ -323,7 +323,7 @@ class myDb {
         $item_stock = mysqli_real_escape_string($this->link, $item_stock);
         $item_img = mysqli_real_escape_string($this->link, $item_img);
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("siis", $item_name, $item_price, $item_stock, $item_img);
+        $sql->bind_param("sdis", $item_name, $item_price, $item_stock, $item_img);
         $success = $sql->execute();
         if(!$success){
             $result = "notinserted";
@@ -333,19 +333,19 @@ class myDb {
         }
         return $result;
     }
-    public function update_Item($item_name, $item_price, $item_stock, $item_img, $item_id){
+    public function update_Item($item_name, $item_price, $item_stock){
         //prepare statements
         $sql = $this->link->prepare(
-            "UPDATE shop_items SET item_name = ?, item_price = ?, item_stock = ?, item_img = ? WHERE item_id = ?"
+            "UPDATE shop_items SET item_name = ?, item_price = ?, item_stock = ?WHERE item_id = ?"
         );
         //set parameters
         $item_id = mysqli_real_escape_string($this->link, $item_id); 
         $item_name = mysqli_real_escape_string($this->link, $item_name);
         $item_price = mysqli_real_escape_string($this->link, $item_price);
         $item_stock = mysqli_real_escape_string($this->link, $item_stock);
-        $item_img = mysqli_real_escape_string($this->link, $item_img);
+
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("siisi", $item_name, $item_price, $item_stock, $item_img, $item_id);
+        $sql->bind_param("sdisi", $item_name, $item_price, $item_stock);
         $success = $sql->execute();
         if(!$success){
             $result = "notupdated";
