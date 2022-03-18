@@ -25,6 +25,9 @@
                     <a href="itemlist.php" class="nav-link">Item List</a>
                 </li>
                 <li class="nav-item">
+                    <a href="user_list.php" class="nav-link">User List</a>
+                </li>
+                <li class="nav-item">
                     <!-- logout trigger modal -->
                     <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
                         Logout
