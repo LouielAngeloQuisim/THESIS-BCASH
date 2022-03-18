@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https:/cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+    <link href="sass/main.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>BCash</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <?php
+        include 'nav_admin.php';
+    ?>
+
+    <!-- List of User Header  --> 
+    <section class=" bg-dark p-5">
+        <div class="container text-center">
+            <div class="h1 text-white">
+              <i class="bi bi-person-lines-fill"></i>
+            </div>
+            <h2 class="text-light text-center mb-3">
+                LIST OF USERS
+            </h2>
+            <p class="lead text-center">
+                <!-- Button Add User trigger modal -->
+                <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUser">
+                  Add User
+                </button>
+            </p>
+        </div>
+    </section>
+
+    <!-- List of User Table -->
+    <section class="p-5">
+        <div class="container">
+            <div class="card text-center">
+                <div class="card-body px-0">
+                    <form action="" method="post">
+                        <div class="input-group px-5 my-3">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <button class="btn btn-secondary" type="submit" id="searchbtn" name="search_submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <!-- All of Users that are Registered -->
+                    <p class="card-text">
+                        <div class="infocontent">
+                            <div class="scroll">
+                                <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Middle Name</th>
+                                        <th scope="col">Total Points</th>
+                                        <th scope="col">Sex</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Mobile Number</th>
+                                        <th scope="col">Student Number</th>
+                                        <th scope="col">Program</th>
+                                        <th scope="col">Year Level</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody class="align-middle">
+                                      <tr>
+                                        <td>ajpdeguzman2@bpsu.edu.ph</td>
+                                        <td>De Guzman</td>
+                                        <td>Arvin Jay</td>
+                                        <td>Poblete</td>
+                                        <td>10000000</td>
+                                        <td>M</td>
+                                        <td>21</td>
+                                        <td>09054242132</td>
+                                        <td>18-00923</td>
+                                        <td>BS Computer Science (Network and Data Communications)</td>
+                                        <td>4th Year</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <form action="" method = "post">
+      <!-- Modal Add User -->
+      <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modaladdUser">
+                      Add User
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-floating mb-2">
+                      <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="example@bpsu.edu.ph" required>
+                      <label for="email">Email Address</label>
+                    </div>
+                    <div class="row g-2 mb-2">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
+                          <label for="fname">First Name</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required>
+                          <label for="lname">Last Name</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="text" id="mname" name="mname" class="form-control" placeholder="Middle Name" required>
+                          <label for="mname">Middle Name</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-floating mb-2">
+                          <select class="form-select" id="prog" name="prog" required>
+                            <option selected>Please select your Program</option>
+                            <option value="BS Computer Science (Network and Data Communications)">BS Computer Science (Network and Data Communications)</option>
+                            <option value="BS Computer Science (Software Development)">BS Computer Science (Software Development)</option>
+                            <option value="BS Entertainment and Multimedia Computing (Digital Animation Technology)">BS Entertainment and Multimedia Computing (Digital Animation Technology)</option>
+                            <option value="BS Entertainment and Multimedia Computing (Game Development)">BS Entertainment and Multimedia Computing (Game Development)</option>
+                            <option value="BS Information Technology (Net and Web Applications)">BS Information Technology (Net and Web Applications)</option>
+                          </select>
+                          <label for="prog">Program</label>
+                        </div>
+                    <div class="row g-2 mb-2">
+                      <div class="col">
+                        <div class="form-floating">
+                          <select class="form-select" id="sex" name="sex" required>
+                            <option selected>Please select your Sex</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                          </select>
+                          <label for="sex">Sex</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="number" id="age" name="age" class="form-control" placeholder="Age" required>
+                          <label for="age">Age</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <select class="form-select" id="yrlvl" name="yrlvl" required>
+                            <option selected>Please select your Year Level</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                          </select>
+                          <label for="yrlvl">Year Level</label>
+                        </div>
+                    </div>
+                    <div class="row g-2 mb-2">
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="number" id="studnum" name="studnum" class="form-control" placeholder="Student Number" required>
+                          <label for="studnum">Student Number</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-floating">
+                          <input type="number" id="connum" name="connum" class="form-control" placeholder="Contact Number" required>
+                          <label for="connum">Contact Number</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
+                          Register
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+  </body>
+</html>
