@@ -46,6 +46,39 @@ class myDb {
         mysqli_free_result($result);
         return $records;
     }
+    public function get_Users(){
+        $sql = "SELECT * FROM user_login";
+        $result = mysqli_query($this->link, $sql);
+        $records = array();
+        //Store data to array
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                if($row['admin'] != 1){
+                    $records[] = [
+                        'acc_id' => $row['acc_id'],
+                        'username' => $row['username'],
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'sex' => $row['sex'],
+                        'age' => $row['age'],
+                        'email' => $row['email'],
+                        'program' => $row['program'],
+                        'year_level' => $row['year_level'],
+                        'mobile_num' => $row['mobile_num'],
+                        'stud_num' => $row['stud_num'],
+                        'total_points' => $row['total_points']
+                    ];
+                }
+            }
+        }
+        else{
+            $records = null;
+        }
+        mysqli_free_result($result);
+        return $records;
+    }
+    
     public function get_Userinfo($username){
         $sql = "SELECT username, admin, acc_id, total_points, total_bottles, qrcode 
         FROM user_login WHERE username='$username'";
@@ -104,7 +137,10 @@ class myDb {
         $sql->free_result();
         return $records;
     }
-    public function add_User($username,$password,$email,$lname,$fname,$mname,$mobile_num){
+    public function add_User(
+        $username, $password, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
+        $program, $year_level, $studnum
+        ){
         //set parameters
         $username = mysqli_real_escape_string($this->link, $username);
         $password = mysqli_real_escape_string($this->link, $password);
@@ -113,6 +149,12 @@ class myDb {
         $mname = mysqli_real_escape_string($this->link, $mname);
         $email = mysqli_real_escape_string($this->link, $email);
         $mobile_num = mysqli_real_escape_string($this->link, $mobile_num);
+        $sex = mysqli_real_escape_string($this->link, $sex);
+        $age = mysqli_real_escape_string($this->link, $age);
+        $program = mysqli_real_escape_string($this->link, $program);
+        $year_level = mysqli_real_escape_string($this->link, $year_level);
+        $studnum = mysqli_real_escape_string($this->link, $studnum);
+        
         //check if username is already used email
         $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?");
         $sql->bind_param("ss", $username, $email);
@@ -120,10 +162,16 @@ class myDb {
         $count = $sql->get_result();
         if(empty($count->num_rows)){
             //prepare statements
-            $sql = $this->link->prepare("INSERT into user_login (username,password,lname,fname,mname,email,mobile_num)
-            VALUES(?,?,?,?,?,?,?)");
+            $sql = $this->link->prepare("INSERT into user_login (
+                username,password,lname,fname,mname,email,mobile_num,sex,age,program,
+                year_level,stud_num
+                )
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
             // sss = string,string,string. i = int, d = double, s = string, b = blob.
-            $sql->bind_param("ssssssi", $username, $password,$lname,$fname,$mname,$email,$mobile_num);
+            $sql->bind_param("ssssssisisss",
+                $username, $password,$lname,$fname,$mname,$email,$mobile_num,$sex,$age,
+                $program,$year_level,$studnum
+            );
             //$qrcode = mysqli_real_escape_string($this->link, $qrcode);
             $success = $sql->execute();
             if(!$success){
@@ -138,6 +186,48 @@ class myDb {
         }
         return $result;
     }
+    // used in search function in user_list.php
+    public function search_Users($search){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM user_login WHERE email LIKE ?
+            OR age LIKE ? OR sex LIKE ? OR fname LIKE ? OR mname LIKE ? OR lname LIKE ? OR mobile_num LIKE ?
+            OR stud_num LIKE ? OR total_points LIKE ? OR program LIKE ? OR year_level LIKE ? 
+        ");
+        $search = mysqli_real_escape_string($this->link, $search);
+        $search = "%{$search}%";
+        $sql->bind_param(
+            "sissssisiss", $search, $search, $search, $search,
+            $search, $search, $search, $search, $search, $search, $search
+        );
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                if($row['admin'] != 1){
+                    $records[] = [
+                        'acc_id' => $row['acc_id'],
+                        'username' => $row['username'],
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'sex' => $row['sex'],
+                        'age' => $row['age'],
+                        'email' => $row['email'],
+                        'program' => $row['program'],
+                        'year_level' => $row['year_level'],
+                        'mobile_num' => $row['mobile_num'],
+                        'stud_num' => $row['stud_num'],
+                        'total_points' => $row['total_points']
+                    ];
+                }
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+    }
+
     public function add_Qrcode($acc_id, $qrcode){
         //prepare statements
         $sql = $this->link->prepare("UPDATE user_login SET qrcode = ? WHERE acc_id = ?");

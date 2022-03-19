@@ -1,3 +1,21 @@
+<?php
+    session_start();
+    require "mydb.php";
+    $mydb = new myDb;
+    if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+    isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+        $acc_id = $_SESSION['acc_id'];
+        $qrcode = $_SESSION['qrcode'];
+        $admin = $_SESSION['admin'];
+        $total_points = $_SESSION['total_points'];
+        $total_bottles = $_SESSION['total_bottles'];
+        $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+        $output["img"] = $url;
+    }
+    else{
+        echo "error in collecting user data";
+    }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -48,7 +66,7 @@
                     <form action="" method="post">
                         <div class="input-group px-5 my-3">
                             <input type="text" class="form-control" placeholder="Search" name="search">
-                            <button class="btn btn-secondary" type="submit" id="searchbtn" name="search_submit">
+                            <button class="btn btn-secondary" type="submit" id="searchbtn" name="user_search">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -74,19 +92,76 @@
                                       </tr>
                                     </thead>
                                     <tbody class="align-middle">
-                                      <tr>
-                                        <td>ajpdeguzman2@bpsu.edu.ph</td>
-                                        <td>De Guzman</td>
-                                        <td>Arvin Jay</td>
-                                        <td>Poblete</td>
-                                        <td>10000000</td>
-                                        <td>M</td>
-                                        <td>21</td>
-                                        <td>09054242132</td>
-                                        <td>18-00923</td>
-                                        <td>BS Computer Science (Network and Data Communications)</td>
-                                        <td>4th Year</td>
-                                      </tr>
+                                      <?php
+                                        $result = $mydb->get_Users();
+                                        // display this when search is used
+                                        if(isset($_POST['user_search'])){
+                                          $keyword = $_POST['search'];
+                                          $search_result = $mydb->search_Users($keyword);
+                                          if(isset($search_result)){
+                                            foreach($search_result as $row){
+                                              $email = $row['email'];
+                                              $lname = $row['lname'];
+                                              $fname = $row['fname'];
+                                              $mname = $row['mname'];
+                                              $user_points = $row['total_points'];
+                                              $sex = $row['sex'];
+                                              $age = $row['age'];
+                                              $mobile_num = $row['mobile_num'];
+                                              $stud_num = $row['stud_num'];
+                                              $program = $row['program'];
+                                              $year_level = $row['year_level'];
+                                              echo '
+                                                <tr>
+                                                  <td>'.$email.'</td>
+                                                  <td>'.$lname.'</td>
+                                                  <td>'.$fname.'</td>
+                                                  <td>'.$mname.'</td>
+                                                  <td>'.$user_points.'</td>
+                                                  <td>'.$sex.'</td>
+                                                  <td>'.$age.'</td>
+                                                  <td>'.$mobile_num.'</td>
+                                                  <td>'.$stud_num.'</td>
+                                                  <td>'.$program.'</td>
+                                                  <td>'.$year_level.'</td>
+                                                </tr>
+                                              ';
+                                            }
+                                          }
+                                        }
+                                        elseif(isset($result)){
+                                          foreach($result as $row){
+                                            $email = $row['email'];
+                                            $lname = $row['lname'];
+                                            $fname = $row['fname'];
+                                            $mname = $row['mname'];
+                                            $user_points = $row['total_points'];
+                                            $sex = $row['sex'];
+                                            $age = $row['age'];
+                                            $mobile_num = $row['mobile_num'];
+                                            $stud_num = $row['stud_num'];
+                                            $program = $row['program'];
+                                            $year_level = $row['year_level'];
+                                            echo '
+                                              <tr>
+                                                <td>'.$email.'</td>
+                                                <td>'.$lname.'</td>
+                                                <td>'.$fname.'</td>
+                                                <td>'.$mname.'</td>
+                                                <td>'.$user_points.'</td>
+                                                <td>'.$sex.'</td>
+                                                <td>'.$age.'</td>
+                                                <td>'.$mobile_num.'</td>
+                                                <td>'.$stud_num.'</td>
+                                                <td>'.$program.'</td>
+                                                <td>'.$year_level.'</td>
+                                              </tr>
+                                            ';
+                                          }
+                                        }
+                                        
+                                      ?>
+                                      
                                     </tbody>
                                 </table>
                             </div>
@@ -103,7 +178,7 @@
     <section class="bg-primary p-3">
     </section>
 
-    <form action="" method = "post">
+    <form action="registration.php" method = "post">
       <!-- Modal Add User -->
       <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
@@ -155,8 +230,8 @@
                         <div class="form-floating">
                           <select class="form-select" id="sex" name="sex" required>
                             <option selected>Please select your Sex</option>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                           </select>
                           <label for="sex">Sex</label>
                         </div>
@@ -169,7 +244,7 @@
                       </div>
                       <div class="col">
                         <div class="form-floating">
-                          <select class="form-select" id="yrlvl" name="yrlvl" required>
+                          <select class="form-select" id="yrlvl" name="year_level" required>
                             <option selected>Please select your Year Level</option>
                             <option value="1st Year">1st Year</option>
                             <option value="2nd Year">2nd Year</option>
@@ -182,13 +257,13 @@
                     <div class="row g-2 mb-2">
                       <div class="col">
                         <div class="form-floating">
-                          <input type="number" id="studnum" name="studnum" class="form-control" placeholder="Student Number" required>
+                          <input type="text" id="studnum" name="studnum" class="form-control" placeholder="Student Number" required>
                           <label for="studnum">Student Number</label>
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-floating">
-                          <input type="number" id="connum" name="connum" class="form-control" placeholder="Contact Number" required>
+                          <input type="number" id="connum" name="mobile_num" class="form-control" placeholder="Contact Number" required>
                           <label for="connum">Contact Number</label>
                         </div>
                       </div>

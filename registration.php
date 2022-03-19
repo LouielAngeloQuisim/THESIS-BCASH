@@ -3,74 +3,73 @@ session_start();
 require "mydb.php";
 $mydb = new myDb;
 ob_start();
-if(isset($_POST['register'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+if(isset($_POST['registerbtn'])){
+    $email = $_POST['email'];
     $lname = $_POST['lname'];
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
-    $mobile_num = $_POST['mobilenum'];
-    $email = $_POST['email'];
+    $program = $_POST['prog'];
+    $age = $_POST['age'];
+    $sex = $_POST['sex'];
+    $mobile_num = $_POST['mobile_num'];
+    $year_level = $_POST['year_level'];
+    $studnum = $_POST['studnum'];
+    $username = $email;
+    $password = $studnum;
     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
         //qrcode
         //$url = "https://chart.googleapis.com/chart?cht=qr&chs={250}x{250}&chl={$hash_data}";
-        $result = $mydb->add_User($username,$password,$email,$lname,$fname,$mname,$mobile_num);
+        
+        $result = $mydb->add_User(
+            $username, $password, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
+            $program, $year_level, $studnum
+        );
         if($result == "notinserted"){
             echo "not inserted";
         }
         elseif($result == "inserted"){
-            echo "inserted";
+            //echo "inserted";
             $_SESSION['username'] = $username;
             $records = $mydb->check_Account($username, $password);
+            // insert hashed qrcode
             if(isset($records)){
                 foreach($records as $rows){
                     $admin = $rows['admin'];
                     if($admin == 1){//if the user is admin
+                        // code here if there a admin adding function/module
                     }
                     else{
-                        $_SESSION['acc_id'] = $rows['acc_id'];
                         $acc_id = $rows['acc_id'];
-                        $_SESSION['total_points'] = $rows['total_points'];
-                        $_SESSION['total_bottles'] = $rows['total_bottles'];
-                        $_SESSION['lname'] = $rows['lname'];
-                        $_SESSION['mname'] = $rows['mname']; 
-                        $_SESSION['fname'] = $rows['fname']; 
-                        $_SESSION['email'] = $rows['email']; 
-                        $_SESSION['mobile_num'] = $rows['mobile_num'];  
-                        $_SESSION['username'] = $rows['username'];
-                        $_SESSION['admin'] = $rows['admin'];
-                        $_SESSION['password'] = $rows['password']; 
                         //hash data for qrcode
                         $hash_qrcode = password_hash($rows['acc_id'], PASSWORD_DEFAULT);
                         $results = $mydb->add_Qrcode($acc_id, $hash_qrcode);
                         if($results == "inserted"){
-                            $_SESSION['qrcode'] = $hash_qrcode;
-                            header("Location:dashboard.php");
+                            header("Location:user_list.php?success=1");
                             ob_end_flush();
                         }
                         elseif($results == "notinserted"){
-                            header("Location:regis.php");
+                            header("Location:user_list.php?failed=1");
                             ob_end_flush();
                         }
                     }
                 }
             }
             else{
-                header("Location:login.php");
+                header("Location:user_list.php?usernamenotfound=1");
                 ob_end_flush();
             }
         }
         elseif($result == "notavailable"){
-            header("Location:regis.php?notavailable=1");
+            header("Location:user_list.php?notavailable=1");
             ob_end_flush();
         }
         else{
-            header("Location:regis.php?unknown=1");
+            header("Location:user_list.php?unknown=1");
             ob_end_flush();
         }
     }
     else{
-        header("Location:regis.php?emailnotvalid=1");
+        header("Location:user_list.php?emailnotvalid=1");
         ob_end_flush();
     }
 }
