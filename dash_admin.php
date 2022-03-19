@@ -49,7 +49,7 @@
             </h2>
             <!-- Total Bottles Recycled -->
             <div class="row text-center g-4">
-                <div class="col-md">
+                <div class="col-lg">
                     <div class="card bg-light text-fontdark p-3">
                         <div class="h1 mb-md-4 mt-md-5">
                             <i class="bi bi-trash"></i>
@@ -71,7 +71,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md">
+                <div class="col-lg">
                     <div class="card bg-light text-fontdark p-3 pb-0">
                         <div class="h1">
                             <i class="bi bi-card-text"></i>
@@ -141,7 +141,7 @@
             <div class="d-sm-flex align-items-center">
                 <div class="container text-fontdark">
                     <div class="row align-items-center justify-content-between g-4">
-                        <div class="col-md">
+                        <div class="col-lg">
                             <div class="card text-center border border-2 border-dark">
                                 <div class="h1">
                                     <i class="bi bi-file-bar-graph"></i>
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md text-center">
+                        <div class="col-lg text-center">
                             <div class="card bg-light cardadmin1 border border-2 border-dark">
                                 <div class="h1 mb-2">
                                     <i class="bi bi-bag-check"></i>

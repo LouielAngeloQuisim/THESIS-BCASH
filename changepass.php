@@ -68,7 +68,7 @@
                 <div class="col">
                     <div class="card shadow bg-light p-4 border border-2 border-primary">
                         <div class="h1 text-center">
-                            <i class="bi bi-lock"></i>
+                        <i class="bi bi-lock-fill"></i>
                         </div>
                         <h3 class="mb-4 text-center fs-0">
                             Change Password

@@ -8,19 +8,23 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Login</title>
+    <title>BCash</title>
   </head>
   <body>
       <section class="bg-white p-5">
       </section>
-      <section class="bg-white p-5">
+      <section class="bg-white p-4">
       </section>
       <section class="bg-white p-5">
-        <img src="img/logo1.png" class="mx-auto d-block mb-3">
-        <div class="d-grid gap-3 col-lg-4 mx-auto">
+        <div class="card cardselect shadow bg-light p-4 border border-5 border-dark" style="width: 25rem;">
+          <img src="img/logo1.png" class="mx-auto d-block mb-3">
+          <div class="d-grid gap-2 col-12 mx-auto">
             <a class="btn btn-primary btn-lg rounded-pill" href="login.php" role="button">Login</a>
             <a class="btn btn-primary btn-lg rounded-pill" href="dash_shop.php" role="button">Shop</a>
+          </div>
         </div>
+        
+        
       </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
