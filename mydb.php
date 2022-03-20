@@ -227,6 +227,72 @@ class myDb {
         }
         return $records;
     }
+    public function search_Recycle_records($search){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM `recycle_transaction` LEFT JOIN user_login ON 
+        recycle_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? OR mname LIKE ? OR lname  
+        LIKE ? OR recycle_trans_time LIKE ? OR points_earned LIKE ? OR bottles LIKE ?");
+        $search = mysqli_real_escape_string($this->link, $search);
+        $search = "%{$search}%";
+        $sql->bind_param(
+            "ssssis", $search, $search, $search, $search, $search, $search
+        );
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                if($row['admin'] != 1){
+                    $records[] = [
+                        'acc_id' => $row['acc_id'],
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'total_points' => $row['total_points'],
+                        'bottle_type' => $row['bottles'],
+                        'points_earned' => $row['points_earned'],
+                        'recycle_trans_time' => $row['recycle_trans_time']
+                    ];
+                }
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+    }
+    public function search_Redeem_records($search){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
+        redeem_transaction.acc_id = user_login.acc_id WHERE fname LIKE ? OR mname LIKE ? OR lname  
+        LIKE ? OR redeem_trans_time LIKE ? OR points_deducted LIKE ? OR item LIKE ?");
+        $search = mysqli_real_escape_string($this->link, $search);
+        $search = "%{$search}%";
+        $sql->bind_param(
+            "ssssis", $search, $search, $search, $search, $search, $search
+        );
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                if($row['admin'] != 1){
+                    $records[] = [
+                        'acc_id' => $row['acc_id'],
+                        'lname' => $row['lname'],
+                        'mname' => $row['mname'],
+                        'fname' => $row['fname'],
+                        'total_points' => $row['total_points'],
+                        'item' => $row['item'],
+                        'points_deducted' => $row['points_deducted'],
+                        'redeem_trans_time' => $row['redeem_trans_time']
+                    ];
+                }
+            }   
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+    }
 
     public function add_Qrcode($acc_id, $qrcode){
         //prepare statements
