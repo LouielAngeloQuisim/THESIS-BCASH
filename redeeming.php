@@ -62,7 +62,7 @@
                         <i class="bi bi-check-circle"></i>
                     </div>
                     <p class="text-fondark fw-bolder">
-                        Redeemed Succesfully
+                        Are you sure you want to buy this item?
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -127,6 +127,7 @@
     <!-- line -->
     <section class="bg-primary p-3"></section>
     <script>
+        // code to use camera and scan qr codes
         let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
         Instascan.Camera.getCameras().then(function(cameras){
             if(cameras.lenght = 1){
@@ -141,6 +142,9 @@
 
         scanner.addListener('scan',function(content){
             document.getElementById('text').value = content;
+            $(document).ready(function(){
+                $('#modalredeempopup').modal('show');
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
