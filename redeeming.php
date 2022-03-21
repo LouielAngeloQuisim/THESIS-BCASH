@@ -40,9 +40,9 @@
                 <p class="card-text lead">
                     <!-- dito lilitaw yung scanner -->
                     <!-- (kunwari nascan na at nadetect) Redeem Pop up trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalredeempopup">
+                    <!-- <button type="button" class="btn btn-secondary btn-lg scanbtn" data-bs-toggle="modal" data-bs-target="#modalredeempopup">
                         Kunwari eto yung nascan at nadetect na
-                    </button>
+                    </button> -->
                 </p>
             </div> 
         </div>
@@ -58,19 +58,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <div class="h1 text-success">
-                        <i class="bi bi-check-circle"></i>
+                    <div class="h1 text-danger">
+                        <i class="bi bi-exclamation-circle"></i>
                     </div>
                     <p class="text-fondark fw-bolder">
-                        Are you sure you want to buy this item?
+                        Are you sure you want to continue this transaction?
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <!-- Cancel Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
-                        Cancel
+                    <a href="redeem_scan.php.php" class="btn btn-secondary">No</a>
+                    <!-- Yes Confirm trigger modal -->
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalyesconfirm">
+                        Yes
                     </button>
-                    <a href="dash_shop.php" class="btn btn-secondary">End Transaction</a>
                 </div>
             </div>
             <!-- eto kapag kulang points ni user
@@ -95,6 +95,31 @@
                 </div>
             </div>
             -->
+        </div>
+    </div>
+
+    <!-- Modal Yes Confirm -->
+    <div class="modal fade" id="modalyesconfirm" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalYesconfirm">Redeem Item</h5>
+                    <!-- Cancel Confirm trigger modal -->
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="h1 text-success">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <p class="text-fondark fw-bolder">
+                        Succesfully Redeemed!
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="redeem_scan.php" class="btn btn-secondary">Continue</a>
+                </div>
+            </div>
         </div>
     </div>
 
