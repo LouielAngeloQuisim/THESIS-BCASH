@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- javascripts for qrcode scanner -->
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+    <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
     
     <meta charset="utf-8">
@@ -29,6 +34,8 @@
                 </div>
                 <h3 class="card-title mb-3">
                     [Redeemable Item]
+                    <video id="preview" width="100%"></video>
+                    <input type="text" name="text" id="text" placeholder="qrcode value">
                 </h3>
                 <p class="card-text lead">
                     <!-- dito lilitaw yung scanner -->
@@ -37,8 +44,9 @@
                         Kunwari eto yung nascan at nadetect na
                     </button>
                 </p>
-            </div>
+            </div> 
         </div>
+        
     </section>
 
     <!-- Modal Redeem Pop up -->
@@ -118,7 +126,23 @@
 
     <!-- line -->
     <section class="bg-primary p-3"></section>
-    
+    <script>
+        let scanner = new Instascan.Scanner({video: document.getElementById('preview')});
+        Instascan.Camera.getCameras().then(function(cameras){
+            if(cameras.lenght = 1){
+                scanner.start(cameras[0]);
+            }
+            else{
+                alert("No cameras found/permitted");
+            }
+        }).catch(function(e){
+            console.error(e);
+        });
+
+        scanner.addListener('scan',function(content){
+            document.getElementById('text').value = content;
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

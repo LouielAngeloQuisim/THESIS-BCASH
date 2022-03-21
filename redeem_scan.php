@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
 
     <meta charset="utf-8">
@@ -31,54 +32,51 @@
             </h1>
             <!-- Redeemable Item Cards -->
             <div class="row row-cols-1 row-cols-md-4 text-center g-4">
+                <?php
+                    require 'mydb.php';
+                    $mydb = new myDb;
+                    $item_list = $mydb->get_Shop_items();
+                    if(isset($item_list) && !empty($item_list)){
+                        foreach($item_list as $rows){
+                            $item_id = $rows['item_id'];
+                            $modalname = "modaleditBottle".$item_id;
+                            $modalsavename = "modalEditISaveChanges".$item_id;
+                            $item_name = $rows['item_name'];
+                            $item_price = $rows['item_price'];
+                            $item_stock = $rows['item_stock'];
+                            $item_img = $rows['item_img'];
+                            echo '
+                                <div class="col-md">
+                                    <div class="card h-100">
+                                        <img src="upload_img/'.$item_img.'" class="card-img-top" alt="Print">
+                                        <div class="card-body">
+                                            <h5 class="card-title">'.$item_name.'</h5>
+                                            <p class="card-text">'.$item_price.'</p>
+                                            <!-- redeem button -->
+                                            <a href="redeeming.php?itemid='.$item_id.'" class="btn btn-secondary btn-lg editbtn">Redeem</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    }  
+                    else{
+                        echo "There are no items yet available in the shop";
+                    }
+                ?>
                 <!-- card 1 -->
-                <div class="col-md">
+                <!-- <div class="col-md">
                     <div class="card h-100">
                         <img src="img/print.PNG" class="card-img-top" alt="Print">
                         <div class="card-body">
                             <h5 class="card-title">[Item Type]</h5>
-                            <p class="card-text">[Item price and description]</p>
+                            <p class="card-text">[Item price and description]</p> -->
                             <!-- redeem button -->
-                            <a href="redeeming.php" class="btn btn-secondary btn-lg editbtn">Redeem</a>
+                            <!-- <a href="redeeming.php" class="btn btn-secondary btn-lg editbtn">Redeem</a>
                         </div>
                     </div>
-                </div>
-                <!-- card 2 -->
-                <div class="col-md">
-                    <div class="card h-100">
-                        <img src="img/xerox.PNG" class="card-img-top" alt="Print">
-                        <div class="card-body">
-                            <h5 class="card-title">[Item Type]</h5>
-                            <p class="card-text">[Item price and description]</p>
-                            <!-- redeem button -->
-                            <a href="redeeming.php" class="btn btn-secondary btn-lg editbtn">Redeem</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 3 -->
-                <div class="col-md">
-                    <div class="card h-100">
-                        <img src="img/ballpen.PNG" class="card-img-top" alt="Print">
-                        <div class="card-body">
-                            <h5 class="card-title">[Item Type]</h5>
-                            <p class="card-text">[Item price and description]</p>
-                            <!-- redeem button -->
-                            <a href="redeeming.php" class="btn btn-secondary btn-lg editbtn">Redeem</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- card 4 -->
-                <div class="col-md">
-                    <div class="card h-100">
-                        <img src="img/pencil1.PNG" class="card-img-top" alt="Print">
-                        <div class="card-body">
-                            <h5 class="card-title">[Item Type]</h5>
-                            <p class="card-text">[Item price and description]</p>
-                            <!-- redeem button -->
-                            <a href="redeeming.php" class="btn btn-secondary btn-lg editbtn">Redeem</a>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
+                
             </div>
         </div>
     </section>
