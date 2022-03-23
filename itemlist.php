@@ -14,6 +14,7 @@ isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
 }
 else{
     echo "error in collecting user data";
+    header("Location: login.php?usernotfound=1");
 }
 ?>
 <!doctype html>
@@ -115,9 +116,10 @@ else{
                         <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="item_price">
                         <label for="bsize" required>Item Price</label>
                     </div>
+                    <!-- item stock hidden and value was 0 -->
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="item_stock">
-                        <label for="bcurrency" required>Item Stock</label>
+                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="item_stock" hidden>
+                        <label for="bcurrency" required hidden>Item Stock</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -176,16 +178,16 @@ else{
                             </div>
                             <div class="modal-body">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'" required>
-                                    <label for="btype" required>Item Name</label>
+                                    <input type="text" class="form-control rounded-1" id="itype" placeholder="Enter Item Type" name="item_name" value="'.$item_name.'" required hidden>
+                                    <label for="btype" required hidden>Item Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'" required>
                                     <label for="iprice">Item Price</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'" required>
-                                    <label for="idisc">Item Stock</label>
+                                    <input type="text" class="form-control rounded-1" id="idisc" placeholder="Enter Item Description" name="item_stock" value="'.$item_stock.'" required hidden>
+                                    <label for="idisc" hidden>Item Stock</label>
                                     <input type="hidden" name="item_id" value="'.$item_id.'">
                                 </div>
                             </div>

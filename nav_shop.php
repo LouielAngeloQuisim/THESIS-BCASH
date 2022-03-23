@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3"> -->
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark py-3">
     <div class="container">
-        <a href="dash_shop.php" class="navbar-brand fw-bold">BCASH</a>
+        <a href="index.php" class="navbar-brand fw-bold">BCASH</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
             <span class="navbar-toggler-icon"></span>
@@ -16,9 +16,9 @@
                 </li>
                 <li class="nav-item">
                     <!-- logout trigger modal -->
-                    <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
+                    <!-- <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
                         Logout
-                    </a>
+                    </a> -->
                 </li>
             </ul>
         </div>

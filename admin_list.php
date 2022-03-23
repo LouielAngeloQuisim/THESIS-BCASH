@@ -1,3 +1,22 @@
+<?php
+session_start();
+require "mydb.php";
+$mydb = new myDb;
+if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
+isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
+    $acc_id = $_SESSION['acc_id'];
+    $qrcode = $_SESSION['qrcode'];
+    $admin = $_SESSION['admin'];
+    $total_points = $_SESSION['total_points'];
+    $total_bottles = $_SESSION['total_bottles'];
+    $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
+    $output["img"] = $url;
+}
+else{
+    echo "error in collecting user data";
+    header("Location: login.php?usernotfound=1");
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>

@@ -36,7 +36,9 @@ if(isset($_POST['login'])){
                 $_SESSION['mname'] = $rows['mname']; 
                 $_SESSION['fname'] = $rows['fname']; 
                 $_SESSION['email'] = $rows['email']; 
-                $_SESSION['mobile_num'] = $rows['mobile_num'];  
+                $_SESSION['mobile_num'] = $rows['mobile_num'];
+                $_SESSION['program'] = $rows['program'];
+                $_SESSION['yearlvl'] = $rows['yearlvl'];  
                 $_SESSION['username'] = $rows['username'];
                 $_SESSION['admin'] = $rows['admin'];
                 $_SESSION['password'] = $rows['password']; 

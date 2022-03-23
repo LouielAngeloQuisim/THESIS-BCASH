@@ -59,7 +59,8 @@ elseif(isset($_POST['submititem'])){
     $img = $_FILES['image'];// image file
     $item_name = $_POST['item_name']; // i will use it as bname(bottle name)
     $item_price = $_POST['item_price'];
-    $item_stock = $_POST['item_stock'];
+    $item_stock = 0; // zero muna kasi d muna lalagyan nag stock
+    // $item_stock = $_POST['item_stock'];
     $filename = $_FILES['image']['name'];
     $fileType = $_FILES['image']['type'];
     $fileSize = $_FILES['image']['size'];
@@ -112,10 +113,11 @@ elseif(isset($_POST['itemedit'])){
     $item_id = $_POST['item_id'];
     $item_name = $_POST['item_name']; // i will use it as bname(bottle name)
     $item_price = $_POST['item_price'];
-    $item_stock = $_POST['item_stock'];
+    $item_stock = 0; // zero muna kasi d muna lalagyan nag stock
+    //$item_stock = $_POST['item_stock'];
     //file name and extension
     //file types allowed
-    $result = $mydb->update_Item($item_name, $item_price, $item_stock, $fileNameNew, $item_id);
+    $result = $mydb->update_Item($item_name, $item_price, $item_stock, $item_id);
     if($result == "updated"){
         //success go to bottlelist
         echo "success";

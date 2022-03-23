@@ -126,6 +126,8 @@ class myDb {
                     'total_points' => $row['total_points'],
                     'total_bottles' => $row['total_bottles'],
                     'qrcode' => $row['qrcode'],
+                    'program' => $row['program'],
+                    'yearlvl' => $row['year_level'],
                     'admin' => $row['admin']
                 ];
             }
@@ -489,10 +491,10 @@ class myDb {
         }
         return $result;
     }
-    public function update_Item($item_name, $item_price, $item_stock){
+    public function update_Item($item_name, $item_price, $item_stock, $item_id){
         //prepare statements
         $sql = $this->link->prepare(
-            "UPDATE shop_items SET item_name = ?, item_price = ?, item_stock = ?WHERE item_id = ?"
+            "UPDATE shop_items SET item_name = ?, item_price = ?, item_stock = ? WHERE item_id = ?"
         );
         //set parameters
         $item_id = mysqli_real_escape_string($this->link, $item_id); 
@@ -501,7 +503,7 @@ class myDb {
         $item_stock = mysqli_real_escape_string($this->link, $item_stock);
 
         // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("sdisi", $item_name, $item_price, $item_stock);
+        $sql->bind_param("sdii", $item_name, $item_price, $item_stock, $item_id);
         $success = $sql->execute();
         if(!$success){
             $result = "notupdated";

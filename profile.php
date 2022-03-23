@@ -9,6 +9,8 @@
         $fname = $_SESSION['fname'];
         $mname = $_SESSION['mname'];
         $email = $_SESSION['email'];
+        $program = $_SESSION['program'];
+        $yearlvl = $_SESSION['yearlvl']; 
         $mobile_num = $_SESSION['mobile_num'];
         $fullname = ' '.$fname.' '.$mname.' '.$lname.'';
     }
@@ -45,8 +47,8 @@
                 <h3>
                 <?php 
                 echo '<h2>'.$fullname.'</h2><br>';
-                echo '<h4 class="fw-light">'.$username.'</h4>';
-                echo '<h4 class="fw-light">'.$email.'</h4>';
+                echo '<h4 class="fw-light">'.$program.'</h4>';
+                echo '<h4 class="fw-light">'.$yearlvl.'</h4>';
                 echo '<h4 class="fw-light">'.$mobile_num.'</h4>';
                 ?> 
                 </h3>     
