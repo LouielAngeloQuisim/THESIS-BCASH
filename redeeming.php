@@ -23,9 +23,19 @@
     <!-- navbar -->
     <?php
         include 'nav_shop.php';
+        require "mydb.php";
+        $mydb = new myDb;
+        if(isset($_POST['redeem_submit'])){
+            print_r($_POST['redeem_submit']);
+            $user_id = $_POST['user_id'];
+            $item_id = $_GET['itemid'];
+            $result = $mydb->minus_Points($user_id, $item_id);
+            echo $result;
+        }
     ?>
 
     <!-- redeem scanning are -->
+    <form action="" method="post">
     <section class="bg-dark p-5 text-center text-sm-start">
         <div class="container">
             <div class="card bg-light text-center text-fontdark p-3">
@@ -35,7 +45,7 @@
                 <h3 class="card-title mb-3">
                     [Redeemable Item]
                     <video id="preview" width="100%"></video>
-                    <input type="text" name="text" id="text" placeholder="qrcode value">
+                    <input type="text" name="user_id" id="text" placeholder="qrcode value" hidden>
                 </h3>
                 <p class="card-text lead">
                     <!-- dito lilitaw yung scanner -->
@@ -66,13 +76,20 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <a href="redeem_scan.php.php" class="btn btn-secondary">No</a>
+                    <a href="redeem_scan.php" class="btn btn-secondary">No</a>
                     <!-- Yes Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalyesconfirm">
+                    <button type="submit" class="btn btn-secondary" name="redeem_submit">
                         Yes
                     </button>
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalyesconfirm">
+                        Yes
+                    </button> -->
                 </div>
+                <?php
+                    echo "here";
+                ?>
             </div>
+            </form>
             <!-- eto kapag kulang points ni user
             <div class="modal-content">
                 <div class="modal-header">

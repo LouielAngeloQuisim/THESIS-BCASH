@@ -1479,5 +1479,103 @@ class myDb {
         }
         return $result;
     }
+    public function minus_Points($user_id, $item_id){
+        date_default_timezone_set('Asia/Manila');
+        $datetime = date('Y-m-d h:i:s A');
+        $date = date('Y-m-d');
+        $user_points = 0;
+        $item_value = 0;
+        $points_deducted = 0;
+        $item_name = "";
+        $acc_id = "";
+        $date_id = -1;
+        $no_redeem = 0;
+        // get user info
+        $sql = "SELECT username, admin, acc_id, total_points, total_bottles, qrcode 
+        FROM user_login WHERE qrcode='$user_id'";
+        $result = mysqli_query($this->link,$sql);
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $user_points = $row['total_points'];
+                $acc_id = $row['acc_id'];
+            } 
+        }
+        else{
+            $return = "no_user";
+            return $result;
+        }
+        // get item info
+        $item_id = mysqli_real_escape_string($this->link, $item_id);
+        $sql = "SELECT item_price, item_name 
+        FROM shop_items WHERE item_id='$item_id'";
+        $result = mysqli_query($this->link,$sql);
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $item_name = $row['item_name'];
+                $item_points = $row['item_price'];
+            } 
+        }
+        else{
+            $result = "noitem";
+            return $result;
+        }
+        // get date info
+        $sql = "SELECT day_id, date , no_redeem
+        FROM daily_bottle_report WHERE date LIKE '%$date%'";
+        $result = mysqli_query($this->link,$sql);
+        if(mysqli_num_rows($result)>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $date_id= $row['day_id'];
+                $no_redeem = $row['no_redeem'];
+            } 
+        }
+        else{
+
+            $result = $date;
+            return $result;
+        }
+        if($user_points >= $item_points){
+            // update user points
+            $user_points = $user_points - $item_points;
+            $sql = $this->link->prepare("UPDATE user_login SET total_points = ? WHERE acc_id = ?");
+            $sql->bind_param("ii", $user_points, $acc_id);
+            $success = $sql->execute();
+            if(!$success){
+                $result = "notupdated";
+            }
+            else{
+                $sql = $this->link->prepare("INSERT into redeem_transaction (
+                    acc_id, item, item_id,points_deducted, redeem_trans_time, day_id)
+                VALUES(?,?,?,?,?,?)");
+                $sql->bind_param("isiisi", $acc_id, $item_name, $item_id, $item_points, $datetime, $date_id);
+                $success = $sql->execute();
+                if(!$success){
+                    $result = "notupdated";
+                    return $result;
+                }
+                else{
+                    $no_redeem = $no_redeem + 1;
+                    echo $no_redeem;
+                    echo $date_id;
+                    $sql = $this->link->prepare("UPDATE daily_bottle_report SET no_redeem = ? WHERE day_id = ?");
+                    $sql->bind_param("ii", $no_redeem,  $date_id);
+                    $success = $sql->execute();
+                    if(!$success){
+                        $result = "failed to update daily reports redeem";
+                        return $result;
+                    }
+                    else{
+                        $result = "updated";
+                        return $result;
+                    }
+                }  
+            }
+        }
+        else{
+            $result = "$item_points"; // return not enough points
+            return $result;
+        }
+    }
+
 
 }
