@@ -15,19 +15,19 @@
                     <a href="dash_shop.php" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <!-- logout trigger modal -->
-                    <!-- <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout">
-                        Logout
-                    </a> -->
+                    <!-- exit trigger modal -->
+                    <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalexit">
+                        Exit
+                    </a>
                 </li>
             </ul>
         </div>
-        <!-- Modal logout -->
-        <div class="modal fade" id="modallogout" tabindex="-1">
+        <!-- Modal exit -->
+        <div class="modal fade" id="modalexit" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modallogout">Logout Confirmation</h5>
+                        <h5 class="modal-title" id="modalexit">Exit Confirmation</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
@@ -36,14 +36,14 @@
                             <i class="bi bi-exclamation-circle"></i>
                         </div>
                         <p class="text-fondark fw-bolder">
-                            Are you sure to Logout?
+                            Are you sure you want to exit?
                         </p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
                         </button>
-                        <a href="login.php" class="btn btn-secondary">Confirm</a>
+                        <a href="index.php" class="btn btn-secondary">Confirm</a>
                     </div>
                 </div>
             </div>
