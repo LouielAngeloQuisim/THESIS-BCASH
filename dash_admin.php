@@ -282,7 +282,7 @@
         $result = $mydb->get_Date($nummonth);
         if(isset($result)){
             foreach($result as $rows){
-                $newdate[] = 'Day '.date('d',strtotime($rows['date'])).'';
+                $newdate[] = $newmonth.' '.date('d',strtotime($rows['date'])).'';
                 $no_bottles[] = $rows['no_bottles'];
                 //print_r($no_bottles);
             }   
@@ -310,8 +310,16 @@
                     hoverBorderColor:'#000'
                 }]
             },
-            options:[
-            ]
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
         })    
     </script>
 

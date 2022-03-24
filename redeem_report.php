@@ -286,9 +286,16 @@
                     hoverBorderColor:'#000'
                 }]
             },
-            options:[
-
-            ]
+            options: {
+                responsive: true,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
         })
     </script>
 
