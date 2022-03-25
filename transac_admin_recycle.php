@@ -348,7 +348,7 @@
                     <div class="col text-start py-3">
                         <!-- eto kapag na oon yung switch tapos (kapaag eto nakaon madidisable na yung the rest kase priprint niya all ehh) -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="optionswitch" checked>
+                            <input class="form-check-input" type="checkbox" id="optionswitch1">
                             <label class="form-check-label ms-2" for="optionswitch">
                                 Generate All
                             </label>
@@ -365,7 +365,7 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch1">
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
                                     <input type="text" class="form-control tfield1" id="lname" placeholder="Enter Last Name" name = "lname">
@@ -388,7 +388,7 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch1">
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
                                     <input type="text" class="form-control tfield1" id="fname" placeholder="Enter First Name" name = "fname">
@@ -411,7 +411,7 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch1">
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
                                     <input type="text" class="form-control tfield1" id="mname" placeholder="Enter Middle Name" name = "mname">
@@ -434,7 +434,7 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="epswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="epswitch1">
                             <label class="form-check-label" for="epswitch">
                                 <div class="input-group inputtg1">
                                     <input type="double" class="form-control" id="minep" placeholder="Min Points" name = "minpoints">
@@ -459,7 +459,7 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
                                     <input type="date" class="form-control" id="mindate" name = "mindate">
@@ -491,7 +491,38 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function(){
+            // mnameswitch
+            // epswitch
+            // dateswitch
+            // lnameswitch
+            // input names
+            // mindate
+            // maxdate
+            // lname
+            // fname
+            // mname
+            // minep
+            // maxep
+            (function(){
+                
+                document.getElementById('optionswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('lnameswitch1').addEventListener('change', disableInput, false);
+                function disableInput(){
+                    var gen_all = document.getElementById('optionswitch1');
+                    var lname = document.getElementById('lnameswitch1');
+                    if(gen_all.checked){
+                        lname.disabled = true;
+                    }
+                    else if(!gen_all.checked){
+                        lname.disabled = false;
+                    }
+                    
+                }
+            })();
+        });
+    </script>
     <!-- Modal Generate Recycle Confirm -->
     <div class="modal fade modalpopup" id="modalgenRecConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
