@@ -56,7 +56,7 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/slide-0.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Bottle]</h5>
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/slide-1.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/slide-1.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Bottle]</h5>
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/slide-2.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/slide-2.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Bottle]</h5>
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/slide-3.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/slide-3.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Bottle]</h5>
@@ -143,7 +143,7 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="img/print.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/print.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Redeemable Item]</h5>
@@ -152,7 +152,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/xerox.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/xerox.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Redeemable Item]</h5>
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/ballpen.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/ballpen.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Redeemable Item]</h5>
@@ -170,7 +170,7 @@
                                     </div>
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/pencil1.PNG" class="d-block pb-2 w-100">
+                                    <img src="img/pencil1.png" class="d-block pb-2 w-100">
                                     <div class="bg-light p-5">
                                         <div class="carousel-caption">
                                             <h5>[Type of Redeemable Item]</h5>
