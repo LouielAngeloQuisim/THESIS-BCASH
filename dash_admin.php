@@ -126,7 +126,9 @@
                                             }
                                         }
                                         else{
-                                            echo "There are no records of transactions yet";
+                                            echo '<tr>';
+                                            echo '<td colspan="4">There are no records of transactions yet.</td>';
+                                            echo '</tr>';
                                         }
                                     ?>
                                 </tbody>
