@@ -6,13 +6,11 @@ if(isset($_POST['submit'])){
     $bname = $_POST['btype']; // i will use it as bname(bottle name)
     $bsize = $_POST['bsize'];
     $bvalue = $_POST['bcurrency'];
-    echo $bvalue;
     $filename = $_FILES['image']['name'];
     $fileType = $_FILES['image']['type'];
     $fileSize = $_FILES['image']['size'];
     $fileError = $_FILES['image']['error'];
     $fileTmpName = $_FILES['image']['tmp_name'];
-    print_r($img);
     //file name and extension
     $fileExt = explode('.', $filename);
     $fileActualExt = strtolower(end($fileExt));
@@ -29,7 +27,6 @@ if(isset($_POST['submit'])){
                 $result = $mydb->add_BottleType($bname, $bvalue, $bsize, $fileNameNew);
                 if($result == "inserted"){
                     //success go to bottlelist
-                    echo "success";
                     header("Location: bottlelist.php?success");
                 }
                 else{
@@ -66,7 +63,6 @@ elseif(isset($_POST['submititem'])){
     $fileSize = $_FILES['image']['size'];
     $fileError = $_FILES['image']['error'];
     $fileTmpName = $_FILES['image']['tmp_name'];
-    print_r($img);
     //file name and extension
     $fileExt = explode('.', $filename);
     $fileActualExt = strtolower(end($fileExt));
@@ -83,7 +79,6 @@ elseif(isset($_POST['submititem'])){
                 $result = $mydb->add_Item($item_name, $item_price, $item_stock, $fileNameNew);
                 if($result == "inserted"){
                     //success go to bottlelist
-                    echo "success";
                     header("Location: itemlist.php?success");
                 }
                 else{
@@ -120,7 +115,6 @@ elseif(isset($_POST['itemedit'])){
     $result = $mydb->update_Item($item_name, $item_price, $item_stock, $item_id);
     if($result == "updated"){
         //success go to bottlelist
-        echo "success";
         header("Location: itemlist.php?success");
     }
     else{
@@ -133,11 +127,9 @@ elseif(isset($_POST['editsubmit'])){
     $bname = $_POST['btype']; // i will use it as bname(bottle name)
     $bsize = $_POST['bsize'];
     $bvalue = $_POST['bcurrency'];
-    echo $bvalue;
     $result = $mydb->update_BottleType($bvalue,$bottle_id);
     if($result == "updated"){
         //success go to bottlelist
-        echo "success";
         header("Location: bottlelist.php?success");
     }
     else{

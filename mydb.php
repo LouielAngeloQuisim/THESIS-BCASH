@@ -7,10 +7,16 @@ class myDb {
     private $link;
 
     function __construct(){
+        // for localhost
         $this->host = "localhost";
         $this->username = "root";
         $this->password = "";
         $this->database = "bcash";
+        // for 000webhost
+        // $this->host = "localhost";
+        // $this->username = "id18658017_bcash";
+        // $this->password = "]E/n$2v+*[&{+Fjo";
+        // $this->database = "id18658017_thesis_bcash";
 
         //link to database
         $this->link = mysqli_connect($this->host, $this->username, $this->password, $this->database);
