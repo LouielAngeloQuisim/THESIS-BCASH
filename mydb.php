@@ -156,6 +156,10 @@ class myDb {
         $program = mysqli_real_escape_string($this->link, $program);
         $year_level = mysqli_real_escape_string($this->link, $year_level);
         $studnum = mysqli_real_escape_string($this->link, $studnum);
+        $total_points = 0;
+        $total_bottles = 0;
+        $admin = 0;
+        $qrcode = "0";
         
         //check if username is already used email
         $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?");
@@ -166,13 +170,13 @@ class myDb {
             //prepare statements
             $sql = $this->link->prepare("INSERT into user_login (
                 username,password,lname,fname,mname,email,mobile_num,sex,age,program,
-                year_level,stud_num
+                year_level,stud_num,qrcode,total_points,total_bottles,admin
                 )
-            VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             // sss = string,string,string. i = int, d = double, s = string, b = blob.
-            $sql->bind_param("ssssssisisss",
-                $username, $password,$lname,$fname,$mname,$email,$mobile_num,$sex,$age,
-                $program,$year_level,$studnum
+            $sql->bind_param("ssssssisissssdii",
+                $username,$password,$lname,$fname,$mname,$email,$mobile_num,$sex,$age,
+                $program,$year_level,$studnum,$qrcode,$total_points,$total_bottles,$admin
             );
             //$qrcode = mysqli_real_escape_string($this->link, $qrcode);
             $success = $sql->execute();
@@ -187,6 +191,73 @@ class myDb {
             $result = "notavailable";
         }
         return $result;
+    }
+
+    public function add_Qrcode($acc_id, $qrcode){
+        //prepare statements
+        $sql = $this->link->prepare("UPDATE user_login SET qrcode = ? WHERE acc_id = ?");
+        //set parameters
+        $qrcode = mysqli_real_escape_string($this->link, $qrcode);
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("si", $qrcode, $acc_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
+        }
+        return $result;
+    }
+    public function get_Qrcode($acc_id){
+        //prepare statements
+        $records = array();
+        $sql = $this->link->prepare("SELECT qrcode,username FROM user_login WHERE acc_id = ?");
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $sql->bind_param("i", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        while($row = $result->fetch_assoc()){
+            $records[] = [
+                'qrcode' => $row['qrcode']
+            ];
+        }
+        //$sql->bind_result($qrcode, $username);
+        //$result = $sql->get_result();
+        /*if($sql->num_rows>0){
+            while($row = $sql->fetch()){
+                $records[] =[
+                    'qrcode' => $row['qrcode']
+                ];
+            } 
+        }
+        else{
+            $records = null;
+        }*/
+        $sql->free_result();
+        return $records;
+    }
+    public function verify_Qrcode($qrcode){
+        $records = array();
+        $sql = $this->link->prepare("SELECT acc_id FROM user_login");
+        $sql->execute();
+        $result = $sql->get_result();
+        $verified = "";
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'acc_id' => $row['acc_id']
+                ];
+                if(password_verify($row['acc_id'], $qrcode)){
+                    $verified = "true";
+                }
+            }
+        }
+        else{
+            $verified = "false";
+        }
+        return $verified;
     }
     // used in search function in user_list.php
     public function search_Users($search){
@@ -296,72 +367,6 @@ class myDb {
         return $records;
     }
 
-    public function add_Qrcode($acc_id, $qrcode){
-        //prepare statements
-        $sql = $this->link->prepare("UPDATE user_login SET qrcode = ? WHERE acc_id = ?");
-        //set parameters
-        $qrcode = mysqli_real_escape_string($this->link, $qrcode);
-        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
-        // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("si", $qrcode, $acc_id);
-        $success = $sql->execute();
-        if(!$success){
-            $result = "notinserted";
-        }
-        else{
-            $result = "inserted";
-        }
-        return $result;
-    }
-    public function get_Qrcode($acc_id){
-        //prepare statements
-        $records = array();
-        $sql = $this->link->prepare("SELECT qrcode,username FROM user_login WHERE acc_id = ?");
-        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
-        $sql->bind_param("i", $acc_id);
-        $sql->execute();
-        $result = $sql->get_result();
-        while($row = $result->fetch_assoc()){
-            $records[] = [
-                'qrcode' => $row['qrcode']
-            ];
-        }
-        //$sql->bind_result($qrcode, $username);
-        //$result = $sql->get_result();
-        /*if($sql->num_rows>0){
-            while($row = $sql->fetch()){
-                $records[] =[
-                    'qrcode' => $row['qrcode']
-                ];
-            } 
-        }
-        else{
-            $records = null;
-        }*/
-        $sql->free_result();
-        return $records;
-    }
-    public function verify_Qrcode($qrcode){
-        $records = array();
-        $sql = $this->link->prepare("SELECT acc_id FROM user_login");
-        $sql->execute();
-        $result = $sql->get_result();
-        $verified = "";
-        if($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
-                $records[] = [
-                    'acc_id' => $row['acc_id']
-                ];
-                if(password_verify($row['acc_id'], $qrcode)){
-                    $verified = "true";
-                }
-            }
-        }
-        else{
-            $verified = "false";
-        }
-        return $verified;
-    }
     public function get_Recycle_trans($acc_id,$admin){
         $records = array();
         if($admin == 1){

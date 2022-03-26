@@ -25,7 +25,7 @@ if(isset($_POST['registerbtn'])){
             $program, $year_level, $studnum
         );
         if($result == "notinserted"){
-            echo "not inserted";
+            echo "user not inserted";
         }
         elseif($result == "inserted"){
             //echo "inserted";
