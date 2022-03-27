@@ -11,7 +11,6 @@
         $total_bottles = $_SESSION['total_bottles'];
     }
     else{
-        echo "error in collecting user data";
         header("Location: login.php?usernotfound=1");
     }
 ?>

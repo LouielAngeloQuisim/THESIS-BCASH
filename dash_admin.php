@@ -14,7 +14,6 @@
         $output["img"] = $url;
     }
     else{
-        echo "error in collecting user data";
         header("Location: login.php?usernotfound=1");
     }
 ?>
