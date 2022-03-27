@@ -258,7 +258,7 @@
         $result = $mydb->get_Date($nummonth);
         if(isset($result)){
             foreach($result as $rows){
-                $newdate[] = 'Day '.date('d',strtotime($rows['date'])).'';
+                $newdate[] = $newmonth.' '.date('d',strtotime($rows['date'])).'';
                 $no_redeem[] = $rows['no_redeem'];
                 //print_r($no_bottles);
             }   
