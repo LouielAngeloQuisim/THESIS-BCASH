@@ -184,16 +184,17 @@
                                 </h3>
                                 <div class="card-text">
                                     <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators">
-                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                        </div>
-                                        <div class="carousel-inner">
                                             <?php
-                                                $records = $mydb->get_Bottle();
                                                 if(isset($records)){
+                                                    echo '
+                                                    <div class="carousel-indicators">
+                                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                                    </div>
+                                                    <div class="carousel-inner">
+                                                    ';
                                                     $count = 0;
                                                     foreach($records as $rows){
                                                         $bid = $rows['bottle_id'];
@@ -230,6 +231,20 @@
                                                         }
                                                         $count += 1;
                                                     }
+                                                    echo '
+                                                        </div>
+                                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Next</span>
+                                                        </button>
+                                                    ';
+                                                }
+                                                else{
+                                                    echo 'There are no bottles available';
                                                 }
                                             ?>
                                             <!-- <div class="carousel-item active">
@@ -242,15 +257,7 @@
                                                 </div>
                                             </div> -->
 
-                                        </div>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
+                                        
                                     </div>
                                 </div>
                             </div>

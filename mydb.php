@@ -84,6 +84,27 @@ class myDb {
         mysqli_free_result($result);
         return $records;
     }
+    public function get_Admin(){
+        $sql = "SELECT * FROM user_login";
+        $result = mysqli_query($this->link, $sql);
+        $records = array();
+        //Store data to array
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                if($row['admin'] == 1){
+                    $records[] = [
+                        'acc_id' => $row['acc_id'],
+                        'username' => $row['username'],
+                    ];
+                }
+            }
+        }
+        else{
+            $records = null;
+        }
+        mysqli_free_result($result);
+        return $records;
+    }
     
     public function get_Userinfo($username){
         $sql = "SELECT username, admin, acc_id, total_points, total_bottles, qrcode 
@@ -147,7 +168,7 @@ class myDb {
     }
     public function add_User(
         $username, $password, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
-        $program, $year_level, $studnum
+        $program, $year_level, $studnum, $admin
         ){
         //set parameters
         $username = mysqli_real_escape_string($this->link, $username);
@@ -164,12 +185,12 @@ class myDb {
         $studnum = mysqli_real_escape_string($this->link, $studnum);
         $total_points = 0;
         $total_bottles = 0;
-        $admin = 0;
+        $admin = mysqli_real_escape_string($this->link, $admin);
         $qrcode = "0";
         
         //check if username is already used email
-        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?");
-        $sql->bind_param("ss", $username, $email);
+        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ? OR stud_num = ? ");
+        $sql->bind_param("sss", $username, $email, $studnum);
         $sql->execute();
         $count = $sql->get_result();
         if(empty($count->num_rows)){

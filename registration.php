@@ -16,16 +16,17 @@ if(isset($_POST['registerbtn'])){
     $studnum = $_POST['studnum'];
     $username = $email;
     $password = $studnum;
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $admin = $_POST['admin'];
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) || $admin == 1) {
+        echo $admin;
         //qrcode
         //$url = "https://chart.googleapis.com/chart?cht=qr&chs={250}x{250}&chl={$hash_data}";
-        
         $result = $mydb->add_User(
             $username, $password, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
-            $program, $year_level, $studnum
+            $program, $year_level, $studnum, $admin
         );
-        if($result == "notinserted"){
-            echo "user not inserted";
+        if($result != "inserted"){
+            header("Location:user_list.php?notavailable=$result");
         }
         elseif($result == "inserted"){
             //echo "inserted";
@@ -37,6 +38,7 @@ if(isset($_POST['registerbtn'])){
                     $admin = $rows['admin'];
                     if($admin == 1){//if the user is admin
                         // code here if there a admin adding function/module
+                        header("Location:admin_list.php?success=1");
                     }
                     else{
                         $acc_id = $rows['acc_id'];
@@ -69,7 +71,7 @@ if(isset($_POST['registerbtn'])){
         }
     }
     else{
-        header("Location:user_list.php?emailnotvalid=1");
+        //header("Location:user_list.php?emailnotvalid=1");
         ob_end_flush();
     }
 }

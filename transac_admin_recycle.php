@@ -492,20 +492,9 @@
     </div>
     <script>
         $(document).ready(function(){
-            // mnameswitch
-            // epswitch
-            // dateswitch
-            // lnameswitch
-            // input names
-            // mindate
-            // maxdate
-            // lname
-            // fname
-            // mname
-            // minep
-            // maxep
+            // mnameswitch epswitch dateswitch lnameswitch input names mindate
+            // maxdate lname fname mname minep maxep
             (function(){
-                
                 document.getElementById('optionswitch1').addEventListener('change', disableInput, false);
                 document.getElementById('lnameswitch1').addEventListener('change', disableInput, false);
                 function disableInput(){

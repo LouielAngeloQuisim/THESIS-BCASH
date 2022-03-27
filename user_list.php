@@ -191,6 +191,7 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-floating mb-2">
+                      <input type="hidden" name="admin" value="0">
                       <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="example@bpsu.edu.ph" required>
                       <label for="email">Email Address</label>
                     </div>

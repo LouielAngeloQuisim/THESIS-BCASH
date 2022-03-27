@@ -71,14 +71,25 @@ else{
                                     <thead>
                                       <tr>
                                         <th scope="col">Username</th>
-                                        <th scope="col">Password</th>
                                         <th scope="col"></th>
                                       </tr>
                                     </thead>
                                     <tbody class="align-middle">
                                       <tr>
-                                        <td>admin</td>
-                                        <td>admin</td>
+                                        <?php
+                                          $result = $mydb->get_Admin();
+                                          if(isset($result)){
+                                            foreach($result as $row){
+                                              $username = $row['username'];
+                                              echo '
+                                              <td>'.$username.'</td>
+                                              ';
+                                            }
+                                          }
+                                          else{
+                                            echo 'There are no registered administrators in this website';
+                                          }
+                                        ?>
                                         <td>
                                             <!-- Button Edit Admin trigger modal -->
                                             <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaleditAdmin">
@@ -131,7 +142,7 @@ else{
     <section class="bg-primary p-3">
     </section>
 
-    <form action="" method = "post">
+    <form action="registration.php" method = "post">
       <!-- Modal Add Admin -->
       <div class="modal fade modalpopup" id="modaladdAdmin" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
@@ -144,11 +155,23 @@ else{
                   </div>
                   <div class="modal-body">
                     <div class="form-floating mb-2">
-                      <input type="text" id="uname" name="uname" class="form-control" placeholder="Username" required>
+                      <!-- admin == 1 identifier na admin ang ireregister dto -->
+                      <input type="hidden" name="admin" value="1">
+                      <input type="hidden" name="fname" value="admin">
+                      <input type="hidden" name="lname" value="admin">
+                      <input type="hidden" name="mname" value="admin">
+                      <input type="hidden" name="prog" value="admin">
+                      <input type="hidden" name="sex" value="admin">
+                      <input type="hidden" name="age" value="1">
+                      <input type="hidden" name="year_level" value="1">
+                      <input type="hidden" name="mobile_num" value="1">
+                      <!-- email == username at studnum == password ginawa ko lang email kasi 
+                      email yung ginamit na name sa var sa post registration -->
+                      <input type="text" id="uname" name="email" class="form-control" placeholder="Username" required>
                       <label for="uname">Username</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
+                        <input type="password" id="password" name="studnum" class="form-control" placeholder="Password" required>
                         <label for="pass">Password</label>
                     </div>
                   <div class="modal-footer">
