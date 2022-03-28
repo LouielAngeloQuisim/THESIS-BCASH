@@ -78,6 +78,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                       <tr>
+                                        <th scope="col">No.</th>
                                         <th scope="col">Email Address</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">First Name</th>
@@ -99,7 +100,9 @@
                                           $keyword = $_POST['search'];
                                           $search_result = $mydb->search_Users($keyword);
                                           if(isset($search_result)){
+                                            $count = 0;
                                             foreach($search_result as $row){
+                                              $count += 1;
                                               $email = $row['email'];
                                               $lname = $row['lname'];
                                               $fname = $row['fname'];
@@ -113,6 +116,7 @@
                                               $year_level = $row['year_level'];
                                               echo '
                                                 <tr>
+                                                  <td>'.$count.'</td>
                                                   <td>'.$email.'</td>
                                                   <td>'.$lname.'</td>
                                                   <td>'.$fname.'</td>
@@ -130,7 +134,9 @@
                                           }
                                         }
                                         elseif(isset($result)){
+                                          $count = 0;
                                           foreach($result as $row){
+                                            $count += 1;
                                             $email = $row['email'];
                                             $lname = $row['lname'];
                                             $fname = $row['fname'];
@@ -144,6 +150,7 @@
                                             $year_level = $row['year_level'];
                                             echo '
                                               <tr>
+                                                <td>'.$count.'</td>
                                                 <td>'.$email.'</td>
                                                 <td>'.$lname.'</td>
                                                 <td>'.$fname.'</td>
