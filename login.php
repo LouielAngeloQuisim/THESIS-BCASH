@@ -13,7 +13,7 @@
   <body>
       <section class="bg-white p-5">
       </section>
-      <section class="bg-white p-5">
+      <section class="bg-white p-4">
       </section>
       <section class="bg-white">
           <div class="container">

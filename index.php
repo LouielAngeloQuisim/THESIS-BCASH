@@ -13,7 +13,7 @@
   <body>
       <section class="bg-white p-5">
       </section>
-      <section class="bg-white p-4">
+      <section class="bg-white p-3">
       </section>
       <section class="bg-white p-5">
         <div class="card cardselect shadow bg-light p-4 border border-5 border-dark" style="width: 25rem;">
