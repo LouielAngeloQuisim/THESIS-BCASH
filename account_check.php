@@ -26,6 +26,9 @@ if(isset($_POST['login'])){
                 header("Location:dash_admin.php");
                 ob_end_flush();
             }
+            elseif($admin == 2){
+                header("Location:dash_shop.php");
+            }
             else{// if just an ordinary user
                 $_SESSION['acc_id'] = $rows['acc_id'];
                 $acc_id = $rows['acc_id'];

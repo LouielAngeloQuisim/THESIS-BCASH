@@ -48,7 +48,7 @@
                             </button>
                         </div>
                         <div class="d-grid gap-2 mb-2">
-                            <a href="index.php" class="btn btn-primary btn-lg btn-block">Home</a>
+                            <!-- <a href="index.php" class="btn btn-primary btn-lg btn-block">Home</a> -->
                             
                         </div>
                         <!-- <span id='message'></span> -->

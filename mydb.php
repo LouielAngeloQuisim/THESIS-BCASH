@@ -91,10 +91,11 @@ class myDb {
         //Store data to array
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){
-                if($row['admin'] == 1){
+                if($row['admin'] == 1 || $row['admin'] == 2){
                     $records[] = [
                         'acc_id' => $row['acc_id'],
                         'username' => $row['username'],
+                        'admin' => $row['admin']
                     ];
                 }
             }

@@ -20,7 +20,7 @@
           <img src="img/logo1.png" class="mx-auto d-block mb-3">
           <div class="d-grid gap-2 col-12 mx-auto">
             <a class="btn btn-primary btn-lg rounded-pill" href="login.php" role="button">Login</a>
-            <a class="btn btn-primary btn-lg rounded-pill" href="dash_shop.php" role="button">Shop</a>
+            <!-- <a class="btn btn-primary btn-lg rounded-pill" href="dash_shop.php" role="button">Shop</a> -->
           </div>
         </div>
       </section>

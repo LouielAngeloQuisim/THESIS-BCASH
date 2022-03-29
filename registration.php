@@ -17,7 +17,7 @@ if(isset($_POST['registerbtn'])){
     $username = $email;
     $password = $studnum;
     $admin = $_POST['admin'];
-    if(filter_var($email, FILTER_VALIDATE_EMAIL) || $admin == 1) {
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) || $admin == 1 || $admin == 2) {
         echo $admin;
         //qrcode
         //$url = "https://chart.googleapis.com/chart?cht=qr&chs={250}x{250}&chl={$hash_data}";
@@ -36,7 +36,7 @@ if(isset($_POST['registerbtn'])){
             if(isset($records)){
                 foreach($records as $rows){
                     $admin = $rows['admin'];
-                    if($admin == 1){//if the user is admin
+                    if($admin == 1 || $admin == 2){//if the user is admin
                         // code here if there a admin adding function/module
                         header("Location:admin_list.php?success=1");
                     }
@@ -71,7 +71,7 @@ if(isset($_POST['registerbtn'])){
         }
     }
     else{
-        //header("Location:user_list.php?emailnotvalid=1");
+        header("Location:user_list.php?emailnotvalid=1");
         ob_end_flush();
     }
 }
