@@ -179,13 +179,48 @@
                                         $conditions = array();
                                         $date_conditions = array();
                                         $points_conditions = array();
-                                        $lname = $_POST['lname'];
-                                        $fname = $_POST['fname'];
-                                        $mname = $_POST['mname'];
-                                        $mindate = $_POST['mindate'];
-                                        $maxdate = $_POST['maxdate'];
-                                        $minpoints = $_POST['minpoints'];
-                                        $maxpoints = $_POST['maxpoints'];
+                                        if(isset($_POST['lname'])){
+                                            $lname = $_POST['lname'];
+                                        }
+                                        else{
+                                            $lname = "";
+                                        }
+                                        if(isset($_POST['fname'])){
+                                            $fname = $_POST['fname'];
+                                        }
+                                        else{
+                                            $fname = "";
+                                        }
+                                        if(isset($_POST['mname'])){
+                                            $mname = $_POST['mname'];
+                                        }
+                                        else{
+                                            $mname = "";
+                                        }
+                                        if(isset($_POST['mindate'])){
+                                            $mindate = $_POST['mindate'];
+                                        }
+                                        else{
+                                            $mindate = "";
+                                        }
+                                        if(isset($_POST['maxdate'])){
+                                            $maxdate = $_POST['maxdate'];
+                                        }
+                                        else{
+                                            $maxdate = "";
+                                        }
+                                        if(isset($_POST['minpoints'])){
+                                            $minpoints = $_POST['minpoints'];
+                                        }
+                                        else{
+                                            $minpoints = "";
+                                        }
+                                        if(isset($_POST['maxpoints'])){
+                                            $maxpoints = $_POST['maxpoints'];
+                                        }
+                                        else{
+                                            $maxpoints = "";
+                                        }
                                         // get fields which is not empty
                                         if(!empty($lname)){
                                             $conditions[] = "lname='$lname'"; 

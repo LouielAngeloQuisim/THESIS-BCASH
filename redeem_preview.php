@@ -148,12 +148,42 @@
                             if(isset($_POST['redeem_generate'])){
                                 $conditions = array();
                                 $date_conditions = array();
-                                $lname = $_POST['lname'];
-                                $fname = $_POST['fname'];
-                                $mname = $_POST['mname'];
-                                $mindate = $_POST['mindate'];
-                                $maxdate = $_POST['maxdate'];
-                                $price = $_POST['price'];
+                                if(isset($_POST['lname'])){
+                                    $lname = $_POST['lname'];
+                                }
+                                else{
+                                    $lname = "";
+                                }
+                                if(isset($_POST['fname'])){
+                                    $fname = $_POST['fname'];
+                                }
+                                else{
+                                    $fname = "";
+                                }
+                                if(isset($_POST['mname'])){
+                                    $mname = $_POST['mname'];
+                                }
+                                else{
+                                    $mname = "";
+                                }
+                                if(isset($_POST['mindate'])){
+                                    $mindate = $_POST['mindate'];
+                                }
+                                else{
+                                    $mindate = "";
+                                }
+                                if(isset($_POST['maxdate'])){
+                                    $maxdate = $_POST['maxdate'];
+                                }
+                                else{
+                                    $maxdate = "";
+                                }
+                                if(isset($_POST['price'])){
+                                    $price = $_POST['price'];
+                                }
+                                else{
+                                    $price = "";
+                                }
                                 if(!empty($lname)){
                                     $conditions[] = "lname='$lname'"; 
                                 }
