@@ -104,6 +104,14 @@
     margin-right: auto;
 }
 
+.pp{
+    margin-top: 5px;
+}
+
+.sniff{
+    margin-bottom: -10px;
+}
+
 @media (min-width:768px){
     .content{
         padding-top: 20%;
