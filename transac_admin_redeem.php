@@ -307,7 +307,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Modal Generate All Confirm -->
     <div class="modal fade modalpopup" id="modalgenAllConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -370,7 +370,7 @@
                     <div class="col text-start py-3">
                         <!-- eto kapag na oon yung switch tapos (kapaag eto nakaon madidisable na yung the rest kase priprint niya all ehh) -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="optionswitch" checked>
+                            <input class="form-check-input" type="checkbox" id="optionswitch1">
                             <label class="form-check-label ms-2" for="optionswitch">
                                 Generate All
                             </label>
@@ -387,10 +387,10 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch1">
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname" name="lname" placeholder="Enter Last Name">
+                                    <input type="text" class="form-control tfield1" id="lname1" name="lname" placeholder="Enter Last Name" disabled>
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -410,10 +410,10 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch1">
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname" name="fname" placeholder="Enter First Name">
+                                    <input type="text" class="form-control tfield1" id="fname1" name="fname" placeholder="Enter First Name" disabled>
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -433,10 +433,10 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch1">
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname" name="mname" placeholder="Enter Middle Name">
+                                    <input type="text" class="form-control tfield1" id="mname1" name="mname" placeholder="Enter Middle Name" disabled>
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -456,9 +456,9 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="itemswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="itemswitch1">
                             <label class="form-check-label" for="itemswitch">
-                                <select class="form-select inputtg1" id="item" name="item">
+                                <select class="form-select inputtg1" id="item1" name="item" disabled>
                                     <option selected>Select Redeemable Item</option>
                                     <option value="print">Print</option>
                                     <option value="xerox">Xerox</option>
@@ -482,10 +482,10 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="pswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="pswitch1">
                             <label class="form-check-label" for="pswitch">
                                 <div class="form-floating">
-                                    <input type="double" class="form-control tfield1" id="price" name="price" placeholder="Enter Price">
+                                    <input type="double" class="form-control tfield1" id="price1" name="price" placeholder="Enter Price" disabled>
                                     <label for="price">Price</label>
                                 </div>
                             </label>
@@ -505,12 +505,12 @@
                     <div class="col">
                         <!-- eto kapag na oon yung switch tapos -->
                         <div class="form-check form-switch">
-                            <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch" checked>
+                            <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate" name="mindate">
+                                    <input type="date" class="form-control" id="mindate1" name="mindate" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate" name="maxdate">
+                                    <input type="date" class="form-control" id="maxdate1" name="maxdate" disabled>
                                 </div>
                             </label>
                         </div>
@@ -537,7 +537,94 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function(){
+            // mnameswitch epswitch dateswitch lnameswitch input names mindate
+            // maxdate lname fname mname minep maxep
+            (function(){
+                document.getElementById('optionswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('lnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('mnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('fnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('itemswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('pswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
+                function disableInput(){
+                    //switches
+                    var gen_all = document.getElementById('optionswitch1');
+                    var lname = document.getElementById('lnameswitch1');
+                    var fname = document.getElementById('fnameswitch1');
+                    var mname = document.getElementById('mnameswitch1');
+                    var itemswitch = document.getElementById('itemswitch1');
+                    var priceswitch = document.getElementById('pswitch1');
+                    var dateswitch = document.getElementById('dateswitch1');
+                    // inputs
+                    var input_lname = document.getElementById('lname1');
+                    var input_fname = document.getElementById('fname1');
+                    var input_mname = document.getElementById('mname1');
+                    var input_item = document.getElementById('item1');
+                    var input_price = document.getElementById('price1');
+                    var input_mindate = document.getElementById('mindate1');
+                    var input_maxdate = document.getElementById('maxdate1');
+                    if(gen_all.checked){
+                        lname.disabled = true;
+                        fname.disabled = true;
+                        mname.disabled = true;
+                        itemswitch.disabled = true;
+                        priceswitch.disabled = true;
+                        dateswitch.disabled = true;
+                    }
+                    else if(!gen_all.checked){
+                        lname.disabled = false;
+                        fname.disabled = false;
+                        mname.disabled = false;
+                        itemswitch.disabled = false;
+                        priceswitch.disabled = false;
+                        dateswitch.disabled = false;
+                    }
+                    // for switches after generate all switch
+                    if(lname.checked){
+                        input_lname.disabled = false;
+                    }
+                    else if(!lname.checked){
+                        input_lname.disabled = true;
+                    }
+                    if(fname.checked){
+                        input_fname.disabled = false;
+                    }
+                    else if(!fname.checked){
+                        input_fname.disabled = true;
+                    }
+                    if(mname.checked){
+                        input_mname.disabled = false;
+                    }
+                    else if(!mname.checked){
+                        input_mname.disabled = true;
+                    }
+                    if(dateswitch.checked){
+                        input_mindate.disabled = false;
+                        input_maxdate.disabled = false;
+                    }
+                    else if(!dateswitch.checked){
+                        input_mindate.disabled = true;
+                        input_maxdate.disabled = true;
+                    }
+                    if(itemswitch.checked){
+                        input_item.disabled = false;
+                    }
+                    else if(!itemswitch.checked){
+                        input_item.disabled = true;
+                    }
+                    if(priceswitch.checked){
+                        input_price.disabled = false;
+                    }
+                    else if(!priceswitch.checked){
+                        input_price.disabled = true;
+                    }     
+                }
+            })();
+        });
+    </script>
     <!-- Modal Generate Recycle Confirm -->
     <div class="modal fade modalpopup" id="modalgenRedConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">

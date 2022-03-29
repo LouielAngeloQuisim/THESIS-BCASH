@@ -367,7 +367,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch1">
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname" placeholder="Enter Last Name" name = "lname">
+                                    <input type="text" class="form-control tfield1" id="lname1" placeholder="Enter Last Name" name = "lname" disabled>
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -390,7 +390,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch1">
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname" placeholder="Enter First Name" name = "fname">
+                                    <input type="text" class="form-control tfield1" id="fname1" placeholder="Enter First Name" name = "fname" disabled>
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -413,7 +413,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch1">
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname" placeholder="Enter Middle Name" name = "mname">
+                                    <input type="text" class="form-control tfield1" id="mname1" placeholder="Enter Middle Name" name = "mname" disabled>
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -436,9 +436,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="epswitch1">
                             <label class="form-check-label" for="epswitch">
                                 <div class="input-group inputtg1">
-                                    <input type="double" class="form-control" id="minep" placeholder="Min Points" name = "minpoints">
+                                    <input type="double" class="form-control" id="minep1" placeholder="Min Points" name = "minpoints" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="double" class="form-control" id="maxep" placeholder="Max Points" name = "maxpoints">
+                                    <input type="double" class="form-control" id="maxep1" placeholder="Max Points" name = "maxpoints" disabled>
                                 </div>
                             </label>
                         </div>
@@ -461,9 +461,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate" name = "mindate">
+                                    <input type="date" class="form-control" id="mindate1" name = "mindate" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate" name = "maxdate">
+                                    <input type="date" class="form-control" id="maxdate1" name = "maxdate" disabled>
                                 </div>
                             </label>
                         </div>
@@ -497,16 +497,75 @@
             (function(){
                 document.getElementById('optionswitch1').addEventListener('change', disableInput, false);
                 document.getElementById('lnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('mnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('fnameswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('epswitch1').addEventListener('change', disableInput, false);
+                document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
                 function disableInput(){
+                    //switches
                     var gen_all = document.getElementById('optionswitch1');
                     var lname = document.getElementById('lnameswitch1');
+                    var fname = document.getElementById('fnameswitch1');
+                    var mname = document.getElementById('mnameswitch1');
+                    var pointswitch = document.getElementById('epswitch1');
+                    var dateswitch = document.getElementById('dateswitch1');
+                    // inputs
+                    var input_lname = document.getElementById('lname1');
+                    var input_fname = document.getElementById('fname1');
+                    var input_mname = document.getElementById('mname1');
+                    var input_mindate = document.getElementById('mindate1');
+                    var input_maxdate = document.getElementById('maxdate1');
+                    var input_minep = document.getElementById('minep1');
+                    var input_maxep = document.getElementById('maxep1');
                     if(gen_all.checked){
                         lname.disabled = true;
+                        fname.disabled = true;
+                        mname.disabled = true;
+                        pointswitch.disabled = true;
+                        dateswitch.disabled = true;
                     }
                     else if(!gen_all.checked){
                         lname.disabled = false;
+                        fname.disabled = false;
+                        mname.disabled = false;
+                        pointswitch.disabled = false;
+                        dateswitch.disabled = false;
                     }
-                    
+                    // for switches after generate all switch
+                    if(lname.checked){
+                        input_lname.disabled = false;
+                    }
+                    else if(!lname.checked){
+                        input_lname.disabled = true;
+                    }
+                    if(fname.checked){
+                        input_fname.disabled = false;
+                    }
+                    else if(!fname.checked){
+                        input_fname.disabled = true;
+                    }
+                    if(mname.checked){
+                        input_mname.disabled = false;
+                    }
+                    else if(!mname.checked){
+                        input_mname.disabled = true;
+                    }
+                    if(dateswitch.checked){
+                        input_mindate.disabled = false;
+                        input_maxdate.disabled = false;
+                    }
+                    else if(!dateswitch.checked){
+                        input_mindate.disabled = true;
+                        input_maxdate.disabled = true;
+                    }
+                    if(pointswitch.checked){
+                        input_minep.disabled = false;
+                        input_maxep.disabled = false;
+                    }
+                    else if(!pointswitch.checked){
+                        input_minep.disabled = true;
+                        input_maxep.disabled = true;
+                    }    
                 }
             })();
         });
