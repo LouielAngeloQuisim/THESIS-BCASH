@@ -23,11 +23,35 @@ else{
 
 class PDF extends FPDF {
     function Header(){
+        $this->Image('img/Picture3.png',0,0,355.5);
+        $this->Image('img/logo1.png',45,16,25);
+        $this->Image('img/wizard.png',310,4,35);
+        $this->SetFont('Arial','B',18,'C');
+        $this->Cell(195,19,'',0,0);
+        $this->Cell(40,19,'BCASH - BOTTLE RECYCLING SYSTEM',0,0,'R');
+        $this->Cell(0,6,'',0,1); //end of line
+        $this->SetFont('Arial','B',13,'C');
+        $this->Cell(210,19,'',0,0);
+        $this->Cell(40,19,'COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGY',0,0,'R');
+        $this->Cell(0,5,'',0,1); //end of line
+        $this->SetFont('Arial','B',10,'C');
+        $this->Cell(155,19,'',0,0);
+        $this->Cell(40,19,'BPSU - MAIN CAMPUS',0,0,'R');
+
         $this->SetFont('Arial','B',11,'C');
+        $this->Cell(0,18,'',0,1); //end of line
         $this->Cell(250,7,'',0,0);
         $this->Cell(35,7,'Generated as of:',0,0,'R');
         $this->Cell(50,7,$GLOBALS['date'],1,0,'C');
-        $this->Cell(0,15,'',0,1); //end of line
+        $this->Cell(0,10,'',0,1); //end of line
+    }
+
+    function Footer(){
+        $this->SetY(-15);
+        $this->SetFont('Arial','',8);
+        $this->Cell(0,5,'DE GUZMAN - DESIPIDA - JIMENEZ - OLINARES - QUISIM',0,0,'C');
+        $this->Cell(0,5,'',0,1); //end of line
+        $this->Cell(0,5,'ALL RIGHTS RESERVED BCASH@2022',0,0,'C');
     }
 }
 
