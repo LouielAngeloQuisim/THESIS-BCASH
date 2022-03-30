@@ -245,10 +245,10 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
                         }
                         elseif(isset($_POST['confirmPrintall'])){
-                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall" vlaue="Continue">';
+                            echo '<input type = "submit" formtarget="_blank" class="btn btn-secondary me-md-2" name = "confirmPrintall" vlaue="Continue">';
                         }
                         elseif(isset($_POST['redeem_generate'])){
                             foreach($_POST as $key => $value){
@@ -256,7 +256,7 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "redeem_generate">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "redeem_generate">';
                         }
                     ?>
                 </form>

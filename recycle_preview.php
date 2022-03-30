@@ -145,11 +145,48 @@
                         <tbody class="align-middle">
                             <?php
                                 if(isset($_POST['confirm_all'])){
-                                    $lname = $_POST['lname'];
-                                    $fname = $_POST['fname'];
-                                    $mname = $_POST['mname'];
-                                    $mindate = $_POST['mindate'];
-                                    $maxdate = $_POST['maxdate'];
+                                    if(isset($_POST['lname'])){
+                                        $lname = $_POST['lname'];
+                                    }
+                                    else{
+                                        $lname = "";
+                                    }
+                                    if(isset($_POST['fname'])){
+                                        $fname = $_POST['fname'];
+                                    }
+                                    else{
+                                        $fname = "";
+                                    }
+                                    if(isset($_POST['mname'])){
+                                        $mname = $_POST['mname'];
+                                    }
+                                    else{
+                                        $mname = "";
+                                    }
+                                    if(isset($_POST['mindate'])){
+                                        $mindate = $_POST['mindate'];
+                                    }
+                                    else{
+                                        $mindate = "";
+                                    }
+                                    if(isset($_POST['maxdate'])){
+                                        $maxdate = $_POST['maxdate'];
+                                    }
+                                    else{
+                                        $maxdate = "";
+                                    }
+                                    if(isset($_POST['minpoints'])){
+                                        $minpoints = $_POST['minpoints'];
+                                    }
+                                    else{
+                                        $minpoints = "";
+                                    }
+                                    if(isset($_POST['maxpoints'])){
+                                        $maxpoints = $_POST['maxpoints'];
+                                    }
+                                    else{
+                                        $maxpoints = "";
+                                    }
                                     $records = $mydb->filter_Report($lname, $fname, $mname, $mindate, $maxdate);
                                     if(isset($records)){
                                         foreach($records as $rows){
@@ -287,18 +324,18 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
                         }
                         elseif(isset($_POST['confirmPrintall'])){
-                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall" value="Continue">';
+                            echo '<input type = "submit" formtarget="_blank" class="btn btn-secondary me-md-2" name = "confirmPrintall" value="Continue">';
                         }
                         elseif(isset($_POST['generate_recycle'])){
                             foreach($_POST as $key => $value){
                                 if(!empty($key) && $key != "generate_recycle"){
-                                    echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
+                                    echo '<input type="hidden" formtarget="_blank" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "generate_recycle">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "generate_recycle">';
                         }
                     ?>
                 </form>
