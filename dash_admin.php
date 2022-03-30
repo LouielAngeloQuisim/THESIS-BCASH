@@ -185,6 +185,7 @@
                                 <div class="card-text">
                                     <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                             <?php
+                                                $records = $mydb->get_Bottle();
                                                 if(isset($records)){
                                                     echo '
                                                     <div class="carousel-indicators">
