@@ -102,10 +102,8 @@
                                         if(isset($_POST['user_search'])){
                                           $search = $_POST['search'];
                                           $search_result = $mydb->search_Users($search);
-                                          echo $search;
                                           if(isset($search_result)){
                                             $count = 0;
-                                            print_r($search_result);
                                             foreach($search_result as $row){
                                               $count += 1;
                                               $semail = $row['email'];

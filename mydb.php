@@ -295,10 +295,10 @@ class myDb {
             OR stud_num LIKE ? OR total_points LIKE ? OR program LIKE ? OR year_level LIKE ? 
         ");
         $search = mysqli_real_escape_string($this->link, $search);
-        $studid = "$search";
-        $mobilenum = "$search";
-        $sql->bind_param(
-            "sissssisiss", $search, $search, $search, $search,
+        $search = "{$search}";
+        // sissssisiss
+        $sql->bind_param( 
+            "sssssssssss", $search, $search, $search, $search,
             $search, $search, $search, $search, $search, $search, $search
         );
         $sql->execute();
