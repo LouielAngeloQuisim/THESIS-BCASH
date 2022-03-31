@@ -50,14 +50,40 @@
                 LIST OF USERS
             </h2>
             <p class="lead text-center">
-                <!-- Button Add User trigger modal -->
+              <div class="d-grid gap-2 col-2 mx-auto">
+                <!-- Button Add User Manually trigger modal -->
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUser">
                   Add User manually
                 </button>
+                <!-- Button Add User CSV File trigger modal -->
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUsercsv">
                   Add User using csv file
                 </button>
+              </div>
             </p>
+            <form action="">
+              <!-- Modal Add User CSV File-->
+              <div class="modal fade modalpopup" id="modaladdUsercsv" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="modaladdUsercsv">
+                                Add User
+                              </h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="m-3">
+                              <input class="form-control" type="file" id="csvfile" multiple>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
+                                Register
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -191,7 +217,7 @@
     </section>
 
     <form action="new_regis.php" method = "post" enctype="multipart/form-data">
-      <!-- Modal Add User -->
+      <!-- Modal Add User Manually-->
       <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -204,14 +230,10 @@
                   <div class="modal-body">
                     <div class="form-floating mb-2">
                       <input type="hidden" name="admin" value="0">
-                      <input type="file" name="csvfile" id="csvfile" accept=".csv" class="form-control" required>
-                    </div>
-                    <!-- <div class="form-floating mb-2">
-                      <input type="hidden" name="admin" value="0">
                       <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="example@bpsu.edu.ph" required>
                       <label for="email">Email Address</label>
-                    </div> -->
-                    <!-- <div class="row g-2 mb-2">
+                    </div>
+                    <div class="row g-2 mb-2">
                       <div class="col">
                         <div class="form-floating">
                           <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
@@ -285,7 +307,7 @@
                         </div>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
                   <div class="modal-footer">
                       <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
                           Register
@@ -295,6 +317,7 @@
           </div>
       </div>
     </form>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
