@@ -295,7 +295,8 @@ class myDb {
             OR stud_num LIKE ? OR total_points LIKE ? OR program LIKE ? OR year_level LIKE ? 
         ");
         $search = mysqli_real_escape_string($this->link, $search);
-        $search = "%{$search}%";
+        $studid = "$search";
+        $mobilenum = "$search";
         $sql->bind_param(
             "sissssisiss", $search, $search, $search, $search,
             $search, $search, $search, $search, $search, $search, $search
@@ -304,7 +305,7 @@ class myDb {
         $result = $sql->get_result();
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                if($row['admin'] != 1){
+                if($row['admin'] == 0){
                     $records[] = [
                         'acc_id' => $row['acc_id'],
                         'username' => $row['username'],
@@ -321,11 +322,15 @@ class myDb {
                         'total_points' => $row['total_points']
                     ];
                 }
+                else{
+                    //break;
+                }
             }   
         }
         else{
             $records = null;
         }
+        $sql->free_result();
         return $records;
     }
     public function search_Recycle_records($search){

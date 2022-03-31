@@ -52,7 +52,10 @@
             <p class="lead text-center">
                 <!-- Button Add User trigger modal -->
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUser">
-                  Add User
+                  Add User manually
+                </button>
+                <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUsercsv">
+                  Add User using csv file
                 </button>
             </p>
         </div>
@@ -65,7 +68,7 @@
                 <div class="card-body px-0">
                     <form action="" method="post">
                         <div class="input-group px-5 my-3">
-                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <input type="text" class="form-control" placeholder="Search" name="search" required>
                             <button class="btn btn-secondary" type="submit" id="searchbtn" name="user_search">
                                 <i class="bi bi-search"></i>
                             </button>
@@ -97,37 +100,39 @@
                                         $result = $mydb->get_Users();
                                         // display this when search is used
                                         if(isset($_POST['user_search'])){
-                                          $keyword = $_POST['search'];
-                                          $search_result = $mydb->search_Users($keyword);
+                                          $search = $_POST['search'];
+                                          $search_result = $mydb->search_Users($search);
+                                          echo $search;
                                           if(isset($search_result)){
                                             $count = 0;
+                                            print_r($search_result);
                                             foreach($search_result as $row){
                                               $count += 1;
-                                              $email = $row['email'];
-                                              $lname = $row['lname'];
-                                              $fname = $row['fname'];
-                                              $mname = $row['mname'];
-                                              $user_points = $row['total_points'];
-                                              $sex = $row['sex'];
-                                              $age = $row['age'];
-                                              $mobile_num = $row['mobile_num'];
-                                              $stud_num = $row['stud_num'];
-                                              $program = $row['program'];
-                                              $year_level = $row['year_level'];
+                                              $semail = $row['email'];
+                                              $slname = $row['lname'];
+                                              $sfname = $row['fname'];
+                                              $smname = $row['mname'];
+                                              $suser_points = $row['total_points'];
+                                              $ssex = $row['sex'];
+                                              $sage = $row['age'];
+                                              $smobile_num = $row['mobile_num'];
+                                              $sstud_num = $row['stud_num'];
+                                              $sprogram = $row['program'];
+                                              $syear_level = $row['year_level'];
                                               echo '
                                                 <tr>
                                                   <td>'.$count.'</td>
-                                                  <td>'.$email.'</td>
-                                                  <td>'.$lname.'</td>
-                                                  <td>'.$fname.'</td>
-                                                  <td>'.$mname.'</td>
-                                                  <td>'.$user_points.'</td>
-                                                  <td>'.$sex.'</td>
-                                                  <td>'.$age.'</td>
-                                                  <td>'.$mobile_num.'</td>
-                                                  <td>'.$stud_num.'</td>
-                                                  <td>'.$program.'</td>
-                                                  <td>'.$year_level.'</td>
+                                                  <td>'.$semail.'</td>
+                                                  <td>'.$slname.'</td>
+                                                  <td>'.$sfname.'</td>
+                                                  <td>'.$smname.'</td>
+                                                  <td>'.$suser_points.'</td>
+                                                  <td>'.$ssex.'</td>
+                                                  <td>'.$sage.'</td>
+                                                  <td>'.$smobile_num.'</td>
+                                                  <td>'.$sstud_num.'</td>
+                                                  <td>'.$sprogram.'</td>
+                                                  <td>'.$syear_level.'</td>
                                                 </tr>
                                               ';
                                             }
@@ -185,7 +190,7 @@
     <section class="bg-primary p-3">
     </section>
 
-    <form action="registration.php" method = "post">
+    <form action="new_regis.php" method = "post" enctype="multipart/form-data">
       <!-- Modal Add User -->
       <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
@@ -199,10 +204,14 @@
                   <div class="modal-body">
                     <div class="form-floating mb-2">
                       <input type="hidden" name="admin" value="0">
+                      <input type="file" name="csvfile" id="csvfile" accept=".csv" class="form-control" required>
+                    </div>
+                    <!-- <div class="form-floating mb-2">
+                      <input type="hidden" name="admin" value="0">
                       <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="example@bpsu.edu.ph" required>
                       <label for="email">Email Address</label>
-                    </div>
-                    <div class="row g-2 mb-2">
+                    </div> -->
+                    <!-- <div class="row g-2 mb-2">
                       <div class="col">
                         <div class="form-floating">
                           <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
@@ -276,7 +285,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="modal-footer">
                       <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
                           Register
@@ -286,7 +295,6 @@
           </div>
       </div>
     </form>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

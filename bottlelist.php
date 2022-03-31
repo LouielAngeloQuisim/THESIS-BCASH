@@ -105,34 +105,61 @@ else{
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="addBottleFile" class="form-label">Add Image</label>
-                        <input class="form-control" type="file" id="addBottleFile" name = "image">
+                        <input class="form-control" type="file" id="addBottleFile" name = "image" required>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype">
+                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" required>
                         <label for="btype" required>Bottle Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize">
+                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize" required>
                         <label for="bsize" required>Bottle Size</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency">
+                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency" required>
                         <label for="bcurrency" required>Bottle Value</label>
                     </div>
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Add Confirmation trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm">
+                    <button type="button" class="btn btn-secondary" id = "add_bottle" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm">
                         Add Bottle
                     </button>
                 </div>
             </div>
+            <script>
+                // $('#modalAddBConfirm').click('show.bs.modal', function (e) {
+                //     alert("canceled");
+                //     var button = e.relatedTarget;
+                //     if($("#btype").val().length==0 || $("#addBottleFile").value == null ||
+                //         $("#bsize").value == null || $("#bcurrency").value == null) {
+                //         e.stopPropegation();
+                //     }
+                //     else{
+                //         alert("going");
+                //     }  
+                // });
+                // $('#modalAddBConfirm').click(function(e){
+                //     var btype= $("#btype").val();
+                //     var bfile = $("#addBottleFile").val();
+                //     if(btype.length==0 || bfile == null){
+                //         //alert("hello");
+                //         e.stopPropagation();
+                //     }
+                //     // else if(password != '' && confirm_password != '' && password != confirm_password){
+                //     //     alert('New password and Confirm new password does not match');
+                //     //     $('#modalchangepassConfirm').modal('hide');
+                //     // }
+                //     // else{
+                //     //     alert('Fill up all the fields');
+                //     //     $('#modalchangepassConfirm').modal('hide');
+                //     // }      
+                // });
+            </script>
         </div>
     </div>
-    <script type="text/javascript">
-       
-    </script>
     <!-- Modal Add Bottle Confirmation -->
     <div class="modal fade" id="modalAddBConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
