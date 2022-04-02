@@ -2,6 +2,7 @@
 session_start();
 require "mydb.php";
 $mydb = new myDb;
+require 'cron_job_date.php';
 if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
 isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     $acc_id = $_SESSION['acc_id'];

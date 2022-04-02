@@ -1570,7 +1570,6 @@ class myDb {
             } 
         }
         else{
-
             $result = $date;
             return $result;
         }
@@ -1578,7 +1577,7 @@ class myDb {
             // update user points
             $user_points = $user_points - $item_points;
             $sql = $this->link->prepare("UPDATE user_login SET total_points = ? WHERE acc_id = ?");
-            $sql->bind_param("ii", $user_points, $acc_id);
+            $sql->bind_param("di", $user_points, $acc_id);
             $success = $sql->execute();
             if(!$success){
                 $result = "notupdated";
@@ -1587,7 +1586,7 @@ class myDb {
                 $sql = $this->link->prepare("INSERT into redeem_transaction (
                     acc_id, item, item_id,points_deducted, redeem_trans_time, day_id)
                 VALUES(?,?,?,?,?,?)");
-                $sql->bind_param("isiisi", $acc_id, $item_name, $item_id, $item_points, $datetime, $date_id);
+                $sql->bind_param("isidsi", $acc_id, $item_name, $item_id, $item_points, $datetime, $date_id);
                 $success = $sql->execute();
                 if(!$success){
                     $result = "notupdated";
@@ -1616,6 +1615,123 @@ class myDb {
             return $result;
         }
     }
-
+    // adding recycle transaction and points to the user
+    public function add_recycleTrans($acc_id, $bottle_name
+    ){
+        //conditions
+        $date_valid = 'false';
+        $bottle_valid = 'false';
+        $user_valid = 'false';
+        //get date
+        date_default_timezone_set('Asia/Manila');
+        $datetime = date('Y-m-d h:i:s A');
+        $date = date('Y-m-d');
+        // date_default_timezone_set('Asia/Manila');
+        // $date = date('Y-m-d');
+        // $datetime = date('m-d-Y h:i:s A ', strtotime($date));
+        // init variables and check if valid
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $bottle_name = mysqli_real_escape_string($this->link, $bottle_name);
+        $bottle_count = 1;
+        // $bottle_id = mysqli_real_escape_string($this->link, $bottle_id);
+        // $points_earned = mysqli_real_escape_string($this->link, $points_earned);
+        // $rec_time = mysqli_real_escape_string($this->link, $rec_time);
+        // $day_id = mysqli_real_escape_string($this->link, $day_id);
+        // $bottle_count = mysqli_real_escape_string($this->link, $bottle_count);
+        //get daily reports info 
+        $sql = $this->link->prepare("SELECT day_id, no_bottles FROM daily_bottle_report WHERE DATE(date) = ?");
+        $sql->bind_param("s", $date);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $day_id = $row['day_id'];
+                $no_bottles = $row['no_bottles'];
+                $date_valid = 'true';
+            }  
+        }
+        else{
+            $day_id = -1;
+            $no_bottles = -1;
+            $date_valid = 'false';
+        }
+        //get bottleinfo
+        $sql = $this->link->prepare("SELECT * FROM bottle_types WHERE bottle = ?");
+        // $bottle_name = "%$bottle_name%"; do this when finding similar not specified
+        $sql->bind_param("s", $bottle_name);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $bottle_id = $row['bottle_id'];
+                $bottle_val = $row['bottle_value'];
+                $bottle_name = $row['bottle'];
+                $bottle_valid = 'true';
+            }  
+        }
+        else{
+            $bottle_id = "";
+            $bottle_val = "";
+            $bottle_name = "";
+            $bottle_valid = 'false';
+        }
+        //get userinfo and update points
+        $sql = $this->link->prepare("SELECT acc_id, total_points, total_bottles FROM user_login WHERE qrcode=?");
+        $sql->bind_param("s", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $acc_id = $row['acc_id'];
+                $total_points = $row['total_points'];
+                $total_bottles = $row['total_bottles'];
+                $user_valid = 'true';
+            }  
+        }
+        else{
+            $total_points = -1;
+            $total_bottles = -1;
+            $user_valid = 'false';
+        }
+        // Update user info after validation
+        if($date_valid == true && $bottle_valid == true && $user_valid == true){
+            //update user total points
+            $sql = $this->link->prepare("UPDATE user_login SET total_points = ? WHERE acc_id = ?");
+            $total_points = $total_points + $bottle_val;
+            $sql->bind_param("di", $total_points,  $acc_id);
+            $success = $sql->execute();
+            if(!$success){
+                $result = "failed to update user information";
+            }
+            else{
+                // insert new recycle transaction
+                $sql = $this->link->prepare("INSERT into recycle_transaction(acc_id, bottles,
+                bottle_id, points_earned, day_id, recycle_trans_time, bottle_count) 
+                VALUES(?,?,?,?,?,?,?)");
+                $sql->bind_param("isidisi", $acc_id,  $bottle_name, $bottle_id, $bottle_val, $day_id,
+                $datetime,$bottle_count);
+                $success = $sql->execute();
+                if(!$success){
+                    $result = "failed to insert recycle transaction";
+                }else{
+                    $sql = $this->link->prepare("UPDATE daily_bottle_report SET no_bottles = ? WHERE day_id = ?");
+                    $no_bottles = $no_bottles + $bottle_count;
+                    $sql->bind_param("ii", $no_bottles, $day_id);
+                    $success = $sql->execute();
+                    if(!$success){
+                        $result = "failed to update daily report";
+                    }else{
+                        $result = "success";
+                        $date_valid = 'false';
+                        $bottle_valid = 'false';
+                        $user_valid = 'false';
+                    }
+                }
+            } 
+        }else{
+            $result = "Date is valid: ".$date_valid." Bottle is valid: ".$bottle_valid." User is valid:".$user_valid;
+        }
+        return $result;
+    }
 
 }

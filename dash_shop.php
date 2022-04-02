@@ -18,6 +18,9 @@
     <!-- navbar -->
     <?php
         include 'nav_shop.php';
+        require "mydb.php";
+        $mydb = new myDb;
+        require 'cron_job_date.php';
     ?>
 
     <!-- recycle scan area -->
