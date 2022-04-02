@@ -69,7 +69,7 @@ class myDb {
         //Store data to array
         if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){
-                if($row['admin'] != 1){
+                if($row['admin'] != 1 && $row['admin'] != 2){
                     $records[] = [
                         'acc_id' => $row['acc_id'],
                         'username' => $row['username'],
@@ -1566,7 +1566,7 @@ class myDb {
     }
     public function minus_Points($user_id, $item_id){
         date_default_timezone_set('Asia/Manila');
-        $datetime = date('Y-m-d h:i:s A');
+        $datetime = date('Y-m-d h:i:s');
         $date = date('Y-m-d');
         $user_points = 0;
         $item_value = 0;
@@ -1676,7 +1676,7 @@ class myDb {
         $user_valid = 'false';
         //get date
         date_default_timezone_set('Asia/Manila');
-        $datetime = date('Y-m-d h:i:s A');
+        $datetime = date('Y-m-d h:i:s');
         $date = date('Y-m-d');
         // date_default_timezone_set('Asia/Manila');
         // $date = date('Y-m-d');
@@ -1760,18 +1760,18 @@ class myDb {
                 $sql = $this->link->prepare("INSERT into recycle_transaction(acc_id, bottles,
                 bottle_id, points_earned, day_id, recycle_trans_time, bottle_count) 
                 VALUES(?,?,?,?,?,?,?)");
-                $sql->bind_param("isidisi", $acc_id,  $bottle_name, $bottle_id, $bottle_val, $day_id,
+                $sql->bind_param("isidisi", $acc_id, $bottle_name, $bottle_id, $bottle_val, $day_id,
                 $datetime,$bottle_count);
                 $success = $sql->execute();
                 if(!$success){
-                    $result = "failed to insert recycle transaction";
+                    $result = "failed to insert recycle transaction".$bottle_id." ".$day_id." ".$datetime." ".$bottle_count;
                 }else{
                     $sql = $this->link->prepare("UPDATE daily_bottle_report SET no_bottles = ? WHERE day_id = ?");
                     $no_bottles = $no_bottles + $bottle_count;
                     $sql->bind_param("ii", $no_bottles, $day_id);
                     $success = $sql->execute();
                     if(!$success){
-                        $result = "failed to update daily report";
+                        $result = "failed to update daily report".$no_bottles." and ".$day_id;
                     }else{
                         $result = "success";
                         $date_valid = 'false';
