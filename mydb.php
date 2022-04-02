@@ -12,11 +12,21 @@ class myDb {
         $this->username = "root";
         $this->password = "";
         $this->database = "bcash";
-        // for 000webhost
+        // for 000webhost 1st database
         // $this->host = "localhost";
         // $this->username = "id18658017_bcash";
         // $this->password = "]E/n$2v+*[&{+Fjo";
         // $this->database = "id18658017_thesis_bcash";
+        // for 000webhost 2nd database
+        // $this->host = "localhost";
+        // $this->username = "id18658017_bcash_thesis";
+        // $this->password = "D3\-RW]T4JC(lMBJ";
+        // $this->database = "id18658017_bcash";
+        // for 000webhost 3rd database
+        // $this->host = "localhost";
+        // $this->username = "id18267157_bcash";
+        // $this->password = "[&kO^}vmCtX4n21e";
+        // $this->database = "id18267157_thesis";
 
         //link to database
         $this->link = mysqli_connect($this->host, $this->username, $this->password, $this->database);
@@ -218,6 +228,7 @@ class myDb {
         else{
             $result = "notavailable";
         }
+        $sql->free_result();
         return $result;
     }
 
@@ -236,6 +247,7 @@ class myDb {
         else{
             $result = "inserted";
         }
+        $sql->free_result();
         return $result;
     }
     public function get_Qrcode($acc_id){
@@ -285,6 +297,7 @@ class myDb {
         else{
             $verified = "false";
         }
+        $sql->free_result();
         return $verified;
     }
     // used in search function in user_list.php
@@ -364,6 +377,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $records;
     }
     public function search_Redeem_records($search){
@@ -397,6 +411,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $records;
     }
 
@@ -441,6 +456,7 @@ class myDb {
                 $records = null;
             }
         }
+        $sql->free_result();
         return $records;
     }
     public function get_Redeem_trans($acc_id,$admin){
@@ -486,6 +502,7 @@ class myDb {
                 $records = null;
             }
         }
+        $sql->free_result();
         return $records;
     }
     public function get_Shop_items(){
@@ -507,6 +524,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $records;
     }
     public function add_Item($item_name, $item_price, $item_stock, $item_img){
@@ -527,6 +545,7 @@ class myDb {
         else{
             $result = "inserted";
         }
+        $sql->free_result();
         return $result;
     }
     public function update_Item($item_name, $item_price, $item_stock, $item_id){
@@ -549,6 +568,7 @@ class myDb {
         else{
             $result = "updated";
         }
+        $sql->free_result();
         return $result;
     }
     public function update_Password($acc_id, $newpassword){
@@ -566,6 +586,7 @@ class myDb {
         else{
             $result = "inserted";
         }
+        $sql->free_result();
         return $result;
     }
     public function get_sumBottles($admin, $acc_id){
@@ -608,6 +629,7 @@ class myDb {
             }
 
         }
+        $sql->free_result();
     }
     
     
@@ -628,6 +650,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $record;
     }
     public function get_Date($month){
@@ -651,6 +674,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $record;
     }
     public function get_Countredeem(){
@@ -678,6 +702,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $records;
     }
     //filter data for generate reports for Recycle Records only
@@ -841,6 +866,7 @@ class myDb {
             }
             
         }
+        $sql->free_result();
         return $records;
     }
     //filter data for generate reports for Redeem Records only
@@ -945,6 +971,7 @@ class myDb {
             }
             
         }
+        $sql->free_result();
         return $records;
     }
     // filter data for generate reports for Redeem and Recycle Records only
@@ -1048,6 +1075,7 @@ class myDb {
             }
             
         }
+        $sql->free_result();
         return $records;
     }
 
@@ -1118,6 +1146,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
     }
@@ -1154,6 +1183,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
         elseif(!empty($from_date) && !empty($to_date)){
@@ -1186,6 +1216,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
         elseif(!empty($maxpoints) && !empty($minpoints)){
@@ -1218,6 +1249,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
         else{
@@ -1246,6 +1278,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
         
@@ -1279,6 +1312,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
         else{
@@ -1306,6 +1340,7 @@ class myDb {
                     ];
                 }   
             }
+            $sql->free_result();
             return $records;
         }
     }
@@ -1327,6 +1362,7 @@ class myDb {
         else{
             $result = "inserted";
         }
+        $sql->free_result();
         return $result;
     }
     public function update_BottleType($bvalue, $bottle_id){
@@ -1346,6 +1382,7 @@ class myDb {
         else{
             $result = "updated";
         }
+        $sql->free_result();
         return $result;
     }
     public function get_Bottle(){
@@ -1367,6 +1404,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $record;
     }
     public function search_Recycletable($search){
@@ -1395,6 +1433,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $record;
     }
     public function search_Redeemtable($search){
@@ -1423,6 +1462,7 @@ class myDb {
         else{
             $records = null;
         }
+        $sql->free_result();
         return $record;
     }
     public function get_dailyRecycle($date){
@@ -1443,6 +1483,7 @@ class myDb {
         else{
             $total_points = 0;
         }
+        $sql->free_result();
         return $total_points;
     }
     public function get_dailyRedeem($date){
@@ -1463,6 +1504,7 @@ class myDb {
         else{
             $total_redeem = 0;
         }
+        $sql->free_result();
         return $total_redeem;
     }
     public function get_dailyReport($date){
@@ -1481,6 +1523,7 @@ class myDb {
         else{
             $existing = "false";
         }
+        $sql->free_result();
         return $existing;
     }
     public function update_dailyReport($date, $total_bottles, $total_redeem){
@@ -1498,6 +1541,7 @@ class myDb {
         else{
             $result = "updated";
         }
+        $sql->free_result();
         return $result;
     }
     public function add_Dailyreport($date, $total_bottles, $total_redeem){
@@ -1517,6 +1561,7 @@ class myDb {
         else{
             $result = "inserted";
         }
+        $sql->free_result();
         return $result;
     }
     public function minus_Points($user_id, $item_id){
@@ -1542,6 +1587,7 @@ class myDb {
         }
         else{
             $return = "no_user";
+            $sql->free_result();
             return $result;
         }
         // get item info
@@ -1557,6 +1603,7 @@ class myDb {
         }
         else{
             $result = "noitem";
+            $sql->free_result();
             return $result;
         }
         // get date info
@@ -1571,6 +1618,7 @@ class myDb {
         }
         else{
             $result = $date;
+            $sql->free_result();
             return $result;
         }
         if($user_points >= $item_points){
@@ -1590,6 +1638,7 @@ class myDb {
                 $success = $sql->execute();
                 if(!$success){
                     $result = "notupdated";
+                    $sql->free_result();
                     return $result;
                 }
                 else{
@@ -1601,10 +1650,12 @@ class myDb {
                     $success = $sql->execute();
                     if(!$success){
                         $result = "failed to update daily reports redeem";
+                        $sql->free_result();
                         return $result;
                     }
                     else{
                         $result = "updated";
+                        $sql->free_result();
                         return $result;
                     }
                 }  
@@ -1612,6 +1663,7 @@ class myDb {
         }
         else{
             $result = "$item_points"; // return not enough points
+            $sql->free_result();
             return $result;
         }
     }
@@ -1731,6 +1783,7 @@ class myDb {
         }else{
             $result = "Date is valid: ".$date_valid." Bottle is valid: ".$bottle_valid." User is valid:".$user_valid;
         }
+        $sql->free_result();
         return $result;
     }
 
