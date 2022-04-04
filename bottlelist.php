@@ -105,59 +105,32 @@ else{
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="addBottleFile" class="form-label">Add Image</label>
-                        <input class="form-control" type="file" id="addBottleFile" name = "image" required>
+                        <input class="form-control" type="file" id="addBottleFile" onkeyup='bottles();' name = "image" required>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" required>
+                        <input type="text" class="form-control rounded-1" id="btype" onkeyup='bottles();' placeholder="Enter Bottle Type" name="btype" required>
                         <label for="btype" required>Bottle Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize" required>
+                        <input type="text" class="form-control rounded-1" id="bsize" onkeyup='bottles();' placeholder="Enter Bottle Size" name="bsize" required>
                         <label for="bsize" required>Bottle Size</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency" required>
+                        <input type="peso" class="form-control rounded-1" id="bcurrency" onkeyup='bottles();'  placeholder="Enter Bottle Price" name="bcurrency" required>
                         <label for="bcurrency" required>Bottle Value</label>
                     </div>
+                    <span id='message'></span>
                 </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Add Confirmation trigger modal -->
-                    <button type="button" class="btn btn-secondary" id = "add_bottle" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm">
+                    <button type="button" class="btn btn-secondary" id = "add_bottle" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm" disabled>
                         Add Bottle
                     </button>
                 </div>
             </div>
-            <script>
-                // $('#modalAddBConfirm').click('show.bs.modal', function (e) {
-                //     alert("canceled");
-                //     var button = e.relatedTarget;
-                //     if($("#btype").val().length==0 || $("#addBottleFile").value == null ||
-                //         $("#bsize").value == null || $("#bcurrency").value == null) {
-                //         e.stopPropegation();
-                //     }
-                //     else{
-                //         alert("going");
-                //     }  
-                // });
-                // $('#modalAddBConfirm').click(function(e){
-                //     var btype= $("#btype").val();
-                //     var bfile = $("#addBottleFile").val();
-                //     if(btype.length==0 || bfile == null){
-                //         //alert("hello");
-                //         e.stopPropagation();
-                //     }
-                //     // else if(password != '' && confirm_password != '' && password != confirm_password){
-                //     //     alert('New password and Confirm new password does not match');
-                //     //     $('#modalchangepassConfirm').modal('hide');
-                //     // }
-                //     // else{
-                //     //     alert('Fill up all the fields');
-                //     //     $('#modalchangepassConfirm').modal('hide');
-                //     // }      
-                // });
-            </script>
+           
         </div>
     </div>
     <!-- Modal Add Bottle Confirmation -->
@@ -203,26 +176,27 @@ else{
                             </div>
                             <div class="modal-body">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="btype" 
+                                    <input type="text" class="form-control rounded-1" id="ebtype" placeholder="Enter Bottle Type" name="btype" 
                                     value="'.$bname.'" readonly="readonly">
                                     <label for="btype" >Bottle Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="bsize"
+                                    <input type="text" class="form-control rounded-1" id="ebsize" placeholder="Enter Bottle Size" name="bsize"
                                     value="'.$bsize.'" readonly="readonly">
                                     <label for="bsize" >Bottle Size</label>
                                     <input type="hidden" name="bid" value="'.$bid.' ">
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Price" name="bcurrency"
-                                    value="'.$bvalue.'" required>
+                                    <input type="peso" class="form-control rounded-1" id="ebcurrency" onkeyup="edit_bottles();" placeholder="Enter Bottle Price" name="bcurrency"
+                                     required>
                                     <label for="bcurrency" >Bottle Value</label>
                                 </div>
                             </div>
+                            <span id="emessage"></span>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Bottle Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#'.$modalsavename.'">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id = "edit_bottle" data-bs-target="#'.$modalsavename.'" disabled>
                                     Save Changes
                                 </button>
                             </div>
@@ -253,6 +227,42 @@ else{
         }
     ?>
     <!-- lines -->
+    <script>
+        var add_bottles = function(){
+            // var bname = document.getElementById('btype').value;
+            // var bsize = document.getElementById('size').value;
+            // var bcurr = document.getElementById('bcurrency').value;
+            var fileInput = $.trim($("#addBottleFile").val());
+            var sample = document.getElementById('addBottleFile').value;
+            // bname  == "" && bsize  == "" && bcurr  == ""
+            if (document.getElementById('ebcurrency').value != ""){
+                document.getElementById('emessage').style.color = 'green';
+                document.getElementById('emessage').innerHTML = 'Forms completed!';
+                document.getElementById('add_bottle').disabled = false;
+            }else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = "Please fill up all fields";
+                document.getElementById('add_bottle').disabled = true;
+            }
+        }
+        var edit_bottles = function(){
+            // var bname = document.getElementById('btype').value;
+            // var bsize = document.getElementById('size').value;
+            // var bcurr = document.getElementById('bcurrency').value;
+            var fileInput = $.trim($("#addBottleFile").val());
+            var sample = document.getElementById('addBottleFile').value;
+            // bname  == "" && bsize  == "" && bcurr  == ""
+            if (document.getElementById('ebcurrency').value != ""){
+                document.getElementById('emessage').style.color = 'green';
+                document.getElementById('emessage').innerHTML = 'Forms completed!';
+                document.getElementById('edit_bottle').disabled = false;
+            }else {
+                document.getElementById('emessage').style.color = 'red';
+                document.getElementById('emessage').innerHTML = "Please fill up all fields";
+                document.getElementById('edit_bottle').disabled = true;
+            }
+        }
+    </script>
     <section class="bg-dark p-5">
     </section>
     <section class="bg-primary p-3">
