@@ -8,10 +8,10 @@ class myDb {
 
     function __construct(){
         // for localhost
-        // $this->host = "localhost";
-        // $this->username = "root";
-        // $this->password = "";
-        // $this->database = "bcash";
+        $this->host = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->database = "bcash";
         // for 000webhost 1st database
         // $this->host = "localhost";
         // $this->username = "id18658017_bcash";
@@ -23,10 +23,10 @@ class myDb {
         // $this->password = "D3\-RW]T4JC(lMBJ";
         // $this->database = "id18658017_bcash";
         // for 000webhost 3rd database
-        $this->host = "localhost";
-        $this->username = "id18267157_bcash";
-        $this->password = "[&kO^}vmCtX4n21e";
-        $this->database = "id18267157_thesis";
+        // $this->host = "localhost";
+        // $this->username = "id18267157_bcash";
+        // $this->password = "[&kO^}vmCtX4n21e";
+        // $this->database = "id18267157_thesis";
 
         //link to database
         $this->link = mysqli_connect($this->host, $this->username, $this->password, $this->database);
