@@ -530,7 +530,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRedConfirm">
+                    <button type="button" class="btn btn-secondary btn-md addbtn" id="gen_red_rec" data-bs-toggle="modal" data-bs-target="#modalgenRedConfirm" disabled>
                         Generate
                     </button>
                 </div>
@@ -551,6 +551,7 @@
                 document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
                 function disableInput(){
                     //switches
+                    var gen_btn = document.getElementById('gen_red_rec');
                     var gen_all = document.getElementById('optionswitch1');
                     var lname = document.getElementById('lnameswitch1');
                     var fname = document.getElementById('fnameswitch1');
@@ -573,6 +574,15 @@
                         itemswitch.disabled = true;
                         priceswitch.disabled = true;
                         dateswitch.disabled = true;
+                        // unchecked all switches
+                        lname.checked = false;
+                        fname.checked = false;
+                        mname.checked = false;
+                        itemswitch.checked = false;
+                        priceswitch.checked = false;
+                        dateswitch.checked = false;
+                        // enable generate btn
+                        gen_btn.disabled = false;
                     }
                     else if(!gen_all.checked){
                         lname.disabled = false;
@@ -581,22 +591,26 @@
                         itemswitch.disabled = false;
                         priceswitch.disabled = false;
                         dateswitch.disabled = false;
+                        gen_btn.disabled = true;
                     }
                     // for switches after generate all switch
                     if(lname.checked){
                         input_lname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!lname.checked){
                         input_lname.disabled = true;
                     }
                     if(fname.checked){
                         input_fname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!fname.checked){
                         input_fname.disabled = true;
                     }
                     if(mname.checked){
                         input_mname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!mname.checked){
                         input_mname.disabled = true;
@@ -604,6 +618,7 @@
                     if(dateswitch.checked){
                         input_mindate.disabled = false;
                         input_maxdate.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!dateswitch.checked){
                         input_mindate.disabled = true;
@@ -611,12 +626,14 @@
                     }
                     if(itemswitch.checked){
                         input_item.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!itemswitch.checked){
                         input_item.disabled = true;
                     }
                     if(priceswitch.checked){
                         input_price.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!priceswitch.checked){
                         input_price.disabled = true;

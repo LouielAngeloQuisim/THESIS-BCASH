@@ -483,7 +483,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modalgenRecConfirm">
+                    <button type="button" class="btn btn-secondary btn-md addbtn" id="gen_rec_rep" data-bs-toggle="modal" data-bs-target="#modalgenRecConfirm" disabled>
                         Generate
                     </button>
                 </div>
@@ -503,6 +503,7 @@
                 document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
                 function disableInput(){
                     //switches
+                    var gen_btn = document.getElementById('gen_rec_rep');
                     var gen_all = document.getElementById('optionswitch1');
                     var lname = document.getElementById('lnameswitch1');
                     var fname = document.getElementById('fnameswitch1');
@@ -523,6 +524,14 @@
                         mname.disabled = true;
                         pointswitch.disabled = true;
                         dateswitch.disabled = true;
+                        // uncheck switches if checked
+                        lname.checked = false;
+                        fname.checked = false;
+                        mname.checked = false;
+                        pointswitch.checked = false;
+                        dateswitch.checked = false;
+                        //enable generate btn
+                        gen_btn.disabled = false;
                     }
                     else if(!gen_all.checked){
                         lname.disabled = false;
@@ -530,22 +539,26 @@
                         mname.disabled = false;
                         pointswitch.disabled = false;
                         dateswitch.disabled = false;
+                        gen_btn.disabled = true;
                     }
                     // for switches after generate all switch
                     if(lname.checked){
                         input_lname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!lname.checked){
                         input_lname.disabled = true;
                     }
                     if(fname.checked){
                         input_fname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!fname.checked){
                         input_fname.disabled = true;
                     }
                     if(mname.checked){
                         input_mname.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!mname.checked){
                         input_mname.disabled = true;
@@ -553,6 +566,7 @@
                     if(dateswitch.checked){
                         input_mindate.disabled = false;
                         input_maxdate.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!dateswitch.checked){
                         input_mindate.disabled = true;
@@ -561,11 +575,22 @@
                     if(pointswitch.checked){
                         input_minep.disabled = false;
                         input_maxep.disabled = false;
+                        gen_btn.disabled = false;
                     }
                     else if(!pointswitch.checked){
                         input_minep.disabled = true;
                         input_maxep.disabled = true;
-                    }    
+                    }
+                    if(
+                        !gen_all.checked &&
+                        !lname.checked &&
+                        !fname.checked &&
+                        !mname.checked &&
+                        !pointswitch.checked &&
+                        !dateswitch.checked 
+                    ){
+                        gen_btn.disabled = true;
+                    }
                 }
             })();
         });
