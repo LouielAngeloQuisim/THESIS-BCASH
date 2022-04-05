@@ -105,35 +105,33 @@ else{
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="addBottleFile" class="form-label">Add Image</label>
-                        <input class="form-control" type="file" id="addBottleFile" name = "image">
+                        <input class="form-control" type="file" id="item_file" onkeyup='add_items();' name = "image">
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="btype" placeholder="Enter Bottle Type" name="item_name">
+                        <input type="text" class="form-control rounded-1" id="item_name" onkeyup='add_items();' placeholder="Enter Bottle Type" name="item_name">
                         <label for="btype" required>Item Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control rounded-1" id="bsize" placeholder="Enter Bottle Size" name="item_price">
+                        <input type="text" class="form-control rounded-1" id="item_value" onkeyup='add_items();' placeholder="Enter Bottle Size" name="item_price">
                         <label for="bsize" required>Item Price</label>
                     </div>
                     <!-- item stock hidden and value was 0 -->
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" placeholder="Enter Bottle Currency" name="item_stock" hidden>
+                        <input type="peso" class="form-control rounded-1" id="item_stock" placeholder="Enter Bottle Currency" name="item_stock" hidden>
                         <label for="bcurrency" required hidden>Item Stock</label>
                     </div>
+                    <span id='message'></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Add Confirmation trigger modal -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm">
+                    <button type="button" class="btn btn-secondary" id="item_add" data-bs-toggle="modal" data-bs-target="#modalAddBConfirm" disabled>
                         Add Item
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-
-    </script>
     <!-- Modal Add Bottle Confirmation -->
     <div class="modal fade" id="modalAddBConfirm" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -165,6 +163,7 @@ else{
                 $item_price = $rows['item_price'];
                 $item_stock = $rows['item_stock'];
                 $item_img = $rows['item_img'];
+                $edit_items = "edit_items".$item_id;
                 // show bottle
                 echo '
                 <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -181,7 +180,7 @@ else{
                                     <label for="btype" required hidden>Item Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="iprize" placeholder="Enter Item Price" name="item_price" value="'.$item_price.'" required>
+                                    <input type="peso" class="form-control rounded-1" id="iprize'.$item_id.'" onkeyup="'.$edit_items.'();" placeholder="Enter new item price" name="item_price" required>
                                     <label for="iprice">Item Price</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -190,10 +189,11 @@ else{
                                     <input type="hidden" name="item_id" value="'.$item_id.'">
                                 </div>
                             </div>
+                            <span id="emessage'.$item_id.'"></span>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Item Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#'.$modalsavename.'">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="'.$modalsavename.'" data-bs-target="#'.$modalsavename.'" disabled>
                                     Save Changes
                                 </button>
                             </div>
@@ -219,12 +219,50 @@ else{
                     </div>
                 </div>
                 </form>
+                <script>
+                    var '.$edit_items.' = function(){
+                        // var bname = document.getElementById("btype").value;
+                        // var bsize = document.getElementById("size").value;
+                        // var bcurr = document.getElementById("bcurrency").value;
+                        // bname  == "" && bsize  == "" && bcurr  == ""
+                        if (document.getElementById("iprize'.$item_id.'").value != ""){
+                            document.getElementById("emessage'.$item_id.'").style.color = "green";
+                            document.getElementById("emessage'.$item_id.'").innerHTML = "Forms completed!";
+                            document.getElementById("'.$modalsavename.'").disabled = false;
+                        }else {
+                            document.getElementById("emessage'.$item_id.'").style.color = "red";
+                            document.getElementById("emessage'.$item_id.'").innerHTML = "Please fill up all fields";
+                            document.getElementById("'.$modalsavename.'").disabled = true;
+                        }
+                    }
+                </script>
                 ';
             }
         }
     ?>
     
     <!-- lines -->
+    
+    <script>
+        var add_items = function(){
+            // var bname = document.getElementById('btype').value;
+            // var bsize = document.getElementById('size').value;
+            // var bcurr = document.getElementById('bcurrency').value;
+            // bname  == "" && bsize  == "" && bcurr  == ""
+            if (document.getElementById('item_name').value != "" &&
+                document.getElementById('item_value').value != "" &&
+                document.getElementById('item_file').value != ""
+            ){
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Forms completed!';
+                document.getElementById('item_add').disabled = false;
+            }else {
+                document.getElementById('emessage').style.color = 'red';
+                document.getElementById('emessage').innerHTML = "Please fill up all fields";
+                document.getElementById('item_add').disabled = true;
+            }
+        }
+    </script>
     <section class="bg-dark p-5">
     </section>
     <section class="bg-primary p-3">
