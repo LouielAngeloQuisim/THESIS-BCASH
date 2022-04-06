@@ -62,6 +62,34 @@ class myDb {
         mysqli_free_result($result);
         return $records;
     }
+    // get item
+    public function get_Item($itemid){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM shop_items WHERE item_id = ?");
+        $item_id= mysqli_real_escape_string($this->link, $itemid);
+        $sql->bind_param("i", $item_id);
+        //set parameters
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'item_id' => $row['item_id'],
+                    'item_name' => $row['item_name'],
+                    'item_price' => $row['item_price'],
+                    'item_stock' => $row['item_stock'],
+                    'item_img' => $row['item_img']
+                ];
+            }
+        }
+        else{
+            $records = null;
+        }
+        //
+        $sql->free_result();
+        return $records;
+    }
+
     public function get_Users(){
         $sql = "SELECT * FROM user_login";
         $result = mysqli_query($this->link, $sql);
@@ -1561,8 +1589,8 @@ class myDb {
         else{
             $result = "inserted";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
     public function minus_Points($user_id, $item_id){
         date_default_timezone_set('Asia/Manila');
@@ -1587,8 +1615,8 @@ class myDb {
         }
         else{
             $return = "no_user";
-            $sql->free_result();
             return $result;
+            $sql->free_result();
         }
         // get item info
         $item_id = mysqli_real_escape_string($this->link, $item_id);
@@ -1603,8 +1631,8 @@ class myDb {
         }
         else{
             $result = "noitem";
-            $sql->free_result();
             return $result;
+            $sql->free_result();
         }
         // get date info
         $sql = "SELECT day_id, date , no_redeem
@@ -1618,8 +1646,8 @@ class myDb {
         }
         else{
             $result = $date;
-            $sql->free_result();
             return $result;
+            $sql->free_result();
         }
         if($user_points >= $item_points){
             // update user points
@@ -1638,8 +1666,8 @@ class myDb {
                 $success = $sql->execute();
                 if(!$success){
                     $result = "notupdated";
-                    $sql->free_result();
                     return $result;
+                    $sql->free_result();
                 }
                 else{
                     $no_redeem = $no_redeem + 1;
@@ -1650,21 +1678,21 @@ class myDb {
                     $success = $sql->execute();
                     if(!$success){
                         $result = "failed to update daily reports redeem";
-                        $sql->free_result();
                         return $result;
+                        $sql->free_result();
                     }
                     else{
                         $result = "updated";
-                        $sql->free_result();
                         return $result;
+                        $sql->free_result();
                     }
                 }  
             }
         }
         else{
-            $result = "$item_points"; // return not enough points
-            $sql->free_result();
+            $result = "not enough points"; // return not enough points
             return $result;
+            $sql->free_result();
         }
     }
     // adding recycle transaction and points to the user

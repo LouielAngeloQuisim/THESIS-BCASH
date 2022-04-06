@@ -6,7 +6,7 @@
     <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
     <script type="text/javascript" scr="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,15 +25,37 @@
         include 'nav_shop.php';
         require "mydb.php";
         $mydb = new myDb;
-        if(isset($_POST['redeem_submit'])){
-            print_r($_POST['redeem_submit']);
-            $user_id = $_POST['user_id'];
+        $lack_points = "false";
+        if(isset($_GET['itemid'])){
             $item_id = $_GET['itemid'];
+        }
+        else{
+            header("Location: redeem_scan.php?itemnotfound=1");
+        }
+        if(isset($_POST['redeem_submit'])){
+            $user_id = $_POST['user_id'];
             $result = $mydb->minus_Points($user_id, $item_id);
-            echo $result;
+            if($result == "updated"){
+                echo '
+                <script>
+                    $(document).ready(function(){
+                        $("#modalyesconfirm").modal("show");
+                    });
+                </script>
+                ';
+            }
+            elseif($result == "not enough points"){
+                $lack_points = "true";
+                echo '
+                <script>
+                    $(document).ready(function(){
+                        $("#modalredeempopup").modal("show");
+                    });
+                </script>
+                ';
+            }
         }
     ?>
-
     <!-- redeem scanning are -->
     <form action="" method="post">
     <section class="bg-dark p-5 text-center text-sm-start">
@@ -43,7 +65,14 @@
                     <i class="bi bi-columns-gap"></i>
                 </div>
                 <h3 class="card-title mb-3">
-                    [Redeemable Item]
+                    <?php
+                        $records = $mydb->get_Item($item_id);
+                        if(isset($records)){
+                            foreach($records as $rows){
+                                echo $rows['item_name'];
+                            }
+                        }
+                    ?>
                     <video id="preview" width="100%"></video>
                     <input type="text" name="user_id" id="text" placeholder="qrcode value" hidden>
                 </h3>
@@ -62,55 +91,64 @@
     <!-- Modal Redeem Pop up -->
     <div class="modal fade" id="modalredeempopup" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalredeempopup">Redeem Item</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="h1 text-danger">
-                        <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <p class="text-fondark fw-bolder">
-                        Are you sure you want to continue this transaction?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <a href="redeem_scan.php" class="btn btn-secondary">No</a>
-                    <!-- Yes Confirm trigger modal -->
-                    <button type="submit" class="btn btn-secondary" name="redeem_submit">
-                        Yes
-                    </button>
-                    <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalyesconfirm">
-                        Yes
-                    </button> -->
-                </div>
-                <?php
-                    echo "here";
-                ?>
-            </div>
+            <?php
+                if($lack_points == "false"){
+                    echo '
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalredeempopup">Redeem Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="h1 text-danger">
+                                    <i class="bi bi-exclamation-circle"></i>
+                                </div>
+                                <p class="text-fondark fw-bolder">
+                                    Are you sure you want to continue this transaction?
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="redeem_scan.php" class="btn btn-secondary">No</a>
+                                <!-- Yes Confirm trigger modal -->
+                                <button type="submit" class="btn btn-secondary" name="redeem_submit">
+                                    Yes
+                                </button>
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalyesconfirm">
+                                    Yes
+                                </button> -->
+                            </div>
+                        </div>
+                    ';
+                }
+                elseif($lack_points == "true"){
+                    echo '
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalredeempopup">Redeem Error</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <div class="h1 text-danger">
+                                    <i class="bi bi-exclamation-circle"></i>
+                                </div>
+                                <p class="text-fondark">
+                                    Insufficient Points! Want to scan again?
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
+                                    Cancel
+                                </button>
+                                <a href="redeeming.php" class="btn btn-secondary">Yes</a>
+                            </div>
+                        </div>
+                    ';
+                    $lack_points = "false";
+                }
+            ?>
             </form>
             <!-- eto kapag kulang points ni user
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalredeempopup">Redeem Error</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="h1 text-danger">
-                        <i class="bi bi-exclamation-circle"></i>
-                    </div>
-                    <p class="text-fondark">
-                        Insufficient Points! Want to scan again?
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
-                        Cancel
-                    </button>
-                    <a href="redeeming.php" class="btn btn-secondary">Yes</a>
-                </div>
-            </div>
+            
             -->
         </div>
     </div>
