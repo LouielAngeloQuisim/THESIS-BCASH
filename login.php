@@ -42,9 +42,9 @@
                             <label for="invalidpassword">Invalid password</label>
                         </div>
                         -->
-                        <div class="text-center mb-3 fs-6">
+                        <div class="text-center mb-3 fs-6 text-danger">
                             <p class="note">
-                                Note: Use your email address as your username and your student-id number as your password.
+                                Note: Your default Username is your BPSU email account and your Password is your student ID number.
                             </p>
                         </div>
                         <div class="d-grid">
