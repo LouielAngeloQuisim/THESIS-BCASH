@@ -55,10 +55,10 @@
                         <!-- <span id='message'></span> -->
                         <?php
                             if(isset($_GET["noaccount"])){
-                                echo '<span class="text-danger">Wrong Username or Password</span> ';
+                                echo '<span class="text-danger">Wrong Username or Password</span>';
                             }
                             elseif(isset($_GET["notset"])){
-                                echo '<span>Username and Password is empty. Please try again</span>';
+                                echo '<span class="text-danger">Username and Password is empty. Please try again</span>';
                             }
                         ?>
                     </form>
