@@ -172,7 +172,6 @@
                                 </h3>
                                 <div class="card-text">
                                     <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                        
                                             <?php
                                                 $records = $mydb->get_Shop_items();
                                                 $count = 0;

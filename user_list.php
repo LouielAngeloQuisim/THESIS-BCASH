@@ -61,7 +61,7 @@
                 </button>
               </div>
             </p>
-            <form action="">
+            <form action="new_regis.php" method = "post" enctype="multipart/form-data">
               <!-- Modal Add User CSV File-->
               <div class="modal fade modalpopup" id="modaladdUsercsv" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
@@ -214,7 +214,7 @@
     <section class="bg-primary p-3">
     </section>
 
-    <form action="new_regis.php" method = "post" enctype="multipart/form-data">
+    <form action="registration.php" method = "post" enctype="multipart/form-data">
       <!-- Modal Add User Manually-->
       <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
