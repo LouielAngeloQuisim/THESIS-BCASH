@@ -226,10 +226,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
                   <div class="modal-body">
-                    <div class="form-floating mb-2">
+                    <div class="mb-2">
                       <input type="hidden" name="admin" value="0">
-                      <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="example@bpsu.edu.ph" required>
                       <label for="email">Email Address</label>
+                      <input type="email" id="email" name="email" class="form-control form-control-lg"  placeholder="example@bpsu.edu.ph" required>
                     </div>
                     <div class="row g-2 mb-2">
                       <div class="col">
@@ -253,7 +253,6 @@
                     </div>
                     <div class="form-floating mb-2">
                           <select class="form-select" id="prog" name="prog" required>
-                            <option selected>Please select your Program</option>
                             <option value="BS Computer Science (Network and Data Communications)">BS Computer Science (Network and Data Communications)</option>
                             <option value="BS Computer Science (Software Development)">BS Computer Science (Software Development)</option>
                             <option value="BS Entertainment and Multimedia Computing (Digital Animation Technology)">BS Entertainment and Multimedia Computing (Digital Animation Technology)</option>
@@ -266,7 +265,6 @@
                       <div class="col">
                         <div class="form-floating">
                           <select class="form-select" id="sex" name="sex" required>
-                            <option selected>Please select your Sex</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                           </select>
@@ -282,7 +280,6 @@
                       <div class="col">
                         <div class="form-floating">
                           <select class="form-select" id="yrlvl" name="year_level" required>
-                            <option selected>Please select your Year Level</option>
                             <option value="1st Year">1st Year</option>
                             <option value="2nd Year">2nd Year</option>
                             <option value="3rd Year">3rd Year</option>

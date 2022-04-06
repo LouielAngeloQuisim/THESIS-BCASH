@@ -42,27 +42,25 @@
                             <label for="invalidpassword">Invalid password</label>
                         </div>
                         -->
-                        <div class="d-grid gap-2 mb-2">
+                        <div class="text-center mb-3 fs-6 text-danger">
+                            <p class="note">
+                                Note: Your default Username is your BPSU email account and your Password is your student ID number.
+                            </p>
+                        </div>
+                        <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg btn-block"name="login">
                                 Login
                             </button>
                         </div>
-                        <div class="d-grid gap-2 mb-2">
-                            <!-- <a href="index.php" class="btn btn-primary btn-lg btn-block">Home</a> -->
-                            
-                        </div>
                         <!-- <span id='message'></span> -->
                         <?php
                             if(isset($_GET["noaccount"])){
-                                echo '<span class="text-danger">Wrong Username or Password</span> ';
+                                echo '<span class="text-danger">Wrong Username or Password</span>';
                             }
                             elseif(isset($_GET["notset"])){
-                                echo '<span>Username and Password is empty. Please try again</span>';
+                                echo '<span class="text-danger">Username and Password is empty. Please try again</span>';
                             }
                         ?>
-                        <div class="gap-2">
-                            <!-- Don't have an account? <a href="regis.php">Sign up here!</a> -->
-                        </div>
                     </form>
             </div>
         </div>
