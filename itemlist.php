@@ -117,7 +117,7 @@ else{
                     </div>
                     <!-- item stock hidden and value was 0 -->
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="item_stock" placeholder="Enter Bottle Currency" name="item_stock" hidden>
+                        <input type="number" step="any" class="form-control rounded-1" id="item_stock" placeholder="Enter Bottle Currency" name="item_stock" hidden>
                         <label for="bcurrency" required hidden>Item Stock</label>
                     </div>
                     <span id='message'></span>
@@ -180,7 +180,7 @@ else{
                                     <label for="btype" required hidden>Item Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="iprize'.$item_id.'" onkeyup="'.$edit_items.'();" placeholder="Enter new item price" name="item_price" required>
+                                    <input type="number" step="any" class="form-control rounded-1" id="iprize'.$item_id.'" onkeyup="'.$edit_items.'();" placeholder="Enter new item price" name="item_price" required>
                                     <label for="iprice">Item Price</label>
                                 </div>
                                 <div class="form-floating mb-3">
