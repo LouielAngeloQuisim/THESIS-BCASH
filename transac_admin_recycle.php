@@ -51,8 +51,8 @@
             </h2>
             <p class="lead text-center">
                 <!-- Button Generate All trigger modal -->
-                <form action="">
-                    <button type="button" class="btn btn-secondary btn-md addbtn">
+                <form action="all_preview.php" method="post">
+                    <button type="submit" name ="confirm_all"class="btn btn-secondary btn-md addbtn">
                         Print All Redeem and Recycle Transactions
                     </button>
                 </form>

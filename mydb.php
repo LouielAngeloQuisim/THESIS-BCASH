@@ -1776,7 +1776,7 @@ class myDb {
         // Update user info after validation
         if($date_valid == true && $bottle_valid == true && $user_valid == true){
             //update user total points
-            $sql = $this->link->prepare("UPDATE user_login SET total_points = ? total_bottle = ? WHERE acc_id = ?");
+            $sql = $this->link->prepare("UPDATE user_login SET total_points = ?, total_bottles = ? WHERE acc_id = ?");
             $total_points = $total_points + $bottle_val;
             $total_bottles = $total_bottles + 1;
             $sql->bind_param("dii", $total_points, $total_bottles,  $acc_id);
