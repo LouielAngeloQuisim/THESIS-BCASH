@@ -116,7 +116,7 @@ else{
                         <label for="bsize" required>Bottle Size</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="peso" class="form-control rounded-1" id="bcurrency" onkeyup='add_bottles();'  placeholder="Enter Bottle Price" name="bcurrency" required>
+                        <input type="number" class="form-control rounded-1" id="bcurrency" onkeyup='add_bottles();'  placeholder="Enter Bottle Price" name="bcurrency" required>
                         <label for="bcurrency" required>Bottle Value</label>
                     </div>
                     <span id='message'></span>
