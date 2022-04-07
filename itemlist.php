@@ -19,7 +19,8 @@ else{
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script> -->
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -193,7 +194,7 @@ else{
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Item Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="'.$modalsavename.'" data-bs-target="#'.$modalsavename.'" disabled>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id="id'.$modalsavename.'" data-bs-target="#'.$modalsavename.'" disabled>
                                     Save Changes
                                 </button>
                             </div>
@@ -205,7 +206,7 @@ else{
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalEditISaveChanges">Bottle Edit</h5>
+                                <h5 class="modal-title" id="'.$modalsavename.'">Bottle Edit</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body fw-bolder">
@@ -228,11 +229,11 @@ else{
                         if (document.getElementById("iprize'.$item_id.'").value != ""){
                             document.getElementById("emessage'.$item_id.'").style.color = "green";
                             document.getElementById("emessage'.$item_id.'").innerHTML = "Forms completed!";
-                            document.getElementById("'.$modalsavename.'").disabled = false;
+                            document.getElementById("id'.$modalsavename.'").disabled = false;
                         }else {
                             document.getElementById("emessage'.$item_id.'").style.color = "red";
                             document.getElementById("emessage'.$item_id.'").innerHTML = "Please fill up all fields";
-                            document.getElementById("'.$modalsavename.'").disabled = true;
+                            document.getElementById("id'.$modalsavename.'").disabled = true;
                         }
                     }
                 </script>

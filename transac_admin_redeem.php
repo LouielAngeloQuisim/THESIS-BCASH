@@ -19,7 +19,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script> -->
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,8 +52,8 @@
             </h2>
             <p class="lead text-center">
                 <!-- Button Generate All trigger modal -->
-                <form action="">
-                    <button type="button" class="btn btn-secondary btn-md addbtn">
+                <form action="all_preview.php" method="post"> 
+                    <button type="submit" name ="confirm_all" class="btn btn-secondary btn-md addbtn">
                         Print All Redeem and Recycle Transactions
                     </button>
                 </form>
@@ -259,7 +260,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch1">
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname1" name="lname" placeholder="Enter Last Name" disabled>
+                                    <input type="text" class="form-control tfield1" id="lname1" onkeyup="check_text();" name="lname" placeholder="Enter Last Name" disabled>
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -282,7 +283,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch1">
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname1" name="fname" placeholder="Enter First Name" disabled>
+                                    <input type="text" class="form-control tfield1" id="fname1" onkeyup="check_text();" name="fname" placeholder="Enter First Name" disabled>
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -305,7 +306,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch1">
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname1" name="mname" placeholder="Enter Middle Name" disabled>
+                                    <input type="text" class="form-control tfield1" id="mname1" onkeyup="check_text();" name="mname" placeholder="Enter Middle Name" disabled>
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -327,12 +328,12 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input switchgbtn" type="checkbox" id="itemswitch1">
                             <label class="form-check-label" for="itemswitch">
-                                <select class="form-select inputtg1" id="item1" name="item" disabled>
-                                    <option selected>Select Redeemable Item</option>
-                                    <option value="print">Print</option>
+                                <select class="form-select inputtg1" id="item1" onkey  name="item" disabled>
+                                    <option selected >Select Redeemable Item</option>
+                                    <option value="print" >Print</option>
                                     <option value="xerox">Xerox</option>
                                     <option value="ballpen">Ballpen</option>
-                                    <option value="pencil">Pencil</option>
+                                    <option value="pencil" >Pencil</option>
                                 </select>
                             </label>
                         </div>
@@ -354,7 +355,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="pswitch1">
                             <label class="form-check-label" for="pswitch">
                                 <div class="form-floating">
-                                    <input type="double" class="form-control tfield1" id="price1" name="price" placeholder="Enter Price" disabled>
+                                    <input type="double" class="form-control tfield1" id="price1" onkeyup="check_text();" name="price" placeholder="Enter Price" disabled>
                                     <label for="price">Price</label>
                                 </div>
                             </label>
@@ -377,9 +378,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate1" name="mindate" disabled>
+                                    <input type="date" class="form-control" id="mindate1" onkeyup="check_text();" name="mindate" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate1" name="maxdate" disabled>
+                                    <input type="date" class="form-control" id="maxdate1" onkeyup="check_text();" name="maxdate" disabled>
                                 </div>
                             </label>
                         </div>
@@ -407,6 +408,22 @@
         </div>
     </div>
     <script>
+        var gen_btn = document.getElementById('gen_red_rec');
+        var gen_all = document.getElementById('optionswitch1');
+        var lname = document.getElementById('lnameswitch1');
+        var fname = document.getElementById('fnameswitch1');
+        var mname = document.getElementById('mnameswitch1');
+        var itemswitch = document.getElementById('itemswitch1');
+        var priceswitch = document.getElementById('pswitch1');
+        var dateswitch = document.getElementById('dateswitch1');
+        // inputs
+        var input_lname = document.getElementById('lname1');
+        var input_fname = document.getElementById('fname1');
+        var input_mname = document.getElementById('mname1');
+        var input_item = document.getElementById('item1');
+        var input_price = document.getElementById('price1');
+        var input_mindate = document.getElementById('mindate1');
+        var input_maxdate = document.getElementById('maxdate1');
         $(document).ready(function(){
             // mnameswitch epswitch dateswitch lnameswitch input names mindate
             // maxdate lname fname mname minep maxep
@@ -420,22 +437,7 @@
                 document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
                 function disableInput(){
                     //switches
-                    var gen_btn = document.getElementById('gen_red_rec');
-                    var gen_all = document.getElementById('optionswitch1');
-                    var lname = document.getElementById('lnameswitch1');
-                    var fname = document.getElementById('fnameswitch1');
-                    var mname = document.getElementById('mnameswitch1');
-                    var itemswitch = document.getElementById('itemswitch1');
-                    var priceswitch = document.getElementById('pswitch1');
-                    var dateswitch = document.getElementById('dateswitch1');
-                    // inputs
-                    var input_lname = document.getElementById('lname1');
-                    var input_fname = document.getElementById('fname1');
-                    var input_mname = document.getElementById('mname1');
-                    var input_item = document.getElementById('item1');
-                    var input_price = document.getElementById('price1');
-                    var input_mindate = document.getElementById('mindate1');
-                    var input_maxdate = document.getElementById('maxdate1');
+                    
                     if(gen_all.checked){
                         lname.disabled = true;
                         fname.disabled = true;
@@ -465,21 +467,21 @@
                     // for switches after generate all switch
                     if(lname.checked){
                         input_lname.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!lname.checked){
                         input_lname.disabled = true;
                     }
                     if(fname.checked){
                         input_fname.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!fname.checked){
                         input_fname.disabled = true;
                     }
                     if(mname.checked){
                         input_mname.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!mname.checked){
                         input_mname.disabled = true;
@@ -487,7 +489,7 @@
                     if(dateswitch.checked){
                         input_mindate.disabled = false;
                         input_maxdate.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!dateswitch.checked){
                         input_mindate.disabled = true;
@@ -495,21 +497,84 @@
                     }
                     if(itemswitch.checked){
                         input_item.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!itemswitch.checked){
                         input_item.disabled = true;
                     }
                     if(priceswitch.checked){
                         input_price.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!priceswitch.checked){
                         input_price.disabled = true;
                     }     
                 }
             })();
+            
         });
+        var check_text = function(){
+            if(input_lname.disabled == false){
+                if(input_lname.value == "" ){
+                    gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if(input_fname.disabled == false){
+                if(input_fname.value == "" ){
+                    gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_mname.disabled == false){
+                if(input_mname.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_mindate.disabled == false){
+                if(input_mindate.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_maxdate.disabled == false){
+                if(input_maxdate.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            
+            // if(input_item.disabled == false){
+            //     alert("item disabled");
+            //     if(input_item.lenght > 0){
+            //         alert("not selected");
+            //         gen_btn.disabled = true;
+            //     }
+            //     else{
+            //         alert("selected");
+            //         gen_btn.disabled = false;
+            //     }
+            // }
+            if( input_price.disabled == false){
+                if(input_price.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+        }
     </script>
     <!-- Modal Generate Recycle Confirm -->
     <div class="modal fade modalpopup" id="modalgenRedConfirm" tabindex="-1">

@@ -52,7 +52,7 @@
             <p class="lead text-center">
                 <!-- Button Generate All trigger modal -->
                 <form action="all_preview.php" method="post">
-                    <button type="submit" name ="confirm_all"class="btn btn-secondary btn-md addbtn">
+                    <button type="submit" name ="confirm_all" class="btn btn-secondary btn-md addbtn">
                         Print All Redeem and Recycle Transactions
                     </button>
                 </form>
@@ -236,7 +236,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="lnameswitch1">
                             <label class="form-check-label" for="lnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="lname1" placeholder="Enter Last Name" name = "lname" disabled>
+                                    <input type="text" class="form-control tfield1" id="lname1" onkeyup="check_text();" placeholder="Enter Last Name" name = "lname" disabled>
                                     <label for="lname">Last Name</label>
                                 </div>
                             </label>
@@ -259,7 +259,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="fnameswitch1">
                             <label class="form-check-label" for="fnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="fname1" placeholder="Enter First Name" name = "fname" disabled>
+                                    <input type="text" class="form-control tfield1" id="fname1" onkeyup="check_text();" placeholder="Enter First Name" name = "fname" disabled>
                                     <label for="fname">First Name</label>
                                 </div>
                             </label>
@@ -282,7 +282,7 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="mnameswitch1">
                             <label class="form-check-label" for="mnameswitch">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control tfield1" id="mname1" placeholder="Enter Middle Name" name = "mname" disabled>
+                                    <input type="text" class="form-control tfield1" id="mname1" onkeyup="check_text();" placeholder="Enter Middle Name" name = "mname" disabled>
                                     <label for="mname">Middle Name</label>
                                 </div>
                             </label>
@@ -305,9 +305,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="epswitch1">
                             <label class="form-check-label" for="epswitch">
                                 <div class="input-group inputtg1">
-                                    <input type="double" class="form-control" id="minep1" placeholder="Min Points" name = "minpoints" disabled>
+                                    <input type="double" class="form-control" id="minep1" onkeyup="check_text();" placeholder="Min Points" name = "minpoints" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="double" class="form-control" id="maxep1" placeholder="Max Points" name = "maxpoints" disabled>
+                                    <input type="double" class="form-control" id="maxep1" onkeyup="check_text();" placeholder="Max Points" name = "maxpoints" disabled>
                                 </div>
                             </label>
                         </div>
@@ -330,9 +330,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate1" name = "mindate" disabled>
+                                    <input type="date" class="form-control" id="mindate1" onkeyup="check_text();" name = "mindate" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate1" name = "maxdate" disabled>
+                                    <input type="date" class="form-control" id="maxdate1" onkeyup="check_text();" name = "maxdate" disabled>
                                 </div>
                             </label>
                         </div>
@@ -352,7 +352,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Button Generate Confirm trigger modal -->
-                    <button type="button" class="btn btn-secondary btn-md addbtn" id="gen_rec_rep" data-bs-toggle="modal" data-bs-target="#modalgenRecConfirm" disabled>
+                    <button type="button" class="btn btn-secondary btn-md addbtn" id="gen_rec_rep"  data-bs-toggle="modal" data-bs-target="#modalgenRecConfirm" disabled>
                         Generate
                     </button>
                 </div>
@@ -360,6 +360,21 @@
         </div>
     </div>
     <script>
+        var gen_btn = document.getElementById('gen_rec_rep');
+        var gen_all = document.getElementById('optionswitch1');
+        var lname = document.getElementById('lnameswitch1');
+        var fname = document.getElementById('fnameswitch1');
+        var mname = document.getElementById('mnameswitch1');
+        var pointswitch = document.getElementById('epswitch1');
+        var dateswitch = document.getElementById('dateswitch1');
+        // inputs
+        var input_lname = document.getElementById('lname1');
+        var input_fname = document.getElementById('fname1');
+        var input_mname = document.getElementById('mname1');
+        var input_mindate = document.getElementById('mindate1');
+        var input_maxdate = document.getElementById('maxdate1');
+        var input_minep = document.getElementById('minep1');
+        var input_maxep = document.getElementById('maxep1');
         $(document).ready(function(){
             // mnameswitch epswitch dateswitch lnameswitch input names mindate
             // maxdate lname fname mname minep maxep
@@ -370,23 +385,9 @@
                 document.getElementById('fnameswitch1').addEventListener('change', disableInput, false);
                 document.getElementById('epswitch1').addEventListener('change', disableInput, false);
                 document.getElementById('dateswitch1').addEventListener('change', disableInput, false);
+                //switches
+                
                 function disableInput(){
-                    //switches
-                    var gen_btn = document.getElementById('gen_rec_rep');
-                    var gen_all = document.getElementById('optionswitch1');
-                    var lname = document.getElementById('lnameswitch1');
-                    var fname = document.getElementById('fnameswitch1');
-                    var mname = document.getElementById('mnameswitch1');
-                    var pointswitch = document.getElementById('epswitch1');
-                    var dateswitch = document.getElementById('dateswitch1');
-                    // inputs
-                    var input_lname = document.getElementById('lname1');
-                    var input_fname = document.getElementById('fname1');
-                    var input_mname = document.getElementById('mname1');
-                    var input_mindate = document.getElementById('mindate1');
-                    var input_maxdate = document.getElementById('maxdate1');
-                    var input_minep = document.getElementById('minep1');
-                    var input_maxep = document.getElementById('maxep1');
                     if(gen_all.checked){
                         lname.disabled = true;
                         fname.disabled = true;
@@ -413,21 +414,20 @@
                     // for switches after generate all switch
                     if(lname.checked){
                         input_lname.disabled = false;
-                        gen_btn.disabled = false;
                     }
                     else if(!lname.checked){
                         input_lname.disabled = true;
                     }
                     if(fname.checked){
                         input_fname.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!fname.checked){
                         input_fname.disabled = true;
                     }
                     if(mname.checked){
                         input_mname.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!mname.checked){
                         input_mname.disabled = true;
@@ -435,7 +435,7 @@
                     if(dateswitch.checked){
                         input_mindate.disabled = false;
                         input_maxdate.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!dateswitch.checked){
                         input_mindate.disabled = true;
@@ -444,7 +444,7 @@
                     if(pointswitch.checked){
                         input_minep.disabled = false;
                         input_maxep.disabled = false;
-                        gen_btn.disabled = false;
+                        
                     }
                     else if(!pointswitch.checked){
                         input_minep.disabled = true;
@@ -461,8 +461,67 @@
                         gen_btn.disabled = true;
                     }
                 }
+                
             })();
         });
+        var check_text = function(){
+            if(input_lname.disabled == false){
+                if(input_lname.value == "" ){
+                    gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if(input_fname.disabled == false){
+                if(input_fname.value == "" ){
+                    gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_mname.disabled == false){
+                if(input_mname.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_mindate.disabled == false){
+                if(input_mindate.value == ""){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_maxdate.disabled == false){
+                if(input_maxdate.value == ""  ){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_minep.disabled == false){
+                if(input_minep.value == ""  ){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+            if( input_maxep.disabled == false){
+                if(input_maxep.value == ""  ){
+                gen_btn.disabled = true;
+                }
+                else{
+                    gen_btn.disabled = false;
+                }
+            }
+        }
     </script>
     <!-- Modal Generate Recycle Confirm -->
     <div class="modal fade modalpopup" id="modalgenRecConfirm" tabindex="-1">
