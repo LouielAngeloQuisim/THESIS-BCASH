@@ -188,7 +188,7 @@ else{
                                     <input type="hidden" name="bid" value="'.$bid.' ">
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="peso" class="form-control rounded-1" id="ebcurrency'.$bid.'" onkeyup="'.$edit_bottles.'();" placeholder="Enter Bottle Price" name="bcurrency"
+                                    <input type="number" class="form-control rounded-1" id="ebcurrency'.$bid.'" onkeyup="'.$edit_bottles.'();" placeholder="Enter Bottle Price" name="bcurrency"
                                      required>
                                     <label for="bcurrency" >Bottle Value</label>
                                 </div>
