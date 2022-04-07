@@ -202,8 +202,8 @@ class myDb {
             $records = null;
         }
         //
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function add_User(
         $username, $password, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
@@ -256,8 +256,8 @@ class myDb {
         else{
             $result = "notavailable";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
 
     public function add_Qrcode($acc_id, $qrcode){
@@ -275,8 +275,8 @@ class myDb {
         else{
             $result = "inserted";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
     public function get_Qrcode($acc_id){
         //prepare statements
@@ -303,8 +303,8 @@ class myDb {
         else{
             $records = null;
         }*/
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function verify_Qrcode($qrcode){
         $records = array();
@@ -325,8 +325,8 @@ class myDb {
         else{
             $verified = "false";
         }
-        $sql->free_result();
         return $verified;
+        $sql->free_result();
     }
     // used in search function in user_list.php
     public function search_Users($search){
@@ -371,8 +371,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function search_Recycle_records($search){
         $records = array();
@@ -405,8 +405,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function search_Redeem_records($search){
         $records = array();
@@ -439,8 +439,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
 
     public function get_Recycle_trans($acc_id,$admin){
@@ -484,8 +484,8 @@ class myDb {
                 $records = null;
             }
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function get_Redeem_trans($acc_id,$admin){
         $records = array();
@@ -530,8 +530,8 @@ class myDb {
                 $records = null;
             }
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function get_Shop_items(){
         $records = array();
@@ -552,8 +552,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     public function add_Item($item_name, $item_price, $item_stock, $item_img){
         //prepare statements
@@ -573,8 +573,8 @@ class myDb {
         else{
             $result = "inserted";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
     public function update_Item($item_name, $item_price, $item_stock, $item_id){
         //prepare statements
@@ -596,8 +596,8 @@ class myDb {
         else{
             $result = "updated";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
     public function update_Password($acc_id, $newpassword){
         //prepare statements
@@ -614,8 +614,8 @@ class myDb {
         else{
             $result = "inserted";
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
     public function get_sumBottles($admin, $acc_id){
         $sum = 0;
@@ -678,8 +678,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $record;
+        $sql->free_result();
     }
     public function get_Date($month){
         $record = array();
@@ -702,8 +702,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $record;
+        $sql->free_result();
     }
     public function get_Countredeem(){
         $sql = $this->link->prepare("SELECT COUNT(*) FROM redeem_transaction");
@@ -730,8 +730,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     //filter data for generate reports for Recycle Records only
     public function filterd_Recycle($conditions, $date_cond, $points_cond){
@@ -894,11 +894,11 @@ class myDb {
             }
             
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     //filter data for generate reports for Redeem Records only
-    public function filterd_Redeem($conditions, $date_cond){
+    public function filter_Redeem($conditions, $date_cond){
         $records = array();
         if(isset($conditions) && !empty($conditions)){
             $sql = "SELECT * FROM redeem_transaction LEFT JOIN user_login ON 

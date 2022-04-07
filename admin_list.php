@@ -9,6 +9,7 @@ isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     $admin = $_SESSION['admin'];
     $total_points = $_SESSION['total_points'];
     $total_bottles = $_SESSION['total_bottles'];
+    $password = $_SESSION['password'];
     $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
     $output["img"] = $url;
 }
@@ -122,27 +123,56 @@ else{
                                   </div>
                                   <div class="modal-body">
                                     <div class="form-floating mb-2">
-                                      <input type="text" id="uname" name="uname" class="form-control" placeholder="Username" required>
+                                      <input type="text" id="euname" name="uname" class="form-control" placeholder="Username" required>
                                       <label for="uname">Username</label>
                                     </div>
                                     <div class="form-floating mb-2">
-                                      <input type="password" id="currentpass" name="currentpass" class="form-control" placeholder="Current Password" required>
+                                      <input type="password" id="ecurrentpass" name="currentpass" class="form-control" onkeyup='check_current();' placeholder="Current Password" required>
                                       <label for="currentpass">Current Password</label>
                                     </div>
+                                    <span id='epass_message'></span>
                                     <div class="form-floating mb-2">
-                                      <input type="password" id="newpass" name="newpass" class="form-control" placeholder="New Password" required>
+                                      <input type="password" id="enewpass" name="newpass" class="form-control" onkeyup='check();' placeholder="New Password" required>
                                       <label for="newpass">New Password</label>
                                     </div>
 
                                     <div class="form-floating mb-2">
-                                      <input type="password" id="cofirmnewpass" name="confirmnewpass" class="form-control" placeholder="Confirm New Password" required>
+                                      <input type="password" id="ecofirmnewpass" name="confirmnewpass" class="form-control" onkeyup='check();' placeholder="Confirm New Password" required>
                                       <label for="confirmnewpass">Confirm New Password</label>
                                     </div>
+                                    <span id='emessage'></span>
                                     <div class="modal-footer">
-                                      <button type="submit" id="editbtn" class="btn btn-secondary btn-md addbtn" name ="editbtn">
+                                      <button type="submit" id="editbtn" class="btn btn-secondary btn-md addbtn" name ="editbtn" disabled>
                                         Confirm
                                       </button>
                                     </div>
+                                    <script>
+                                      var ecurrent_pass = '<?php echo $password?>';
+                                      var check_current = function() {
+                                          if (document.getElementById('ecurrentpass').value ==
+                                              ecurrent_pass) {
+                                              document.getElementById('epass_message').style.color = 'green';
+                                              document.getElementById('epass_message').innerHTML = 'Password match';
+                                          } else {
+                                              document.getElementById('epass_message').style.color = 'red';
+                                              document.getElementById('epass_message').innerHTML = 'Password do not match';
+                                              document.getElementById('editbtn').disabled = true;
+                                          }
+                                      }
+                                      var check = function() {
+                                          if (document.getElementById('enewpass').value ==
+                                              document.getElementById('ecofirmnewpass').value && document.getElementById('ecurrentpass').value ==
+                                              ecurrent_pass) {
+                                              document.getElementById('emessage').style.color = 'green';
+                                              document.getElementById('emessage').innerHTML = 'Password match';
+                                              document.getElementById('editbtn').disabled = false;
+                                          } else {
+                                              document.getElementById('emessage').style.color = 'red';
+                                              document.getElementById('emessage').innerHTML = 'Password do not match';
+                                              document.getElementById('editbtn').disabled = true;
+                                          }
+                                      }
+                                    </script>
                                   </div>
                                 </div>
                               </div>
@@ -202,18 +232,33 @@ else{
                       <label for="uname">Username</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
+                        <input type="password" id="pass" name="pass" class="form-control" onkeyup='check();' placeholder="Password" required>
                         <label for="pass">Password</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" id="confirmpass" name="confirmpass" class="form-control" placeholder="Confirm Password" required>
+                        <input type="password" id="confirmpass" name="confirmpass" onkeyup='check();' class="form-control" placeholder="Confirm Password" required>
                         <label for="confirmpass">Confirm Password</label>
                     </div>
+                    <span id="message"></span>
                   <div class="modal-footer">
                       <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
                           Add
                       </button>
                   </div>
+                  <script>
+                    var check = function() {
+                        if (document.getElementById('pass').value ==
+                            document.getElementById('confirmpass').value) {
+                            document.getElementById('message').style.color = 'green';
+                            document.getElementById('message').innerHTML = 'Password match';
+                            document.getElementById('registerbtn').disabled = false;
+                        } else {
+                            document.getElementById('message').style.color = 'red';
+                            document.getElementById('message').innerHTML = 'Password do not match';
+                            document.getElementById('registerbtn').disabled = true;
+                        }
+                    }
+                  </script>
               </div>
           </div>
       </div>

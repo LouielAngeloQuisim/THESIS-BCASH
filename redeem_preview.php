@@ -200,7 +200,7 @@
                                     $conditions[] = "points_deducted='$price'"; 
                                 }
                                 //$records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
-                                $records = $mydb->filterd_Redeem($conditions, $date_conditions);
+                                $records = $mydb->filter_Redeem($conditions, $date_conditions);
                                 if(isset($records)){
                                     foreach($records as $rows){
                                         $lname = $rows['lname'];
