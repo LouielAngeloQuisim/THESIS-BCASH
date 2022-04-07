@@ -232,7 +232,7 @@ else{
                       <label for="uname">Username</label>
                     </div>
                     <div class="form-floating mb-2">
-                        <input type="password" id="pass" name="pass" class="form-control" onkeyup='check();' placeholder="Password" required>
+                        <input type="password" id="pass" name="studnum" class="form-control" onkeyup='check();' placeholder="Password" required>
                         <label for="pass">Password</label>
                     </div>
                     <div class="form-floating">

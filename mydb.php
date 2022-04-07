@@ -232,7 +232,7 @@ class myDb {
         $sql->bind_param("sss", $username, $email, $studnum);
         $sql->execute();
         $count = $sql->get_result();
-        if(empty($count->num_rows)){
+        if(empty($count->num_rows) || $admin == 1 || $admin == 2){
             //prepare statements
             $sql = $this->link->prepare("INSERT into user_login (
                 username,password,lname,fname,mname,email,mobile_num,sex,age,program,

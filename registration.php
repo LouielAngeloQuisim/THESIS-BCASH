@@ -18,7 +18,6 @@ if(isset($_POST['registerbtn'])){
     $password = $studnum;
     $admin = $_POST['admin'];
     if(filter_var($email, FILTER_VALIDATE_EMAIL) || $admin == 1 || $admin == 2) {
-        echo $admin;
         //qrcode
         //$url = "https://chart.googleapis.com/chart?cht=qr&chs={250}x{250}&chl={$hash_data}";
         $result = $mydb->add_User(
@@ -26,7 +25,13 @@ if(isset($_POST['registerbtn'])){
             $program, $year_level, $studnum, $admin
         );
         if($result != "inserted"){
-            header("Location:user_list.php?notavailable=$result");
+            if($admin == 1 || $admin == 2){
+                header("Location:admin_list.php?notavailable=$result");
+            }
+            else{
+                header("Location:user_list.php?notavailable=$result");
+            }
+            
         }
         elseif($result == "inserted"){
             //echo "inserted";
