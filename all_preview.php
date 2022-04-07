@@ -148,11 +148,11 @@
                                     $conditions = array();
                                     $date_conditions = array();
                                     $points_conditions = array();
-                                    $lname = $_POST['lname'];
-                                    $fname = $_POST['fname'];
-                                    $mname = $_POST['mname'];
-                                    $mindate = $_POST['mindate'];
-                                    $maxdate = $_POST['maxdate'];
+                                    $lname = "";
+                                    $fname = "";
+                                    $mname = "";
+                                    $mindate = "";
+                                    $maxdate = "";
                                     if(!empty($lname)){
                                         $conditions[] = "lname='$lname'"; 
                                     }
@@ -259,11 +259,11 @@
                                 $conditions = array();
                                 $date_conditions = array();
                                 $points_conditions = array();
-                                $lname = $_POST['lname'];
-                                $fname = $_POST['fname'];
-                                $mname = $_POST['mname'];
-                                $mindate = $_POST['mindate'];
-                                $maxdate = $_POST['maxdate'];
+                                $lname = "";
+                                $fname = "";
+                                $mname = "";
+                                $mindate = "";
+                                $maxdate = "";
                                 if(!empty($lname)){
                                     $conditions[] = "lname='$lname'"; 
                                 }
@@ -276,7 +276,7 @@
                                 if(!empty($mindate) && !empty($maxdate)){
                                     $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
                                 }
-                                $records = $mydb->filterd_Redeem($conditions, $date_conditions);
+                                $records = $mydb->filter_Redeem($conditions, $date_conditions);
                                 if(isset($records)){
                                     foreach($records as $rows){
                                         $lname = $rows['lname'];
@@ -327,10 +327,10 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "Generate">';
                         }
                         elseif(isset($_POST['confirmPrintall'])){
-                            echo '<input type = "submit" class="btn btn-secondary me-md-2" name = "confirmPrintall" vlaue="Continue">';
+                            echo '<input type = "submit" formtarget="_blank" class="btn btn-secondary me-md-2" name = "confirmPrintall" vlaue="Continue">';
                         }
                         elseif(isset($_POST['generate_recycle'])){
                             foreach($_POST as $key => $value){
@@ -338,7 +338,7 @@
                                     echo '<input type="hidden" name="'.$key.'" value="'.$value.'">';
                                 }
                             }
-                            echo '<input type="submit" class="btn btn-secondary confirmbtn" value="Generate" name = "generate_recycle">';
+                            echo '<input type="submit" formtarget="_blank" class="btn btn-secondary confirmbtn" value="Generate" name = "generate_recycle">';
                         }
                     ?>
                 </form>
