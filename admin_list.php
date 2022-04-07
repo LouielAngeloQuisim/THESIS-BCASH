@@ -125,9 +125,18 @@ else{
                                       <input type="text" id="uname" name="uname" class="form-control" placeholder="Username" required>
                                       <label for="uname">Username</label>
                                     </div>
-                                    <div class="form-floating">
-                                      <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
-                                      <label for="pass">Password</label>
+                                    <div class="form-floating mb-2">
+                                      <input type="password" id="currentpass" name="currentpass" class="form-control" placeholder="Current Password" required>
+                                      <label for="currentpass">Current Password</label>
+                                    </div>
+                                    <div class="form-floating mb-2">
+                                      <input type="password" id="newpass" name="newpass" class="form-control" placeholder="New Password" required>
+                                      <label for="newpass">New Password</label>
+                                    </div>
+
+                                    <div class="form-floating mb-2">
+                                      <input type="password" id="cofirmnewpass" name="confirmnewpass" class="form-control" placeholder="Confirm New Password" required>
+                                      <label for="confirmnewpass">Confirm New Password</label>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="submit" id="editbtn" class="btn btn-secondary btn-md addbtn" name ="editbtn">
@@ -192,9 +201,13 @@ else{
                       <input type="text" id="uname" name="email" class="form-control" placeholder="Username" required>
                       <label for="uname">Username</label>
                     </div>
-                    <div class="form-floating">
-                        <input type="password" id="password" name="studnum" class="form-control" placeholder="Password" required>
+                    <div class="form-floating mb-2">
+                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
                         <label for="pass">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" id="confirmpass" name="confirmpass" class="form-control" placeholder="Confirm Password" required>
+                        <label for="confirmpass">Confirm Password</label>
                     </div>
                   <div class="modal-footer">
                       <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
