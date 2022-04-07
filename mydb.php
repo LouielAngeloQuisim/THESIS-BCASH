@@ -999,8 +999,8 @@ class myDb {
             }
             
         }
-        $sql->free_result();
         return $records;
+        $sql->free_result();
     }
     // filter data for generate reports for Redeem and Recycle Records only
     public function filterd_All($conditions, $date_cond){
@@ -1776,9 +1776,10 @@ class myDb {
         // Update user info after validation
         if($date_valid == true && $bottle_valid == true && $user_valid == true){
             //update user total points
-            $sql = $this->link->prepare("UPDATE user_login SET total_points = ? WHERE acc_id = ?");
+            $sql = $this->link->prepare("UPDATE user_login SET total_points = ? total_bottle = ? WHERE acc_id = ?");
             $total_points = $total_points + $bottle_val;
-            $sql->bind_param("di", $total_points,  $acc_id);
+            $total_bottles = $total_bottles + 1;
+            $sql->bind_param("dii", $total_points, $total_bottles,  $acc_id);
             $success = $sql->execute();
             if(!$success){
                 $result = "failed to update user information";
