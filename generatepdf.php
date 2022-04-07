@@ -331,7 +331,7 @@ if(isset($_POST['Generate'])){
     if(!empty($mindate) && !empty($maxdate)){
         $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
     }
-    $records = $mydb->filterd_Redeem($conditions, $date_conditions);
+    $records = $mydb->filter_Redeem($conditions, $date_conditions);
     if(isset($records)){
         foreach($records as $rows){
             $lname = $rows['lname'];
@@ -422,7 +422,7 @@ elseif(isset($_POST['redeem_generate'])){
         $conditions[] = "points_deducted='$price'"; 
     }
     //$records = $mydb->search_Redeem($lname, $fname, $mname, $mindate, $maxdate);
-    $records = $mydb->filterd_Redeem($conditions, $date_conditions);
+    $records = $mydb->filter_Redeem($conditions, $date_conditions);
     if(isset($records)){
         foreach($records as $rows){
             $lname = $rows['lname'];
