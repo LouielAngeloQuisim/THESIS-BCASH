@@ -123,10 +123,6 @@ else{
                                   </div>
                                   <div class="modal-body">
                                     <div class="form-floating mb-2">
-                                      <input type="text" id="euname" name="uname" class="form-control" placeholder="Username" required>
-                                      <label for="uname">Username</label>
-                                    </div>
-                                    <div class="form-floating mb-2">
                                       <input type="password" id="ecurrentpass" name="currentpass" class="form-control" onkeyup='check_current();' placeholder="Current Password" required>
                                       <label for="currentpass">Current Password</label>
                                     </div>
