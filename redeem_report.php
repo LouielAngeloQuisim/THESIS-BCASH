@@ -286,7 +286,8 @@
                     borderWidth:3,
                     borderColor:'#33005c',
                     hoverBorderWidth:3,
-                    hoverBorderColor:'#000'
+                    hoverBorderColor:'#000',
+                    tension: 0.4
                 }]
             },
             options: {
