@@ -34,7 +34,9 @@
                     </div>
                     <h2>SCAN <span class="text-warning">BOTTLES</span></h2>
                     <p class="lead my-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
+                        Recycling bottles is way of helping the environment, with the consideration to recycle plastics in exchange of money. 
+                        The more plastic that we collect the more solid waste we save from ending up in a landfill site, when they can be used or exchange as 
+                        points.
                     </p>
                     <!-- recycle scan button -->
                     <a href="recycle_scan.php" class="btn btn-secondary btn-lg mb-4">Scan Bottle</a>
@@ -158,7 +160,9 @@
                     </div>
                     <h2>REDEEM <span class="text-warning">ITEM</span></h2>
                     <p class="lead my-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam dolore, fugiat placeat sequi ex laudantium veniam obcaecati voluptatum. Blanditiis fugiat ullam mollitia sequi ipsum nesciunt! Ea ratione esse ut magni!
+                         As a help to the environment while having the CICT community to participate and take part. 
+                         This is BCASH, you can redeem here your points earned from recyling of bottles. 
+                         Wizards let's help to reduce littering inside the campus and help the environment through recycling.
                     </p>
                     <!-- redeem scan button -->
                     <a href="redeem_scan.php" class="btn btn-secondary btn-lg mb-4">Choose Redeemable Item</a>
