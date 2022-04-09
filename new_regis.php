@@ -3,11 +3,11 @@ session_start();
 require "mydb.php";
 $mydb = new myDb;
 if(isset($_POST['registerbtn'])){
-    $admin = $_POST['admin'];
     if(isset($_FILES['csvfile'])){
         if(is_uploaded_file($_FILES['csvfile']['tmp_name'])){
             $csvfile = fopen($_FILES['csvfile']['tmp_name'], "r");
             fgetcsv($csvfile); //get csv file
+            // header is commented because it was looped
             while(($row = fgetcsv($csvfile))!== FALSE){
                 $email = $row[0];
                 $lname = $row[1];
@@ -50,42 +50,42 @@ if(isset($_POST['registerbtn'])){
                                     $hash_qrcode = password_hash($rows['acc_id'], PASSWORD_DEFAULT);
                                     $results = $mydb->add_Qrcode($acc_id, $hash_qrcode);
                                     if($results == "inserted"){
-                                        //header("Location:user_list.php?success=1");
-                                        //ob_end_flush();
+                                        // header("Location:user_list.php?success=1");
+                                        // ob_end_flush();
                                     }
                                     elseif($results == "notinserted"){
-                                        //header("Location:user_list.php?failed=1");
-                                        //ob_end_flush();
+                                        // header("Location:user_list.php?failed=1");
+                                        // ob_end_flush();
                                     }
                                 }
                             }
                         }
                         else{
-                            //header("Location:user_list.php?usernamenotfound=1");
-                            //ob_end_flush();
+                            // header("Location:user_list.php?usernamenotfound=1");
+                            // ob_end_flush();
                         }
                     }
                     elseif($result == "notavailable"){
-                        //header("Location:user_list.php?notavailable=1");
-                        //ob_end_flush();
+                        // header("Location:user_list.php?notavailable=1");
+                        // ob_end_flush();
                     }
                     else{
-                        //header("Location:user_list.php?unknown=1");
-                        //ob_end_flush();
+                        // header("Location:user_list.php?unknown=1");
+                        // ob_end_flush();
                     }
                 }
                 else{
-                    //header("Location:user_list.php?emailnotvalid=1");
-                    //ob_end_flush();
+                    // header("Location:user_list.php?emailnotvalid=1");
+                    // ob_end_flush();
                 }
-            }
+            }// while loop end
             header("Location:user_list.php?finished=1");
         }
         else{
             header("Location:user_list.php?faileduploadfile=1");
         }
     }else{
-        //header("Location:user_list.php?emptyfile=1");
+        header("Location:user_list.php?emptyfile=1");
     }
 }else{
     header("Location:user_list.php?notset=1");

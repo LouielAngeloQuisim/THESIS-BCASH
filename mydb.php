@@ -133,6 +133,7 @@ class myDb {
                     $records[] = [
                         'acc_id' => $row['acc_id'],
                         'username' => $row['username'],
+                        'password' => $row['password'],
                         'admin' => $row['admin']
                     ];
                 }
@@ -228,11 +229,18 @@ class myDb {
         $qrcode = "0";
         
         //check if username is already used email
-        $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ? OR stud_num = ? ");
+        if($admin == 0){
+            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ? OR stud_num = ? ");
+            $sql->bind_param("sss", $username, $email, $studnum);
+        }
+        else{
+            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?"); 
+            $sql->bind_param("ss", $username, $email);
+        }
         $sql->bind_param("sss", $username, $email, $studnum);
         $sql->execute();
         $count = $sql->get_result();
-        if(empty($count->num_rows) || $admin == 1 || $admin == 2){
+        if(empty($count->num_rows)){
             //prepare statements
             $sql = $this->link->prepare("INSERT into user_login (
                 username,password,lname,fname,mname,email,mobile_num,sex,age,program,

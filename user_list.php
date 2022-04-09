@@ -73,7 +73,7 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="m-3">
-                              <input class="form-control" type="file" id="csvfile" multiple required>
+                              <input class="form-control" type="file" id="csvfile" name="csvfile" multiple required>
                             </div>
                             <div class="modal-footer">
                               <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">

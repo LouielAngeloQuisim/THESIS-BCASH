@@ -9,7 +9,6 @@ isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     $admin = $_SESSION['admin'];
     $total_points = $_SESSION['total_points'];
     $total_bottles = $_SESSION['total_bottles'];
-    $password = $_SESSION['password'];
     $url = "https://chart.googleapis.com/chart?cht=qr&chs=250x250&chl={$qrcode}";
     $output["img"] = $url;
 }
@@ -20,7 +19,8 @@ else{
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script> -->
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,24 +81,105 @@ else{
                         $result = $mydb->get_Admin();
                           if(isset($result)){
                           foreach($result as $row){
-                          $username = $row['username'];
-                          if($row['admin'] == 1){
-                            $admin = "Website Administrator";
-                          }
-                          elseif($row['admin'] == 2){
-                            $admin = "Shop Administrator";
-                          }
-                          else{
-                            $admin = "Unknown and Suspicious";
-                          }
-                          echo '
-                            <td>'.$admin.'</td>
-                            <td>'.$username.'</td>
-                            <td><button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaleditAdmin">
-                            Edit
-                            </button></td>
-                            </tr>
-                            ';
+                            $username = $row['username'];
+                            $password = $row['password'];
+                            if($row['admin'] == 1){
+                              $admin = "Website Administrator";
+                            }
+                            elseif($row['admin'] == 2){
+                              $admin = "Shop Administrator";
+                            }
+                            else{
+                              $admin = "Unknown and Suspicious";
+                            }
+                            echo '
+                              <td>'.$admin.'</td>
+                              <td>'.$username.'</td>
+                              <td><button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaleditAdmin'.$username.'">
+                              Edit
+                              </button></td>
+                              </tr>
+                              <form action="" method = "post">
+                                <!-- Modal Edit Admin -->
+                                <div class="modal fade modalpopup" id="modaleditAdmin'.$username.'" tabindex="-1">
+                                  <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="modaleditAdmin'.$username.'">
+                                          Edit Admin
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="form-floating mb-2">
+                                          <input type="password" id="ecurrentpass'.$username.'" name="currentpass" class="form-control" onkeyup="check_current'.$username.'();" placeholder="Current Password" required>
+                                          <label for="currentpass">Current Password</label>
+                                        </div>
+                                        <span id="epass_message'.$username.'"></span>
+                                        <div class="form-floating mb-2">
+                                          <input type="password" id="enewpass'.$username.'" name="newpass" class="form-control" onkeyup="new_pass'.$username.'();" placeholder="New Password" required>
+                                          <label for="newpass">New Password</label>
+                                        </div>
+
+                                        <div class="form-floating mb-2">
+                                          <input type="password" id="ecofirmnewpass'.$username.'" name="confirmnewpass" class="form-control" onkeyup="new_pass'.$username.'();" placeholder="Confirm New Password" required>
+                                          <label for="confirmnewpass">Confirm New Password</label>
+                                        </div>
+                                        <span id="emessage'.$username.'"></span>
+                                        <div class="modal-footer">
+                                          <button type="submit" id="editbtn'.$username.'" class="btn btn-secondary btn-md addbtn" name ="editbtn" disabled>
+                                            Confirm
+                                          </button>
+                                        </div>
+                                        <script>
+                                          var ecurrent_pass'.$username.' = "'.$password.'";
+                                          var check_current'.$username.' = function() {
+                                              if (document.getElementById("ecurrentpass'.$username.'").value ==
+                                                  ecurrent_pass'.$username.') {
+                                                  document.getElementById("epass_message'.$username.'").style.color = "green";
+                                                  document.getElementById("epass_message'.$username.'").innerHTML = "Password match";
+                                              } else {
+                                                  document.getElementById("epass_message'.$username.'").style.color = "red";
+                                                  document.getElementById("epass_message'.$username.'").innerHTML = "Password do not match";
+                                                  document.getElementById("editbtn'.$username.'").disabled = true;
+                                              }
+                                          }
+                                          var new_pass'.$username.' = function() {
+                                              if (document.getElementById("enewpass'.$username.'").value ==
+                                                  document.getElementById("ecofirmnewpass'.$username.'").value &&
+                                                  $("#enewpass'.$username.'").val().length > 0 &&
+                                                  $("#ecofirmnewpass'.$username.'").val().length > 0
+                                                  ) {
+                                                    if(document.getElementById("ecurrentpass'.$username.'").value ==
+                                                    ecurrent_pass'.$username.' ){
+                                                      document.getElementById("emessage'.$username.'").style.color = "green";
+                                                      document.getElementById("emessage'.$username.'").innerHTML = "Password match";
+                                                      document.getElementById("editbtn'.$username.'").disabled = false;
+                                                    }
+                                                    else{
+                                                      document.getElementById("emessage'.$username.'").style.color = "green";
+                                                      document.getElementById("emessage'.$username.'").innerHTML = "Password match";
+                                                      document.getElementById("editbtn'.$username.'").disabled = true;
+                                                    }
+                                                    
+                                              } else {
+                                                if($("#enewpass'.$username.'").val().length > 0 &&
+                                                $("#ecofirmnewpass'.$username.'").val().length > 0){
+                                                  document.getElementById("emessage'.$username.'").style.color = "red";
+                                                  document.getElementById("emessage'.$username.'").innerHTML = "Password do not match";
+                                                  
+                                                }
+                                                document.getElementById("editbtn'.$username.'").disabled = true;
+                                                  
+                                              }
+                                          }
+                                        </script>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                              ';
                             }
                           }
                           else{
@@ -110,70 +191,7 @@ else{
                           <!-- <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaleditAdmin">
                             Edit
                           </button> -->
-                          <form action="" method = "post">
-                            <!-- Modal Edit Admin -->
-                            <div class="modal fade modalpopup" id="modaleditAdmin" tabindex="-1">
-                              <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="modaleditAdmin">
-                                      Edit Admin
-                                    </h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div class="form-floating mb-2">
-                                      <input type="password" id="ecurrentpass" name="currentpass" class="form-control" onkeyup='check_current();' placeholder="Current Password" required>
-                                      <label for="currentpass">Current Password</label>
-                                    </div>
-                                    <span id='epass_message'></span>
-                                    <div class="form-floating mb-2">
-                                      <input type="password" id="enewpass" name="newpass" class="form-control" onkeyup='check();' placeholder="New Password" required>
-                                      <label for="newpass">New Password</label>
-                                    </div>
-
-                                    <div class="form-floating mb-2">
-                                      <input type="password" id="ecofirmnewpass" name="confirmnewpass" class="form-control" onkeyup='check();' placeholder="Confirm New Password" required>
-                                      <label for="confirmnewpass">Confirm New Password</label>
-                                    </div>
-                                    <span id='emessage'></span>
-                                    <div class="modal-footer">
-                                      <button type="submit" id="editbtn" class="btn btn-secondary btn-md addbtn" name ="editbtn" disabled>
-                                        Confirm
-                                      </button>
-                                    </div>
-                                    <script>
-                                      var ecurrent_pass = '<?php echo $password?>';
-                                      var check_current = function() {
-                                          if (document.getElementById('ecurrentpass').value ==
-                                              ecurrent_pass) {
-                                              document.getElementById('epass_message').style.color = 'green';
-                                              document.getElementById('epass_message').innerHTML = 'Password match';
-                                          } else {
-                                              document.getElementById('epass_message').style.color = 'red';
-                                              document.getElementById('epass_message').innerHTML = 'Password do not match';
-                                              document.getElementById('editbtn').disabled = true;
-                                          }
-                                      }
-                                      var check = function() {
-                                          if (document.getElementById('enewpass').value ==
-                                              document.getElementById('ecofirmnewpass').value && document.getElementById('ecurrentpass').value ==
-                                              ecurrent_pass) {
-                                              document.getElementById('emessage').style.color = 'green';
-                                              document.getElementById('emessage').innerHTML = 'Password match';
-                                              document.getElementById('editbtn').disabled = false;
-                                          } else {
-                                              document.getElementById('emessage').style.color = 'red';
-                                              document.getElementById('emessage').innerHTML = 'Password do not match';
-                                              document.getElementById('editbtn').disabled = true;
-                                          }
-                                      }
-                                    </script>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
+                          
                         <!-- </td> -->
                       <!-- </tr> -->
                     </tbody>
