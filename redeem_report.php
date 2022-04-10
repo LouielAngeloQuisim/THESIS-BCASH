@@ -183,12 +183,12 @@
                                                     foreach($records as $rows){
                                                         if($coursel_count == 0){
                                                             echo '
-                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true"button>
                                                             ';
                                                         }
                                                         else{
                                                             echo '
-                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$coursel_count.'" aria-label="Slide '.$coursel_count++.'"></button>
+                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$coursel_count.'"></button>
                                                             ';
                                                         }
                                                         $coursel_count++;

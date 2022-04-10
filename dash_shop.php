@@ -62,9 +62,9 @@
                                 $carousel = 0;
                                 foreach($records as $rows){
                                     if($carousel == 0){
-                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true"></button>';
                                     }else{
-                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>';
+                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'"></button>';
                                     }
                                     $carousel++;
                                 }
@@ -197,12 +197,12 @@
                                 foreach($records as $rows){
                                     if($carousel == 0){
                                         echo '
-                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true"></button>
                                         ';
                                     }
                                     else{
                                         echo '
-                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>
+                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'"></button>
                                         ';
                                     }
                                     $carousel++;
