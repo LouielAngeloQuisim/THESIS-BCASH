@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "mydb.php";
+ini_set('max_execution_time', 9000);
 $mydb = new myDb;
 if(isset($_POST['registerbtn'])){
     if(isset($_FILES['csvfile'])){
