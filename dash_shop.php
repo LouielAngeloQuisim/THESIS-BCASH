@@ -58,10 +58,16 @@
                             if(isset($records)){
                                 echo '
                                 <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                ';
+                                $carousel = 1;
+                                foreach($records as $rows){
+                                    if($carousel == 1){
+                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+                                    }else{
+                                        echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>';
+                                    }
+                                }
+                                echo '
                                 </div>
                                 <div class="carousel-inner">
                                 ';
@@ -183,12 +189,23 @@
                             $records = $mydb->get_Shop_items();
                             $count = 0;
                             if(isset($records)){
+                                $carousel = 1;
                                 echo '
                                 <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                ';
+                                foreach($records as $rows){
+                                    if($carousel == 1){
+                                        echo '
+                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        ';
+                                    }
+                                    else{
+                                        echo '
+                                        <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>
+                                        ';
+                                    }
+                                }
+                                echo '
                                 </div>
                                 <div class="carousel-inner">
                                 ';
