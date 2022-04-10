@@ -59,13 +59,14 @@
                                 echo '
                                 <div class="carousel-indicators">
                                 ';
-                                $carousel = 1;
+                                $carousel = 0;
                                 foreach($records as $rows){
-                                    if($carousel == 1){
+                                    if($carousel == 0){
                                         echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
                                     }else{
                                         echo '<button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>';
                                     }
+                                    $carousel++;
                                 }
                                 echo '
                                 </div>
@@ -189,12 +190,12 @@
                             $records = $mydb->get_Shop_items();
                             $count = 0;
                             if(isset($records)){
-                                $carousel = 1;
+                                $carousel = 0;
                                 echo '
                                 <div class="carousel-indicators">
                                 ';
                                 foreach($records as $rows){
-                                    if($carousel == 1){
+                                    if($carousel == 0){
                                         echo '
                                         <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                         ';
@@ -204,6 +205,7 @@
                                         <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$carousel.'" aria-label="Slide '.$carousel++.'"></button>
                                         ';
                                     }
+                                    $carousel++;
                                 }
                                 echo '
                                 </div>

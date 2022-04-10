@@ -179,18 +179,19 @@
                                                     echo '
                                                         <div class="carousel-indicators">
                                                     ';
-                                                    $coursel_count = 1;
+                                                    $coursel_count = 0;
                                                     foreach($records as $rows){
-                                                        if($coursel_count == 1){
+                                                        if($coursel_count == 0){
                                                             echo '
                                                             <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                             ';
                                                         }
                                                         else{
                                                             echo '
-                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$coursel_count.'" aria-label="Slide '.$coursel_count.'"></button>
+                                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$coursel_count.'" aria-label="Slide '.$coursel_count++.'"></button>
                                                             ';
                                                         }
+                                                        $coursel_count++;
                                                     }
                                                     echo '
                                                     </div>

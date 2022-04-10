@@ -264,75 +264,96 @@ else{
                             Accepted Bottles
                         </h3>
                         <div class="card-text">
-                            <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                </div>
-                                <div class="carousel-inner">
-                                <?php
-                                    $records = $mydb->get_Bottle();
-                                    if(isset($records)){
-                                        $count = 0;
-                                        foreach($records as $rows){
-                                            $bid = $rows['bottle_id'];
-                                            $bname = $rows['bottle_name'];
-                                            $bvalue = $rows['bottle_value'];
-                                            $bsize = $rows['bottle_size'];
-                                            $bimg = $rows['bottle_img'];
-                                            // show bottle
-                                            if($count == 0){
-                                                echo '
-                                                <div class="carousel-item active">
-                                                    <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
-                                                    <div class="bg-light p-5">
-                                                        <div class="carousel-caption">
-                                                            <h5>'.$bname.'</h5>
-                                                            <p>Price: '.$bvalue.'</p>
-                                                        </div>  
-                                                    </div>
-                                                </div>
-                                                ';
-                                            }
-                                            else{
-                                                echo '
-                                                <div class="carousel-item">
-                                                    <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
-                                                    <div class="bg-light p-5">
-                                                        <div class="carousel-caption">
-                                                            <h5>'.$bname.'</h5>
-                                                            <p>Price: '.$bvalue.'</p>
-                                                        </div>  
-                                                    </div>
-                                                </div>
-                                                ';
-                                            }
-                                            $count += 1;
+                        <div id="carouselbottle" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <?php
+                                $records = $mydb->get_Bottle();
+                                $count = 0;
+                                if(isset($records)){
+                                    echo '
+                                        <div class="carousel-indicators">
+                                    ';
+                                    $coursel_count = 0;
+                                    foreach($records as $rows){
+                                        if($coursel_count == 0){
+                                            echo '
+                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            ';
                                         }
+                                        else{
+                                            echo '
+                                            <button type="button" data-bs-target="#carouselbottle" data-bs-slide-to="'.$coursel_count.'" aria-label="Slide '.$coursel_count++.'"></button>
+                                            ';
+                                        }
+                                        $coursel_count++;
                                     }
-                                ?>
-                                    <!-- <div class="carousel-item active">
-                                        <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
-                                        <div class="bg-light p-5">
-                                            <div class="carousel-caption">
-                                                <h5>[Type of Bottle]</h5>
-                                                <p>[Bottle measurements and bottle currency]</p>
-                                            </div>  
-                                        </div>
-                                    </div> -->
+                                    echo '
+                                    </div>
+                                    <div class="carousel-inner">
+                                    ';
+                                    
+                                    foreach($records as $rows){
+                                        $bid = $rows['bottle_id'];
+                                        $bname = $rows['bottle_name'];
+                                        $bvalue = $rows['bottle_value'];
+                                        $bsize = $rows['bottle_size'];
+                                        $bimg = $rows['bottle_img'];
+                                        // show bottle
+                                        if($count == 0){
+                                            echo '
+                                            <div class="carousel-item active">
+                                                <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
+                                                <div class="bg-light p-5">
+                                                    <div class="carousel-caption">
+                                                        <h5>'.$bname.'</h5>
+                                                        <p>Value: '.$bvalue.'</p>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                        else{
+                                            echo '
+                                            <div class="carousel-item">
+                                                <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
+                                                <div class="bg-light p-5">
+                                                    <div class="carousel-caption">
+                                                        <h5>'.$bname.'</h5>
+                                                        <p>Value: '.$bvalue.'</p>
+                                                    </div>  
+                                                </div>
+                                            </div>
+                                            ';
+                                        }
+                                        $count += 1;
+                                    }
+                                    echo '
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                    ';
+                                }
+                                else{
+                                    echo 'There are no bottles available';
+                                }
+                            ?>
+                            <!-- <div class="carousel-item active">
+                                <img src="img/slide-0.PNG" class="d-block pb-2 w-100">
+                                <div class="bg-light p-5">
+                                    <div class="carousel-caption">
+                                        <h5>[Type of Bottle]</h5>
+                                        <p>[Bottle measurements and bottle currency]</p>
+                                    </div>  
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselbottle" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselbottle" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                            </button>
-                            </div>
-                        </div>
+                            </div> -->
+
+                        
+                    </div>
                     </div>
                 </div>
                 <div class="col-md text-light text-center text-md-start p-4">
