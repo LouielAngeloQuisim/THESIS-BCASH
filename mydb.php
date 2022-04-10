@@ -1440,8 +1440,8 @@ class myDb {
         else{
             $records = null;
         }
-        $sql->free_result();
         return $record;
+        $sql->free_result();
     }
     public function search_Recycletable($search){
         $record = array();
