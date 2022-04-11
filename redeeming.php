@@ -139,7 +139,7 @@
                                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalcancelconfirm">
                                     Cancel
                                 </button>
-                                <a href="redeeming.php" class="btn btn-secondary">Yes</a>
+                                <a href="redeeming.php?itemid='.$item_id.'" class="btn btn-secondary">Yes</a>
                             </div>
                         </div>
                     ';

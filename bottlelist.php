@@ -197,7 +197,7 @@ else{
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <!-- Button Edit Bottle Save Changes trigger modal -->
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id = "'.$modalsavename.'" data-bs-target="#'.$modalsavename.'" disabled>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" id = "id'.$modalsavename.'" data-bs-target="#'.$modalsavename.'" disabled>
                                     Save Changes
                                 </button>
                             </div>
@@ -232,11 +232,11 @@ else{
                     if (document.getElementById("ebcurrency'.$bid.'").value != ""){
                         document.getElementById("emessage'.$bid.'").style.color = "green";
                         document.getElementById("emessage'.$bid.'").innerHTML = "Forms completed!";
-                        document.getElementById("'.$modalsavename.'").disabled = false;
+                        document.getElementById("id'.$modalsavename.'").disabled = false;
                     }else {
                         document.getElementById("emessage'.$bid.'").style.color = "red";
                         document.getElementById("emessage'.$bid.'").innerHTML = "Please fill up all fields";
-                        document.getElementById("'.$modalsavename.'").disabled = true;
+                        document.getElementById("id'.$modalsavename.'").disabled = true;
                     }
                 }
                 </script>  
