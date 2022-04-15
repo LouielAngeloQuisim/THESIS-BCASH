@@ -81,5 +81,6 @@ if(isset($_POST['registerbtn'])){
     }
 }
 else{
-    echo "Post is not set";
+    header("Location:user_list.php?notset");
+    //echo "Post is not set";
 }

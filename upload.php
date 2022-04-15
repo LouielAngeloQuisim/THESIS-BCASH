@@ -31,25 +31,29 @@ if(isset($_POST['submit'])){
                 }
                 else{
                     //error inserting
-                    echo "error inserting";
+                    //echo "error inserting";
+                    header("Location: bottlelist.php?success");
                 }
             }
             else{
                 //file is too large
-                echo $fileSize;
+                //echo $fileSize;
                 $imgsize = filesize($img);
-                echo $imgsize;
-                echo "error file is too large";
+                //echo $imgsize;
+                //echo "error file is too large";
+                header("Location: bottlelist.php?large");
             }
         }
         else{
             //error in uploading file
-            echo "error file uploading";
+            //echo "error file uploading";
+            header("Location: bottlelist.php?error");
         }
     }
     else{
         //if file ext is not allowed
-        echo "error file extension is not allowed";
+        //echo "error file extension is not allowed";
+        header("Location: bottlelist.php?exterror");
     }
 }
 elseif(isset($_POST['submititem'])){
@@ -83,25 +87,29 @@ elseif(isset($_POST['submititem'])){
                 }
                 else{
                     //error inserting
-                    echo "error inserting";
+                    //echo "error inserting";
+                    header("Location: itemlist.php?success");
                 }
             }
             else{
                 //file is too large
-                echo $fileSize;
-                $imgsize = filesize($img);
-                echo $imgsize;
-                echo "error file is too large";
+               // echo $fileSize;
+                //$imgsize = filesize($img);
+                //echo $imgsize;
+                //echo "error file is too large";
+                header("Location: itemlist.php?large");
             }
         }
         else{
             //error in uploading file
-            echo "error file uploading";
+            //echo "error file uploading";
+            header("Location: itemlist.php?error");
         }
     }
     else{
         //if file ext is not allowed
-        echo "error file extension is not allowed";
+        //echo "error file extension is not allowed";
+        header("Location: itemlist.php?extnotallowed");
     }
 }
 elseif(isset($_POST['itemedit'])){
@@ -119,7 +127,8 @@ elseif(isset($_POST['itemedit'])){
     }
     else{
         //error inserting
-        echo "error updating";
+        header("Location: itemlist.php?failed");
+        //echo "error updating";
     }
 }
 elseif(isset($_POST['editsubmit'])){
@@ -134,11 +143,13 @@ elseif(isset($_POST['editsubmit'])){
     }
     else{
         //error inserting
-        echo "error Updating";
+        header("Location: bottlelist.php?failed");
+        //echo "error Updating";
     }
     //delete
 }
 else{
     // if post was empty or null
-    echo "error submit was not set";
+    header("Location: bottlelist.php?notset");
+    //echo "error submit was not set";
 }
