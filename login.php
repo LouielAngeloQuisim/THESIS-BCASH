@@ -17,7 +17,7 @@
       </section>
       <section class="bg-white">
           <div class="container">
-                <div class="card cardselect shadow bg-white p-4 border border-5 border-dark" style="width: 25rem;">
+                <div class="card cardselect shadow bg-white p-4 border border-5 border-dark" style="width: 20rem;">
                     <h3 class="mb-4 text-center fs-1">
                         Login Form
                     </h3>
