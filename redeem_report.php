@@ -95,7 +95,7 @@
                                             $item = $rows['item'];
                                             $name = $mydb->get_Name($user_id);
                                             $date = date("Y-m-d",strtotime($rows['trans_time']));
-                                            $time = date("h:i:s A",strtotime($rows['trans_time']));
+                                            $time = date("h:i A",strtotime($rows['trans_time']));
                                             if(isset($name)){
                                                 foreach($name as $newrows){
                                                     $fname = $newrows['fname'];

@@ -19,9 +19,9 @@ class myDb {
         // $this->database = "id18658017_thesis_bcash";
         // for 000webhost 2nd database
         // $this->host = "localhost";
-        // $this->username = "id18658017_bcash_thesis";
-        // $this->password = "D3\-RW]T4JC(lMBJ";
-        // $this->database = "id18658017_bcash";
+        // $this->username = "id18776200_db_bcash";
+        // $this->password = "UGP]5DIXRIrmyrCO";
+        // $this->database = "id18776200_bcash";
         // for 000webhost 3rd database
         // $this->host = "localhost";
         // $this->username = "id18267157_bcash";
@@ -1602,7 +1602,7 @@ class myDb {
     }
     public function minus_Points($user_id, $item_id){
         date_default_timezone_set('Asia/Manila');
-        $datetime = date('Y-m-d h:i:s');
+        $datetime = date('Y-m-d H:i:s');
         $date = date('Y-m-d');
         $user_points = 0;
         $item_value = 0;
@@ -1712,7 +1712,7 @@ class myDb {
         $user_valid = 'false';
         //get date
         date_default_timezone_set('Asia/Manila');
-        $datetime = date('Y-m-d h:i:s');
+        $datetime = date('Y-m-d H:i:s');
         $date = date('Y-m-d');
         // date_default_timezone_set('Asia/Manila');
         // $date = date('Y-m-d');
@@ -1770,7 +1770,7 @@ class myDb {
         $result = $sql->get_result();
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                $acc_id = $row['acc_id'];
+                $new_acc_id = $row['acc_id'];
                 $total_points = $row['total_points'];
                 $total_bottles = $row['total_bottles'];
                 $user_valid = 'true';
@@ -1787,7 +1787,7 @@ class myDb {
             $sql = $this->link->prepare("UPDATE user_login SET total_points = ?, total_bottles = ? WHERE acc_id = ?");
             $total_points = $total_points + $bottle_val;
             $total_bottles = $total_bottles + 1;
-            $sql->bind_param("dii", $total_points, $total_bottles,  $acc_id);
+            $sql->bind_param("dii", $total_points, $total_bottles, $new_acc_id);
             $success = $sql->execute();
             if(!$success){
                 $result = "failed to update user information";
@@ -1797,7 +1797,7 @@ class myDb {
                 $sql = $this->link->prepare("INSERT into recycle_transaction(acc_id, bottles,
                 bottle_id, points_earned, day_id, recycle_trans_time, bottle_count) 
                 VALUES(?,?,?,?,?,?,?)");
-                $sql->bind_param("isidisi", $acc_id, $bottle_name, $bottle_id, $bottle_val, $day_id,
+                $sql->bind_param("isidisi", $new_acc_id, $bottle_name, $bottle_id, $bottle_val, $day_id,
                 $datetime,$bottle_count);
                 $success = $sql->execute();
                 if(!$success){
