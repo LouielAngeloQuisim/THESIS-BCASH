@@ -17,6 +17,7 @@
     else{
         $acc_id = null;
         $usernname = null;
+        header("Location: login.php?usernotfound=1");
     }
 ?>
 <!doctype html>

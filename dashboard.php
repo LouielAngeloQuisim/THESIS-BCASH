@@ -21,7 +21,8 @@ isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
     }
 }
 else{
-    echo "error in collecting user data";
+    //echo "error in collecting user data";
+    header("Location: login.php?usernotfound=1");
 }
 //$record = $mydb->get_Qrcode($acc_id);
 /*if(isset($record)){
