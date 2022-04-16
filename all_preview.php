@@ -75,6 +75,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <!-- nav Cancel trigger modal -->
+                        <a href="admin_list.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            Admin List
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- nav Cancel trigger modal -->
+                        <a href="user_list.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modalCancel">
+                            User List
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <!-- logout 1 trigger modal -->
                         <a href="login.php" class="nav-link" data-bs-toggle="modal" data-bs-target="#modallogout1">
                             Logout

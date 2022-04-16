@@ -136,7 +136,7 @@
                                             }
                                             else{
                                                 echo '<tr>';
-                                                echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
+                                                echo '<td colspan="5">There are no records found.</td>';
                                                 echo '</tr>';
                                             }
                                         }
@@ -169,7 +169,7 @@
                                         else{
                                             echo "hello";
                                             echo '<tr>';
-                                            echo '<td colspan="5">There are no records found.</td>';
+                                            echo '<td colspan="5">There are no records of redeem transactions yet.</td>';
                                             echo '</tr>';
                                         }
                                     ?>
