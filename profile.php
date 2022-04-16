@@ -43,7 +43,7 @@
     <!-- profile img with its profile name -->
     <section class="bg-primary text-light p-5">
         <div class="container text-center">
-            <img class="img-fluid profimg" src="img/icons8-male-user-100 (1).PNG" alt="">
+            <img class="img-fluid profimg" src="img/icons8-male-user-100 (1).png" alt="">
             <div>
                 <h3>
                 <?php 
