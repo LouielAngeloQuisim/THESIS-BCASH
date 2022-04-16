@@ -134,6 +134,11 @@
                                                     echo '</tr>';
                                                 }
                                             }
+                                            else{
+                                                echo '<tr>';
+                                                echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
+                                                echo '</tr>';
+                                            }
                                         }
                                         elseif(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
@@ -163,7 +168,7 @@
                                         }
                                         else{
                                             echo '<tr>';
-                                            echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
+                                            echo '<td colspan="5">There are no records found.</td>';
                                             echo '</tr>';
                                         }
                                     ?>

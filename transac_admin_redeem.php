@@ -133,6 +133,11 @@
                                                     echo '</tr>';
                                                 }
                                             }
+                                            else{
+                                                echo '<tr>';
+                                                echo '<td colspan="5">There are no records found.</td>';
+                                                echo '</tr>';
+                                            }
                                         }
                                         elseif(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
