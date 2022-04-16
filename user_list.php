@@ -163,7 +163,7 @@
                                           }
                                           else{
                                             echo '<tr>';
-                                            echo '<td colspan="12">Record not found.</td>';
+                                            echo '<td colspan="12">There are no records found.</td>';
                                             echo '</tr>';
                                         }
                                         }
