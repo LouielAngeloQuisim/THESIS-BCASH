@@ -114,7 +114,7 @@
                                         if(isset($_POST['redeem_submit'])){
                                             $search = $_POST['search_redeem'];
                                             $records = $mydb->search_Redeemtable($search);
-                                            if(isset($records)){
+                                            if(isset($records) && !empty($records)){
                                                 foreach($records as $rows){
                                                     $item_name = $rows['item'];
                                                     $points_deducted = $rows['points_deducted'];

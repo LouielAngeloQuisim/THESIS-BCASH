@@ -1447,11 +1447,11 @@ class myDb {
         $record = array();
         $sql = $this->link->prepare("SELECT * FROM `recycle_transaction` LEFT JOIN user_login ON 
             recycle_transaction.acc_id = user_login.acc_id WHERE recycle_trans_time LIKE ?
-            OR bottles LIKE ? OR points_earned LIKE ? OR fname LIKE ? OR mname LIKE ? OR lname LIKE ?
+            OR bottles LIKE ? OR points_earned LIKE ? OR CONCAT(fname,' ',mname,' ',lname) LIKE ?
         ");
         $search = mysqli_real_escape_string($this->link, $search);
         $search = "%{$search}%";
-        $sql->bind_param("ssisss", $search, $search, $search, $search, $search, $search);
+        $sql->bind_param("ssis", $search, $search, $search, $search);
         $sql->execute();
         $result = $sql->get_result();
         if($result->num_rows > 0){
@@ -1476,11 +1476,11 @@ class myDb {
         $record = array();
         $sql = $this->link->prepare("SELECT * FROM `redeem_transaction` LEFT JOIN user_login ON 
             redeem_transaction.acc_id = user_login.acc_id WHERE redeem_trans_time LIKE ?
-            OR item LIKE ? OR points_deducted LIKE ? OR fname LIKE ? OR mname LIKE ? OR lname LIKE ?
+            OR item LIKE ? OR points_deducted LIKE ? OR CONCAT(fname,' ',mname,' ',lname) LIKE ?
         ");
         $search = mysqli_real_escape_string($this->link, $search);
         $search = "%{$search}%";
-        $sql->bind_param("ssisss", $search, $search, $search, $search, $search, $search);
+        $sql->bind_param("ssis", $search, $search, $search, $search);
         $sql->execute();
         $result = $sql->get_result();
         if($result->num_rows > 0){

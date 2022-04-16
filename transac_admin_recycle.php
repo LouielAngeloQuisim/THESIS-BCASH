@@ -115,7 +115,7 @@
                                         if(isset($_POST['search_submit'])){
                                             $search = $_POST['search'];
                                             $records = $mydb->search_Recycletable($search);
-                                            if(isset($records)){
+                                            if(isset($records) && !empty($records)){
                                                 foreach($records as $rows){
                                                     $bottle_name = $rows['bottles'];
                                                     $points_earned = $rows['points_earned'];
@@ -135,6 +135,7 @@
                                                 }
                                             }
                                             else{
+                                                echo "hello";
                                                 echo '<tr>';
                                                 echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
                                                 echo '</tr>';
@@ -167,6 +168,7 @@
                                             }
                                         }
                                         else{
+                                            echo "hello";
                                             echo '<tr>';
                                             echo '<td colspan="5">There are no records found.</td>';
                                             echo '</tr>';
