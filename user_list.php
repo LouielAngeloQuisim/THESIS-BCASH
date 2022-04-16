@@ -128,7 +128,7 @@
                                         if(isset($_POST['user_search'])){
                                           $search = $_POST['search'];
                                           $search_result = $mydb->search_Users($search);
-                                          if(isset($search_result)){
+                                          if(isset($search_result) && !empty($search_result)){
                                             $count = 0;
                                             foreach($search_result as $row){
                                               $count += 1;
@@ -161,6 +161,11 @@
                                               ';
                                             }
                                           }
+                                          else{
+                                            echo '<tr>';
+                                            echo '<td colspan="12">Record not found.</td>';
+                                            echo '</tr>';
+                                        }
                                         }
                                         elseif(isset($result)){
                                           $count = 0;

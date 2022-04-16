@@ -340,15 +340,15 @@ class myDb {
     public function search_Users($search){
         $records = array();
         $sql = $this->link->prepare("SELECT * FROM user_login WHERE email LIKE ?
-            OR age LIKE ? OR sex LIKE ? OR fname LIKE ? OR mname LIKE ? OR lname LIKE ? OR mobile_num LIKE ?
+            OR age LIKE ? OR sex LIKE ? OR CONCAT(fname,' ',mname,' ',lname) LIKE ? OR mobile_num LIKE ?
             OR stud_num LIKE ? OR total_points LIKE ? OR program LIKE ? OR year_level LIKE ? 
         ");
         $search = mysqli_real_escape_string($this->link, $search);
-        $search = "{$search}";
+        $search = "%{$search}%";
         // sissssisiss
         $sql->bind_param( 
-            "sssssssssss", $search, $search, $search, $search,
-            $search, $search, $search, $search, $search, $search, $search
+            "sssssssss", $search, $search, $search, $search,
+            $search, $search, $search, $search, $search
         );
         $sql->execute();
         $result = $sql->get_result();

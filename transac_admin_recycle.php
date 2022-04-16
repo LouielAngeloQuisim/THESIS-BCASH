@@ -135,7 +135,6 @@
                                                 }
                                             }
                                             else{
-                                                echo "hello";
                                                 echo '<tr>';
                                                 echo '<td colspan="5">There are no records of recycle transactions yet.</td>';
                                                 echo '</tr>';

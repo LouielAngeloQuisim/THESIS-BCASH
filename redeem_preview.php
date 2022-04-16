@@ -222,6 +222,11 @@
                                         ';
                                     }
                                 }
+                                else{
+                                    echo '<tr>';
+                                    echo '<td colspan="5">There are no records found.</td>';
+                                    echo '</tr>';
+                                }
                             }
                             else{
                                 echo "Filter not defined";
