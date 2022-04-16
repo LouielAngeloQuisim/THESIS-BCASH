@@ -8,15 +8,15 @@ class myDb {
 
     function __construct(){
         // for localhost
-        // $this->host = "localhost";
-        // $this->username = "root";
-        // $this->password = "";
-        // $this->database = "bcash";
-        // for 000webhost hostinger database
         $this->host = "localhost";
-        $this->username = "u834543435_db_bcash";
-        $this->password = "&kkq7bD!0iG";
-        $this->database = "u834543435_bcash";
+        $this->username = "root";
+        $this->password = "";
+        $this->database = "bcash";
+        // for 000webhost hostinger database
+        // $this->host = "localhost";
+        // $this->username = "u834543435_db_bcash";
+        // $this->password = "&kkq7bD!0iG";
+        // $this->database = "u834543435_bcash";
         // for 000webhost 2nd database
         // $this->host = "localhost";
         // $this->username = "id18776200_db_bcash";

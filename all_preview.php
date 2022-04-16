@@ -188,7 +188,9 @@
                                         }
                                     }
                                     else{
-                                        echo "Record not found";
+                                        echo '<tr>';
+                                        echo '<td colspan="5">Record not found</td>';
+                                        echo '</tr>';
                                     }
                                 }
                                 elseif(isset($_POST['generate_recycle'])){
@@ -222,7 +224,9 @@
                                             }
                                         }
                                         else{
-                                            echo "Record not found";
+                                            echo '<tr>';
+                                            echo '<td colspan="5">Record not found</td>';
+                                            echo '</tr>';
                                         }
                                     }
                                 }
