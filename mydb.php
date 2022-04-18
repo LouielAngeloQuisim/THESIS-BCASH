@@ -286,6 +286,24 @@ class myDb {
         return $result;
         $sql->free_result();
     }
+    public function update_admin($acc_id, $newpass){
+        //prepare statements
+        $sql = $this->link->prepare("UPDATE user_login SET password = ? WHERE acc_id = ?");
+        //set parameters
+        $newpass = mysqli_real_escape_string($this->link, $newpass);
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("si", $newpass, $acc_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notupdated";
+        }
+        else{
+            $result = "updated";
+        }
+        return $result;
+        $sql->free_result();
+    }
     public function get_Qrcode($acc_id){
         //prepare statements
         $records = array();

@@ -46,6 +46,7 @@ else{
         <div class="container text-center">
             <div class="h1 text-white">
                 <i class="bi bi-person-lines-fill"></i>
+                
             </div>
             <h2 class="text-light text-center mb-3">
                 LIST OF ADMIN
@@ -83,6 +84,7 @@ else{
                           foreach($result as $row){
                             $username = $row['username'];
                             $password = $row['password'];
+                            $acc_id = $row['acc_id'];
                             if($row['admin'] == 1){
                               $admin = "Website Administrator";
                             }
@@ -99,7 +101,7 @@ else{
                               Edit
                               </button></td>
                               </tr>
-                              <form action="" method = "post">
+                              <form action="update_admin.php" method = "post">
                                 <!-- Modal Edit Admin -->
                                 <div class="modal fade modalpopup" id="modaleditAdmin'.$username.'" tabindex="-1">
                                   <div class="modal-dialog modal-dialog-centered">
@@ -112,6 +114,7 @@ else{
                                       </div>
                                       <div class="modal-body">
                                         <div class="form-floating mb-2">
+                                          <input type="hidden" name="admin_id" value="'.$acc_id.'">
                                           <input type="password" id="ecurrentpass'.$username.'" name="currentpass" class="form-control" onkeyup="check_current'.$username.'();" placeholder="Current Password" required>
                                           <label for="currentpass">Current Password</label>
                                         </div>
