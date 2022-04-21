@@ -55,7 +55,7 @@
         <div class="container">
             <div class="card text-center border border-2 border-primary">
                 <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
+                    <ul class="nav nav-tabs note1 card-header-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" href="transac.php">Recycle Records</a>
                         </li>
@@ -73,7 +73,7 @@
                     <p class="card-text">
                         <div class="infocontent">
                             <div class="scroll">
-                                <table class="table table-striped">
+                                <table class="table note1 table-striped">
                                     <thead>
                                         <tr>
                                             <th scope="col">Bottle Type</th>

@@ -168,7 +168,7 @@ else{
                             Recent Transaction
                         </h3>
                         <p class="card-text lead mb-md-5">
-                            <table class="table table-striped">
+                            <table class="table note1 table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">Bottle Types</th>
@@ -209,7 +209,7 @@ else{
                             </table>
                         </p>
                         <p class="card-text lead mb-md-5">
-                            <table class="table table-striped">
+                            <table class="table note1 table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">Redeemed points</th>

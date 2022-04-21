@@ -87,7 +87,7 @@
     </section>
 
     <section class="bg-dark p-4"></section>
-    <section class="bg-secondary p-4"></section>
+    <section class="bg-primary p-5"></section>
 
     <script src="./src/bootstrap-input-spinner.js"></script>
     <script>
