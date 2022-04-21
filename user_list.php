@@ -108,6 +108,7 @@
                                     <thead>
                                       <tr>
                                         <th scope="col">No.</th>
+                                        <th scope="col"></th>
                                         <th scope="col">Email Address</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">First Name</th>
@@ -146,6 +147,13 @@
                                               echo '
                                                 <tr>
                                                   <td>'.$count.'</td>
+                                                  <td>
+                                                    <form action="edit_user.php" class="mb-3" method ="post">
+                                                      <button type="submit" class="btn btn-secondary" name="edit">
+                                                        Edit
+                                                      </button>
+                                                    </form>
+                                                  </td>
                                                   <td>'.$semail.'</td>
                                                   <td>'.$slname.'</td>
                                                   <td>'.$sfname.'</td>
@@ -185,6 +193,13 @@
                                             echo '
                                               <tr>
                                                 <td>'.$count.'</td>
+                                                <td>
+                                                  <form action="edit_user.php" class="mb-3" method ="post">
+                                                    <button type="submit" class="btn btn-secondary" name="edit">
+                                                      Edit
+                                                    </button>
+                                                  </form>
+                                                </td>
                                                 <td>'.$email.'</td>
                                                 <td>'.$lname.'</td>
                                                 <td>'.$fname.'</td>
