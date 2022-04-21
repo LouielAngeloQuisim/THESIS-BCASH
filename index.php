@@ -1,3 +1,17 @@
+<?php
+if(!empty($_GET['file'])){
+  $filename = basename($_GET['file']);
+  $filepath = 'bcash_apk/' . $filename;
+  if(!empty($filename) && file_exists($filepath)){
+    header("Cache-Control: public");
+    header("Content-Description: File Transfer");
+    header("Content-Disposition: attachment; filename=$filename");
+    header('Content-Type: application/vnd.android.package-archive');
+    readfile($filepath);
+    exit;
+  }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,6 +34,8 @@
           <div class="card cardselect shadow bg-light p-4 border border-5 border-dark" style="width: 20rem;">
             <img src="img/logo1.png" class="mx-auto d-block mb-3">
             <div class="d-grid gap-2 col-12 mx-auto">
+              <!-- Sa download app ingatan yung index.php?file= "name nang app" baka d magdownload kapag mali name o wala doon yung file -->
+              <a class="btn btn-primary btn-lg rounded-pill" href="index.php?file=Bcash.apk" role="button">Download App</a>
               <a class="btn btn-primary btn-lg rounded-pill" href="login.php" role="button">Login</a>
               <!-- <a class="btn btn-primary btn-lg rounded-pill" href="dash_shop.php" role="button">Shop</a> -->
             </div>
