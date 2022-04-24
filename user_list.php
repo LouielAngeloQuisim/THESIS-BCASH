@@ -133,6 +133,7 @@
                                             $count = 0;
                                             foreach($search_result as $row){
                                               $count += 1;
+                                              $user_id = $row['acc_id'];
                                               $semail = $row['email'];
                                               $slname = $row['lname'];
                                               $sfname = $row['fname'];
@@ -149,7 +150,8 @@
                                                   <td>'.$count.'</td>
                                                   <td>
                                                     <form action="edit_user.php" class="mb-3" method ="post">
-                                                      <button type="submit" class="btn btn-secondary" name="edit">
+                                                      <input type="hidden" name="user_id" value="'.$user_id.'">
+                                                      <button type="submit" class="btn btn-secondary" name="edit_user">
                                                         Edit
                                                       </button>
                                                     </form>
@@ -179,6 +181,7 @@
                                           $count = 0;
                                           foreach($result as $row){
                                             $count += 1;
+                                            $user_id = $row['acc_id'];
                                             $email = $row['email'];
                                             $lname = $row['lname'];
                                             $fname = $row['fname'];
@@ -195,7 +198,8 @@
                                                 <td>'.$count.'</td>
                                                 <td>
                                                   <form action="edit_user.php" class="mb-3" method ="post">
-                                                    <button type="submit" class="btn btn-secondary" name="edit">
+                                                    <input type="hidden" name="user_id" value="'.$user_id.'">
+                                                    <button type="submit" class="btn btn-secondary" name="edit_user">
                                                       Edit
                                                     </button>
                                                   </form>

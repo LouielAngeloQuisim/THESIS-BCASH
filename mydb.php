@@ -122,6 +122,7 @@ class myDb {
         mysqli_free_result($result);
         return $records;
     }
+    
     public function get_Admin(){
         $sql = "SELECT * FROM user_login";
         $result = mysqli_query($this->link, $sql);
@@ -263,6 +264,50 @@ class myDb {
         }
         else{
             $result = "notavailable";
+        }
+        return $result;
+        $sql->free_result();
+    }
+    public function update_User(
+        $username, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
+        $program, $year_level,$studnum,$acc_id
+        ){
+        //set parameters
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $username = mysqli_real_escape_string($this->link, $username);
+        $fname = mysqli_real_escape_string($this->link, $fname);
+        $lname = mysqli_real_escape_string($this->link, $lname);
+        $mname = mysqli_real_escape_string($this->link, $mname);
+        $email = mysqli_real_escape_string($this->link, $email);
+        $mobile_num = mysqli_real_escape_string($this->link, $mobile_num);
+        $sex = mysqli_real_escape_string($this->link, $sex);
+        $age = mysqli_real_escape_string($this->link, $age);
+        $program = mysqli_real_escape_string($this->link, $program);
+        $year_level = mysqli_real_escape_string($this->link, $year_level);
+        $studnum = mysqli_real_escape_string($this->link, $studnum);
+        
+        // UPDATE user_login SET qrcode = ? WHERE acc_id = ?
+        $sql = $this->link->prepare("INSERT into user_login (
+            username,password,lname,fname,mname,email,mobile_num,sex,age,program,
+            year_level,stud_num,qrcode,total_points,total_bottles,admin
+            )
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $sql = $this->link->prepare("UPDATE user_login SET 
+            username = ?,lname = ?,fname = ?,mname = ?,email = ?,mobile_num = ?,sex = ?,age = ?,program = ?,
+            year_level = ?,stud_num = ? WHERE acc_id = ?
+            ");
+        // sss = string,string,string. i = int, d = double, s = string, b = blob.
+        $sql->bind_param("sssssssisssi",
+            $username,$lname,$fname,$mname,$email,$mobile_num,$sex,$age,
+            $program,$year_level,$studnum,$acc_id
+        );
+        //$qrcode = mysqli_real_escape_string($this->link, $qrcode);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "notinserted";
+        }
+        else{
+            $result = "inserted";
         }
         return $result;
         $sql->free_result();
@@ -572,6 +617,38 @@ class myDb {
                     'item_price' => $row['item_price'],
                     'item_stock' => $row['item_stock'],
                     'item_img' => $row['item_img']
+                ];
+            }
+        }
+        else{
+            $records = null;
+        }
+        return $records;
+        $sql->free_result();
+    }
+    public function get_Specific_user($acc_id){
+        $records = array();
+        $sql = $this->link->prepare("SELECT * FROM user_login WHERE acc_id = ?");
+        $acc_id = mysqli_real_escape_string($this->link, $acc_id);
+        $sql->bind_param("i", $acc_id);
+        $sql->execute();
+        $result = $sql->get_result();
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $records[] = [
+                    'acc_id' => $row['acc_id'],
+                    'username' => $row['username'],
+                    'lname' => $row['lname'],
+                    'mname' => $row['mname'],
+                    'fname' => $row['fname'],
+                    'sex' => $row['sex'],
+                    'age' => $row['age'],
+                    'email' => $row['email'],
+                    'program' => $row['program'],
+                    'year_level' => $row['year_level'],
+                    'mobile_num' => $row['mobile_num'],
+                    'stud_num' => $row['stud_num'],
+                    'total_points' => $row['total_points']
                 ];
             }
         }
