@@ -1799,7 +1799,7 @@ class myDb {
         }
     }
     // adding recycle transaction and points to the user
-    public function add_recycleTrans($acc_id, $bottle_name
+    public function add_recycleTrans($acc_id, $bottle_name, $amount
     ){
         //conditions
         $date_valid = 'false';
@@ -1815,6 +1815,7 @@ class myDb {
         // init variables and check if valid
         $acc_id = mysqli_real_escape_string($this->link, $acc_id);
         $bottle_name = mysqli_real_escape_string($this->link, $bottle_name);
+        $amount = mysqli_real_escape_string($this->link, $amount);
         $bottle_count = 1;
         // $bottle_id = mysqli_real_escape_string($this->link, $bottle_id);
         // $points_earned = mysqli_real_escape_string($this->link, $points_earned);
@@ -1880,8 +1881,9 @@ class myDb {
         if($date_valid == true && $bottle_valid == true && $user_valid == true){
             //update user total points
             $sql = $this->link->prepare("UPDATE user_login SET total_points = ?, total_bottles = ? WHERE acc_id = ?");
+            $bottle_val = $bottle_val * $amount;
             $total_points = $total_points + $bottle_val;
-            $total_bottles = $total_bottles + 1;
+            $total_bottles = $total_bottles + $amount;
             $sql->bind_param("dii", $total_points, $total_bottles, $new_acc_id);
             $success = $sql->execute();
             if(!$success){
@@ -1893,13 +1895,13 @@ class myDb {
                 bottle_id, points_earned, day_id, recycle_trans_time, bottle_count) 
                 VALUES(?,?,?,?,?,?,?)");
                 $sql->bind_param("isidisi", $new_acc_id, $bottle_name, $bottle_id, $bottle_val, $day_id,
-                $datetime,$bottle_count);
+                $datetime,$amount);
                 $success = $sql->execute();
                 if(!$success){
-                    $result = "failed to insert recycle transaction".$bottle_id." ".$day_id." ".$datetime." ".$bottle_count;
+                    $result = "failed to insert recycle transaction".$bottle_id." ".$day_id." ".$datetime." ".$amount;
                 }else{
                     $sql = $this->link->prepare("UPDATE daily_bottle_report SET no_bottles = ? WHERE day_id = ?");
-                    $no_bottles = $no_bottles + $bottle_count;
+                    $no_bottles = $no_bottles + $amount;
                     $sql->bind_param("ii", $no_bottles, $day_id);
                     $success = $sql->execute();
                     if(!$success){
