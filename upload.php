@@ -67,6 +67,7 @@ elseif(isset($_POST['submititem'])){
     $fileSize = $_FILES['image']['size'];
     $fileError = $_FILES['image']['error'];
     $fileTmpName = $_FILES['image']['tmp_name'];
+    echo $fileTmpName;
     //file name and extension
     $fileExt = explode('.', $filename);
     $fileActualExt = strtolower(end($fileExt));
@@ -88,7 +89,7 @@ elseif(isset($_POST['submititem'])){
                 else{
                     //error inserting
                     //echo "error inserting";
-                    header("Location: itemlist.php?success");
+                   header("Location: itemlist.php?success");
                 }
             }
             else{

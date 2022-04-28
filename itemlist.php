@@ -246,20 +246,18 @@ else{
     
     <script>
         var add_items = function(){
-            // var bname = document.getElementById('btype').value;
-            // var bsize = document.getElementById('size').value;
-            // var bcurr = document.getElementById('bcurrency').value;
             // bname  == "" && bsize  == "" && bcurr  == ""
-            if (document.getElementById('item_name').value != "" &&
-                document.getElementById('item_value').value != "" &&
-                document.getElementById('item_file').value != ""
+            if (document.getElementById('item_file').value != "" &&
+                document.getElementById('item_name').value != "" &&
+                document.getElementById('item_value').value != "" 
+                
             ){
                 document.getElementById('message').style.color = 'green';
                 document.getElementById('message').innerHTML = 'Forms completed!';
                 document.getElementById('item_add').disabled = false;
             }else {
-                document.getElementById('emessage').style.color = 'red';
-                document.getElementById('emessage').innerHTML = "Please fill up all fields";
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = "Please fill up all fields";
                 document.getElementById('item_add').disabled = true;
             }
         }
