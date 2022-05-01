@@ -334,11 +334,23 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="itemswitch1">
                             <label class="form-check-label" for="itemswitch">
                                 <select class="form-select inputtg1" id="item1" onkey  name="item" disabled>
-                                    <option selected >Select Redeemable Item</option>
+                                    <?php
+                                        $records = $mydb->get_Shop_items();
+                                        if(isset($records)){
+                                            foreach($records as $rows){
+                                                $item_id = $rows['item_id'];
+                                                $item_name = $rows['item_name'];
+                                                echo '
+                                                <option selected >'.$item_name.'</option>
+                                                ';
+                                            }
+                                        }
+                                    ?>
+                                    <!-- <option selected >Select Redeemable Item</option>
                                     <option value="print" >Print</option>
                                     <option value="xerox">Xerox</option>
                                     <option value="ballpen">Ballpen</option>
-                                    <option value="pencil" >Pencil</option>
+                                    <option value="pencil" >Pencil</option> -->
                                 </select>
                             </label>
                         </div>
@@ -502,7 +514,7 @@
                     }
                     if(itemswitch.checked){
                         input_item.disabled = false;
-                        
+                        gen_btn.disabled = false;
                     }
                     else if(!itemswitch.checked){
                         input_item.disabled = true;
