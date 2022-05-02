@@ -38,8 +38,6 @@
                         The more plastic that we collect the more solid waste we save from ending up in a landfill site, when they can be used or exchange as 
                         points.
                     </p>
-                    <!-- recycle scan button -->
-                    <a href="recycle_scan.php" class="btn btn-secondary btn-lg mb-4">Scan Bottle</a>
                 </div>
             </div>
             <!-- acceptable bottles carousel area -->
