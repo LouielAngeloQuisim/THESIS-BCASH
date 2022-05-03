@@ -231,14 +231,13 @@ class myDb {
         
         //check if username is already used email
         if($admin == 0){
-            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ? OR stud_num = ? ");
+            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username = ? AND email = ? OR stud_num = ? ");
             $sql->bind_param("sss", $username, $email, $studnum);
         }
         else{
-            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username= ? AND email = ?"); 
+            $sql = $this->link->prepare("SELECT * FROM user_login WHERE username = ? AND email = ?"); 
             $sql->bind_param("ss", $username, $email);
         }
-        $sql->bind_param("sss", $username, $email, $studnum);
         $sql->execute();
         $count = $sql->get_result();
         if(empty($count->num_rows)){
@@ -1917,8 +1916,8 @@ class myDb {
         }else{
             $result = "Date is valid: ".$date_valid." Bottle is valid: ".$bottle_valid." User is valid:".$user_valid;
         }
-        $sql->free_result();
         return $result;
+        $sql->free_result();
     }
 
 }

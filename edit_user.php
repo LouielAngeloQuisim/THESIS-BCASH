@@ -156,7 +156,9 @@
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-secondary me-md-2" type="button">Cancel</button>
+                    <a href="user_list.php" class="btn btn-secondary me-md-2" id="cancel">
+                        Cancel
+                    </a>
                     <button class="btn btn-secondary" type="submit" name="update_user">Save Changes</button>
                 </div>
             </div>

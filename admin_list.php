@@ -234,7 +234,7 @@ else{
                     </div>
                     <div class="form-floating mb-2">
                       <!-- admin == 1 identifier na admin ang ireregister dto -->
-                      <!-- <input type="hidden" name="admin" value="1"> -->
+                      <input type="hidden" name="admin" value="1">
                       <input type="hidden" name="fname" value="admin">
                       <input type="hidden" name="lname" value="admin">
                       <input type="hidden" name="mname" value="admin">
