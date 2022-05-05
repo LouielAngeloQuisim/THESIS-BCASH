@@ -304,7 +304,7 @@ else{
                                             <div class="carousel-item active">
                                                 <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
+                                                    <div class="carousel-caption note2">
                                                         <h5>'.$bname.'</h5>
                                                         <p>Value: '.$bvalue.'</p>
                                                     </div>  
@@ -317,8 +317,8 @@ else{
                                             <div class="carousel-item">
                                                 <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
-                                                    <div class="carousel-caption">
-                                                        <h1>'.$bname.'</h1>
+                                                    <div class="carousel-caption note2">
+                                                        <h5>'.$bname.'</h5>
                                                         <p>Value: '.$bvalue.'</p>
                                                     </div>  
                                                 </div>
