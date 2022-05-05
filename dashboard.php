@@ -318,7 +318,7 @@ else{
                                                 <img src="upload_img/'.$bimg.'" class="d-block pb-2 w-100">
                                                 <div class="bg-light p-5">
                                                     <div class="carousel-caption">
-                                                        <h5>'.$bname.'</h5>
+                                                        <h1>'.$bname.'</h1>
                                                         <p>Value: '.$bvalue.'</p>
                                                     </div>  
                                                 </div>
