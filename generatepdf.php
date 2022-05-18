@@ -102,6 +102,12 @@ if(isset($_POST['Generate'])){
     else{
         $mindate = "";
     }
+    if(isset($_POST['item'])){
+        $item = $_POST['item'];
+    }
+    else{
+        $item = "";
+    }
     if(isset($_POST['maxdate'])){
         $maxdate = $_POST['maxdate'];
     }
@@ -128,6 +134,9 @@ if(isset($_POST['Generate'])){
     }
     if(!empty($mname)){
         $conditions[] = "mname='$mname'"; 
+    }
+    if(!empty($item)){
+        $conditions[] = "item='$item'";
     }
     if(!empty($mindate) && !empty($maxdate)){
         $date_conditions[] = "DATE(recycle_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 

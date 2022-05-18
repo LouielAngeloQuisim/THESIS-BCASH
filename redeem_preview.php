@@ -172,6 +172,12 @@
                                 else{
                                     $fname = "";
                                 }
+                                if(isset($_POST['item'])){
+                                    $item = $_POST['item'];
+                                }
+                                else{
+                                    $item = "";
+                                }
                                 if(isset($_POST['mname'])){
                                     $mname = $_POST['mname'];
                                 }
@@ -204,6 +210,9 @@
                                 }
                                 if(!empty($mname)){
                                     $conditions[] = "mname='$mname'"; 
+                                }
+                                if(!empty($item)){
+                                    $conditions[] = "item='$item'";
                                 }
                                 if(!empty($mindate) && !empty($maxdate)){
                                     $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
