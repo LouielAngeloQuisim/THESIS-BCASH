@@ -111,6 +111,10 @@
                                             echo '<td>'.$time.'</td>';
                                             echo '<td>'.$date.'</td>';
                                             echo '</tr>';
+                                            $count += 1;
+                                            if($count == 6){
+                                                break;
+                                            }
                                         }
                                     }
                                     else{
