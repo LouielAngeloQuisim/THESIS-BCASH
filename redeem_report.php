@@ -87,6 +87,7 @@
                                 <tbody>
                                 <?php
                                     $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                    $count = 0;
                                     if(isset($redeem_records)){
                                         foreach($redeem_records as $rows){
                                             $points_deducted = $rows['points_deducted'];

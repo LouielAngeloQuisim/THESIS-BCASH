@@ -2,6 +2,9 @@
     session_start();
     require "mydb.php";
     $mydb = new myDb;
+    date_default_timezone_set('Asia/Manila');
+    $currentdate = date('Y-m-d');
+    $currentdate = date("Y-m-d", strtotime($currentdate));
     if(isset($_SESSION['qrcode']) && isset($_SESSION['total_bottles']) && isset($_SESSION['total_points']) && 
     isset($_SESSION['acc_id']) && isset($_SESSION['admin'])){
         $acc_id = $_SESSION['acc_id'];
@@ -336,9 +339,9 @@
                             <input class="form-check-input switchgbtn" type="checkbox" id="dateswitch1">
                              <label class="form-check-label" for="dateswitch">
                                 <div class="input-group inputdg1">
-                                    <input type="date" class="form-control" id="mindate1" onkeyup="check_text();" name = "mindate" disabled>
+                                    <input type="date" class="form-control" id="mindate1" value="<?php echo $currentdate;?>" onkeyup="check_text();" name = "mindate" disabled>
                                     <span class="input-group-text">to</span>
-                                    <input type="date" class="form-control" id="maxdate1" onkeyup="check_text();" name = "maxdate" disabled>
+                                    <input type="date" class="form-control" id="maxdate1" value="<?php echo $currentdate;?>" onkeyup="check_text();" name = "maxdate" disabled>
                                 </div>
                             </label>
                         </div>
@@ -441,7 +444,7 @@
                     if(dateswitch.checked){
                         input_mindate.disabled = false;
                         input_maxdate.disabled = false;
-                        
+                        gen_btn.disabled = false;
                     }
                     else if(!dateswitch.checked){
                         input_mindate.disabled = true;
@@ -495,22 +498,22 @@
                     gen_btn.disabled = false;
                 }
             }
-            if( input_mindate.disabled == false){
-                if(input_mindate.value == ""){
-                gen_btn.disabled = true;
-                }
-                else{
-                    gen_btn.disabled = false;
-                }
-            }
-            if( input_maxdate.disabled == false){
-                if(input_maxdate.value == ""  ){
-                gen_btn.disabled = true;
-                }
-                else{
-                    gen_btn.disabled = false;
-                }
-            }
+            // if( input_mindate.disabled == false){
+            //     if(input_mindate.value == ""){
+            //         gen_btn.disabled = true;
+            //     }
+            //     else{
+            //         gen_btn.disabled = false;
+            //     }
+            // }
+            // if( input_maxdate.disabled == false){
+            //     if(input_maxdate.value == ""  ){
+            //         gen_btn.disabled = true;
+            //     }
+            //     else{
+            //         gen_btn.disabled = false;
+            //     }
+            // }
             if( input_minep.disabled == false){
                 if(input_minep.value == ""  ){
                 gen_btn.disabled = true;

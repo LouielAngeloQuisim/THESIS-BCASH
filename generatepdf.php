@@ -415,6 +415,12 @@ elseif(isset($_POST['redeem_generate'])){
     else{
         $price = "";
     }
+    if(isset($_POST['item'])){
+        $item = $_POST['item'];
+    }
+    else{
+        $item = "";
+    }
     if(!empty($lname)){
         $conditions[] = "lname='$lname'"; 
     }
@@ -423,6 +429,9 @@ elseif(isset($_POST['redeem_generate'])){
     }
     if(!empty($mname)){
         $conditions[] = "mname='$mname'"; 
+    }
+    if(!empty($item)){
+        $conditions[] = "item='$item'";
     }
     if(!empty($mindate) && !empty($maxdate)){
         $date_conditions[] = "DATE(redeem_trans_time) BETWEEN '$mindate' AND '$maxdate'"; 
