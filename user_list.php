@@ -229,6 +229,75 @@
                     </p>
                 </div>
             </div>
+            <!-- Modal Normal-->
+            <div class="modal fade modalpopup" id="modalnormalNotif" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalnormalNotif">
+                      Succesfull
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Sucessfully Added</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal CSV-->
+            <div class="modal fade modalpopup" id="modalCSVNotif" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalCSVNotif">
+                      Preview
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Email Address</th>
+                          <th scope="col">Last Name</th>
+                          <th scope="col">First Name</th>
+                          <th scope="col">Middle Name</th>
+                          <th scope="col">Total Points</th>
+                          <th scope="col">Sex</th>
+                          <th scope="col">Age</th>
+                          <th scope="col">Mobile Number</th>
+                          <th scope="col">Student Number</th>
+                          <th scope="col">Program</th>
+                          <th scope="col">Year Level</th>
+                        </tr>
+                      </thead>
+                      <tbody class="align-middle">
+                        <tr>
+                          <td>[email]</td>
+                          <td>[lname]</td>
+                          <td>[fname]</td>
+                          <td>[mname]</td>
+                          <td>[total points]</td>
+                          <td>[sex]</td>
+                          <td>[age]</td>
+                          <td>[mnum]</td>
+                          <td>[studnum]</td>
+                          <td>[prog]</td>
+                          <td>[yrlvl]</td>
+                        </tr>
+                      </tbody>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
     </section>
 
