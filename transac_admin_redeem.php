@@ -125,7 +125,7 @@
                                     $total_pages = $mydb->getRedeempages($data_per_page);
                                     for($i = 1; $i<=$total_pages; $i++){
                                         echo '<li class="page-item">
-                                        <a class="page-link" href="transac_admin_redeem.php?page='.$i.'">1</a></li>';
+                                        <a class="page-link" href="transac_admin_redeem.php?page='.$i.'">'.$i.'</a></li>';
                                     }
                                 ?>
                                 <li class="page-item">
