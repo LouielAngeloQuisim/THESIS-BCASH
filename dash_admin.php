@@ -16,6 +16,14 @@
     else{
         header("Location: login.php?usernotfound=1");
     }
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+    else{
+        $page = 1;
+    }
+    $data_per_page = 8;
+    $start_from = ($page-1)*8;
 ?>
 <!doctype html>
 <html lang="en">
@@ -95,7 +103,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin,$start_from,$data_per_page);
                                         if(isset($redeem_records)){
                                             $count = 0;
                                             foreach($redeem_records as $rows){
