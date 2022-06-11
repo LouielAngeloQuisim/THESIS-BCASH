@@ -997,7 +997,7 @@ class myDb {
             
         }
         return $records;
-        $sql->free_result();
+        #$sql->free_result();
     }
     //filter data for generate reports for Redeem Records only
     public function filter_Redeem($conditions, $date_cond){
@@ -1102,7 +1102,7 @@ class myDb {
             
         }
         return $records;
-        $sql->free_result();
+        #$sql->free_result();
     }
     // filter data for generate reports for Redeem and Recycle Records only
     public function filterd_All($conditions, $date_cond){
@@ -1205,7 +1205,7 @@ class myDb {
             }
             
         }
-        $sql->free_result();
+        #$sql->free_result();
         return $records;
     }
 
@@ -1718,7 +1718,7 @@ class myDb {
         else{
             $return = "no_user";
             return $result;
-            $sql->free_result();
+            #$sql->free_result();
         }
         // get item info
         $item_id = mysqli_real_escape_string($this->link, $item_id);
@@ -1734,7 +1734,7 @@ class myDb {
         else{
             $result = "noitem";
             return $result;
-            $sql->free_result();
+            #$sql->free_result();
         }
         // get date info
         $sql = "SELECT day_id, date , no_redeem
@@ -1749,7 +1749,7 @@ class myDb {
         else{
             $result = $date;
             return $result;
-            $sql->free_result();
+            #$sql->free_result();
         }
         if($user_points >= $item_points){
             // update user points
@@ -1794,7 +1794,7 @@ class myDb {
         else{
             $result = "not enough points"; // return not enough points
             return $result;
-            $sql->free_result();
+            #$sql->free_result();
         }
     }
     // adding recycle transaction and points to the user

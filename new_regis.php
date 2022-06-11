@@ -9,7 +9,7 @@ if(isset($_POST['registerbtn'])){
             $csvfile = fopen($_FILES['csvfile']['tmp_name'], "r");
             fgetcsv($csvfile); //get csv file
             // header is commented because it was looped
-            while(($row = fgetcsv($csvfile))!== FALSE){
+            while(($row = fgetcsv($csvfile))!== FALSE){// stop when next row is null or empty
                 $email = $row[0];
                 $lname = $row[1];
                 $fname = $row[2];
