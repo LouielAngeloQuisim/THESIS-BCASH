@@ -24,6 +24,14 @@ else{
     //echo "error in collecting user data";
     header("Location: login.php?usernotfound=1");
 }
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}
+else{
+    $page = 1;
+}
+$data_per_page = 8;
+$start_from = ($page-1)*8;
 //$record = $mydb->get_Qrcode($acc_id);
 /*if(isset($record)){
     foreach($record as $rows){
@@ -179,7 +187,7 @@ else{
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                        $recycle_records = $mydb->get_Recycle_trans($acc_id,$admin,$start_from, $data_per_page);
                                         if(isset($recycle_records)){
                                             $count = 0;
                                             foreach($recycle_records as $rows){
@@ -219,7 +227,7 @@ else{
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin,$start_from, $data_per_page);
                                         $count = 0;
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){

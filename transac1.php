@@ -10,6 +10,14 @@
         $acc_id = null;
         header("Location: login.php?usernotfound=1");
     }
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+    else{
+        $page = 1;
+    }
+    $data_per_page = 20;
+    $start_from = ($page-1)*8;
 ?>
 <!doctype html>
 <html lang="en">
@@ -84,7 +92,7 @@
                                     </thead>
                                     <tbody class="align-middle">
                                     <?php
-                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin);
+                                        $redeem_records = $mydb->get_Redeem_trans($acc_id,$admin,$start_from, $data_per_page);
                                         if(isset($redeem_records)){
                                             foreach($redeem_records as $rows){
                                                 $points_deducted = $rows['points_deducted'];
