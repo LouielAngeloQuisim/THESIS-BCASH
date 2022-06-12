@@ -59,30 +59,128 @@
                 <button type="button" class="btn btn-secondary btn-md addbtn" data-bs-toggle="modal" data-bs-target="#modaladdUsercsv">
                   Add User using csv file
                 </button>
+                <form action="new_regis.php" method = "post" enctype="multipart/form-data">
+                <!-- Modal Add User CSV File-->
+                  <div class="modal fade modalpopup" id="modaladdUsercsv" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modaladdUsercsv">
+                            Add User
+                          </h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="m-3">
+                          <input class="form-control" type="file" id="csvfile" accept=".csv" name="csvfile" multiple required>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
+                            Register
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </p>
-            <form action="new_regis.php" method = "post" enctype="multipart/form-data">
-              <!-- Modal Add User CSV File-->
-              <div class="modal fade modalpopup" id="modaladdUsercsv" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="modaladdUsercsv">
-                                Add User
-                              </h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <form action="registration.php" method = "post" enctype="multipart/form-data">
+              <!-- Modal Add User Manually-->
+              <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="modaladdUser">
+                              Add User
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="mb-2">
+                              <input type="hidden" name="admin" value="0">
+                              <label for="email">Email Address</label>
+                              <input type="email" id="email" name="email" class="form-control form-control-lg"  placeholder="example@bpsu.edu.ph" required>
                             </div>
-                            <div class="m-3">
-                              <input class="form-control" type="file" id="csvfile" accept=".csv" name="csvfile" multiple required>
+                            <div class="row g-2 mb-2">
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
+                                  <label for="fname">First Name</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required>
+                                  <label for="lname">Last Name</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="text" id="mname" name="mname" class="form-control" placeholder="Middle Name" required>
+                                  <label for="mname">Middle Name</label>
+                                </div>
+                              </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="form-floating mb-2">
+                                  <select class="form-select" id="prog" name="prog" required>
+                                    <option value="BS Computer Science (Network and Data Communications)">BS Computer Science (Network and Data Communications)</option>
+                                    <option value="BS Computer Science (Software Development)">BS Computer Science (Software Development)</option>
+                                    <option value="BS Entertainment and Multimedia Computing (Digital Animation Technology)">BS Entertainment and Multimedia Computing (Digital Animation Technology)</option>
+                                    <option value="BS Entertainment and Multimedia Computing (Game Development)">BS Entertainment and Multimedia Computing (Game Development)</option>
+                                    <option value="BS Information Technology (Net and Web Applications)">BS Information Technology (Net and Web Applications)</option>
+                                  </select>
+                                  <label for="prog">Program</label>
+                                </div>
+                            <div class="row g-2 mb-2">
+                              <div class="col">
+                                <div class="form-floating">
+                                  <select class="form-select" id="sex" name="sex" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                  </select>
+                                  <label for="sex">Sex</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="number" id="age" name="age" class="form-control" placeholder="Age" required>
+                                  <label for="age">Age</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-floating">
+                                  <select class="form-select" id="yrlvl" name="year_level" required>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                  </select>
+                                  <label for="yrlvl">Year Level</label>
+                                </div>
+                            </div>
+                            <div class="row g-2 mb-2">
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="text" id="studnum" name="studnum" class="form-control" placeholder="Student Number" required>
+                                  <label for="studnum">Student Number</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-floating">
+                                  <input type="number" id="connum" name="mobile_num" class="form-control" placeholder="Contact Number" required>
+                                  <label for="connum">Contact Number</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
                               <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
-                                Register
+                                  Register
                               </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </form>
         </div>
     </section>
@@ -349,104 +447,7 @@
     <section class="bg-primary p-3">
     </section>
 
-    <form action="registration.php" method = "post" enctype="multipart/form-data">
-      <!-- Modal Add User Manually-->
-      <div class="modal fade modalpopup" id="modaladdUser" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="modaladdUser">
-                      Add User
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="mb-2">
-                      <input type="hidden" name="admin" value="0">
-                      <label for="email">Email Address</label>
-                      <input type="email" id="email" name="email" class="form-control form-control-lg"  placeholder="example@bpsu.edu.ph" required>
-                    </div>
-                    <div class="row g-2 mb-2">
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" required>
-                          <label for="fname">First Name</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" required>
-                          <label for="lname">Last Name</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="text" id="mname" name="mname" class="form-control" placeholder="Middle Name" required>
-                          <label for="mname">Middle Name</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-floating mb-2">
-                          <select class="form-select" id="prog" name="prog" required>
-                            <option value="BS Computer Science (Network and Data Communications)">BS Computer Science (Network and Data Communications)</option>
-                            <option value="BS Computer Science (Software Development)">BS Computer Science (Software Development)</option>
-                            <option value="BS Entertainment and Multimedia Computing (Digital Animation Technology)">BS Entertainment and Multimedia Computing (Digital Animation Technology)</option>
-                            <option value="BS Entertainment and Multimedia Computing (Game Development)">BS Entertainment and Multimedia Computing (Game Development)</option>
-                            <option value="BS Information Technology (Net and Web Applications)">BS Information Technology (Net and Web Applications)</option>
-                          </select>
-                          <label for="prog">Program</label>
-                        </div>
-                    <div class="row g-2 mb-2">
-                      <div class="col">
-                        <div class="form-floating">
-                          <select class="form-select" id="sex" name="sex" required>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                          </select>
-                          <label for="sex">Sex</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="number" id="age" name="age" class="form-control" placeholder="Age" required>
-                          <label for="age">Age</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <select class="form-select" id="yrlvl" name="year_level" required>
-                            <option value="1st Year">1st Year</option>
-                            <option value="2nd Year">2nd Year</option>
-                            <option value="3rd Year">3rd Year</option>
-                            <option value="4th Year">4th Year</option>
-                          </select>
-                          <label for="yrlvl">Year Level</label>
-                        </div>
-                    </div>
-                    <div class="row g-2 mb-2">
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="text" id="studnum" name="studnum" class="form-control" placeholder="Student Number" required>
-                          <label for="studnum">Student Number</label>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-floating">
-                          <input type="number" id="connum" name="mobile_num" class="form-control" placeholder="Contact Number" required>
-                          <label for="connum">Contact Number</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="submit" id="registerbtn" class="btn btn-secondary btn-md addbtn" name ="registerbtn">
-                          Register
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </form>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
