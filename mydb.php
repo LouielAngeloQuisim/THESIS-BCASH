@@ -267,6 +267,22 @@ class myDb {
         return $result;
         $sql->free_result();
     }
+
+    public function deleteUser($user_id){
+
+        $user_id = mysqli_real_escape_string($this->link, $user_id);
+        //prepare sql
+        $sql = $this->link->prepare("DELETE FROM user_login WHERE acc_id = ?");
+        $sql->bind_param("i", $user_id);
+        $success = $sql->execute();
+        if(!$success){
+            $result = "failed";
+        }
+        else{
+            $result = "success";
+        }
+        return $result;
+    }
     public function update_User(
         $username, $email, $lname, $fname, $mname, $mobile_num, $sex, $age,
         $program, $year_level,$studnum,$acc_id
@@ -513,10 +529,11 @@ class myDb {
         $sql->free_result();
     }
 
-    public function get_Recycle_trans($acc_id,$admin){
+    public function get_Recycle_trans($acc_id,$admin, $start_from, $data_per_page){
         $records = array();
         if($admin == 1){
-            $sql = $this->link->prepare("SELECT * FROM recycle_transaction ORDER BY recycle_trans_time DESC");
+            $sql = $this->link->prepare("SELECT * FROM recycle_transaction ORDER BY recycle_trans_time DESC
+            LIMIT $start_from, $data_per_page");
             $sql->execute();
             $result = $sql->get_result();
             if($result->num_rows > 0){
@@ -557,10 +574,32 @@ class myDb {
         return $records;
         $sql->free_result();
     }
-    public function get_Redeem_trans($acc_id,$admin){
+
+    public function getRecyclepages($data_per_page){
+        $sql = $this->link->prepare("SELECT * FROM recycle_transaction ORDER BY recycle_trans_time DESC");
+        $sql->execute();
+        $result = $sql->get_result();
+        $total_record = $result->num_rows;
+        $total_page = ceil($total_record/$data_per_page);
+        
+        return $total_page;
+    }
+
+    public function getRedeempages($data_per_page){
+        $sql = $this->link->prepare("SELECT * FROM redeem_transaction ORDER BY redeem_trans_time DESC");
+        $sql->execute();
+        $result = $sql->get_result();
+        $total_record = $result->num_rows;
+        $total_page = ceil($total_record/$data_per_page);
+        
+        return $total_page;
+    }
+
+    public function get_Redeem_trans($acc_id, $admin, $start_from, $data_per_page){
         $records = array();
         if($admin == 1){
-            $sql = $this->link->prepare("SELECT * FROM redeem_transaction ORDER BY redeem_trans_time DESC");
+            $sql = $this->link->prepare("SELECT * FROM redeem_transaction ORDER BY redeem_trans_time DESC
+            LIMIT $start_from, $data_per_page");
             $sql->execute();
             $result = $sql->get_result();
             if($result->num_rows > 0){
@@ -659,21 +698,31 @@ class myDb {
     }
     public function add_Item($item_name, $item_price, $item_stock, $item_img){
         //prepare statements
-        $sql = $this->link->prepare("INSERT into shop_items (item_name, item_price, item_stock, item_img)
-        VALUES(?,?,?,?)");
-        //set parameters
         $item_name = mysqli_real_escape_string($this->link, $item_name);
         $item_price = mysqli_real_escape_string($this->link, $item_price);
         $item_stock = mysqli_real_escape_string($this->link, $item_stock);
         $item_img = mysqli_real_escape_string($this->link, $item_img);
-        // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("sdis", $item_name, $item_price, $item_stock, $item_img);
+
+        $sql = $this->link->prepare("SELECT * FROM shop_items WHERE item_name = ?");
+        $sql->bind_param("s", $item_name);
         $success = $sql->execute();
-        if(!$success){
-            $result = "notinserted";
+        $find = $sql->get_result();
+        if($find->num_rows > 0){
+            $result = "taken";
         }
         else{
-            $result = "inserted";
+            $sql = $this->link->prepare("INSERT into shop_items (item_name, item_price, item_stock, item_img)
+            VALUES(?,?,?,?)");
+            //set parameters
+            // sss = string,string,string. i = int, d = double, s = string, b = blob.
+            $sql->bind_param("sdis", $item_name, $item_price, $item_stock, $item_img);
+            $success = $sql->execute();
+            if(!$success){
+                $result = "notinserted";
+            }
+            else{
+                $result = "inserted";
+            }
         }
         return $result;
         $sql->free_result();
@@ -1475,22 +1524,31 @@ class myDb {
         }
     }
     public function add_BottleType($bname, $bvalue, $bsize, $bimg){
-        //prepare statements
-        $sql = $this->link->prepare("INSERT into bottle_types (bottle,bottle_value,bottle_size,bottle_img)
-        VALUES(?,?,?,?)");
         //set parameters
         $bname = mysqli_real_escape_string($this->link, $bname);
         $bvalue = mysqli_real_escape_string($this->link, $bvalue);
         $bsize = mysqli_real_escape_string($this->link, $bsize);
         $bimg = mysqli_real_escape_string($this->link, $bimg);
-        // sss = string,string,string. i = int, d = double, s = string, b = blob.
-        $sql->bind_param("sdis", $bname, $bvalue, $bsize, $bimg);
+        //prepare statements
+        $sql = $this->link->prepare("SELECT * FROM bottle_types WHERE bottle = ?");
+        $sql->bind_param("s", $bname);
         $success = $sql->execute();
-        if(!$success){
-            $result = "notinserted";
+        $find = $sql->get_result();
+        if($find->num_rows > 0){
+            $result = "taken";
         }
         else{
-            $result = "inserted";
+            $sql = $this->link->prepare("INSERT into bottle_types (bottle,bottle_value,bottle_size,bottle_img)
+            VALUES(?,?,?,?)");
+            // sss = string,string,string. i = int, d = double, s = string, b = blob.
+            $sql->bind_param("sdis", $bname, $bvalue, $bsize, $bimg);
+            $success = $sql->execute();
+            if(!$success){
+                $result = "notinserted";
+            }
+            else{
+                $result = "inserted";
+            }
         }
         $sql->free_result();
         return $result;

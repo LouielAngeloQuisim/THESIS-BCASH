@@ -18,6 +18,14 @@
     else{
         header("Location: login.php?usernotfound=1");
     }
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+    else{
+        $page = 1;
+    }
+    $data_per_page = 8;
+    $start_from = ($page-1)*8;
 ?>
 <!doctype html>
 <html lang="en">
@@ -100,15 +108,40 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                                <?php
+                                    if(isset($page)){
+                                        if($page < 1){
+                                            $page = $page - 1;
+                                            echo '<a class="page-link" href="transac_admin_recycle.php?page='.$page.'" aria-label="Previous">';
+                                        }
+                                        else{
+                                            echo '<a class="page-link" href="transac_admin_recycle.php?page='.$page.'" aria-label="Previous">';
+                                        }
+                                    }
+                                ?>
+                                
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <?php
+                                    $total_pages = $mydb->getRecyclepages($data_per_page);
+                                    for($i = 1; $i<=$total_pages; $i++){
+                                        echo '<li class="page-item">
+                                        <a class="page-link" href="transac_admin_recycle.php?page='.$i.'">'.$i.'</a></li>';
+                                    }
+                                ?>
                                 <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                                    <?php
+                                        if(isset($page)){
+                                            if($page < 1){
+                                                $page = $page + 1;
+                                                echo '<a class="page-link" href="transac_admin_recycle.php?page='.$page.'" aria-label="Next">';
+                                            }
+                                            else{
+                                                echo '<a class="page-link" href="transac_admin_recycle.php?page='.$page.'" aria-label="Next">';
+                                            }
+                                        }
+                                    ?>
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
@@ -132,7 +165,7 @@
                                     <?php
                                         // display search 
                                         // display all records
-                                        $redeem_records = $mydb->get_Recycle_trans($acc_id,$admin);
+                                        $redeem_records = $mydb->get_Recycle_trans($acc_id, $admin, $start_from, $data_per_page);
                                         if(isset($_POST['search_submit'])){
                                             $search = $_POST['search'];
                                             $records = $mydb->search_Recycletable($search);

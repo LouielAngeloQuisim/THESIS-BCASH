@@ -86,7 +86,34 @@
             </form>
         </div>
     </section>
-
+    <script>
+      <?php
+        if(isset($_GET['finished'])){
+          echo 'alert("Adding Completed")';
+        }
+        elseif(isset($_GET['faileduploadfile'])){
+          echo 'alert("Uploading file failed. Please try again ")';
+        }
+        elseif(isset($_GET['emptyfile'])){
+          echo 'alert("Uploading failed! There is no file detected ")';
+        }
+        elseif(isset($_GET['notset'])){
+          echo 'alert("Uploading failed! Form is not set")';
+        }
+        elseif(isset($_GET['delsuccess'])){
+          echo 'alert("Deletion completed!")';
+        }
+        elseif(isset($_GET['delfailed'])){
+          echo 'alert("Deletion failed")';
+        }
+        elseif(isset($_GET['notavailable'])){
+          echo 'alert("Username or Email not available or already taken")';
+        }
+        elseif(isset($_GET['emailnotvalid'])){
+          echo 'alert("Email is not valid")';
+        }
+      ?>
+    </script>
     <!-- List of User Table -->
     <section class="p-5">
         <div class="container">
@@ -108,6 +135,7 @@
                                     <thead>
                                       <tr>
                                         <th scope="col">No.</th>
+                                        <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col">Email Address</th>
                                         <th scope="col">Last Name</th>
@@ -155,6 +183,8 @@
                                                         Edit
                                                       </button>
                                                     </form>
+                                                  </td>
+                                                  <td>
                                                   </td>
                                                   <td>'.$semail.'</td>
                                                   <td>'.$slname.'</td>
@@ -204,6 +234,14 @@
                                                     </button>
                                                   </form>
                                                 </td>
+                                                <td>
+                                                  <form action="delete_user.php" class="mb-3" method ="post">
+                                                    <input type="hidden" name="user_id" value="'.$user_id.'">
+                                                    <button type="submit" class="btn btn-secondary" name="deleteUser">
+                                                      Delete
+                                                    </button>
+                                                  </form>
+                                                </td>
                                                 <td>'.$email.'</td>
                                                 <td>'.$lname.'</td>
                                                 <td>'.$fname.'</td>
@@ -229,6 +267,10 @@
                     </p>
                 </div>
             </div>
+            <?php
+
+            ?>
+
             <!-- Modal Normal-->
             <div class="modal fade modalpopup" id="modalnormalNotif" tabindex="-1">
               <div class="modal-dialog modal-dialog-centered">

@@ -27,12 +27,18 @@ if(isset($_POST['submit'])){
                 $result = $mydb->add_BottleType($bname, $bvalue, $bsize, $fileNameNew);
                 if($result == "inserted"){
                     //success go to bottlelist
-                    header("Location: bottlelist.php?success");
+                    header("Location: bottlelist.php?success=1");
+                }
+                elseif($result == "notinserted"){
+                    header("Location: bottlelist.php?failed=1");
+                }
+                elseif($result == "taken"){
+                    header("Location: bottlelist.php?taken=1");
                 }
                 else{
                     //error inserting
                     //echo "error inserting";
-                    header("Location: bottlelist.php?success");
+                    header("Location: bottlelist.php?error=1");
                 }
             }
             else{
@@ -41,19 +47,19 @@ if(isset($_POST['submit'])){
                 $imgsize = filesize($img);
                 //echo $imgsize;
                 //echo "error file is too large";
-                header("Location: bottlelist.php?large");
+                header("Location: bottlelist.php?large=1");
             }
         }
         else{
             //error in uploading file
             //echo "error file uploading";
-            header("Location: bottlelist.php?error");
+            header("Location: bottlelist.php?error=1");
         }
     }
     else{
         //if file ext is not allowed
         //echo "error file extension is not allowed";
-        header("Location: bottlelist.php?exterror");
+        header("Location: bottlelist.php?exterror=1");
     }
 }
 elseif(isset($_POST['submititem'])){
@@ -83,13 +89,19 @@ elseif(isset($_POST['submititem'])){
                 //connect to database and insert img data and img directory
                 $result = $mydb->add_Item($item_name, $item_price, $item_stock, $fileNameNew);
                 if($result == "inserted"){
-                    //success go to bottlelist
-                    header("Location: itemlist.php?success");
+                    //success go to itemlist
+                    header("Location: itemlist.php?success=1");
+                }
+                elseif($result == "notinserted"){
+                    header("Location: itemlist.php?failed=1");
+                }
+                elseif($result == "taken"){
+                    header("Location: itemlist.php?taken=1");
                 }
                 else{
                     //error inserting
                     //echo "error inserting";
-                   header("Location: itemlist.php?success");
+                    header("Location: itemlist.php?error=1");
                 }
             }
             else{
@@ -98,19 +110,19 @@ elseif(isset($_POST['submititem'])){
                 //$imgsize = filesize($img);
                 //echo $imgsize;
                 //echo "error file is too large";
-                header("Location: itemlist.php?large");
+                header("Location: itemlist.php?large=1");
             }
         }
         else{
             //error in uploading file
             //echo "error file uploading";
-            header("Location: itemlist.php?error");
+            header("Location: itemlist.php?error=1");
         }
     }
     else{
         //if file ext is not allowed
         //echo "error file extension is not allowed";
-        header("Location: itemlist.php?extnotallowed");
+        header("Location: itemlist.php?extnotallowed=1");
     }
 }
 elseif(isset($_POST['itemedit'])){
