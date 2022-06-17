@@ -210,6 +210,9 @@
         elseif(isset($_GET['emailnotvalid'])){
           echo 'alert("Email is not valid")';
         }
+        elseif(isset($_GET['filext'])){
+          echo 'alert("File is not valid")';
+        }
       ?>
     </script>
     <!-- List of User Table -->
@@ -217,7 +220,7 @@
         <div class="container">
             <div class="card text-center">
                 <div class="card-body px-0">
-                    <form action="" method="post">
+                    <form action="user_list.php" method="post">
                         <div class="input-group px-5 my-3">
                             <input type="text" class="form-control" placeholder="Search" name="search" required>
                             <button class="btn btn-secondary" type="submit" id="searchbtn" name="user_search">
@@ -283,6 +286,12 @@
                                                     </form>
                                                   </td>
                                                   <td>
+                                                    <form action="delete_user.php" class="mb-3" method ="post">
+                                                      <input type="hidden" name="user_id" value="'.$user_id.'">
+                                                      <button type="submit" class="btn btn-secondary" name="deleteUser">
+                                                        Delete
+                                                      </button>
+                                                    </form>
                                                   </td>
                                                   <td>'.$semail.'</td>
                                                   <td>'.$slname.'</td>
